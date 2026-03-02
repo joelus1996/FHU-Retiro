@@ -1,0 +1,286 @@
+package pe.com.intralot.loto.layer.model.domain;
+
+import java.io.Serializable;
+import java.text.DecimalFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.NamedNativeQuery;
+
+/**
+ * <p>
+ * NOMBRE: ClientProcedureLogin.java
+ * <br></p>
+ * <p>
+ * FUNCION: Entidad Hibernate de inicio de sesión 
+ * <br></p>
+ * <p>
+ * NOTAS: Ninguna.
+ * <br></p>
+ * <p>
+ * VERSIONES
+ * <pre>
+ * VER   MODIFICADO       FECHA       PEDIDO         REVISADO
+ * 002   Cristian Cortez  25/06/2018  Variable para el bono TA por recargas Interbank
+ * 001   Cristian Cortez  06/10/2010  First comment
+ * </pre>
+ * <br></p>
+ */
+
+@Entity
+@NamedNativeQuery(name = "CLIENTSALE_LOGIN", query = "{ call LOTOCARD.CLIENTSALE.LOGIN_3(?,?,?) }", callable = true, resultClass = ClientProcedureLogin.class)
+public class ClientProcedureLogin implements Serializable {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4211284723987340833L;
+	
+	@Id
+    @Column(name = "p_sessionid")
+    private Integer pSessionid;
+    @Column(name = "p_clientid")
+    private Integer pClientid;
+    @Column(name = "p_cl_nombre")
+    private String cl_nombre;
+    @Column(name = "p_status")
+    private String status;
+    @Column(name = "p_mode")
+    private String mode;
+    @Column(name = "p_nsessions")
+    private Integer nsessions;
+    @Column(name = "p_state")
+    private Integer state;
+    @Column(name = "p_today")
+    private String today;
+    @Column(name = "p_lucky_icon")
+    private String luckyIcon;
+    @Column(name = "p_balance_amount")
+    private Double balanceAmount;
+    @Column(name = "p_mail_status")
+    private String pMailStatus;
+    @Column(name = "p_session_code")
+    private String pSessionCode;
+    @Column(name = "p_agreement")
+    private String agreement;
+    @Column(name = "p_mail_verified")
+    private String mailVerified;
+    @Column(name = "p_mail")
+    private String mail;
+    @Column(name = "p_mobile_phone")
+    private String mobilePhone;
+    @Column(name = "p_mobile_sms_status")
+    private String mobileStatus;
+    @Column(name = "p_promotion")
+    private String promotion;
+    @Column(name = "p_promotion_ibk")
+    private String promotionibk;
+    @Column(name = "p_user")
+    private String user;
+    @Transient
+    private String samount;
+    @Transient
+    private String nombre;
+    @Transient
+    private String iflexToken;
+    @Transient
+    private String lapollaToken;
+    @Transient
+    private String tav2Token;
+
+    public Integer getSessionId() {
+        return pSessionid;
+    }
+
+    public void setSessionId(Integer pSessionid) {
+        this.pSessionid = pSessionid;
+    }
+
+    public Integer getClientId() {
+        return pClientid;
+    }
+
+    public void setClientId(Integer pClientid) {
+        this.pClientid = pClientid;
+    }
+
+    public String getCl_nombre() {
+        return cl_nombre;
+    }
+
+    public void setCl_nombre(String cl_nombre) {
+        this.cl_nombre = cl_nombre;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public Integer getNsessions() {
+        return nsessions;
+    }
+
+    public void setNsessions(Integer nsessions) {
+        this.nsessions = nsessions;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public String getToday() {
+        return today;
+    }
+
+    public void setToday(String today) {
+        this.today = today;
+    }
+
+    public String getLuckyIcon() {
+        return luckyIcon;
+    }
+
+    public void setLuckyIcon(String luckyIcon) {
+        this.luckyIcon = luckyIcon;
+    }
+
+    public Double getBalanceAmount() {
+        return balanceAmount;
+    }
+
+    public void setBalanceAmount(Double balanceAmount) {
+        this.balanceAmount = balanceAmount;
+    }
+
+    public String getMailStatus() {
+        return pMailStatus;
+    }
+
+    public void setMailStatus(String pMailStatus) {
+        this.pMailStatus = pMailStatus;
+    }
+
+    public String getSessionCode() {
+        return pSessionCode;
+    }
+
+    public void setSessionCode(String pSessionCode) {
+        this.pSessionCode = pSessionCode;
+    }
+
+    public String getSamount() {
+        DecimalFormat df = new DecimalFormat("###,###,##0.00");
+        return df.format(balanceAmount);
+    }
+    
+    public String getNombre() {
+        return cl_nombre;
+    }
+
+	public String getAgreement() {
+		return agreement;
+	}
+
+	public void setAgreement(String agreement) {
+		this.agreement = agreement;
+	}
+
+	public String getMailVerified() {
+		return mailVerified;
+	}
+
+	public void setMailVerified(String mailVerified) {
+		this.mailVerified = mailVerified;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+
+	public String getMobileStatus() {
+		return mobileStatus;
+	}
+
+	public void setMobileStatus(String mobileStatus) {
+		this.mobileStatus = mobileStatus;
+	}
+
+	public String getPromotion() {
+		return promotion;
+	}
+
+	public void setPromotion(String promotion) {
+		this.promotion = promotion;
+	}
+
+	public String getPromotionibk() {
+		return promotionibk;
+	}
+
+	public void setPromotionibk(String promotionibk) {
+		this.promotionibk = promotionibk;
+	}
+	
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+	
+	public String getIflexToken() {
+		return iflexToken;
+	}
+
+	public void setIflexToken(String iflexToken) {
+		this.iflexToken = iflexToken;
+	}
+	
+	public String getLapollaToken() {
+		return lapollaToken;
+	}
+
+	public void setLapollaToken(String lapollaToken) {
+		this.lapollaToken = lapollaToken;
+	}
+
+	public String getTav2Token() {
+		return tav2Token;
+	}
+
+	public void setTav2Token(String tav2Token) {
+		this.tav2Token = tav2Token;
+	}
+}

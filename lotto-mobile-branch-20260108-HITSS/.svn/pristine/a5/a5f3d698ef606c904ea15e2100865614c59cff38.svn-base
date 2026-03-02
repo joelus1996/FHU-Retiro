@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ 
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/security 
+                        http://www.springframework.org/schema/security/spring-security.xsd
+                        http://www.springframework.org/schema/util 
+                        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+    
+	<context:annotation-config/>	
+
+	<context:component-scan base-package="pe.com.intralot"/>	
+	
+	<sec:http auto-config="true">
+		<sec:csrf request-matcher-ref="csrfMatcher"/>
+	</sec:http>
+	
+	<sec:authentication-manager>
+     <sec:authentication-provider>
+         <sec:user-service>
+              <sec:user name="IntralotWs5595" password="f9a3T6p1HLr4Xm" authorities="ROLE_ADMIN" />
+         </sec:user-service>
+         <sec:password-encoder ref="passwordEncoder"/>
+     </sec:authentication-provider>
+	</sec:authentication-manager>
+ 
+	<bean id ="passwordEncoder" class = "org.springframework.security.crypto.password.NoOpPasswordEncoder" factory-method = "getInstance" />
+	
+	<bean id="csrfMatcher" class="org.springframework.security.web.util.matcher.OrRequestMatcher">
+		 <constructor-arg>
+            <util:list value-type="org.springframework.security.web.util.matcher.RequestMatcher">
+		        <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/sendMailTicketsPP.html"/>
+	                    <constructor-arg name="httpMethod" value="PUT"/>
+	            </bean>
+	        	<!--<bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/filterHisPayment.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	              <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/getDataCollectPrizes.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/getResultKyc.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean> 
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/getTicketsPrizes.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/getTicketsPrizesOld.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/getHisPayment.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/getTokenizedCard.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/getTokenizedCardAgora.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/createRequest.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/createRequestVisa.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/createRequestAgora.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/createRequestTransferencia.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/eliminarCuentaTransferencia.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/deleteTokenizedCard.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/deleteTokenizedCardAgora.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/downloadTicketsPP.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	            <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+	                    <constructor-arg name="pattern" value="/createSessionTokenizationCard.html"/>
+	                    <constructor-arg name="httpMethod" value="POST"/>
+	            </bean>
+	             -->
+	    	</util:list>
+        </constructor-arg>
+	</bean>
+				 
+	<!-- Configuracion del datasource -->
+	<!-- bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/OracleDSDB"/>
+	   	<property name="resourceRef" value="true"/>   
+	</bean -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/lottomobileDS"/>
+	   	<property name="resourceRef" value="true"/>   
+	</bean>
+	
+	<!-- Configuracion del hibernate -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+		<property name="configLocation" value="/WEB-INF/hibernate.cfg.xml"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			</props>
+  		</property>
+	</bean>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+    	<property name="sessionFactory" ref="sessionFactory" />              
+	</bean>
+    
+	<!-- Configuracion de Message -->    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>MessageResources_en</value>	
+			</list>
+		</property>
+		<property name="cacheSeconds" value="3600" />
+	</bean>
+		
+	<!-- Configuracion de Log4j -->
+	<bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+			<list>
+				<value>classpath:/log4j.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Configuracion transaction manager	-->
+    <!-- bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>    
+    
+    <aop:aspectj-autoproxy />
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*"    read-only="true"  propagation="REQUIRED"/>
+			<tx:method name="get*"   read-only="true"  propagation="REQUIRED" />
+			<tx:method name="list*"   read-only="true"  propagation="REQUIRED" />
+		</tx:attributes> 
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="serviceOperation" expression="execution(* pe.com.intralot.loto.layer.cotroller.*.boimpl.*BoImpl.*(..))"/>
+		<aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="serviceOperation2" expression="execution(* pe.com.intralot.loto.layer.cotroller.*.*.boimpl.*BoImpl.*(..))"/>
+		<aop:advisor pointcut-ref="serviceOperation2" advice-ref="txAdvice"/>
+	</aop:config -->
+</beans>

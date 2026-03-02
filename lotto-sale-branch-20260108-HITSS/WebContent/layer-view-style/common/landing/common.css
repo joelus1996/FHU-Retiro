@@ -1,0 +1,142 @@
+a.bloqued {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.alingBottom:after {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 18px;
+    right: 5px;
+}
+.alingBottom:before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 18px;
+    left: 5px;
+}
+.alingTop:after {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 18px;
+    right: 5px;
+}
+.alingTop:before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 18px;
+    left: 5px;
+}
+.overControl span {
+    display: block;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+}
+.overControl:before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    bottom: 39px;
+}
+.responsabilidad-social {
+    position: relative;
+}
+.il-rs-social-items>div {
+    height: 365px;
+}
+#idjs_social_items:after {
+    display: table;
+    clear: both;
+    content: '';
+}
+#idjs_social_items {
+    transition: 0.5s;
+}
+.overHidden {
+    overflow: hidden;
+    max-height: 790px;
+}
+.il-rs-container {
+    position: relative;
+}
+.overControl {
+	position: absolute;
+    width: 40px;
+    height: 80px;
+    background: #b00915;
+    right: -100px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+    top: 95px;
+}
+.dontSee {
+    visibility: hidden;
+}
+.il-rs-social-campaigns li img {
+    width: 100%;
+}
+.responsabilidad-social {
+    margin-bottom: 0px;
+}
+.modalVideo.active {
+    z-index: 999;
+    opacity: 1;
+    pointer-events: all;
+}
+.logoModal.active {
+    z-index: 999;
+    opacity: 1;
+    pointer-events: all;
+}
+.imagenTemplateLogo span img {
+    max-width: 100%;
+    height: auto;
+}
+#date-range-both input.is-empty {
+    color: #07663a !important;
+    border-color: #07663a !important;
+}
+.modalVideo iframe {
+    width: 100%;
+    height: 400px;
+    display: block;
+    position: relative;
+}
+.imagenTemplateLogo span {
+    float: left;
+    width: 200px;
+    padding: 10px;
+}
+.inversionistas img {
+    max-width: 100%;
+    height: auto;
+}
+.inversionistas .table_documentos {
+    width: 100%;
+    max-width: 100% !important;
+}
+.juego-responsable, .responsabilidad-social, .responsabilidad-social-single {
+	margin: 0px !important;
+}
+.il-jr-responsibility img {
+    max-width: 350px;
+}	

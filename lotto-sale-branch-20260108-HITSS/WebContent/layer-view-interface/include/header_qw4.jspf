@@ -1,0 +1,201 @@
+
+<%@page import="pe.com.intralot.loto.util.Constants"%>
+<%@page import="java.util.Calendar"%>
+<% 
+response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+response.setDateHeader("Expires", Calendar.getInstance().getTime().getTime()); //Causes the proxy cache to see the page as "stale"
+response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+%>
+<div>
+<input type="hidden" value="${sessionScope.User.pClientid}" id="clientId">
+<input type="hidden" value="${sessionScope.User.pSessionCode}" id="sessionCodeIndex">
+<input type="hidden" value="${sessionScope.User.pSessionid}" id="sesionId">
+<input type="hidden" value="${sessionScope.User.pMailStatus}" id="mailStatus">
+<input type="hidden" value="${sessionScope.User.pMonto}" id="saldoUser">
+<input type="hidden" value="${sessionScope.User.pAgreement}" id="agreement">
+<input type="hidden" value="${sessionScope.User.pBilletera2}" id="billetera2">
+<input type="hidden" value="${sessionScope.User.pBilletera3}" id="billetera3">
+<input type="hidden" value="${sessionScope.User.pBilletera3Cant}" id="billetera3Cant">
+<input type="hidden" value="${isDataComplete}" id="isDataComplete">
+<!-- pay -->
+<input type="hidden" id="bcpSale" value="<c:out value='${isBcpSale}'/>">
+<input type="hidden" id="bizpaySale" value="<c:out value='${isBizpaySale}'/>">
+<input type="hidden" value="<c:out value='${isPagoEfectivo}'/>" id="pagoefectivoSale">
+<input type="hidden" value="<c:out value='${pagoEfectivoHelp}'/>" id="pagoEfectivoHelp">
+<%-- input type="hidden" value="<c:out value='${safetyAPIKey}'/>" id="apikey" --%>
+<%-- input type="hidden" value="<c:out value='${safetyMerchantID}'/>" id="merchantSalesID" --%>
+<%-- input type="hidden" value="<c:out value='${safetyTransactionOkURL}'/>" id="transactionOkURL" --%>
+<%-- input type="hidden" value="<c:out value='${safetyTransactionErrorURL}'/>" id="transactionErrorURL" --%>
+<%-- input type="hidden" value="<c:out value='${safetySignatureKey}'/>" id="signature" --%>
+<%-- input type="hidden" value="<c:out value='${safetyCreateExpressToken}'/>" id="createExpressToken" --%>
+<input type="hidden" value="<c:out value='${advaisURL}'/>" id="advaisURL">
+<input type="hidden" value="<c:out value='${isAdvaisEnabled}'/>" id="isAdvaisEnabled">
+<input type="hidden" value="<c:out value='${isPaysafecardEnabled}'/>" id="isPaysafecardEnabled">
+<input type="hidden" value="<c:out value='${isCulqiEnabled}'/>" id="isCulqiEnabled">
+<input type="hidden" value="<c:out value='${vkeyboardEnabled}'/>" id="isVKeyboardEnabled">
+<input id="gamesXML" type="hidden" value="<%= Constants.gamesXML %>">
+<input id="portalServiceKinelo" type="hidden" value="<%= Constants.portalServiceKinelo %>">
+</div>
+<div class="window-message"></div>
+<noscript><div id="no-script">JavaScript debe estar habilitado para poder utilizar este Sitio. Sin embargo, parece que esta funcionalidad no está habilitada o que no es compatible con tu navegador. <br>Habilita JavaScript cambiando las opciones de tu navegador y, a continuación, <a href>inténtalo de nuevo</a>.</div></noscript>
+
+<!-- <header id="main-header" style="display:none;"> -->
+<header >
+
+    <div class="main-content clearfix" style="display:none;">
+        
+        <div class="box-header">
+            <div class="logo">
+                <a href="./">
+                    <img src="layer-view-image/v2/logo.svg?v=3" alt="Resultados La Tinka" />
+                </a>
+            </div>
+        </div>
+
+        <div class="box-header">
+            <div id='cssmenu'>
+                <ul>
+                    <li id="plays-1" class='has-sub'><a href="juega-tinka.html"><span>Juegos de Lotería</span></a>
+                        <ul>
+                            <li><a href="juega-tinka.html"><span>Tinka</span></a></li>
+                            <li><a href="juega-kabala.html"><span>Kábala</span></a></li>
+                            <li><a href="juega-ganadiario.html"><span>Gana Diario</span></a></li>
+                            <li><a href="juega-kinelo.html"><span>Kinelo</span></a></li>
+                        </ul>
+                    </li>
+                    <li id="plays-2" class="has-sub"><a href="juega-ganagol.html"><span>Apuestas deportivas</span></a>
+                        <ul>
+                            <li><a href="juega-ganagol.html"><span>Ganagol</span></a></li>
+                            <li><a onclick="toTAV2();" class="hand"><span>Te Apuesto</span></a></li>
+                            <li><a href="juega-virtuales.html"><span>Deportes Virtuales</span></a></li>
+                            <c:if test="${isLaPolla}">
+                            	<li><a href="#" id="game_lapolla_show_menu" onclick="toLaPolla();">La Polla Te Apuesto</a></li>
+                            </c:if>
+
+                        </ul>
+                    </li>
+<!--                     <li id="plays-3" class="has-sub"><a href="juega-kinelo.html"><span>Loterías rápidas</span></a> -->
+<!--                         <ul> -->
+<!--                             <li><a href="juega-kinelo.html"><span>Kinelo</span></a></li> -->
+<!--                         </ul> -->
+<!--                     </li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="box-header box-right">
+            <div class="main-boxes clearfix" id="main-user">
+                <div class="box-pop unlogout">
+                    <a href="#" class="box-button" id="loginButton">
+                        <span>Ingresar</span><img src="layer-view-image/v2/user.svg" alt="" /><i></i>
+                    </a>
+<!--                     <div class="box-body" id="loginBox" style="height: 314px;"> -->
+						<div class="box-body" id="loginBox">
+                        <div class="body-form">
+                            <form action="login.html" class="js-form-login" id="frmLoginClientIndex" method="post" data-response-type="text">
+                                <input name="user-client" id="user-client" type="text" placeholder="Usuario" required="required">
+                                <input name="password-client" id="password-client" type="password" placeholder="Contraseña" autocomplete="off" required="required">
+                                <input type="hidden" name ="game-code" id="game-code-header" value="0">
+                                
+<!--                                 <div> -->
+<!--                                 	<input name="sentCaptcha" id="sentCaptcha" type="text" placeholder="Ingresar código" style="width: 56%; margin: 10px 0; vertical-align: top;" maxlength="5" required> -->
+<!--                                 	<img id="imagen" name="imagen" src="" style="margin: 10px 0;" width="42%" height="30px"> -->
+<!--                                 	<a id="reload" href="#" style="color: #959595; font-size: 12px;font-family: AllerLight, Arial, sans-serif; float: right;padding-right: 15px;">Otro código</a> -->
+<!--                                 </div> -->
+                                
+                                <button type="submit" class="btn-inicia-session" id="index-btnlogin">INGRESAR</button>
+                            </form>
+                            <div class="login-links">
+                                <ul>
+                                    <c:choose>
+                                        <c:when test="${isRestoreSale == true}"><li><a href="restablecer.html">¿Olvidaste tu contraseña?</a></li></c:when>
+                                        <c:otherwise><li><a href="${lotocardSrv}i.do?m=restablecer" >¿Olvidaste tu contraseña?</a></li></c:otherwise>
+                                    </c:choose>
+                                    <c:choose>
+                                        <c:when test="${isRegisterSale == true}"><li><a href="registro.html" class="bg-dark"><b>¿Eres nuevo?</b> Regístrate aquí</a></li></c:when>
+                                        <c:otherwise><a href="${lotocardSrv}i.do?m=registrate" class="bg-dark"><b>¿Eres nuevo?</b> Regístrate aquí</a></c:otherwise>
+                                    </c:choose>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-pop logout" style="display: none;">
+                    <a href="#" class="box-button" id="userButton">
+                        <span class="user-data">
+                        	<span class="name-user" id="clientSale-name">${sessionScope.User.pUser}</span>
+                        	<span class="balance-user">Saldo: S/ <span id="clientSale-amount">${sessionScope.User.pMonto}</span></span>
+                        	<span class="balance-user">Bono Te Apuesto: <span id="billetera2-amount">${sessionScope.User.pBilletera2}</span></span>
+                        	<span class="balance-user">Jugadas gratis: <span id="billetera3-amount">${sessionScope.User.pBilletera3Cant}</span></span>
+                        </span>
+                        <img src="layer-view-image/v2/user.svg" alt="" /><i></i>
+                    </a>
+                    <div class="box-body" id="userBox">
+                        <div class="body-form">
+                            <div id="userForm" class="list-user js-list-user">
+                                <ul>
+                                    <li><a href="mi-cuenta.html">Mi Cuenta</a></li>
+                                    <c:choose>
+                                        <c:when test="${isContactusSale == true}"><li><a href="contacto.html">Contáctanos</a></li></c:when>
+                                        <c:otherwise><li><a href="${lotocardSrv}">Contáctanos</a></li></c:otherwise>
+                                    </c:choose>
+                                  
+                                    <c:choose>
+                                        <c:when test="${isSelfcontrolSale == true}"><li><a href="autocontrol.html">Autocontrol</a></li></c:when>
+                                        <c:otherwise></c:otherwise>
+                                    </c:choose>
+                                    <c:choose>
+                                        <c:when test="${isLogoutSale == true}"><li><a href="salir.html">Cerrar Sesión</a></li></c:when>
+                                        <c:otherwise><li><a href="${lotocardSrv}i.do?m=salida">Cerrar Sesión</a></li></c:otherwise>
+                                    </c:choose>                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- >div id="billeteras-info" class="bitteteras-info">
+							<svg style="width: 100%;height: 2px;/* position: relative; */">
+							    <line x1="0" y1="0" x2="100%" y2="0" class="billetera-info-line"></line>
+							</svg>		    
+							<div id="billetera2" class="billetera2-info">Saldo Te Apuesto
+								<span id="billetera2-amount">${sessionScope.User.pMonto}</span>
+							</div>
+                       </div-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<div id="popup-message" class="overlay">							
+	<div class="popup popup-sm login-error">	
+		<a class="close-popup " id="close-popup-message" onclick="closePopup(this);">&times;</a>							
+		<div class="main-modal" id="msg-message"></div>		
+	</div>
+</div>
+<div id="popup-message-dt" class="overlay">							
+	<div class="popup popup-sm login-error" style="background-color: #f2f2f2;">	
+	<a class="close-popup " id="close-popup-message-dt" onclick="closePopup(this)">&times;</a>							
+		<div class="main-modal" id="msg-message-dt">
+			<div>
+				<div class="titulo-login-error" id="titulo-dt"></div><br>
+                <form class="form-login has-validation-callback" action="common_login_dt.html" method="post" id="frmLoginDT" style="padding: 0em 0;">
+                 <input type="hidden" value="" name="lrdn" id="lrdn">
+                 <div class="control-form form__select_2 has-success">
+                 	<label for="document-type" style="background-color: #f2f2f2;">Tipo de documento</label>
+                 	<select  name="lg-document-type" id="lg-document-type" tabindex="10" data-validation="required" data-validation-error-msg="Seleccionar un tipo de documento" data-validation-depending-value="CAREX" style="background-color: #f2f2f2; height: 52px;">
+                 		<option value="DNI" selected="" >DNI</option>
+                 		<option value="PASAP" >Pasaporte</option>
+                 		<option value="CAREX" >Carnet de Extranjer&iacute;a</option>
+                 	</select>
+                 </div>
+                 <button class="btn btn-login-error"   id="ingresar_doc_type">Aceptar</button>                    
+                </form>
+            </div>
+		</div>
+		
+	</div>
+</div>
+
+
+
+</header>

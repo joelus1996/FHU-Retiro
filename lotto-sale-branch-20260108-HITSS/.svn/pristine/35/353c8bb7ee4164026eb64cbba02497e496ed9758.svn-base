@@ -1,0 +1,60 @@
+<div id="login_section">
+<!-- 	<div class="top-login-section">LOGIN: Ingresa a tu cuenta para realizar tu pago.</div> -->
+	<form id="frmLoginClient">
+	 	<div class="body-login-section">
+	 		<div class="row"">
+	 			<div class="col-6" style="border-right: 1px solid #B9B8B8; padding-left:5px; padding-right:10px;">
+ 					<h2 style="margin-top: 0px;">Juega tu Tinka como invitado:</h2>
+ 					
+ 					<div class="col-12 box-login-section high-box-login box-no-margin" style="margin-top: 10px;">
+     					<input type="button" value="¡COMPRAR EXPRESS!" class="button button-red button-block" id="btnLoginGuest" 
+     						style=" border-radius: 10px; width: 100%; height: 35px; line-height: 40px; text-align: center; box-shadow: none;">
+     				</div>
+     				
+	 				<!-- 
+	 				<div class="row">
+	 						<div class=" col-12 box-login-section high-box-login box-no-margin" style="margin-top: 5px;">
+      							<input value="REGÍSTRATE" class="button button-dark-green" id="btnRegisterGuest" 
+      							style=" border-radius: 10px; width: 100%; height: 35px; line-height: 40px; text-align: center;
+      							background-color: #fff; border: 1px solid #006b2d; color: #006b2d; box-shadow: none;" 
+      							onclick="window.location.replace('registro.html');">
+      						</div>
+
+	 				</div>
+	 				<br> -->
+	 			</div>
+	 			
+	 			<div class="col-6" style="padding-left:10px; padding-right: 5px;">
+	 				<h2 style="margin-top: 0px">O ingresa con tu cuenta:</h2>
+	 				
+	 				<div class="fixeds-input marginbottom1rem login-tinka">
+                   		<input name="user-client" id="user-client" type="text" autocomplete="off">
+                   		<label for="user-client" id="user-client-label">Usuario o N° de documento de identidad</label>
+                   		<div class="errorTxt onlyuser"></div>
+                   	</div>
+
+                   	<div class="fixeds-input login-tinka">
+                   		<input name="password-client" id="password-client" type="password" autocomplete="off">
+                   		<label for="password-client" id="password-client-label">Contraseña</label>
+                   		<div class="errorTxt onlypass" id="errorTxt-onlypass"></div>
+                   		<button class="view-password" type="button" id="toglePassword" style="right: 30px; top: 8px;"></button>
+                   	</div>
+
+					<div class="box-login-section high-box-login box-no-margin" style="margin-top: 30px">
+						<input type="submit" value="INGRESAR" class="button button-dark-green" id="home-btnlogin" 
+						style="height: 35px; line-height: 35px; box-shadow: none;">
+					</div>			      							
+
+
+					<div style="text-align: center; margin-top: 15px; margin-bottom: 15px;">
+						<a href="recordar-usuario.html" style="color: #006b2d;">¿Olvidaste tu usuario?</a><br>
+					</div>
+					<div style="text-align: center; margin-bottom: 15px;">
+						<a href="restablecer.html" style="color: #006b2d;">¿Olvidaste tu Contraseña?</a>
+					</div>
+				</div>
+	 		</div>
+	 	</div>
+	</form>
+</div>
+

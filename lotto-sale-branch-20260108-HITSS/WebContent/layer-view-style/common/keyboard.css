@@ -1,0 +1,40 @@
+#vkeyboard {
+	position:relative;/*absolute;*/
+	margin:0;
+	padding:0.5px;
+	border:0;
+	width:240px;
+	height:72px;
+	/*height:84px;*/
+	border:1px solid #666666;
+	border-radius:6px;
+	background-color:#e4e5e4;/*#000000;*/
+	z-index:999;
+}
+.enabled{display:block;}
+.disabled{display:none;}
+.ssbuttons {
+	float:left;
+	display:inline;
+	width:17px;
+	height:15px;
+	margin:0.5px;
+	padding:0;
+	border:0;
+	font-family:Segoe UI,Arial,sans-serif;
+	font-size:12px;
+	text-decoration:none !important;
+	color:#EEEEEE !important;
+	/*background-color:#555555;*/
+	/*font-weight:bold;*/
+	line-height:15px;
+	overflow:hidden;
+	/*width:2em;*/
+	border-radius:4px;
+	/*min-height:2em;
+	min-width:1em;*/
+	text-align:center;
+	background-color:#555555;border:1px solid #ffffff;
+}
+.ssbuttons:hover{background-color:#0078A3;border-color:#59b4d4;}
+.kbicon{background:#FFFFFF url(../../layer-view-image/common/keyboard.png) no-repeat top left;width:19px;height:13px;display:inline-block;margin:0;padding:0;border:0;border-radius:2px;}

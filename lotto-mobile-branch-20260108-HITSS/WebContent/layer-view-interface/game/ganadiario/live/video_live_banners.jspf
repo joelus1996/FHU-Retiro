@@ -1,0 +1,46 @@
+<div class="box-banner">
+  <a class="m-banner-winner m-banner-winner__gana-diario open-winners-popup" href="javascript:void(0)">
+    <div class="m-banner-winner__content">
+      <h3 class="m-title m-banner-winner__title">&iexcl;Revent&oacute;!</h3>
+      <picture class="m-banner-winner__logo">
+        <source srcset="./layer-view-image/game/ganadiario/live/logo-gana-diario-banner.png  1x, ./layer-view-image/game/ganadiario/live/logo-gana-diario-banner@2x.png  2x" media="(min-width: 1024px)" type="image/png"><img class="m-popup-count-down__bg" srcset="./layer-view-image/game/ganadiario/live/logo-gana-diario-banner.png  1x, ./layer-view-image/game/ganadiario/live/logo-gana-diario-banner@2x.png  2x">
+      </picture>
+      <div class="m-button m-button-winner m-button-winner--gana-diario" href="javascript:void(0)"><span>Ent&eacute;rate m&aacute;s</span></div>
+    </div>
+    <picture>
+      <source srcset="./layer-view-image/game/ganadiario/live/bg-banner-winner.png  1x, ./layer-view-image/game/ganadiario/live/bg-banner-winner@2x.png  2x"><img class="m-banner-lot__bg" src="./layer-view-image/game/ganadiario/live/bg-banner-winner.png " alt="gana diario">
+    </picture>
+  </a>
+
+
+  <a class="m-banner-lot m-banner-count-down open-count-down-popup" href="javascript:void(0)">
+    <div class="m-banner-count-down__title m-title">El sorteo comienza en</div>
+    <div class="m-count-down m-banner-count-down__counter">
+      <div><span id="hours">00</span> 
+        <p>Horas</p>
+      </div><span>:</span>
+      <div><span id="minutes">00</span> 
+        <p>Minutos</p>
+      </div><span>:</span>
+      <div><span id="seconds">00</span> 
+        <p>Segundos</p>
+      </div>
+    </div>
+    <picture>
+      <source srcset="./layer-view-image/game/ganadiario/live/bg-banner-start-lot.png  1x, ./layer-view-image/game/ganadiario/live/bg-banner-start-lot@2x.png  2x"><img class="m-banner-count-down__bg" src="./layer-view-image/game/ganadiario/live/bg-banner-start-lot.png " alt="gana diario">
+    </picture>
+  </a>
+
+
+  <a class="m-banner-lot m-banner-video open-video-popup" href="javascript:void(0)">
+    <div class="m-banner-count-down__title m-title">El sorteo ya comenz&oacute;</div>
+    <div class="m-button m-button-red" href="javascript:void(0)">
+      <picture>
+        <source srcset="./layer-view-image/game/ganadiario/live/icon-video.png  1x, ./layer-view-image/game/ganadiario/live/icon-video@2x.png  2x"><img class="m-banner-lot__bg" src="./layer-view-image/game/ganadiario/live/icon-video.png ">
+      </picture><span>Ir al sorteo en vivo</span>
+    </div>
+    <picture>
+      <source srcset="./layer-view-image/game/ganadiario/live/bg-banner-start-lot.png  1x, ./layer-view-image/game/ganadiario/live/bg-banner-start-lot@2x.png  2x"><img class="m-banner-lot__bg" src="./layer-view-image/game/ganadiario/live/bg-banner-start-lot.png " alt="gana diario">
+    </picture>
+  </a>
+</div>

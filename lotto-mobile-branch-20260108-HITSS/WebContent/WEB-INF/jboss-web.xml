@@ -1,0 +1,26 @@
+<jboss-web>
+
+    <!-- NO SUBIR AL SVN OTRO xml ESTA ES LA VERSION DE COMPILACION 1.0 -->
+    
+	<!-- Configuracion para Servidor Local    
+    <context-root>/lotto-mobile</context-root>
+     -->
+    <!-- Configuracion para Servidor de PRE-Produccion 
+	<context-root>/d7xqt83</context-root>
+    <virtual-host>m.latinka.com.pe</virtual-host>
+     -->
+    <!-- Configuracion para Servidor de Produccion y UAT qa.m.intralot.com.pe no requiere virtual-host --> 
+	<context-root>/</context-root>
+    <virtual-host>m.latinka.com.pe</virtual-host>
+
+    <!-- Configuracion para Servidor de UAT Novus ( http://190.12.81.36/mobile/ )    
+	<context-root>/mobile</context-root>
+    <virtual-host>190.12.81.36</virtual-host> 	
+    <virtual-host>m.latinka.com.pe</virtual-host>
+    -->   
+	<replication-config>
+		<replication-granularity>ATTRIBUTE</replication-granularity>
+	    <replication-trigger>SET_AND_NON_PRIMITIVE_GET</replication-trigger>
+	</replication-config>
+	
+</jboss-web>

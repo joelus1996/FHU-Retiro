@@ -1,0 +1,277 @@
+#deportesvirtuales {
+    margin: 0 0 0 32px;
+    width: 614px;
+    float: left;
+}
+#banner {
+    background-image: url(../../../layer-view-image/game/deportesvirtuales/banner_deportesvirtuales.png);
+    border-radius: 0 0 6px 6px;
+    height: 60px;
+    width: 614px;
+	margin-left: -10px;
+    margin-top: -10px;
+}
+.transition-one {
+    background-color: #FFFFFF;
+    background-image: url(../../../layer-view-image/game/deportesvirtuales/transition-one-two.png);
+    background-position: center 0;
+    background-repeat: no-repeat;
+    border-radius: 5px 5px 0 0;
+    height: 31px;
+    margin-top: 6px;
+    padding-right: 26px;
+	margin-left: -10px;
+    width: 344px;
+}
+.transition-two {
+    background-color: #FFFFFF;
+    background-image: url(../../../layer-view-image/game/deportesvirtuales/transition-one-two.png);
+    background-position: center -29px;
+    background-repeat: no-repeat;
+    border-radius: 5px 5px 0 0;
+    height: 31px;
+    margin-top: 6px;
+	margin-left: -10px;
+    padding-right: 26px;
+    width: 344px;
+}
+#content {
+    background-color: #FFFFFF;
+    /*border-radius: 0 0px 6px 6px;*/
+    /*height: 398px;*/
+    /*padding: 9px 0 0 0;*/
+    border-radius: 0 6px 6px 6px;*/
+    margin-top: 5px;
+    padding: 5px 0 10px 10px;
+}
+#prize {
+    color: #7EE6ED;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    left: 146px;
+    position: relative;
+    text-align: center;
+    top: 7px;
+    width: 290px;
+}
+#horary {
+    bottom: 32px;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    left: 454px;
+    position: relative;
+    text-align: center;
+    width: 118px;
+}
+#instant-games {
+    background: #00abcf;
+    height: 351px;
+    padding: 11px;
+    border-radius: 0 0 6px 6px;
+}
+#help {
+    background-image: url("../../../layer-view-image/common/ayuda-off.png");
+    cursor: pointer;
+    height: 18px;
+    width: 54px;
+    margin-left: 550px;
+    position: absolute;
+    top: 189px;
+    display: block;
+}
+#help:hover {
+    background-image: url("../../../layer-view-image/common/ayuda-on.png");
+}
+#choose-content {
+    background-image: -moz-linear-gradient(top, #7ee6ed 9%, #00345C 69%);
+    background-image: -o-linear-gradient(top, #7ee6ed 9%, #00345C 69%);
+    background-image: -webkit-gradient(linear, top, #7ee6ed 9%, #00345C 69%);
+    background-image: linear-gradient(top, #7ee6ed 9%, #00345C 69%);
+    background-image: -webkit-linear-gradient(top, #7ee6ed 9%, #00345C 69%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7ee6ed, endColorstr=#00345C, gradientType=0);
+    height: 376px;
+    padding: 11px;
+    border-radius: 6px;
+}
+.content-game {
+
+    background-color: #FFFFFF;
+	
+	background-image: url("../../../layer-view-image/game/deportesvirtuales/img-bienvenida-deportes.jpg");
+    border-radius: 6px 6px 6px 6px;
+   /* height: 376px;*/
+    width: 592px;
+	 height: 268px
+}
+.item-game {
+    height: 115px;
+    width: 549px;
+    font-size: 13px;
+}
+.description-game {
+    background-color: #159098;
+    border-radius: 0 5px 5px 0;
+    color: #FFFFFF;
+    float: left;
+    height: 115px;
+    margin: 0;
+    width: 316px;
+}
+.image-game {
+    float: left;
+    width: 229px;
+}
+.bold {
+    font-weight: bold;
+}
+ul {
+    padding: 0;
+}
+.games {
+    padding: 20px 24px;
+}
+.description1 {
+    margin: 11px;
+}
+.description2 {
+    margin: 0 11px;
+}
+/*PASO 2: Confirma tu Compra*/
+#reload-balanace {
+    margin: 21px 0 0 12px;
+}
+
+#content-purchase .right-panel .result_purchase {
+    height: 40px;
+}
+
+#content-purchase .left-panel {
+    height: 96px;
+}
+
+#content-purchase #sub_purchase {
+    padding-top: 4px;
+}
+
+#play-panel {
+    border: 0 none;
+    display: none;
+    float: right;
+    margin: 10px 37px 0 0;
+    padding: 0;
+}
+#play-panel #play {
+    background: url(../../../layer-view-image/game/clicygana/btn-jugar.png) no-repeat scroll left top transparent;
+    border: 0 none;
+    float: left;
+    height: 31px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    width: 95px;
+    font-size: 0;
+    cursor: pointer;
+}
+#play-panel #play:hover {
+    background-position: 0 -42px;
+}
+#game_grid .row_grid{
+    height: 60px;
+}
+#name_game{
+    bottom: 22px;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+#game_grid .column_2 img{
+     margin-top: 3px;
+}
+#game_grid .row_grid .column_1 {
+    line-height: 60px;
+}
+.row_grid .column_2 {
+    height: 60px;
+    text-align: center;
+    top: 3px;
+}
+
+#game_grid .column_3 {
+    top: 21px;
+    position: relative;
+}
+
+.font-play {
+    /*background-color: #FFFFFF;*/
+    /*border-radius: 0 6px 6px 6px;*/
+    margin: 5px 0 0 0;
+    padding: 5px 0 10px 10px;
+    width: 605px;
+}
+
+.cont-align{
+margin-left: -10px;
+}
+
+.footer-front{
+	width: 592px;
+	height:98px;
+	background: url(../../../layer-view-image/game/deportesvirtuales/img-bienvenida-down-deportes.jpg);
+}
+.row-first{	display: block; position: relative; top: 12px;}
+
+.row-second{margin-top: 23px;}
+
+.img-one{ margin-left: 40px;}
+
+.img-two{ margin-left: 198px;}
+
+.img-text-one{
+color: #ffffff;
+font-size: 12px;
+position: absolute;
+width: 106px;
+margin-left: 10px;}
+
+.img-text-two{
+color: #ffffff;
+font-size: 12px;
+position: absolute;
+width: 153px;
+margin-left: 10px;
+}
+
+.img-text-three{
+color: #ffffff;
+font-size: 12px;
+position: absolute;
+width: 153px;
+margin-left: 10px;
+}
+
+.img-text-four{
+color: #ffffff;
+font-size: 12px;
+position: absolute;
+width: 153px;
+margin-left: 10px;
+}
+
+.row-second .button-buy {
+    background-image: url("../../../layer-view-image/common/comprar.png");	
+	background-position: left top;
+    background-repeat: no-repeat;
+    border: 0 none;
+	height: 30px;
+    margin: -31px 0 0 474px;
+    padding: 0;
+    position: relative;
+	width: 109px;
+	display : block;
+	
+}
+.row-second .button-buy:hover {
+    background-position: left bottom;
+}

@@ -1,0 +1,39 @@
+/*#primer-part*/
+.container .margin input[type=checkbox]{
+    left: 8px;
+    position: absolute;
+    top: 5px;
+    z-index: -999;
+    /*display:none;*/
+}
+/*#primer-part*/
+.container .margin label { 
+    -pie-background: linear-gradient(top,  #f9f9f9 0%, #c7c6c2 100%);
+    background: -moz-linear-gradient(top,  #f9f9f9 0%, #c7c6c2 100%);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#c7c6c2));
+	background: -webkit-linear-gradient(top,  #f9f9f9 0%, #c7c6c2 100%);
+	background: -o-linear-gradient(top,  #f9f9f9 0%, #c7c6c2 100%);
+	background: -ms-linear-gradient(top,  #f9f9f9 0%, #c7c6c2 100%);
+	display: inline-block; 
+	width: 20px; 
+	height: 20px;
+	color: #646462;
+	cursor: pointer;
+	font-family:Arial;
+	font-size:10px;
+	border-color:#c0bcb9;
+	border-radius:5px;
+	text-align:center;
+	line-height:2;
+	font-weight:bold;
+	border: 1px double #c0bcb9;
+	behavior:url(layer-view-script/common/PIE/PIE.htc);
+}
+/*#primer-part*/
+.container .margin .colorChecked { 
+	background: #0788c9; 
+	-pie-background: #0788c9;  
+	color:#ffffff; 
+	border: 1px solid #0788c9; 
+    behavior:url(layer-view-script/common/PIE/PIE.htc);
+}

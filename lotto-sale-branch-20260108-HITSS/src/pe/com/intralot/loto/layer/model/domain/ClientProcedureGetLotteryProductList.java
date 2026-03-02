@@ -1,0 +1,141 @@
+package pe.com.intralot.loto.layer.model.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.NamedNativeQuery;
+
+@Entity
+@NamedNativeQuery(
+		name = "CLIENTSALE_GETLOTTERYPRODUCTS", 
+		query = "{ call LOTOCARD.CLIENTSALE.GETLOTTERYPRODUCTS(?) }", 
+		callable = true, 
+		resultClass = ClientProcedureGetLotteryProductList.class
+		)
+
+public class ClientProcedureGetLotteryProductList {
+	@Id
+    @Column(name = "lt_product_id")
+    private String gameproductid;
+    
+    @Column(name = "lt_name")
+    private String name;
+    
+    @Column(name = "lt_prov_id")
+    private String provid;
+    
+    @Column(name = "lt_prov_short_name")
+    private String provname;
+    
+    @Column(name = "lt_image")
+    private String image;
+    
+    @Column(name = "lt_demo_link")
+    private String demolink;
+    
+    @Column(name = "lt_type")
+    private String type;
+    
+    @Column(name = "lt_new")
+    private String newtag;
+    
+    @Column(name = "lt_jackpot_id")
+    private String jackpotid;
+    
+    @Column(name = "lt_subtype")
+    private String subtype;
+    
+    @Column(name = "lt_main_provider")
+    private String mainprovider;
+
+	public String getGameproductid() {
+		return gameproductid;
+	}
+
+	public void setGameproductid(String gameproductid) {
+		this.gameproductid = gameproductid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getProvid() {
+		return provid;
+	}
+
+	public void setProvid(String provid) {
+		this.provid = provid;
+	}
+
+	public String getProvname() {
+		return provname;
+	}
+
+	public void setProvname(String provname) {
+		this.provname = provname;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getDemolink() {
+		return demolink;
+	}
+
+	public void setDemolink(String demolink) {
+		this.demolink = demolink;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getNewtag() {
+		return newtag;
+	}
+
+	public void setNewtag(String newtag) {
+		this.newtag = newtag;
+	}
+
+	public String getJackpotid() {
+		return jackpotid;
+	}
+
+	public void setJackpotid(String jackpotid) {
+		this.jackpotid = jackpotid;
+	}
+
+	public String getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(String subtype) {
+		this.subtype = subtype;
+	}
+
+	public String getMainprovider() {
+		return mainprovider;
+	}
+
+	public void setMainprovider(String mainprovider) {
+		this.mainprovider = mainprovider;
+	}
+    
+    
+}

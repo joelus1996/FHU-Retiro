@@ -1,0 +1,151 @@
+<c:if test="${channel1Order == 'IBK'}">
+	<tr>
+		<td><input type="radio" name="option-card" value="11" id="option-card-11"/></td>
+		<td><label for="option-card-11">Con tu cuenta Interbank<span>NUEVO</span></label><div id="logo_transaccion_11"></div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div id="panel_transaccion_11">
+				<div class="panel_messages">
+					<span class="label_option_2">Permite cargas a partir de S/10 hasta S/10,000.<br/>Ingresa a tu Interbank App o tu Banca por Internet <strong><a class="dark-blue" target="_blank"  href="https://interbank.pe/" >Interbank.pe</a></strong><br/>Operaciones / Pagos y Recargas / Pago a Institución o Empresas / La Tinka / Recarga Web<br/>Ingresa tu DNI y el monto a recargar.<br/><br/></span></div></div>
+		</td>
+	</tr>
+</c:if>
+<%-- c:if test="${false}"> <!-- channel1Order == 'CULQUI' -->
+	<c:if test="${false}"><!-- isCulqiEnabled == true -->
+		<tr>
+			<td><input type="radio" name="option-card" value="8" id="option-card-8"></td>
+			<td><label for="option-card-8">Con tus tarjetas de cr&eacute;dito o d&eacute;bito</label><div id="logo_transaccion_8"></div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div id="panel_transaccion_8">
+					<label class="label_option_1">Monto de carga S/.</label>
+					<input type="text" class="text-in" id="culqi-valor" name="culqi-amount" value="50" />
+					<a href="#" class="btn btn-orange" id="btncargar8" data-type="CULQUI">Cargar</a>
+					<div class="panel_messages">
+						<input id="confirm-culqi" type="checkbox" name="confirm-culqi" value="Y" checked="checked">
+						<label for="confirm-culqi" class="label_option_4">&nbsp;Recordar esta tarjeta para uso frecuente.</label>
+						<br/><br/>
+						<input id="terms-culqi" type="checkbox" name="terms-culqi" value="1" required="required" checked="checked">
+						<label for="terms-culqi" class="label_option_4">&nbsp;Acepto los <a href="#" class="js-terms" id="term-cond-culqi">T&eacute;rminos y Condiciones</a> de medios de pago.</label>
+						<!-- span class="mandatory">obligatorio</span -->
+					</div>
+				</div>
+			</td>
+		</tr>
+	</c:if>
+</c:if --%>
+<c:if test="${channel1Order == 'BCP'}">
+	<c:if test="${isBcpSale == true}">
+		<tr>
+			<td><input type="radio" name="option-card" value="2" id="option-card-2"></td>
+			<td><label for="option-card-2">Con tu cuenta BCP genera tu c&oacute;digo</label>
+			<div id="logo_transaccion_2"></div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div id="panel_transaccion_2">
+					<label class="label_option_1">Monto de carga S/.</label>
+                       <input type="text" class="text-in" name="bcp-amount" id="bcp-amount" value="10" />
+                       <a href="#" class="btn btn-orange" id="btncargar2" data-type="BCP">Generar</a>
+                       <span class="label_option_2"><strong>Copia del c&oacute;digo. Ingresa a tu CUENTA BCP en <a href="http://www.viabcp.com/" title="Banco de Crédito>>BCP>>" target="_blank">www.viabcp.com</a> &gt; Pagos de Servicios &gt; Empresas Diversas &gt; La Tinka &gt; Recargas Lotocard
+					</strong>, Ingresa el c&oacute;digo generado en el campo C&oacute;digo BCP. Y finalmente, presiona aqu&iacute; en el bot&oacute;n <strong>Verificar</strong> para comprobar que la operaci&oacute;n ha sido realizada con &eacute;xito.</span>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div style="margin-top: 10px;" id="content-grid-pin"></div>
+			</td>
+		</tr>
+	</c:if>
+</c:if>
+<c:if test="${channel1Order == 'PEFE'}">
+	<c:if test="${isPagoEfectivo == true}">
+		<tr>
+			<td><input type="radio" name="option-card" value="4" id="option-card-4"></td>
+			<td><label for="option-card-4">Con PagoEfectivo: Transferencia Bancaria</label><div id="logo_transaccion_4"></div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div id="panel_transaccion_4">
+					<label class="label_option_1">Monto de carga S/.</label>
+					<input type="text" id="pagoEfectivo-valor" name="pagoEfectivo-amount" value="40" />
+					<a href="#" class="btn btn-orange" id="btncargar4" data-type="PEFE">Cargar</a>
+					<div class="panel_messages">
+						<span class="label_option_4">PagoEfectivo permite cargas a partir de S/ <span id="pagoEfectivo-label"></span>.<br/>Paga a trav&eacute;s de tu banca por internet (WEB) o banca m&oacute;vil (APP) en BBVA, BCP, Interbank o Scotiabank. Deb&iacute;talo de tu cuenta o c&aacute;rgalo a tu tarjeta de cr&eacute;dito asociada.<br/>
+						<strong><a  href="#" id="pagoEfecHelp"> &iquest;C&oacute;mo funciona PagoEfectivo? </a></strong></span>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</c:if>
+</c:if>
+<c:if test="${channel1Order == 'SPAY'}">
+	<tr>
+		<td><input type="radio" name="option-card" value="5" id="option-card-5"/></td>
+		<td><label for="option-card-5">Con SafetyPay: Banca por Internet</label><!-- label for="option-card-5">Banca por Internet v&iacute;a SafetyPay</label -->
+		<div id="logo_transaccion_5"></div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div id="panel_transaccion_5">
+				<label class="label_option_1">Monto de carga S/.</label> 
+				<input type="text" class="text-in" id="safetypay-valor" name="safetypay-amount" value="40" />
+				<a href="#" class="btn btn-orange" id="btncargar5" data-type="SPAY">Cargar</a>
+				<div class="panel_messages">
+					<span class="label_option_4">Paga desde tu cuenta bancaria por Internet sin necesidad de tarjeta de cr&eacute;dito.<br/><br/></span></div></div>
+		</td>
+	</tr>
+</c:if>
+<c:if test="${channel1Order == 'OTHER'}">
+	<c:if test="${isPaysafecardEnabled == true}">
+		<tr>
+			<td><input type="radio" name="option-card" value="7" id="option-card-7"></td>
+			<td><label for="option-card-7">Con paysafecard</label><div id="logo_transaccion_6"></div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div id="panel_transaccion_7">
+					<label class="label_option_1">Monto de carga S/.</label>
+					<input type="text" class="text-in" id="paysafecard-valor" name="paysafecard-amount" value="20" />
+					<a href="#" class="btn btn-orange" id="btncargar7" data-type="OTHER">Cargar</a>
+					<div class="panel_messages">
+						<div class="panel_img"></div>
+						<span class="label_option_7">Haz ahora el abono a tu saldo de una forma muy rápida y sencilla con my paysafecard. <a target='_blank' href='https://mypins.paysafecard.com/mypins-psc/login.xhtml'>Ingresa o registrate ahora.</a></span>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</c:if>
+	<c:if test="${isAdvaisEnabled == true}">
+		<tr>
+			<td><input type="radio" name="option-card" value="6" id="option-card-6"></td>
+			<td><label for="option-card-6">Con Jet Point</label><div id="logo_transaccion_7"></div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div id="panel_transaccion_6">
+					<label class="label_option_1">Monto de carga S/.</label>
+					<input type="text" class="text-in" id="advais-valor" name="advais-amount" value="40" />
+					<a href="#" class="btn btn-orange" id="btncargar6" data-type="OTHER">Cargar</a>
+					<div class="panel_messages">
+						<div class="panel_img"></div>
+						<span class="label_option_6">Jet Point permite cargas de saldo desde su celular. 
+						<strong><a target="_blank" href="http://www.jetpoint.com.pe/" id="jetpoint-help">&iquest;Qu&eacute; es Jet Point?</a></strong><br/><br/>
+						</span>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</c:if>
+</c:if>

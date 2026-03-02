@@ -1,0 +1,28 @@
+<jboss-web>
+
+    <!-- VERSION DE PRODUCCION, NO CAMBIAR EL xml NI SUBIR AL SVN -->
+    
+	<!-- Configuracion para PC                  
+    <context-root>/lotto-sale</context-root>
+        -->    
+    <!-- Configuracion para Servidor de Produccion  y UAT      -->            
+    <context-root>/p</context-root> 
+    <virtual-host>www.latinka.com.pe</virtual-host> 
+    
+     <!-- Configuracion para PRE-PRODUCCION d7xqt83 -->    
+<!--     <context-root>/d7xqt83</context-root>  -->
+<!-- 	<virtual-host>www.latinka.com.pe</virtual-host>  -->
+           
+    <!-- Configuracion para Servidor de UAT ( http://190.12.81.36/p/ )          
+    <context-root>/p</context-root>
+    <virtual-host>190.12.81.36</virtual-host> 
+    <virtual-host>www.desarrollo.intralotvirtual.com.pe</virtual-host>         
+    -->    
+    <!-- Configuracion para Replication -->
+    <replication-config>
+        <replication-granularity>ATTRIBUTE</replication-granularity>
+        <replication-trigger>
+            SET_AND_NON_PRIMITIVE_GET
+        </replication-trigger>
+    </replication-config>
+</jboss-web>

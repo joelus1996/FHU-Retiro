@@ -1,0 +1,1068 @@
+.separate-bottun { padding: 1px }
+.attribute-texarea {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    resize: none;
+    overflow: hidden;
+    height: 38px;
+    padding: 7px;
+    width: 87px;
+    font-size: 10px;
+    color: #818181;
+}
+.attribute-button {
+    background: #dde8c7;
+    border: 1px solid #dde8c7;
+    height: 14.5px;
+    width: 100px;
+    cursor: pointer
+}
+.attribute-button:hover {
+    background: #d0dfb1;
+    border: 1px solid #d0dfb1;
+    height: 14.5px;
+    width: 100px;
+    cursor: pointer
+}
+.linear {float:left;}
+.separate-textarea-bottuns { padding: 85px 0 0 0 }
+.separate-textarea-number { padding-left: 165px }
+.icon { padding: 4px 6px 6px 5px }
+.height-div { height: 59px }
+.text-play {
+    background-image: linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    background-image: -o-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    background-image: -moz-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    background-image: -webkit-gradient(linear, 100% 100%, 100% 0, color-stop(0.09, #80ad25), color-stop(0.69, #a0cd47));
+    background-image: -webkit-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    background-image: -ms-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    border-radius: 5px 5px 0 0;
+    border-color: #007bb6;
+    height: 18px;
+    width: 279px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #384a13;
+    padding: 4px 0 0 0;
+    margin-bottom: 5px;
+}
+.number-textarea-button {
+    /*padding: 5px 0px 0px 0px;*/
+    padding: 0 0 8px 0;
+    border-top: 0;
+    border-left: 2px dotted #e0e0e0;
+    border-right: 2px dotted #e0e0e0;
+    border-bottom: 2px dotted #e0e0e0;
+    /*border-style: dotted;
+    border-color: #e0e0e0;*/
+    width: 275px;
+    /*height: 225px;*/
+    /*padding-top: 0*/
+}
+.margin {
+    height: 25px;
+    padding-left: 5px;
+    position: relative
+}
+.text-number {
+    color: #818181;
+    font-size: 11px;
+    padding-left: 7px
+}
+.text-number-marcado {
+     color: #818181;
+    font-family: arial;
+    font-size: 11px;
+    font-weight: bold;
+}
+.container {padding: 5px 0 0}
+.check_{margin-left: 0;margin-right:-1px}
+.text {
+    color: #6f932b;
+    font-size: 10px;
+    font-weight: bold;
+    vertical-align: top
+}
+.left {float: left}
+.right {padding-left: 287px}
+.flecha_next {
+    background-image: url(../../../layer-view-image/game/tinka/btn_jugada_sgte_off.png);
+    height: 22px;
+    width: 25px;
+    cursor: pointer
+}
+.flecha_next:hover {
+    background-image: url(../../../layer-view-image/game/tinka/btn_jugada_sgte_on.png);
+    height: 22px;
+    width: 25px;
+    cursor: pointer
+}
+.right_flecha {/*position:absolute;right:6px;*/float:left;margin:0 0 0 6px;}
+.play_go_1_2_gd {
+    background-image: url(../../../layer-view-image/game/tinka/jugada_ir_gd%20_1_2.gif);
+    width: 21px;
+    height: 115px;
+    margin: 4.5px 3px
+}
+.flecha_back {
+    background-image: url(../../../layer-view-image/game/tinka/btn_jugada_antes_off.png);
+    height: 22px;
+    width: 25px;
+    cursor: pointer
+}
+.flecha_back:hover {
+    background-image: url(../../../layer-view-image/game/tinka/btn_jugada_antes_on.png);
+    height: 22px;
+    width: 25px;
+    cursor: pointer
+}
+.play_go_3_4_gd {
+    background-image: url(../../../layer-view-image/game/tinka/jugada_ir_gd%20_3_4.gif);
+    width: 21px;
+    height: 115px;
+    margin: 4.5px 3px
+}
+/*
+.button-buy-off{
+    background-image:url(../../../layer-view-image/common/buy-off.png); 
+    border:0px solid #999; 
+    cursor:pointer; 
+    width:109px;
+    height:30px;
+    border-radius: 8px
+}
+.button-buy-off:hover{
+    background-image:url(../../../layer-view-image/common/buy-on.png);
+    border:0px solid #999; 
+    cursor:pointer; 
+    height:30px;
+    width:109px;
+    border-radius: 6px
+}
+*/
+.text-distance {padding-left: 442px;}
+.tinka {
+    background: url("../../../layer-view-image/game/tinka/banner_tinka.png") no-repeat top left;
+    border-radius: 0 0 6px 6px;
+    float: left;
+    margin-left: 32px;
+    width: 614px;
+}
+.color-text {
+    float: left;
+    font-size: 11px;
+    color: #000000;
+    width: 420px
+}
+.bold-type { font-weight: bold }
+.center { padding: 13px 15px }
+.font {
+    background: #dddddd;/*none repeat scroll 0 0 rgb(217, 217, 217);*/
+    width: 595px;
+    height: 56px;
+    position: absolute;
+    top: 336px;
+    border-radius: 6px;
+}
+.font-play {
+    background-color: #ffffff;
+    border-radius: 0 6px 6px 6px;
+    margin-top: 5px;
+    min-height: 380px;
+    padding: 18px 0 10px 10px;
+    position: relative;
+    width: 605px;
+}
+.font-play-total {
+    /*background:#FFF;*/
+    /*width: 615px; height: 435px;*/
+}
+/*******/
+/*imagen de paso*/
+.transition-one {
+    background: #ffffff url(../../../layer-view-image/game/tinka/transition-one.png) no-repeat 7px;
+    width: 308px;
+    height: 23px;
+    border-radius: 5px 5px 0 0;
+    padding-right: 7px;
+    padding-top: 5px;
+    margin-top: 65px;
+    padding-bottom: 4px;
+    /*margin-left:5px;*/
+    /* margin-bottom: 18px;*/
+}
+.transition-two {
+    background: #ffffff url(../../../layer-view-image/game/tinka/transition-two.png) no-repeat 7px;
+    width: 308px;
+    height: 23px;
+    border-radius: 5px 5px 0 0;
+    padding-right: 7px;
+    padding-top: 5px;
+    margin-top: 65px;
+    padding-bottom: 4px;
+    /*margin-left:5px;*/
+    /* margin-bottom: 18px;*/
+}
+/*
+.transition-two{
+    background: #FFF url(../../../layer-view-image/game/ganadiario/transition-two.png)  no-repeat 7px ;
+    width:342px;
+    height:23px;
+    border-radius: 5px 5px 0 0;
+    padding-right: 7px;
+    padding-top: 5px;
+}
+*/
+/****/
+/*style de combobox*/
+div.selectBox {
+    position: relative;
+    width: 134px;
+    height: 18px;
+    border: 1px solid #949494;
+    background: #e4e4e2 url(../../../layer-view-image/common/flecha-combo.png) no-repeat 120px 8px;
+    border-radius: 5px;
+    font-size: 10px;
+    top: -2px;
+}
+div.selectBox div.box {
+    position: absolute;
+    left: 6px;
+    top: 1px;
+    width: 124px;
+    height: 18px;
+    line-height: 17px;
+    font-size: 10px;
+    color: #4e4e4d;
+    overflow: hidden
+}
+div.selectBox select {
+    background: #e4e4e2;
+    width: 124px;
+    height: 18px;
+    font-size: 10px;
+    border: 1px solid #949494;
+    opacity: 0;
+    filter: alpha(Opacity=0);
+    cursor: pointer;
+    font-size: 10px;
+    z-index: 1
+}
+div.selectBox select option {
+    font-size: 10px;
+    color: #4e4e4d;
+    border-bottom: 1px solid #e4e4e2;
+    cursor: pointer
+}
+div.selectBox select option.ultimo {    border-bottom: 0 none}
+/*#help{
+    background: url(../../../layer-view-image/common/ayuda.png) no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    margin-top: -36px;
+    width: 60px;
+    margin-left: 550px;
+    height: 30px;
+    display: block;
+}
+#help:hover {
+    background-position: 0 -36px;
+}*/
+.visible {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0
+}
+#premio {
+    color: #006522;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 18px;
+    margin-top: 4px
+}
+#aviso {
+    color: #005b84;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center
+}
+#hora-fin-juego {
+    color: #006a29;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 6px;
+    padding-left: 480px;
+    position: absolute;
+}
+/*---nuevo-------*/
+#hora-ini-juego {
+    color: #005b84;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 8px;
+    padding-left: 480px;
+    position: absolute;
+}
+#award-tinka .font-play{
+	margin: 0;
+}
+/*----------*/
+#center-text-time { padding-left: 18px }
+#center-text { float: left; margin-left: 190px }
+/***premios***/
+.font-award { /*** george.minaya ***/
+    background: #dddddd;/*none repeat scroll 0 0 rgb(217, 217, 217);*/
+    width: 595px;
+    height: 82px;
+    position: absolute; /* new */
+    top: 275px; /* new*/
+    border-radius: 6px;
+}
+.column_free {
+    position: absolute;
+    left: 145px;
+    top: 4px
+}
+.result_purchase .label_bet_free {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 5px;
+    left: 10px
+}
+.result_purchase .result_bet_free {
+    position: absolute;
+    font-weight: bold;
+    font-size: 12px;
+    top: 5px;
+    left: 181px;
+    text-align: right;
+    width: 50px;
+    direction: rtl
+}
+.result_purchase .label_play_pendiente {
+    position: absolute;
+    font-size: 12px;
+    top: 65px;
+    left: 10px
+}
+.result_purchase .result_play_pendiente {
+    position: absolute;
+    font-size: 12px;
+    top: 65px;
+    left: 181px;
+    text-align: right;
+    width: 50px;
+    direction: rtl
+}
+.result_purchase .label_balance {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 105px;
+    left: 10px
+}
+.result_purchase .result_balance {
+    position: absolute;
+    font-weight: bold;
+    font-size: 12px;
+    top: 105px;
+    left: 181px;
+    text-align: right;
+    width: 50px;
+    direction: rtl;
+}
+.result_purchase .label_tot_des {
+    position: absolute;
+    font-size: 12px;
+    top: 85px;
+    left: 10px
+}
+.result_purchase .res_tot_des {
+    position: absolute;
+    font-size: 12px;
+    top: 85px;
+    left: 181px;
+    text-align: right;
+    width: 50px;
+    direction: rtl;
+}
+.result_purchase .label_mitad_precio {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 45px;
+    left: 10px
+}
+.result_purchase .result_mitad_precio {
+    position: absolute;
+    font-weight: bold;
+    font-size: 12px;
+    top: 45px;
+    left: 181px;
+    text-align: right;
+    width: 50px;
+    direction: rtl
+}
+.result_purchase .label_play_pendiente_g {
+    position: absolute;
+    font-size: 12px;
+    top: 25px;
+    left: 10px
+}
+.result_purchase .result_play_pendiente_g {
+    position: absolute;
+    font-size: 12px;
+    top: 25px;
+    left: 181px;
+    text-align: right;
+    width: 50px;
+    direction: rtl
+}
+.datos_enunciado_cotejo_right {
+    margin-left: 26px;
+    margin-top: 70px;
+    font-family: Arial;
+    font-size: 11px;
+    color: #227924;
+    font-weight: bold
+}
+.datos_enunciado_contenido_cotejo_right {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+.datos_enunciado_cotejo_left {
+    margin-left: 250px;
+    margin-top: 70px;
+    font-family: Arial;
+    font-size: 11px;
+    color: #227924;
+    font-weight: bold
+}
+.yapa {
+    font-family: Arial;
+    font-size: 11px;
+    color: #227924;
+    font-weight: bold;
+    position: absolute;
+    margin-top: -1px;
+    left: 378px
+}
+.yapa-cotejador-juego {
+    font-family: Arial;
+    font-size: 11px;
+    color: #227924;
+    font-weight: bold;
+    margin-top: -1px;
+    left: 378px;
+	margin-left: 381px;
+    margin-top: -15px;
+}
+.cotejadores {
+    font-family: Arial;
+    margin-left: 26px;
+    font-size: 11px;
+    color: #454545
+}
+.datos_enunciado_contenido_cotejo_left {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+.datos_separador {
+    margin-left: 26px;
+    color: #227924;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 26px;
+    margin-bottom: 5px
+}
+.logo_tinka {
+    margin-left: 26px;
+    color: #306d20;
+    font-family: Arial
+}
+.calculo_premio {
+    margin-left: 26px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    color: #0681bb;
+    font-family: Arial;
+    font-size: 11px
+}
+.table_tinka {
+    font-family: Arial;
+    font-size: 11px;
+    width: 550px
+}
+.th_tinka {
+    background-color: #fdfbc4;
+    color: #227924;
+    height: 11px;
+    width: 50px;
+    border-color: #a8a8a9
+}
+.td_tinka {
+    color: #454545;
+    height: 11px;
+    text-align: center;
+    border-color: #a8a8a9
+}
+.table_result_tinka {
+    color: white;
+    background-color: #227924;
+    height: 11px;
+    border-bottom-color: #a8a8a9
+}
+.mensaje_tinka {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545;
+    margin-left: 26px
+}
+.indicador_cotejo {
+    margin-left: 26px;
+    margin-top: 20px;
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+.cotejador {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+/**Tinka Add On**/
+.increases-your-prize {
+    background: #F2F2F2;
+    height: 61px;
+    margin: 12px 0 0;
+    padding: 7px 0 17px 6px;
+}
+
+.text-increment-1 {
+    color: #818181;
+    font-size: 11px;
+    margin: 0;
+}
+
+.text-increment-2 {
+    color: #818181;
+    font-size: 10px;
+    margin: 0;
+}
+
+.check-plus {
+    display: block !important;
+    margin: 0;
+    position: relative;
+    top: 17px;
+}
+
+.image-plus {
+    bottom: 6px;
+    left: 19px;
+    position: relative;
+}
+
+.price-plus {
+    bottom: 14px;
+    color: #F78225;
+    font-size: 12px;
+    font-weight: bold;
+    left: 29px;
+    position: relative;
+}
+
+.font-cotejador-back {
+    background-color: #C1D72D;
+    border-radius: 6px 6px 6px 6px;
+    height: 56px;
+    position: absolute;
+    top: 379px;
+    width: 565px;
+	left: 28px;
+	display:none;
+}
+
+.font-cotejador {
+    background-color: #C1D72D;
+    border-radius: 6px 6px 6px 6px;
+    height: 56px;
+    position: absolute;
+    top: 379px;
+    width: 565px;
+	left: 28px;
+}
+
+/*cotejador tinka*/
+.logo_tinka_cotejador {
+margin-bottom: 7px;
+}
+
+.number-textarea-button-cotejador{
+padding: 5px 0 0 0;
+border-top: 0;
+border-left: 2px;
+border-right: 2px;
+border-bottom: 2px;
+border-style: dotted;
+border-color: #e0e0e0;
+width: 275px;
+height: 234px;
+padding-top: 0;
+}
+.price-plus_cotejador {
+    bottom: 14px;
+    color: #F78225;
+    font-size: 12px;
+    font-weight: bold;
+    left: 29px;
+    position: relative;
+    margin-left:-10px;
+    top:2px;
+}
+.cotenedor_tinka_cotejador{
+	background: #fcfbfb;/*none repeat scroll 0% 0% #fcfbfb;*/
+	height: 482px;
+	width: 650px;
+}
+.right_flecha_cotejador {
+	position: absolute; 
+	right: 23px;
+	top: 63px;
+	width: 650px;
+}
+.star_play_cotejador{
+margin-left: 27px;	
+}
+.kabala_fechas_cotejador{
+color: #818181;
+font-family: arial;
+font-size: 11px;
+}
+
+.validez_boleto_cotejador{
+position: absolute;
+bottom: 90px;
+margin-left: 45px;
+float: left;
+}
+
+.cont_opciones_cotejador{
+bottom: 84px;
+left: 140px;
+position: absolute;
+}
+
+.check_chauChamba{
+position: absolute;
+left: 214px;
+margin: -39px;	
+}
+
+.check_chauChamba_right{
+position: absolute;
+left: 500px;
+margin: -39px;	
+}
+
+.flecha_back_cotejador{
+background-image: url(../../../layer-view-image/game/tinka/btn_jugada_antes_off.png);
+height: 22px;
+width: 25px;
+cursor: pointer;
+display: none;
+}
+
+.validez_from_sorteo{
+position: absolute;
+bottom: 90px;
+margin-left: 200px;
+float: left;
+}
+
+.validez_to_sorteo{
+position: absolute;
+bottom: 90px;
+margin-left: 455px;
+float: left;
+}
+
+.cantFecha{
+bottom: 84px;
+left: 495px;
+position: absolute;	
+}
+
+.pestania{
+position: fixed; top: 335px;
+ background: url(../../../layer-view-image/game/tinka/btn_coteja_tinka.png) no-repeat scroll 0px 0px transparent; 
+ height: 155px; 
+ width: 33px;
+ left: 42.6%;
+ margin: 0px 0px 0px -392px;
+}
+
+.increases-your-prize_cotejador{
+background: #F2F2F2;
+margin: 12px 0 0;
+padding: 7px 0 17px 6px;
+height: 39px;
+margin-top: 77px;
+}
+
+.attribute-button_cotejador{
+background: #EEF4C6;
+border: 1px solid #EEF4C6;
+height: 14.5px;
+width: 100px;
+cursor: pointer;
+position: absolute;
+margin-top: 52px;
+}
+
+.attribute-button_cotejador:hover {
+background: #d0dfb1;
+border: 1px solid #d0dfb1;
+height: 14.5px;
+width: 100px;
+cursor: pointer;
+position: absolute;
+margin-top: 52px;
+}
+
+
+#award-tinka #primer-part input[type=checkbox]{
+	display: none;
+}
+
+#award-tinka #primer-part .number-textarea-button {
+    padding: 5px 0px 0px 0px;
+    border-top: 0px;
+    border-left: 2px;
+    border-right: 2px;
+    border-bottom: 2px;
+    border-style: dotted;
+    border-color: #e0e0e0;
+    width: 275px;
+    height: 206px;
+    padding-top: 0px;
+}
+#award-tinka .font-play{
+	margin: 0;
+}
+
+.tinka_fechas_cotejador{
+color: #818181;
+font-family: arial;
+font-size: 11px;
+position: relative;
+top: -150px;
+}
+
+
+/*Style ComboBox 2 - cotejo Tinka*/
+div.selectBoxCotejo {
+    position: relative;
+    width: 48px;
+    height: 18px;
+    border: 1px solid #949494;
+    background: #e4e4e2 url(../../../layer-view-image/common/flecha-combo.png) no-repeat 35px 8px;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 10px;
+    top: -2px;
+}
+
+div.selectBoxCotejo div.box {
+    position: absolute;
+    left: 6px;
+    top: 1px;
+    width: 48px;
+    height: 18px;
+    line-height: 17px;
+    font-family: arial;
+    font-size: 10px;
+    color: #4e4e4d;
+    overflow: hidden;
+}
+
+div.selectBoxCotejo select {
+    background: #e4e4e2;
+    width: 48px;
+    height: 20px;
+    font-size: 10px;
+    border: 1px solid #949494;
+    opacity: 0;
+    filter: alpha(Opacity = 0);
+    -moz-opacity: 0;
+    cursor: pointer;
+    font-size: 10px;
+    z-index: 1;
+    
+}
+
+div.selectBoxCotejo select option {
+    font-size: 10px;
+    color: #4e4e4d;
+    border-bottom: 1px solid #e4e4e2;
+    cursor: pointer;
+}
+
+div.selectBoxCotejo select option.ultimo {
+    border-bottom: 0px none;
+}
+
+
+/* Style boton cotejador */
+div.BotonCotejo {
+    position: relative;
+    width: 48px;
+    height: 18px;
+    border: 1px solid #949494;
+    background: #e4e4e2 no-repeat 35px 8px;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 10px;
+    top: -2px;
+}
+/*****/
+.PortletContent{
+	background: url(../../../layer-view-image/game/tinka/btn_coteja_tinka.png) no-repeat scroll 0px 0px transparent;
+    height: 156px;
+    margin-left: -33px;
+    position: fixed;
+    top: 250px;
+    width: 33px;
+     cursor: pointer;
+}
+/***** imagenes de paso en PREMIOS *****/
+.transition-one-award {
+    background: #ffffff url(../../../layer-view-image/game/tinka/transition-one-award.png) no-repeat 7px;
+    width: 409px;
+    height: 23px;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 7px 4px 0;
+    margin: 65px 0 0 0;
+}
+.transition-two-award {
+    background: #ffffff url(../../../layer-view-image/game/tinka/transition-two-award.png) no-repeat 7px;
+    width: 409px;/*308px;*/
+    height: 23px;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 7px 4px 0;
+    margin: 65px 0 0 0;
+}
+/*******/
+.panel-subscription{position:relative;top:-19px;display:inline-block;}
+.panel-subscription span{position:absolute;top:62px;font-size:12px;text-align:justify;margin:0 18px;line-height:16px;color:#337e18;}
+.panel-subscription span a, .panel-subscription span a:active{font-size:11px;color:#337e18;}
+.panel-subscription span a:hover{text-decoration:none;}
+.panel-book{position:relative;top:0;}
+.disabled{display:none;}
+.section-central{float:left;width:614px;height:311px;background: url("../../../layer-view-image/game/tinka/subscription/tk-suscripcion.jpg")no-repeat top left;border-radius:8px 8px 0 0;}
+.section-left{position:relative;top:0;left:0;width:304px;height:128px;float:left;margin:0;padding:0;background: url("../../../layer-view-image/game/tinka/subscription/tk-base-btn.jpg") no-repeat top left;border-radius:0 0 0 8px;}
+.section-center{position:relative;top:0;left:0;width:6px;height:128px;float:left;margin:0;padding:0;background-color:#f8c617;}
+.section-right{position:relative;top:0;right:0;width:304px;height:128px;float:left;margin:0;padding:0;background: url("../../../layer-view-image/game/tinka/subscription/tk-base-btn.jpg") no-repeat top left;border-radius:0 0 8px 0;}
+.link-left, .link-left:active{position:absolute;top:0;right:0;width:170px;height:56px;background: url("../../../layer-view-image/game/tinka/subscription/btn-regular-off.png") no-repeat top left;}
+.link-left:hover{background-image:url("../../../layer-view-image/game/tinka/subscription/btn-regular-on.png");}
+.link-right, .link-right:active{position:absolute;top:0;right:0;width:170px;height:56px;background: url("../../../layer-view-image/game/tinka/subscription/btn-suscripcion-off.png") no-repeat top left;}
+.link-right:hover{background-image: url("../../../layer-view-image/game/tinka/subscription/btn-suscripcion-on.png");}
+.transition-subscription-one {
+    background: #ffffff url("../../../layer-view-image/game/tinka/subscription/transition-one-suscripcion.gif") no-repeat 7px;
+    width: 459px;
+    height: 23px;
+    border-radius: 5px 5px 0 0;
+    padding-right: 7px;
+    padding-top: 5px;
+    margin-top: 65px;
+    padding-bottom: 4px;
+}
+.transition-subscription-two {
+    background: #ffffff url("../../../layer-view-image/game/tinka/subscription/transition-two-suscripcion.gif") no-repeat 7px;
+    width: 459px;
+    height: 23px;
+    border-radius: 5px 5px 0 0;
+    padding-right: 7px;
+    padding-top: 5px;
+    margin-top: 65px;
+    padding-bottom: 4px;
+}
+.text-subscription-play1 {
+    /*background-image: -o-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    background-image: -moz-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    background-image: -webkit-gradient(linear, 100% 100%, 100% 0, color-stop(0.09, #80ad25), color-stop(0.69, #a0cd47));
+    background-image: -webkit-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);
+    background: -ms-linear-gradient(bottom, #80ad25 9%, #a0cd47 69%);*/
+    position:relative;
+    background-color:#b6d971;
+    /*border-radius: 5px 5px 0 0;*/
+    /*border-color: #007bb6;*/
+    height: 29px;
+    width: 279px;
+    /*text-align: center;*/
+    font-size: 11px;
+    font-weight: bold;
+    color: #446625;
+    padding: 0;
+    margin: 0;
+}
+.text-subscription-play2 {
+	position:relative;
+    background-color:#d3e8aa;
+    /*border-radius: 5px 5px 0 0;*/
+    /*border-color: #007bb6;*/
+    height: 29px;
+    width: 303px;
+    /*text-align: center;*/
+    font-size: 11px;
+    font-weight: bold;
+    color: #446625;
+    padding: 0;
+    margin: 0;
+}
+.text-subscription-play1 span {margin:0;padding:8px 0 0 13px;position:absolute;vertical-align:top;line-height:12px;}
+.text-subscription-play2 span {margin:0;padding:8px 0 0 13px;position:absolute;vertical-align:top;line-height:12px;}
+.number-textarea-button1 {
+    padding: 8px 0 0 0;
+    background: url("../../../layer-view-image/game/tinka/subscription/background-paso01.gif") no-repeat top left;
+    border-top: 0;
+    border-left: 2px dotted #e0e0e0;
+    border-right: 0;/*2px dotted #e0e0e0;*/
+    border-bottom: 2px dotted #e0e0e0;
+    width: 277px;
+    height: 306px;
+}
+.number-textarea-button2 {
+    padding: 8px 0 0 0;
+    border-top: 0;
+    border-left: 0;/*2px dotted #e0e0e0;*/
+    border-right: 2px dotted #e0e0e0;
+    border-bottom: 2px dotted #e0e0e0;
+    width: 301px;
+    height: 306px;
+}
+.panel-play{float:left;padding:0 0 0 7px;}
+.panel-section{float:left;}
+.panel-linear{float:left;padding:5px 0 0 0;width:147px;}
+.panel-numbers{padding:5px 0 0 18px;float:left;width:110px;}
+.panel-buttons{padding:102px 0 0 0;}
+.panel-receipt{padding:5px 15px;line-height:16px;}
+.panel-section-play {
+    background-color: #ffffff;
+    border-radius: 0 6px 6px 6px;
+    margin-top: 5px;
+    min-height: 420px;
+    padding: 15px 0 10px 10px;
+    position: relative;
+    width: 605px;
+}
+.panel-section-receipt {
+    background-color:#dddddd; /*none repeat scroll 0 0 rgb(217, 217, 217);*/
+    width: 595px;
+    height: 56px;
+    position: absolute;
+    top: 376px;
+    border-radius: 6px;
+}
+.text-option {color:#818181;font-size:11px;padding:0 0 0 7px;display:block;}
+a.type-play, a.type-play:active{background:url("../../../layer-view-image/game/tinka/subscription/btn-off.png") no-repeat top left;width:248px;height:18px;text-decoration:none;text-align:center;color:#666666;padding:4px 0 0 0;display:block;font-size:10px;font-weight:bold;margin:0 auto;}
+a.type-play:hover, a.btn-active{background-image:url("../../../layer-view-image/game/tinka/subscription/btn-on.png");color:#ffffff;}
+.pnl-mask{background-color:#FFFFFF;opacity:0.6;filter:alpha(opacity=60);position:absolute;/*top:40px;left:8px;*/z-index:99;}
+#panel-disable1{width:276px;height:240px;}
+#panel-disable2{width:296px;height:226px;}
+#panel-same-play{padding:5px 0 0 0;}
+#panel-random-play{padding:3px 0 0 0;}
+#panel-buy{float:left;margin:8px 0 0 0;padding:0;border:0}
+#panel-buy .button-buy{background:#d9d9d9 url("../../../layer-view-image/common/comprar.png") no-repeat top left;float:left;font-size:0;width:109px;height:30px;text-decoration:none;margin:0;padding:0;border:0}
+#panel-buy .button-buy:hover{background-position:bottom left}
+.number-textarea-button2 a.btn-discount10, a.btn-discount10:active{background:url("../../../layer-view-image/game/tinka/subscription/img-10dscto-off.gif") no-repeat top left;width:220px;height:28px;}
+.number-textarea-button2 a.btn-discount10:hover, .number-textarea-button2 a.discount10-active{background-image:url("../../../layer-view-image/game/tinka/subscription/img-10dscto-on.gif");}
+.number-textarea-button2 a.btn-discount20, a.btn-discount20:active{background:url("../../../layer-view-image/game/tinka/subscription/img-20dscto-off.gif") no-repeat top left;width:220px;height:28px;}
+.number-textarea-button2 a.btn-discount20:hover, .number-textarea-button2 a.discount20-active{background-image:url("../../../layer-view-image/game/tinka/subscription/img-20dscto-on.gif");}
+.number-textarea-button2 a.btn-discount30, a.btn-discount30:active{background:url("../../../layer-view-image/game/tinka/subscription/img-30dscto-off.gif") no-repeat top left;width:220px;height:28px;}
+.number-textarea-button2 a.btn-discount30:hover, .number-textarea-button2 a.discount30-active{background-image:url("../../../layer-view-image/game/tinka/subscription/img-30dscto-on.gif");}
+.number-textarea-button2 input{float:left;margin:9px 0 0 10px}
+.number-textarea-button2 ul li{display:block;}
+.number-textarea-button2 ul li:before{display:block;left:-0.4em;top:.4em;position:relative;text-indent:-18px;}
+.number-textarea-button2 ul{list-style:none;}
+.number-textarea-button2 span{font-size:11px;color: #818181;padding:3px 0 0 42px;display:block;text-align:justify;width:224px;}
+.number-textarea-button2 span.text-mini{font-size:10px;padding:10px 0 0 42px;width:230px;}
+.number-textarea-button2 span a{color:#818181;font-size:10px;}
+.number-textarea-button2 .text-input{margin:0;padding:2px 0 0 13px;position:relative;vertical-align:top;line-height:30px;}
+.number-textarea-button2 div a{color:#0681bc;font-size:11px;font-weight:bold;text-decoration:none;float:left;margin:0 0 0 5px;padding:0 0 0 5px;}
+.number-textarea-button2 div.text-input{display:inline-block;}
+.btn-help, .btn-help:active{background:url(../../../layer-view-image/common/ayuda.png) no-repeat 0 0;width:60px;height:30px;display:block;margin:-36px 0 0 550px;}
+.btn-help:hover{background-position:0 -36px;}
+.ui-input{position:relative;display:inline-block;}
+/*.ui-block{display:none;}*/
+.ui-title{padding:5px 10px;text-align:left;color:#FF6A24;font-family:Arial;font-size:14px;font-weight:bold;/*top left no-repeat;*/}
+.ui-panel{float:left;padding: 10px 110px;border-top: 3px solid #E5E5E5;margin: 0px 19px 10px 12px;border-bottom: 3px solid #E5E5E5;clear:both;}
+.ui-panel .button-icotinka{background-color:#ffffff;background-image:url(../../../layer-view-image/client/btn-tinka.png);/*img-tinka.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icotinka:hover{background-image:url(../../../layer-view-image/client/btn-tinka-over.png);/*img-tinka-over.png);*/}
+.ui-panel .button-icoganagol{background-color:#ffffff;background-image:url(../../../layer-view-image/client/btn-ganagol.png);/*img-ganagol.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icoganagol:hover{background-image:url(../../layer-view-image/client/btn-ganagol-over.png);/*img-ganagol-over.png);*/}
+.ui-panel .button-icoteapuesto{background-color:#ffffff;background-image:url(../../../layer-view-image/client/btn-teapuesto.png);/*img-teapuesto.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icoteapuesto:hover{background-image:url(../../../layer-view-image/client/btn-teapuesto-over.png);/*img-teapuesto-over.png);*/}
+.ui-panel .button-icoclicygana{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-clicygana.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icoclicygana:hover{background-image:url(../../../layer-view-image/client/img-clicygana-over.png);}
+.ui-panel .button-icodeportesvirtuales{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-deportesvirtuales.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icodeportesvirtuales:hover{background-image:url(../../../layer-view-image/client/img-deportesvirtuales-over.png);}
+.ui-panel .button-icoganadiario{background-color:#ffffff;background-image:url(../../../layer-view-image/client/btn-ganadiario.png);/*img-ganadiario.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icoganadiario:hover{background-image:url(../../../layer-view-image/client/btn-ganadiario-over.png);/*img-ganadiario-over.png);*/}
+.ui-panel .button-icokabala{background-color:#ffffff;background-image:url(../../../layer-view-image/client/btn-kabala.png);/*img-kabala.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 30px;padding:0;border:0}
+.ui-panel .button-icokabala:hover{background-image:url(../../../layer-view-image/client/btn-kabala-over.png);/*img-kabala-over.png);*/}
+.ui-panel .button-icosuper3{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-super3.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icosuper3:hover{background-image:url(../../../layer-view-image/client/img-super3-over.png);}
+.ui-panel .button-icoelreventon{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-elreventon.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icoelreventon:hover{background-image:url(../../../layer-view-image/client/img-elreventon-over.png);}
+.ui-panel .button-icorapitinkas{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-rapitinkas.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icorapitinkas:hover{background-image:url(../../../layer-view-image/client/img-rapitinkas-over.png);}
+.ui-panel .button-icorapigana{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-rapigana.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icorapigana:hover{background-image:url(../../../layer-view-image/client/img-rapigana-over.png);}
+.ui-panel .button-icokinelo{background-color:#ffffff;background-image:url(../../../layer-view-image/client/btn-kinelo.png);/*img-kinelo.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icokinelo:hover{background-image:url(../../../layer-view-image/client/btn-kinelo-over.png);/*img-kinelo-over.png);*/}
+.ui-panel .button-icogiromagico{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-giromagico.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icogiromagico:hover{background-image:url(../../../layer-view-image/client/img-giromagico-over.png);}
+.ui-panel .button-icofechaza{background-color:#ffffff;background-image:url(../../../layer-view-image/client/img-fechaza.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+.ui-panel .button-icofechaza:hover{background-image:url(../../../layer-view-image/client/img-fechaza-over.png);}
+.label_1{display:block;color:#0681bc;padding:15px 0 15px 0;position:relative;top:0;}
+.left-panel{width:304px;height:95px;padding-top:0;margin-right:22px;}
+.right-panel{width:266px;padding-top:24px;}
+#sub_purchase{padding-top:20px;}
+.img_zona_segura{float:none;position:absolute;bottom:7px;}
+#panel_finaliza_compra{margin:10px 37px 15px 0;}
+.result_purchase .label_resu1_subscribe{top:10px;font-size:12px;font-weight:bold;}
+.result_purchase .label_resu2_subscribe{top:31px;font-size:10px;}
+.result_purchase .label_resu3_subscribe{top:50px;font-size:10px;font-weight:bold}
+.result_purchase .label_resu4_subscribe{top:69px;font-size:10px;}
+.result_purchase .label_resu1_subscribe, 
+.result_purchase .label_resu2_subscribe, 
+.result_purchase .label_resu3_subscribe, 
+.result_purchase .label_resu4_subscribe{left:10px;position:absolute;width:220px;}
+.result_purchase .result1_subscribe{position:absolute;font-weight:bold;font-size:12px;top:10px;right:10px;text-align:right;}
+.result_purchase .result2_subscribe{position:absolute;font-size:10px;top:31px;right:10px;text-align:right;}
+.result_purchase .result3_subscribe{position:absolute;font-size:10px;font-weight:bold;top:50px;right:10px;text-align:right;}
+.result_purchase .result4_subscribe{position:absolute;font-size:10px;top:69px;right:10px;text-align:right;}
+.right-panel .result_purchase{height:54px;}
+.label-top{color:#FF6A24;font-size:13px;font-weight:bold;font-family:Arial;}
+.label_info{color:#666666;font-family:Arial, sans-serif; font-weight:bold;line-height:22px;}
+#panel_keep-playing{float:left;margin:8px 0 0 109px;padding:0;border:0;/*margin:8px 0 0 37px;*/}
+#panel_game-history{float:right;margin:8px 0 0 7px;padding:0;border:0;width:138px;/*margin:8px 0 0 37px;*/}
+#panel_keep-playing a.class-keep-playing{background:url(../../../layer-view-image/client/btn-seguir-jugando.png) no-repeat top left;/*game/tinka/subscription/btn_seguirjugando_off.png) no-repeat top left;*/width:135px;/*207px;*/height:30px;}
+#panel_keep-playing a.class-keep-playing:hover{background-position:bottom left;}/*background:url(../../../layer-view-image/game/tinka/subscription/btn_seguirjugando_on.png) no-repeat top left;}*/
+#panel_game-history a.class-game-history{background:url(../../../layer-view-image/client/btn-ir-a-mis-jugadas.png) no-repeat top left;/*game/tinka/subscription/btn_historial-off.png) no-repeat top left;*/width:112px;/*207px;*/height:30px;}
+#panel_game-history a.class-game-history:hover{background-position:bottom left;}/*background:url(../../../layer-view-image/game/tinka/subscription/btn_historial-on.png) no-repeat top left;}*/
+#panel_game-award{float:left;display:none;margin:8px 0 0 7px;/*140px;*/padding:0;border:0;width:118px;}
+#panel_game-award a.class-game-award{background-image:url(../../layer-view-image/client/btn-ir-a-mis-premios.png);/*common/btn-ir-premios.png);*/background-position:top left;background-repeat:no-repeat;float:left;width:112px;/*102px;*/height:30px;/*26px;*/text-decoration:none;margin:0;padding:0;border:0}
+#panel_game-award a.class-game-award:hover{background-position:bottom left}

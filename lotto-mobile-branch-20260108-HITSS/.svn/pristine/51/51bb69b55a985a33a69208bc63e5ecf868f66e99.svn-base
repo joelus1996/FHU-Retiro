@@ -1,0 +1,93 @@
+<a class="m-banner-winner m-kabala m-banner-winner__kabala open-winners-popup" href="javascript:void(0)" id="m-kabala">
+    <div class="m-banner-winner__content">
+        <h3 class="m-title m-banner-winner__title">&iexcl;Revent&oacute;!</h3>
+        <picture class="m-banner-winner__logo">
+            <source srcset="./layer-view-image/game/kabala/live/logo-kabala-banner.png 1x, ./layer-view-image/game/kabala/live/logo-kabala-banner@2x.png 2x" media="(min-width: 1024px)" type="image/png" />
+            <img class="m-popup-count-down__bg" srcset="./layer-view-image/game/kabala/live/logo-kabala-banner.png 1x, ./layer-view-image/game/kabala/live/logo-kabala-banner@2x.png 2x" />
+        </picture>
+        <div class="m-button m-button-winner m-button-winner--kabala" href="javascript:void(0)"><span>Ent&eacute;rate m&aacute;s</span></div>
+    </div>
+    <picture>
+        <source srcset="./layer-view-image/game/kabala/live/bg-banner-winner-kabala.png 1x, ./layer-view-image/game/kabala/live/bg-banner-winner-kabala@2x.png 2x" />
+        <img class="m-banner-lot__bg" src=" ./layer-view-image/game/kabala/live/bg-banner-winner-kabala.png " alt="kabala" />
+    </picture>
+</a>
+<a class="m-banner-winner m-kabala m-banner-winner__chau-chamba open-winners-popup" href="javascript:void(0)" id="m-chau-chamba">
+    <div class="m-banner-winner__content">
+        <h3 class="m-title m-banner-winner__title">&iexcl;Revent&oacute;!</h3>
+        <picture class="m-banner-winner__logo">
+            <source srcset="./layer-view-image/game/kabala/live/logo-chau-chamba-banner.png 1x, ./layer-view-image/game/kabala/live/logo-chau-chamba-banner@2x.png 2x" media="(min-width: 1024px)" type="image/png" />
+            <img srcset="./layer-view-image/game/kabala/live/logo-chau-chamba-banner.png 1x, ./layer-view-image/game/kabala/live/logo-chau-chamba-banner@2x.png 2x" />
+        </picture>
+        <div class="m-button m-button-winner m-button-winner--chau-chamba" href="javascript:void(0)"><span>Ent&eacute;rate m&aacute;s</span></div>
+    </div>
+    <picture>
+        <source srcset="./layer-view-image/game/kabala/live/bg-banner-winner-chau-chamba.png 1x, ./layer-view-image/game/kabala/live/bg-banner-winner-chau-chamba@2x.png 2x" />
+        <img class="m-banner-lot__bg" src=" ./layer-view-image/game/kabala/live/bg-banner-winner-chau-chamba.png " alt="kabala" />
+    </picture>
+</a>
+<a class="m-banner-winner m-kabala m-banner-winner__kabala open-winners-popup" href="javascript:void(0)" id="m-kabala-chau-chamba">
+    <div class="m-banner-winner__content">
+        <h3 class="m-title m-banner-winner__title">&iexcl;Revent&oacute;!</h3>
+        <div class="m-logos">
+            <picture class="m-banner-winner__logo">
+                <source srcset="./layer-view-image/game/kabala/live/logo-kabala-banner.png 1x, ./layer-view-image/game/kabala/live/logo-kabala-banner@2x.png 2x" media="(min-width: 1024px)" type="image/png" />
+                <img class="m-popup-count-down__bg" srcset="./layer-view-image/game/kabala/live/logo-kabala-banner.png 1x, ./layer-view-image/game/kabala/live/logo-kabala-banner@2x.png 2x" />
+            </picture>
+            <picture class="m-banner-winner__logo">
+                <source srcset="./layer-view-image/game/kabala/live/logo-chau-chamba-banner.png 1x, ./layer-view-image/game/kabala/live/logo-chau-chamba-banner@2x.png 2x" media="(min-width: 1024px)" type="image/png" />
+                <img srcset="./layer-view-image/game/kabala/live/logo-chau-chamba-banner.png 1x, ./layer-view-image/game/kabala/live/logo-chau-chamba-banner@2x.png 2x" />
+            </picture>
+        </div>
+        <div class="m-button m-button-winner m-button-winner--kabala" href="javascript:void(0)"><span>Ent&eacute;rate m&aacute;s</span></div>
+    </div>
+    <picture>
+        <source srcset="./layer-view-image/game/kabala/live/bg-banner-winner-kabala.png 1x, ./layer-view-image/game/kabala/live/bg-banner-winner-kabala@2x.png 2x" />
+        <img class="m-banner-lot__bg" src=" ./layer-view-image/game/kabala/live/bg-banner-winner-kabala.png " alt="kabala" />
+    </picture>
+</a>
+<a class="m-banner-lot m-banner-count-down open-count-down-popup" href="javascript:void(0)">
+    <div class="m-banner-count-down__title m-title banner-title-count">El sorteo comienza en</div>
+    <div class="m-count-down m-banner-count-down__counter">
+        <div>
+            <span id="hours">00</span>
+            <p>Horas</p>
+        </div>
+        <span>:</span>
+        <div>
+            <span id="minutes">00</span>
+            <p>Minutos</p>
+        </div>
+        <span>:</span>
+        <div>
+            <span id="seconds">00</span>
+            <p>Segundos</p>
+        </div>
+    </div>
+    <picture>
+        <source srcset="./layer-view-image/game/kabala/live/bg-banner-start-lot.png 1x, ./layer-view-image/game/kabala/live/bg-banner-start-lot@2x.png 2x" />
+        <img class="m-banner-count-down__bg" src=" ./layer-view-image/game/kabala/live/bg-banner-start-lot.png " alt="kabala" />
+    </picture>
+</a>
+<a class="m-banner-lot m-banner-video open-video-popup" href="javascript:void(0)">
+    <div class="m-banner-count-down__title m-title banner-title-video">El sorteo ya comenz&oacute;</div>
+    <div class="m-button m-button-red" href="javascript:void(0)">
+        <picture>
+            <source srcset="./layer-view-image/game/kabala/live/icon-video.png 1x, ./layer-view-image/game/kabala/live/icon-video@2x.png 2x" />
+            <img class="m-banner-lot__bg" src=" ./layer-view-image/game/kabala/live/icon-video.png " />
+        </picture>
+        <span>Ir al sorteo en vivo</span>
+    </div>
+    <picture>
+        <source srcset="./layer-view-image/game/kabala/live/bg-banner-start-lot.png 1x, ./layer-view-image/game/kabala/live/bg-banner-start-lot@2x.png 2x" />
+        <img class="m-banner-lot__bg" src=" ./layer-view-image/game/kabala/live/bg-banner-start-lot.png " alt="kabala"/>
+    </picture>
+</a>
+<a class="m-banner-lot m-banner-notice open-error-popup" href="javascript:void(0)">
+    <div class="m-banner-count-down__title m-title banner-title-notice">Pronto regresaremos con el sorteo</div>
+    <div class="m-button m-button-notice" href="javascript:void(0)"><span>Ent&eacute;rate m&aacute;s aqu&iacute;</span></div>
+    <picture>
+        <source srcset="./layer-view-image/game/kabala/live/bg-banner-start-lot.png 1x, ./layer-view-image/game/kabala/live/bg-banner-start-lot@2x.png 2x" />
+        <img class="m-banner-lot__bg" src=" ./layer-view-image/game/kabala/live/bg-banner-start-lot.png " alt="kabala"/>
+    </picture>
+</a>

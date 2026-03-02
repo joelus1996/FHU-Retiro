@@ -1,0 +1,261 @@
+@font-face {
+  font-family: 'ilot';
+  src: url("../common/fonts/ilot.eot?dy7ume");
+  src: url("../common/fonts/ilot.eot?dy7ume#iefix") format("embedded-opentype"), url("../common/fonts/ilot.ttf?dy7ume") format("truetype"), url("../common/fonts/ilot.woff?dy7ume") format("woff"), url("../common/fonts/ilot.svg?dy7ume#ilot") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.ioverlay {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  display: none;
+}
+
+.ioverlay .modal {
+  width: 90%;
+  max-width: 590px;
+  position: absolute;
+  z-index: 220;
+  left: 50%;
+  top: 50%;
+  margin-bottom: 5%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ioverlay .modal.is-success .modal__head, .modal.is-error .modal__head, .modal.is-info .modal__head {
+  width: 100%;
+  height: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding-left: 35px;
+  padding-right: 35px;
+  color: #fff;
+  font-family: "Avenir", sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 120%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #07663a;
+}
+
+.ioverlay .modal.is-success .modal__boby, .modal.is-error .modal__boby, .modal.is-info .modal__boby {
+  color: #5A5A5A;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 40px 9.375% 45px;
+  background: #F2F2F2;
+  padding-left: 0px;
+  text-align: justify;
+  padding-top: 10px;
+}
+
+.ioverlay .modal.is-success .modal__boby p, .modal.is-error .modal__boby p, .modal.is-info .modal__boby p {
+  margin-top: 0;
+  text-align: center;
+}
+
+.ioverlay .modal.is-success .modal__links, .modal.is-error .modal__links, .modal.is-info .modal__links {
+  padding: 15px 30px 0;
+  text-align: center;
+}
+
+.ioverlay .modal.is-success .modal__links a, .modal.is-error .modal__links a, .modal.is-info .modal__links a {
+  display: inline-block;
+  font-family: "Avenir", sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  color: #1BBFF2;
+  text-decoration: underline;
+  padding-right: 24px;
+  position: relative;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.ioverlay .modal.is-success .modal__links a::before, .modal.is-error .modal__links a::before, .modal.is-info .modal__links a::before {
+  font-family: 'ilot' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e901';
+  display: block;
+  position: absolute;
+  font-size: 20px;
+  right: 0;
+  top: 1px;
+  pointer-events: none;
+}
+
+.ioverlay .modal.is-success .modal__links span, .modal.is-error .modal__links span, .modal.is-info .modal__links span {
+  text-decoration: underline;
+}
+
+.ioverlay .modal.is-error .modal__head {
+  background: #006841;
+}
+
+.ioverlay .modal.is-error .btn {
+  width: 100%;
+  max-width: 216px;
+  margin: 25px auto 0;
+}
+
+.ioverlay .modal.is-info {
+  max-width: 650px;
+}
+
+.ioverlay .modal.is-info .modal__head {
+  height: 110px;
+  font-size: 24px;
+}
+
+.ioverlay .modal.is-info .btn {
+  width: 100%;
+  max-width: 216px;
+  margin: 25px auto 0;
+}
+
+.modal__boby ul{
+	list-style: none;
+}
+
+.modal__boby ul li::before {
+	content: "\2022";  
+  	color: #006841; 
+  	font-weight: bold; 
+  	display: inline-block; 
+  	width: 1em; 
+  	margin-left: -1em;
+}	
+
+.mod__text4 {
+  font-family: "Avenir", sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+  color: #1BBFF2;
+  text-decoration: underline;
+}
+
+.mod__text4.is-charge {
+  padding-right: 24px;
+  position: relative;
+  cursor: pointer;
+}
+
+.mod__text4.is-charge::before {
+  font-family: 'ilot' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e900';
+  display: block;
+  position: absolute;
+  font-size: 18px;
+  right: 0px;
+  top: 0px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.mod__text4.is-regresar::before {
+  font-family: 'ilot' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e902';
+  display: block;
+  position: absolute;
+  font-size: 18px;
+  right: 550px;
+  top: 275px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.mod__text4.is-charge.opened::before {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.icon-regresar:before {
+    content: "\e902";
+}
+
+.pop-up__close {
+    position: absolute;
+    top: 170px;
+    right: 458px;
+    width: 32px;
+    height: 15px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    z-index: 10;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0;
+    color: #fff;
+    background: transparent url(../../layer-view-image/client/icon-close-pop.svg) no-repeat 50% 50%;
+    background-size: 20px;
+    display: block !important;
+}
+
+.mensaje-notificacion{
+	margin-left: 20px; 
+	margin-right: 20px; 
+	position: absolute; 
+	top: 56px; 
+	right: 216px; 
+	z-index: 10; 
+	width: 355px;
+}
+
+@media (max-width: 1370px) and (max-height: 770px) {
+  .pop-up__close {
+  	top: 130px;
+    right: 372px;
+  }
+}
+
+@media (min-width: 1370px) {
+  .mensaje-notificacion{
+  	right: 300px; 
+  }
+}

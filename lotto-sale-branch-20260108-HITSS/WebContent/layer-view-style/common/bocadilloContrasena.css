@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'ilot';
+  src: url("../common/fonts/ilot.eot?dy7ume");
+  src: url("../common/fonts/ilot.eot?dy7ume#iefix") format("embedded-opentype"), url("../common/fonts/ilot.ttf?dy7ume") format("truetype"), url("../common/fonts/ilot.woff?dy7ume") format("woff"), url("../common/fonts/ilot.svg?dy7ume#ilot") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.link__security_pass a{
+    color: #07663a;
+    border-bottom: solid 1px #07663a;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: AllerBold, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.link__security_pass a:hover {
+    border-bottom: none;
+}
+
+.icon-security-pass:before {
+    content: "\e90f";
+    font-size: 18px;
+    color: #07663a;
+    vertical-align: middle;
+    margin-right: 5px;
+    font-family: 'ilot' !important;
+    line-height: 1;
+}
+
+.bocadillo-security-pass {
+    position: relative;
+    height: 180px;
+    width: 250px;
+    background: #F7F7F7;
+    border: solid 1px #07663a;
+    bottom: 34px;
+}
+
+.bocadillo-security-pass p {
+    color: #07663a;
+    font-size: 11px;
+    font-weight: 500;
+    margin: 0px 0px 0px 15px;
+    text-align: left;
+    padding-top: 10px;
+    line-height: 0.5;
+}
+
+.close-popup-security-pass, .close-popup-security-pass:hover {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    -webkit-transition: all 200ms;
+    font-size: 25px;
+    color: #07663a;
+    width: 0.5em;
+    line-height: 0.8em;
+    margin-left: -0.5em;
+    text-decoration: none;
+    font-family: ui-monospace;
+    cursor: pointer;
+    font-weight: 600;
+}

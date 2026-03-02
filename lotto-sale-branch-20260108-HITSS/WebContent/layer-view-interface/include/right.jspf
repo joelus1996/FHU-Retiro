@@ -1,0 +1,35 @@
+<div id="panel_2">
+	<div class="banner1">
+ 		<a href="http://m.latinka.com.pe/q.html" title="Instala ahora tu App La Tinka" target="_blank">
+             <img alt="App La Tinka" src="layer-view-image/common/banner-ecommerce.png">
+        </a>
+<!--        <a id="tyc-promo-tinka-i" href="promo-tinka-terminos-y-condiciones.html" title="Ver Términos y condiciones">-->
+<!--            <img alt="App La Tinka" src="layer-view-image/common/ban-promocion-tinka.gif">-->
+<!--        </a>-->
+	</div>
+	<div class="banner2">
+		<div class="tit1">¡JUEGA Y GANA!</div>
+		<div class="ba_superior">
+			<!-- a href="#"></a -->
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="235" height="165">
+                <param name="wmode" value="transparent">
+                <param name="movie" value="layer-view-media/common/max.swf" />
+                <param name="quality" value="high" />
+                <embed src="layer-view-media/common/ban-clicygana.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+                    type="application/x-shockwave-flash" width="235" height="165" wmode="transparent"></embed>
+            </object>
+		</div>
+		<div class="ba_inferior">
+			<!-- a href="#"></a -->
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="235" height="165">
+                <param name="wmode" value="transparent">
+                <param name="movie" value="layer-view-media/common/ban-deportesvirtuales.swf" />
+                <param name="quality" value="high" />
+                <embed src="layer-view-media/common/deportes.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+                    type="application/x-shockwave-flash" width="235" height="165" wmode="transparent"></embed>
+            </object>
+		</div>
+	</div>
+</div>

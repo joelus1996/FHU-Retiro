@@ -1,0 +1,73 @@
+<%@ page pageEncoding="UTF-8" %>
+<div id="sangria">
+<!-- 	<div class="WebContentContainer" class="group"> -->
+		<div class="HomeNavigationMenu">
+			<div id="menu-content">
+				<div id="main-nav">
+					<ul class="main-nav-list">
+						<li class="main-nav-list-item" id="menu-item-1">
+                        <a href="juega-tinka.html">juegos de<br>lotería</a>
+							<ul class="subnav-list">
+                                <li class="subnav-list-item" id="menu-item-1-1"><a href="juega-tinka.html">tinka</a></li>
+								<li class="subnav-list-item" id="menu-item-1-2"><a href="juega-kabala.html">kábala</a></li>
+                                <li class="subnav-list-item" id="menu-item-1-3"><a href="juega-ganadiario.html">gana diario</a></li>
+                                <li class="subnav-list-item" id="menu-item-1-4"><a href="juega-kinelo.html" title="Juega Kinelo">kinelo</a></li>
+							    <!-- li class="subnav-list-item" id="menu-item-1-5"><a href="${lotocardSrv}i.do?m=reventon">el reventón</a></li -->
+							</ul>
+						</li>
+					<%--	<li class="main-nav-list-item" id="menu-item-4">
+							<a href="juega-kinelo.html">loterías<br>rápidas</a>
+							<ul class="subnav-list">
+								<li class="subnav-list-item" id="menu-item-4-1"><a href="juega-kinelo.html" title="Juega Kinelo">kinelo</a></li>
+								<li class="subnav-list-item" id="menu-item-4-2">
+                                    <a href="juega-giromagico.html">
+                                        <img src="layer-view-image/common/ico_nuevo.png" height="14px" width="43px" style="margin-top:-2px;">
+                                        giro mágico
+                                    </a>
+                                </li>
+                                <li class="subnav-list-item" id="menu-item-4-3"><a href="juega-fechaza.html">fechaza</a></li>
+								<c:choose>
+			    					<c:when test="${isSuper3Sale == true}"> 
+                                		<li class="subnav-list-item" id="menu-item-4-4"><a href="juega-super3.html">súper 3</a></li>
+			    					</c:when> 
+			                    	<c:otherwise>
+			                    	</c:otherwise>
+		                    	</c:choose>
+                                
+							</ul>
+						</li> --%>
+						<li class="main-nav-list-item" id="menu-item-2">
+							<a href="juega-ganagol.html">apuestas<br>deportivas</a>
+							<ul class="subnav-list">
+                                <li class="subnav-list-item" id="menu-item-2-1"><a href="juega-ganagol.html">ganagol</a></li>
+                                <li class="subnav-list-item" id="menu-item-2-2"><a class="hand" onclick="toTAV2();">te apuesto*</a></li>
+                                <li class="subnav-list-item" id="menu-item-2-3"><a href="#" id="game_lapolla_show_menu" onclick="toLaPolla();">la polla del mundial</a></li>
+                                <li class="subnav-list-item" id="menu-item-2-4"><a class="hand" id="game_tav2_show_menu" onclick="toTAV2();">te apuesto</a></li>
+							</ul>
+						</li>
+												
+						<c:if test="${isDeportesvirtualesSale == true}">
+							<li class="main-nav-list-item" id="menu-item-5">
+								<!-- img width="43px" height="14px" style="position: absolute; margin: 11px 1px 0px 89px;" src="layer-view-image/common/ico_nuevo.png" alt="nuevo" -->
+								<a href="juega-deportesvirtuales.html"><span style="padding-right:5px;">deportes</span><br><span style="padding-right:5px">virtuales</span></a>
+								<ul class="subnav-list">
+									<li class="subnav-list-item" id="menu-item-5-1"><a href="juega-deportesvirtuales.html">deportes virtuales</a></li>
+								</ul>
+							</li>
+						</c:if>
+
+						<!-- li class="main-nav-list-item" id="menu-item-3">
+                            <a href="juega-clicygana.html">juegos<br>instantáneos</a>
+							<ul class="subnav-list">
+                                <li class="subnav-list-item" id="menu-item-3-1"><a href="juega-clicygana.html">clic & gana</a></li>
+                                <li class="subnav-list-item" id="menu-item-3-2"><a href="juega-rapitinkas.html">rapitinkas</a></li>
+							</ul>
+						</li -->
+					</ul>
+				</div>
+			</div>
+		</div>
+<!-- 	</div> -->
+    <a href="volver.html" id="back_previous">volver a la versión anterior</a>
+	<div id="ic_18"></div>
+</div>

@@ -1,0 +1,59 @@
+fieldset{border:0;margin:0;padding:0}
+.group:after{content:'';display:table;clear:both}
+.hidden{display:none}
+.prominent{color:#5f5e5e;font-weight:bold}
+:-moz-placeholder{color:#999999}
+::-moz-placeholder{color:#999999}
+:-ms-input-placeholder{color:#999999}
+::-webkit-input-placeholder{color:#999999}
+#self-control{float:left;font-size:12px;margin:7px 0 0 32px;position:relative;width:614px}
+#self-control a{color:#666666}
+#self-control a:active{color:#ff7107}
+#self-control .tab-title{background-color:#ffffff;border-radius:7px 7px 0 0;color:#f9710f;font-size:18px;margin:0;text-transform:uppercase;width:240px}
+#self-control .tab-title .tab-title-content{background-image:url(../../layer-view-image/client/img-micuenta.png);background-repeat:no-repeat;background-position:14px -326px;color:#f9710f;display:block;padding:8px 20px 0 60px}
+#self-control .content{background-color:#ffffff;border-radius:0 0 7px 7px;padding:10px 0;position:relative}
+#self-control .information,
+#self-control .inner-content,
+#self-control .sub-title,
+#self-control .terms,
+#self-control .other{margin:0 auto;width:572px}
+#self-control .inner-content{padding:25px 0 0 0}
+#self-control .sub-title{color:#5f5e5e}
+#self-control .content .sub-title{margin:15px auto 5px}
+.information{color:#818181;line-height:18px;text-align:justify;width:580px}
+.bounds{background:#dadadc;border-radius:10px;color:#5f5e5e;height:170px;font-size:11px;padding:0 15px;position:relative;vertical-align:top;width:250px}
+.response{display:none;margin:15px 0 0 0}
+.response.received{display:block}
+.response p{margin:0}
+#money-control{float:left}
+#time-control{float:right}
+#money-control .icon,
+#time-control .icon{background-color:transparent;background-image:url(../../layer-view-image/client/money-time.png?v=2);border-radius:50%;font-size:0;height:52px;left:-2px;position:absolute;top:-20px;width:52px}
+#money-control .icon{background-position:left top}
+#time-control .icon{background-position:right top}
+#money-control fieldset,
+#time-control fieldset{text-align:left;padding:0 0 0 40px}
+#money-control fieldset label,
+#time-control fieldset label{font-weight:bold}
+#time-control .select{display:none}
+.instructions{font-weight:bold;margin:13px 0 12px;padding:0 0 0 40px}
+.custom-select{cursor:default;font-size:12px;padding-right:20px!important;position:relative}
+.custom-select:after{background:transparent;border-color:#000000 transparent transparent transparent;border-style:solid;border-width:4px;content:'';height:0;position:absolute;top:12px;right:6px;width:0}
+.custom-select:focus{border:1px solid red}
+.text-in,
+.custom-select{background-color:#f4f9ff;border:1px solid #b9dbff;box-sizing:border-box;border-radius:5px;display:inline-block;line-height:16px;margin:0 10px 0 5px;min-height:16px;width:70px;padding:6px 5px;vertical-align:middle;transition:all .3s ease}
+.text-in:hover,
+.custom-select:hover{border:1px solid #abcff4}
+.text-in:focus,
+.custom-select:focus{border:1px solid #89d4ff;box-shadow:0 0 5px 0 rgba(0,0,0,.2) inset, 0 0 5px 0 #ffffff}
+.option-list{background-color:#f4f9ff;border:1px solid #b9dbff;border-radius:0 0 5px 5px;box-shadow:1px 2px 5px 0 #c4c4c4;display:none;font-size:12px;left:0;list-style:none;margin:0;max-height:200px;min-width:50px;overflow-y:auto;padding:0;position:absolute;top:28px;z-index:10}
+.option-list.open{display:block}
+.option-list .option-item{cursor:default;padding:1px 20px 1px 5px;white-space:nowrap}
+.option-list .option-item:hover{background-color:#b9dbff}
+.option-list .option-item.on{background-color:#a8d7ff}
+.btn-save{background-color:#dadadc;background-image:url(../../layer-view-image/client/btn-save.png);background-position:center top;border:0;color:#ffffff;font-weight:bold;letter-spacing:0px;height:30px;padding:0;text-align:center;width:80px}
+#self-control .placeholder{color:#999999}
+#self-control .terms{font-size:11px;margin:12px auto 50px}
+#self-control .terms .sub-title{margin:15px auto 0}
+#self-control .terms .condition-list{color:#818181;list-style-type:none;margin:0 0 0 2px;padding:0 0 0 8px;position:relative}
+#self-control .terms .condition-list li:before{content:'-';position:absolute;left:0}

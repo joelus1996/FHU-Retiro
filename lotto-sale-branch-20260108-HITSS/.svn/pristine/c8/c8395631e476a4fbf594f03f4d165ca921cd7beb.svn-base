@@ -1,0 +1,362 @@
+/*PASO 1: Elige tu Clic y Ganas*/
+#background {
+	background-color: #C8C6C4;
+}
+
+#banner {
+	background-image: url(../../../layer-view-image/game/clicygana/banner_clicygana.png);
+	border-radius: 0 0 6px 6px;
+	height: 60px;
+	width: 614px;
+	margin-top: -5px;
+}
+
+#clicygana {
+	margin: 0 0 0 32px;
+	width: 614px;
+	float: left;
+	position: relative;
+}
+
+.transition-one {
+	background-color: #FFFFFF;
+	background-image: url(../../../layer-view-image/game/clicygana/transition-one-two.png);
+	background-position: center 0;
+	background-repeat: no-repeat;
+	border-radius: 5px 5px 0 0;
+	height: 31px;
+	margin-top: 6px;
+	padding-right: 7px;
+	width: 344px;
+}
+
+.transition-two {
+	background-color: #FFFFFF;
+	background-image: url(../../../layer-view-image/game/clicygana/transition-one-two.png);
+	background-position: center -29px;
+	background-repeat: no-repeat;
+	border-radius: 5px 5px 0 0;
+	height: 31px;
+	margin-top: 6px;
+	padding-right: 7px;
+	width: 344px;
+}
+
+#content {
+	background-color: #ffffff;
+	border-radius: 0 6px 6px 6px;
+	padding: 9px 0 0 0
+}
+
+#help {
+	background-image: url("../../../layer-view-image/common/ayuda-off.png");
+	cursor: pointer;
+    height: 18px;
+    position: absolute;
+    top: 74px;
+    right: 12px;
+    width: 54px;
+    display: block !important;
+}
+
+#help:hover {
+	background-image: url("../../../layer-view-image/common/ayuda-on.png");
+}
+
+#menu {
+	padding: 0;
+}
+
+#instant {
+	/*background: #00abcf;*/
+	background-image: -moz-linear-gradient(top, #4ed0ec 9%, #00abcf 69%);
+	background-image: -o-linear-gradient(top, #4ed0ec 9%, #00abcf 69%);
+	background-image: -webkit-gradient(linear, top, #4ed0ec 9%, #00abcf 69%);
+	background-image: linear-gradient(top, #4ed0ec 9%, #00abcf 69%);
+	background-image: -webkit-linear-gradient(top, #4ed0ec 9%, #00abcf 69%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4ed0ec, endColorstr=#00abcf, gradientType=0);
+	float: left;
+	width: 303px
+}
+
+#scrape {
+	/*  background: #a5b928;*/
+	background-image: -moz-linear-gradient(top, #cbda6b 9%, #a5b928 69%);
+	background-image: -o-linear-gradient(top, #cbda6b 9%, #a5b928 69%);
+	background-image: -webkit-gradient(linear, top, #cbda6b 9%, #a5b928 69%);
+	background-image: linear-gradient(top, #cbda6b 9%, #a5b928 69%);
+	background-image: -webkit-linear-gradient(top, #cbda6b 9%, #a5b928 69%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cbda6b, endColorstr=#a5b928, gradientType=0);
+	float: right;
+	width: 304px;
+	height: 25px;
+	text-align: center;
+}
+
+#menu li {
+	height: 25px;
+	text-align: center;
+	border-radius: 4px 4px 0 0;
+}
+
+#menu li a {
+	color: #FFFFFF;
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	/*line-height: 25px;*/
+}
+
+#choose-content a {
+	text-decoration: none
+}
+
+#menu span {
+	background: url("../../../layer-view-image/game/clicygana/tit-juegos.png") no-repeat;
+	cursor: pointer;
+	display: block;
+	height: 16px;
+	margin: 0 auto;
+	padding: 6px 0 0 24px
+}
+
+#image-instant {
+	background-position: 0 1px !important;
+	width: 160px
+}
+
+#image-scrape {
+	background-position: 0 -28px !important;
+	width: 130px
+}
+
+#instant-games {
+	background: #00abcf;
+	height: 351px;
+	padding: 11px;
+	border-radius: 0 0 6px 6px;
+}
+
+#scrape-games {
+	background: #a5b928;
+	height: 351px;
+	padding: 11px;
+	border-radius: 0 0 6px 6px;
+}
+
+.content-game {
+	background-color: #ffffff;
+	border-radius: 6px;
+	height: 351px;
+	width: 592px;
+}
+
+ul {
+	padding: 0;
+}
+
+#menu-instant-games li:last-child {
+	border-width: 0;
+}
+
+/*.sub-menu{
+   background-image: -moz-linear-gradient(top , #69d1e7 9%, #02a0c2 69%);
+    background-image: -o-linear-gradient(top , #69d1e7 9%, #02a0c2 69%);
+    background-image: -webkit-gradient(linear,top , #69d1e7 9%, #02a0c2 69%);
+    background-image: linear-gradient(top , #69d1e7 9%, #02a0c2 69%);
+    background-image: -webkit-linear-gradient(top , #69d1e7 9%, #02a0c2 69%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#69d1e7, endColorstr=#02a0c2, gradientType=0);
+    border-radius: 6px;
+    display: inline-block;
+}  */
+.separator {
+	margin: 0 8px;
+}
+
+#choose-content .sub-menu {
+	text-decoration: none;
+	padding: 5px 20px;
+	font-weight: bold;
+	display: inline-block;
+	color: #989797;
+}
+
+#menu-instant-games {
+	color: #989797;
+	padding: 6px 0 14px 6px;
+}
+
+#menu-scrape-games {
+	color: #989797;
+	padding: 6px 0 14px 6px;
+}
+
+#choose-content .selected-sub-menu {
+	background-image: -moz-linear-gradient(top, #69d1e7 9%, #02a0c2 69%);
+	background-image: -o-linear-gradient(top, #69d1e7 9%, #02a0c2 69%);
+	background-image: -webkit-gradient(linear, top, #69d1e7 9%, #02a0c2 69%);
+	background-image: linear-gradient(top, #69d1e7 9%, #02a0c2 69%);
+	background-image: -webkit-linear-gradient(top, #69d1e7 9%, #02a0c2 69%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#69d1e7, endColorstr=#02a0c2, gradientType=0);
+	border-radius: 6px;
+	color: #ffffff;
+}
+
+#choose-content h3 {
+	margin: 0;
+}
+
+.item-game {
+	float: left;
+	margin: 0 30px 15px 0;
+	width: 113px;
+}
+
+.item-game span {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	color: #454444;
+	font-size: 12px;
+}
+
+.tab {
+	margin: 0 auto;
+	width: 542px;
+	height: 279px;
+	overflow: hidden;
+}
+
+.item-game:nth-child(4n) {
+	margin-right: 0;
+}
+
+#choose-content .page {
+	color: #989797;
+	margin: 0 1px;
+	padding: 0 3px;
+}
+
+#choose-content .page-selected {
+	cursor: default;
+	text-decoration: none;
+	color: #FF6600;
+	font-weight:bold;
+}
+
+#choose-content .page-no-selected {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.pagination {
+	margin: 8px auto;
+	text-align: right;
+	width: 542px;
+	color: #989797;
+}
+
+.index_page {
+	margin-right: 20px
+}
+
+.content_pages:before {
+	content: '<';
+	margin: 0 4px 0 0
+}
+
+.content_pages:after {
+	content: '>';
+	margin: 0 0 0 4px
+}
+#prize{
+    color: #1E0F03;
+    font-family: 'Myriad Pro',sans-serif;
+    font-weight: bold;
+    left: 92px;
+    position: relative;
+    text-align: center;
+    top: 12px;
+    width: 350px;
+}
+#horary{
+    bottom: 26px;
+    color: #0599C5;
+    font-family: 'Arial',sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    left: 454px;
+    position: relative;
+    text-align: center;
+    width: 118px;
+
+}
+#prize_message1{
+    font-size: 18px;
+}
+#prize_message2{
+    font-size: 11px;
+}
+/*PASO 2: Confirma tu Compra*/
+#reload-balanace {
+	margin: 21px 0 0 12px;
+}
+
+#content-purchase .right-panel .result_purchase {
+	height: 40px;
+}
+
+#content-purchase .left-panel {
+	height: 96px;
+}
+
+#content-purchase #sub_purchase {
+	padding-top: 29px;
+}
+
+#play-panel {
+	border: 0 none;
+	display: none;
+	float: right;
+	margin: 10px 37px 0 0;
+	padding: 0;
+}
+#play-panel #play {
+    background: url(../../../layer-view-image/game/clicygana/btn-jugar.png) no-repeat scroll left top transparent;
+    border: 0 none;
+    float: left;
+    height: 31px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    width: 95px;
+    font-size: 0;
+}
+#play-panel #play:hover {
+	background-position: 0 -42px;
+}
+#game_grid .row_grid{
+	height: 60px;
+}
+#name_game{
+	bottom: 22px;
+	margin: 0 0 0 20px;
+    position: relative;
+}
+#game_grid .column_2 img{
+	 margin-top: 3px;
+}
+#game_grid .row_grid .column_1 {
+    line-height: 60px;
+}
+.row_grid .column_2 {
+    height: 60px;
+    text-align: center;
+    top: 3px;
+}
+
+#game_grid .column_3 {
+    top: 21px;
+    position: relative;
+}
+

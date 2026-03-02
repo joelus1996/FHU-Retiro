@@ -1,0 +1,336 @@
+@charset "utf-8";
+
+.separate-bottun{
+ padding: 1px;}
+.attribute-texarea{
+	 background: #FFF; 
+	 border: 1px solid #e1e1e1; 
+	 border-radius: 10px;
+	 resize: none;
+	 overflow:hidden; 
+	 height: 36px;
+	 padding: 7px;
+	 width: 110px;
+	 font-size:10px;
+	 font-family:Arial;
+	 color:#818181;
+	behavior:url(layer-view-script/common/PIE/PIE.htc);		}
+.attribute-button{
+	background: #e9e6ed; 
+	border: 1px solid #e9e6ed; 
+	height:  14.5px; 
+	width: 124px;
+	cursor:pointer;}
+.attribute-button-on{
+	background: #d6d0dd; 
+	border: 1px solid #d6d0dd; 
+	height:  14.5px; 
+	width: 124px;
+	cursor:pointer;}
+.linear{
+	float: left;}
+.separate-textarea-bottuns{
+	padding: 54px 0px 0px 0px;}
+.separate-textarea-number{
+ 	padding-left: 142px;}
+.icon{
+	padding:4px 6px 10px 5px;}
+.height-div{
+		height:59px;
+		padding: 7px 0 0;}
+.text-play{
+	-pie-background: linear-gradient(right , #007CB6 95%, #0E8BC9 100%, #007CB6 100%);
+	background-image: -o-linear-gradient(right , #007CB6 95%, #0E8BC9 100%, #007CB6 100%);
+	background-image: -moz-linear-gradient(right , #007CB6 95%, #0E8BC9 100%, #007CB6 100%);
+	background-image: -webkit-gradient(linear,right top,left top,color-stop(0.95, #007CB6),color-stop(1, #0E8BC9),color-stop(1, #007CB6));
+	background-image: -webkit-linear-gradient(right , #007CB6 95%, #0E8BC9 100%, #007CB6 100%);
+ 	background: -ms-linear-gradient(right , #007CB6 95%, #0E8BC9 100%, #007CB6 100%);
+    border-radius: 5px 5px 0px 0px ;
+    border-color:#007bb6;
+    height: 18px; 
+	width: 279px;
+	text-align:center;
+	font-family:Arial;
+	font-size:11px;
+	font-weight:bold;
+	color:#FFF;
+	padding: 4px 0px 0px 0px;
+	margin-bottom: 5px;
+	behavior:url(layer-view-script/common/PIE/PIE.htc);	
+	}
+.number-textarea-button{
+	padding: 5px 0px 0px 0px;
+	border-top: 0px;
+	border-left: 2px; 
+	border-right:2px;
+	border-bottom:2px;
+	border-style: dotted; 
+	border-color:#e0e0e0;
+	width: 275px;
+	height:205px;
+	padding-top:0px}
+.margin{
+   height:25px;	
+   padding-left:5px;}
+.text-number{
+	color: #818181;
+    font-family: arial;
+    font-size: 11px;
+    padding-left: 7px;}
+.text-number-marcado{
+	color: #818181;
+    font-family: arial;
+    font-size: 11px;
+    font-weight: bold;}
+.container{
+	   padding: 5px 0 0;}
+.check_{
+	margin-left: 0;
+    margin-right: -1px;}
+.text{
+	 color:#7d6995;
+	 font-family:Arial;
+	 font-size:10px;
+	 font-weight:bold;
+	 vertical-align:top;
+	 padding:10px 1px;}
+		
+.left{
+	 float:left;}
+.right{
+	 padding-left: 287px;}
+.flecha_next{
+
+    background-image:url(../../../layer-view-image/game/ganadiario/jugada_adelante.png);
+	height:22px;
+	width:25px;
+
+    cursor:pointer;}
+.right_flecha{
+	 padding-left:571px;
+	 padding-bottom: 110px;}
+.flecha-next-on{
+	 background-image:url(../../../layer-view-image/game/ganadiario/jugada_selec_adelante.png);
+	height:22px;
+	width:25px;
+    cursor:pointer;
+}
+.play_go_1_2_gd{
+	 background-image:url(../../../layer-view-image/game/ganadiario/jugada_ir_gd%20_1_2.gif);
+	 width:21px;
+	 height:115px;
+	 margin:4.5px 3px;}
+
+.flecha_back{
+    background-image:url(../../../layer-view-image/game/ganadiario/jugada_atras.png);
+	height:22px;
+	width:25px;
+    cursor:pointer;}
+.flecha-back-on{
+    background-image:url(../../../layer-view-image/game/ganadiario/jugada_selec_atras.png);
+	height:22px;
+	width:25px;
+    cursor:pointer;
+}
+.play_go_3_4_gd{
+	 background-image:url(../../../layer-view-image/game/ganadiario/jugada_ir_gd%20_3_4.gif);
+	 width:21px;
+	 height:115px;
+	 margin:4.5px 3px;}
+/*
+.button-buy-off{
+   background-image:url(../../../layer-view-image/game/ganadiario/buy-off.png); 
+   border:0px solid #999; 
+   cursor:pointer; 
+   width:109px;
+   height:30px;
+   border-radius: 8px;
+}
+.button-buy-on{
+   background-image:url(../../../layer-view-image/game/ganadiario/buy-on.png);
+   border:0px solid #999; 
+   cursor:pointer; 
+   height:30px;
+   width:109px;
+   border-radius: 6px;
+}
+*/
+.text-distance{
+  padding-left:442px;
+   }
+.color-text{
+	float:left; 
+	font-size: 11px;
+	font-family: arial;
+	color: #000000;
+	width: 420px;}
+.bold-type{
+	font-weight:bold;}
+.center{
+	padding: 13px 15px;}
+.font{
+	background: none repeat scroll 0% 0% rgb(217, 217, 217); 
+	width: 595px; 
+	height: 56px; 
+	border-radius: 6px;
+	behavior:url(layer-view-script/common/PIE/PIE.htc);	}
+
+
+.font-play{
+position:absolute;
+padding-left:10px;
+background:#FFF; 
+padding-top: 18px;
+width: 602px; 
+height:413px;
+/*z-index:-1;*/
+/*margin-top: -3px;*/
+border-radius: 0px 0px 6px 6px;
+/*behavior:url(layer-view-script/common/PIE/PIE.htc);	*/
+top: 103px;
+	
+}
+
+.gana_diario{
+background:url("../../../layer-view-image/game/ganadiario/banner_ganadiario.png");
+height:60px;
+width:614px;
+border-radius: 0px 0px 6px 6px;
+
+behavior:url(layer-view-script/common/PIE/PIE.htc);	
+}
+
+.font-play-total{
+/*background:#FFF;*/
+/*width: 615px; height: 435px;*/
+}
+
+	/*******/
+	/*imagen de paso*/
+.transition-one{
+   background: #FFF url(../../../layer-view-image/game/ganadiario/transition-one.png)  no-repeat 7px ;
+   width:342px;
+   height:23px;
+   border-radius: 5px 5px 0px 0px;
+    padding-right: 7px;
+    padding-bottom: 8px;
+	behavior:url(layer-view-script/common/PIE/PIE.htc);	
+}
+.transition-two{
+   background: #FFF url(../../../layer-view-image/game/ganadiario/transition-two.png)  no-repeat 7px ;
+   width:342px;
+   height:23px;
+   border-radius: 5px 5px 0px 0px;
+    padding-right: 7px;
+    padding-bottom: 8px;
+	behavior:url(layer-view-script/common/PIE/PIE.htc);	
+}
+	
+/****/
+/*style de combobox*/
+
+div.selectBox {
+	position: relative;
+	width: 124px;
+	height: 18px;
+	border: 1px solid #949494;
+	background: #e4e4e2 url(../../../layer-view-image/game/ganadiario/flecha-combo.png) no-repeat 105px 8px; 
+	border-radius: 5px;
+	font-family:Arial;
+	font-size:10px;
+	top: -2px;
+	behavior:url(layer-view-script/common/PIE/PIE.htc);	}
+
+div.selectBox div.box {
+		position: absolute;
+		left: 6px;
+		top: 1px;
+		width: 124px;
+		height: 18px;
+		line-height: 15px;
+		font-family: arial;
+		font-size: 10px;
+		color:#4e4e4d;
+		overflow: hidden;}
+div.selectBox select{
+		background: #e4e4e2;
+		width: 124px;
+		height: 18px;
+		font-size: 10px;
+		border: 1px solid #949494;
+		opacity: 0;
+		filter: alpha(Opacity=0);
+		-moz-opacity: 0;
+		cursor: pointer;
+		font-size:10px;
+		z-index:1;}
+div.selectBox select option{
+			font-size: 10px;
+			color: #4e4e4d;
+			border-bottom: 1px solid #e4e4e2;
+			cursor: pointer;}
+div.selectBox select option.ultimo{
+			border-bottom: 0px none;}
+	
+.help-off{
+	background:url(../../../layer-view-image/game/ganadiario/ayuda-off.png);
+	cursor:pointer;
+	margin-top: -25px;
+	width:55px;
+	margin-left:550px;
+	height: 19px;
+	}
+	
+.help-on{
+	background:url(../../../layer-view-image/game/ganadiario/ayuda-on.png);
+	cursor:pointer;
+	width:55px;
+	margin-left:550px;
+	margin-top: -25px;
+	height: 19px;}
+.visible{
+	position: absolute;
+	visibility: hidden;
+	width: 0px;
+	height: 0px;}
+#premio{
+	color: #522278;
+    font-family: 'Myriad Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+    #aviso{
+    color: #005B84;
+font-family: Myriad Pro;
+font-size: 16px;
+font-weight: bold;
+text-align: center;}
+    
+    #hora-fin-juego{
+   color: #005B84;
+font-family: Myriad Pro;
+font-size: 12px;
+font-weight: bold;
+padding-top: 15px;
+padding-left: 480px;
+    }
+    
+ #hora-ini-juego{
+    color: #005B84;
+	font-family: Myriad Pro;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 8px;
+	padding-left: 480px;
+    }
+    
+    
+#center-text-time{
+padding-left: 5px;
+}	
+
+#center-text{
+float: left;
+margin-left: 190px;
+}
+		

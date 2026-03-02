@@ -1,0 +1,476 @@
+.term-condiciones-cyber{
+	color: #000000;
+    font-family: arial;
+    font-size: 11px;
+    font-weight: bold;
+    left: -249px;
+    margin-top: 0;
+    position: relative;
+    right: 0;
+    text-decoration: underline;
+    top: 402px;
+	cursor: pointer;
+}
+.reg-cyber{
+	color: #000000;
+    font-family: arial;
+    font-size: 11px;
+    font-weight: bold;
+    left: -249px;
+    margin-top: 0;
+    position: relative;
+    right: 0;
+    text-decoration: underline;
+	cursor: pointer;
+	width: 168px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	height: 25px;
+    left: 365px;
+    top: -151px;
+}
+.style-iframe{
+    display: block;
+    margin-left: 30px;
+    margin-top: 2px;
+}
+
+
+/*   aqui*/
+.content-update-date{
+	width: 620px;
+	/*height: 500px;*/
+	clear: both;
+	background: #FFFFFF;	
+	border-radius: 0 10px 10px 10px;
+	float: left;
+	margin-left: 32px;
+	behavior: url("layer-view-script/common/PIE/PIE.htc");
+}
+.update-date-title{
+	color: #F97312;
+	text-transform: uppercase;
+	background-image: url(../../layer-view-image/png);
+	font-weight: bold;
+	font-size: 16px;
+	width: 336px;
+	height: 25px;
+	background: #ffffff;
+	margin-left: 32px;
+	border-radius: 8px 8px 0 0;
+	margin-top: 10px;
+}
+.contact-icon-title{
+	background-image: url("../../layer-view-image/common/img-micuenta.png");
+	background-repeat: no-repeat;
+	background-position: -49px -168px;
+	width: 37px;
+	height: 24px;
+	display: block;
+	margin-left: 16px;
+	position: relative;
+	top: 7px;
+}
+.update-date-title-text{
+	position: relative;
+	display: block;
+	top: -16px;
+	left: 60px;
+}
+
+.content-update-date-info{	
+	background : url("../../layer-view-image/client/img-premios-actualiza.jpg");
+	background-repeat: no-repeat;
+	width: 580px;
+	height:88px;
+	border-radius: 10px;
+	margin-top: 20px;
+	margin-left: 22px;
+	behavior: url("layer-view-script/common/PIE/PIE.htc");
+}
+
+.contact-icon-ubi{
+	background-image: url("../../layer-view-image/common/img-micuenta.png");
+	background-repeat: no-repeat;
+	background-position: -7px -400px;
+	width: 32px;
+	height: 41px;
+	display: block;
+	position: relative;
+	top: 9px;
+	margin-left: 33px;
+}
+
+.contact-text-ubi{
+	width:270px;
+	clear : both;
+	position: relative;
+	top: -19px;
+	left: 72px;
+	color: #5f5e5e;
+}
+
+.contact-text-call{
+	width:170px;
+	clear : both;
+	position: relative;
+	top: -93px;
+	left: 377px;
+	color: #5f5e5e;
+}
+
+.contact-icon-call{
+	background-image: url("../../layer-view-image/common/img-micuenta.png");
+	background-repeat: no-repeat;
+	background-position: -4px -441px;
+	width: 37px;
+	height: 46px;
+	display: block;
+	position: relative;
+	top: 5px;
+	top: -62px;
+	margin-left: 335px;
+}
+
+.contact-text-form{
+	font-size: 12px;
+	color: #818181;
+	margin-left: 22px;
+	margin-top: 12px;
+	display: block;
+}
+#table1{
+	width: 276px !important;
+	margin-left: 22px;
+}
+
+#frm-update-date table  #clabel{
+	width: 65px !important;
+}
+#max{
+	width: 95.5% !important;
+}
+#last-name-paternal{
+	width: 44.9% !important;
+}
+#switch-document-type{
+	width: 93px !important;
+}
+#document-number{
+	width: 108px !important;
+}
+#switch-year{
+	width: 30.5% !important;
+}
+#switch-region{
+	width: 95.6% !important;
+}
+.movil{
+	position: absolute;
+	display: block;
+	margin-top: 0px !important;
+}
+#frm-update-date .small{
+	width: 97px !important;
+	margin-right: 2% !important;
+}
+#email{
+	width: 95.6% !important;
+}
+h4{
+	margin: 0px 0px 5px 21px;
+	color: #F97312;
+}
+#frm-update-date table .cinputs .gread-box{
+	width: 293px !important;
+}
+
+.personal-data-fields{
+	position: relative;
+}
+.margin-r{
+	/*margin-right: 5px !important;*/
+	margin-left: 21px !important;}
+
+.font-b{
+	margin-left: 5px !important;
+	font-weight: 100 !important;}
+	
+.line{
+	color: #000000;
+	font-size: 12px !important;
+	padding-left: 22px !important;}
+
+.table-opntion{
+	margin-left: 22px;
+}
+.width-td{
+	width: 100px !important;
+}
+.mar-text{
+	margin-left: 17px;
+}
+.text-title-option{
+	font-size: 11px;
+	margin-bottom: 3px;
+	display: block;}
+#text-in{
+	height: 90px;
+	margin-left: 22px;
+	margin-top: 12px;
+	position: relative;
+	width: 555px;
+	display: block;
+}
+.block-none{
+ display: none;
+ opacity: 0;
+ visibility: 0;}
+
+#frm-update-date .account-data-fields, #frm-update-date .personal-data-fields{
+/*margin: 15px 32px 0 0 !important; */
+}
+
+#btn-enviar {
+    background-color: #ffffff;
+    background-image: url(../../layer-view-image/common/btn-enviar.png);
+    background-position: 0 1px;
+    background-repeat: no-repeat;
+    border: 1px solid #ffffff;
+    border-radius: 8px 8px 8px 8px;
+    color: #ffffff;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 34px;
+    padding: 0;
+    text-transform: uppercase;
+    width: 81px;
+	position: relative;
+	margin-left: 496px;
+	top: -24px;
+}
+#btn-enviar:hover { background-position: 0 -34px }
+
+#btn-cancelar {
+    background-color: #ffffff;
+    background-image: url(../../layer-view-image/common/btn-cancelar.png);
+    background-position: 0 1px;
+    background-repeat: no-repeat;
+    border: 1px solid #ffffff;
+    border-radius: 8px 8px 8px 8px;
+    color: #ffffff;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 34px;
+    padding: 0;
+    text-transform: uppercase;
+    width: 81px;
+	top: 10px;
+	position: relative;
+	margin-left: 397px;
+}
+#btn-cancelar:hover { background-position: 0 -34px }
+
+#x-year, #x-day{  max-width : 56px !important; }
+ 
+ #x-month{
+ max-width: 87px !important;
+ max-height: 207px !important;}
+ 
+ #x-document-type{max-width: 130px !important;}
+ 
+ #frm-update-date { position: relative }
+#frm-update-date table { width: 100% }
+#frm-update-date table td { font-size: 0; padding: 0; white-space-collapse: discard }
+#frm-update-date table .clabel { width: 70px }
+#frm-update-date table .clabel.aloft { vertical-align: top }
+#frm-update-date table .cinputs .gread-box { width: 98px }
+#frm-update-date table .cinputs .gread-box td { height: 18px }
+#frm-update-date .account-data-fields { width: 245px }
+#frm-update-date .personal-data-fields { padding: 0 0 0 70px;}
+#frm-update-date .personal-data-fields .cinputs { width: 205px}
+#frm-update-date .account-data-fields,
+#frm-update-date .personal-data-fields {
+    display: inline-block;
+    margin: 14px 0 0 5px;
+    vertical-align: top
+}
+#frm-update-date .account-data-fields label,
+#frm-update-date .personal-data-fields label,
+#frm-update-date .other-fields label {
+    color: #5f5e5e;
+    font-weight: bold;
+    vertical-align: middle
+}
+#frm-update-date .account-data-fields label,
+#frm-update-date .personal-data-fields label {
+    font-size: 11px;
+    line-height: 11px
+}
+#frm-update-date .other-fields label { margin: 0 0 0 10px }
+#frm-update-date .question-mark {
+    color: #666666;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 4px 0 0
+}
+#frm-update-date .other-fields { margin: 15px 0 0 26px}
+
+
+#frm-update-date .internal-label { font-weight: normal!important; margin: 0 10px 0 5px; text-transform: capitalize }
+#frm-update-date .max { width: 99.5% }
+#frm-update-date .min { width: 88px }
+#frm-update-date .small { /*margin: 2px 2% 2px 0;*/ width: 112px }
+#frm-update-date .medium { width: 113px }
+#frm-update-date .half { width: 48.7% }
+#frm-update-date .half:first-child { margin-right: 2%!important; }
+#frm-update-date input { font-size: 12px; margin: 2px 0; vertical-align: middle }
+#frm-update-date .select { left: -9999px; position: absolute }
+#frm-update-date .value-in {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+#frm-update-date #update{
+	background : #ffffff; 
+	background-image: url(../../layer-view-image/common/btn-actualizar.png);
+	background-repeat: no-repeat;	
+	height: 34px;
+	width: 91px;
+	border :0px solid;
+	border-radius: 5px;
+	margin: -31px 0 0 400px
+	}
+#frm-update-date #update:hover{ 
+	background : #ffffff;
+	background-image: url(../../layer-view-image/common/btn-actualizar.png);
+	background-repeat: no-repeat;
+	height: 34px;
+	width: 91px;
+	border : 0px solid;
+	background-position: 0px -40px;
+	border-radius: 5px;
+	}
+#table-style{color: #0681BC;
+		width: 530px;
+		margin-top: 10px;
+	}
+
+#table-style hr{
+	background: none repeat scroll 0 0 #EFEDEE;
+    border: 1px solid #EFEDEE;
+    height: 9px;
+    margin-left: 23px;
+    width: 559px;}
+
+#icon-protegido{
+	background-image: url("http://localhost:8080/lotto-sale/layer-view-style/client/../../layer-view-image/common/img-micuenta.png");
+    background-position: -59px 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    margin: 0 13px 0 34px;
+    position: relative;
+    top: 7px;
+    width: 20px;
+}
+#icon-zona-segura{
+	background-image: url("http://localhost:8080/lotto-sale/layer-view-style/client/../../layer-view-image/common/img-micuenta.png");
+    background-position: -57px -41px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    margin: 0 11px 0 34px;
+    position: relative;
+    top: 7px;
+    width: 23px;
+}
+#icon-saber-zona-segura{
+	background-image: url("http://localhost:8080/lotto-sale/layer-view-style/client/../../layer-view-image/common/img-micuenta.png");
+    background-position: -59px -85px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    margin: 0 16px;
+    position: relative;
+    top: 7px;
+    width: 20px;
+}
+#icon-promociones{
+	background-image: url("http://localhost:8080/lotto-sale/layer-view-style/client/../../layer-view-image/common/img-micuenta.png");
+    background-position: -56px -130px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 24px;
+    margin: 0 16px 0 14px;
+    position: relative;
+    top: 7px;
+    width: 23px;
+}
+
+#table-style td{
+ height: 90px;
+}
+
+#table-style td  > .first-p{
+margin:-18px 0 12px
+}
+
+#separador{
+	background: none repeat scroll 0 0 #EFEDEE !important;
+    border: 1px solid #EFEDEE !important;
+    height: 71px !important;
+    margin: -8px 0 0 -10px !important;
+    width: 0 !important;
+}
+#table-style a:hover{
+color: #0681BC;
+}
+
+#content-message{
+	background-color: #F7F7F7;
+    border-radius: 25px 25px 25px 25px;
+    display: inline-block;
+    height: 240px;
+    margin: 19px 26px 0;
+    text-align: center;
+    width: 555px;
+}
+#content-message .title{
+	color: #f9710f;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 0;
+}
+#content-message .text {
+	color: #818181;
+	font-size: 14px;
+}
+
+
+#content-message  #my-cuenta{
+	background: url("http://localhost:8080/lotto-sale/layer-view-style/client/../../layer-view-image/common/btn-ir-cuenta.png") no-repeat scroll 0 0 #F7F7F7;
+    border: 0 solid;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+    height: 30px;
+	margin: 20px 0 0 226px;
+	width: 104px;
+	}
+#content-message  #my-cuenta:hover{ 
+	background: url("http://localhost:8080/lotto-sale/layer-view-style/client/../../layer-view-image/common/btn-ir-cuenta.png") no-repeat scroll 0 -40px #F7F7F7;
+    border: 0 solid;
+    border-radius: 5px 5px 5px 5px;
+    height: 30px;
+    width: 104px;
+	}
+#term-cond{
+	color: #0681BC;
+    text-decoration: underline;
+}
+

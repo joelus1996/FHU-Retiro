@@ -1,0 +1,27 @@
+.main-tinka {
+  background-color: #fff;
+}
+.tinka-express-iframe {
+  border: 0;
+  width: 100%;
+  min-height: calc(100vh - 64px);
+}
+
+.tinka-express-checkout {
+  display: block;
+  border: none;
+  height: 100vh !important;
+  width: 100vw !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+
+}
+
+.tinka-express-checkout.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+}

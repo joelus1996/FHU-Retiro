@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+    
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+        <property name="hibernate.jdbc.batch_size">0</property>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.Event"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.EventPk"/>
+        
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.Event1"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.EventPk1"/>
+        
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.Item"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ItemPk"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.Client"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientTicketLotos5"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientAddressLog"/>
+        <!-- mapping class="pe.com.intralot.loto.layer.model.pojo.ClientBalance"/ -->
+        <!-- mapping class="pe.com.intralot.loto.layer.model.pojo.ClientBalancePk"/ -->
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.Draw"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.DrawPk"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.TinkaList"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.GanadiarioList"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.GanagolList"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.Super3List"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.KabalaList"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ElreventonList"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.DrawItem"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.DrawItemPk"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.UbicacionTerminal"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.PromoFirstAccount"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedurePutClient"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateDataClient"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdatePassClient"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetPasswordCode"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureResetNewPassword"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.GanagolProcedureBetData"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.GanagolProcedureBetDataMobile"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureTokenGeneration"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetTeApuestoBonusList"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.BalanceProcedureGetWinCup"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetTeApuestoPromoList"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureAccountData"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateClientMail"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureLogin"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.GanadiarioSale"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.KabalaSale"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.KabalaChChSale"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.TinkaSale"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.GanagolSale"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedurePutSmsRegisterData"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateSmsRegister"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdatePhone"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureActivatePromotion"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureCancelPromotion"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureActivatePromotionibk"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureCancelPromotionibk"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureLPTokenGeneration"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureTANTokenGeneration"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureIIVVTokenGeneration"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetGamesBonusList"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetBalanceList"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.UbicacionRedDigital"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureActivateWBPromotion"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureActivateWBPromotionibk"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.KineloProcedureBetData"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetClient"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetDataClient"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.KineloProcedureDrawData"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.TicketProcedureGetClientTicket"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.PinPrinted"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureCodeValidation"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientTutorial"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.BalanceProcedureGetMontoPorDia"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdatePlayerId"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateClientDevice"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateClientFavorite"/>
+    	<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureHisPayment"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetTicketsPrizes"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetTicketsPrizesOld"/>
+        <mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequest"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetDataCollectPrizes"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetCasinoProductList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetRaspayaProductList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetRaspayaProductPriceList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetRaspayaProductPozoList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetRaspayaGameId"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.Parameter"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGenerateTokenPurchaseNumber"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequestVisa"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetResultEvalRulesVisa"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequestVisaAutomatic"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedureaApproveRequestVisa"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedureaRefuseRequestAutomatic"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequestAutomatic"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetResultEvalRulesCash"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedureErrorVisa"/> 
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.BalanceProcedureGetMontoPorDiaAgora"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureAccountDataPart"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetResultEvalRulesAgora"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureInBlackList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureEvalRulesAutomatic"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureEvalRulesAutomaticV2"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetCasinoProductListOrder"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateStateRechargeAgora"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureValidateNewPhoneAgora"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.BalanceProcedureResultEvalRulesAgora"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.BalanceProcedureResultEvalRulesVisa"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetResultEvalRulesTrans"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequestTransAutomatic"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequestTrans"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequestTransV2"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureDDVVTokenGeneration"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureDDVVTokenLogin"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetVirtualesProductList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetVirtualesProductListOrder"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetCasinoProviderList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetCasinoCategoryProviderList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.Departamento"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.Provincia"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.Distrito"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetBicolorPromoList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ListTicketBicolorClient"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetSavingsAccount"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureDeleteAccount"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateClientFavoriteVirtuales"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetVirtualesCategoryProviderList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetVirtualesProviderList"/>	
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureRegisterPopupLottery"/>		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetRaspayaProductListOrder"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateClientFavoriteRaspaya"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetRaspayaCategoryProviderList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetRaspayaProviderList"/>	
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedureYapePlinVerifyTransaction"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ViewFlagPopupSiosi"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureTokenValidation"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateVisaSession"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PromProcedureInsertClient"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PromProcedureGetFlagClient"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PromProcedureGetTicketsClient"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PromProcedureListTicketClient"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PromProcedureListFechaPromo"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureOriginVisaRecharge"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureOriginPefeRecharge"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureOriginBcpRecharge"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureOriginLotocardRecharge"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.BbvaProcedureDefineTransaction"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.BbvaProcedureCheckTransaction"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.BalanceProcedureResultEvalRulesPefe"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.BalanceProcedureResultEvalRulesSpay"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateNovusId"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetNovusId"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureEvalPopupInformativo"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureListPrizesMajor"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetNotifications"/>
+				
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetLastNotifications"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureHasPendingNotificationsRead"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureUpdateNotification"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetLoginData"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdateBonoQr"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PopupInformativo"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedurePayTransactionIzipay"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedureRegisterErrorIzipay"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedureDefineTransactionIzipay"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.Country"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.TransactionPaymentCreatePin"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.TransactionPaymentLogPin"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.TransactionPaymentRequestIp"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.TransactionPaymentValidatePin"/>
+					
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetDataCookie"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedurePasswordNotification"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureUpdatePasswordNotification"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientUpdateProcedureValidateSession"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientUpdateProcedureExpiredSession"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientUpdateProcedureClosedSession"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureRegisterErrorCA"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureRegisterTYCPDPLog"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetSelfcontrol"/>
+
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientSecurityProcedureCheckIp"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientSecurityWhiteList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.GetClientSecurity"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.TicketProcedureGetClientTicketRetail"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureEditSelfcontrol"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ProcedureYapePlinTupayVerifyTransaction"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetBalanceListFilter"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.DeportesvirtualesProcedureGetEventsTraduction"/>
+		
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.TrakingProcedureSaveClientBtag"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureGetLotteryProductList"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetRequestByNumber"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetTokenCard"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureUpdateTokenCard"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureDefineDebitQR"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureCreateRequestAutomaticDQR"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.PaymentPrizeProcedureGetTicketsPrizesDebitQR"/>
+		<mapping class="pe.com.intralot.loto.layer.model.pojo.ClientProcedureUpdatePlayerIdVl"/>
+    </session-factory>
+</hibernate-configuration>

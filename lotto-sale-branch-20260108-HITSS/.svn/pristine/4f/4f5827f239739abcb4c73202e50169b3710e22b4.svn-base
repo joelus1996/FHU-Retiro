@@ -1,0 +1,7 @@
+<%@page import="pe.com.intralot.loto.util.Constants"%>
+<script>
+<% String msg = (String) request.getAttribute(Constants.ALERT_MSG);
+if(msg !=null && !msg.equals("")) {%>
+	jAlert("<%=msg%>",null);
+<%}%>
+</script>

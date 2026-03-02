@@ -1,0 +1,502 @@
+/*--------------super 3------------------*/
+.linear {
+    float: left
+}
+
+.left {
+    float: left
+}
+
+.text-play {
+    -pie-background: linear-gradient(bottom, #76090b 9%, #be361e 69%);
+    background-image: -o-linear-gradient(bottom, #76090b 9%, #be361e 69%);
+    background-image: -moz-linear-gradient(bottom, #76090b 9%, #be361e 69%);
+    background-image: -webkit-gradient(linear, 100% 100%, 100% 0, color-stop(0.09, #76090b), color-stop(0.69, #be361e));
+    background-image: -webkit-linear-gradient(bottom, #76090b 9%, #be361e 69%);
+    background: -ms-linear-gradient(bottom, #76090b 9%, #be361e 69%);
+    border-radius: 5px 5px 0 0;
+    border-color: #be361e;
+    height: 18px;
+    width: 289px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 4px 0 0 0;
+    behavior: url(layer-view-script/common/PIE/PIE.htc)
+}
+
+.number-textarea-button {
+    padding: 5px 0 0 0;
+    border-top: 0;
+    border-left: 2px;
+    border-right: 2px;
+    border-bottom: 2px;
+    border-style: dotted;
+    border-color: #e0e0e0;
+    width: 285px;
+    height: 315px
+}
+
+.order {
+    margin-top: 12px;
+    text-align: left;
+    margin-left: 19px;
+    margin-bottom: 3px;
+    color: #818181;
+    font-size: 10px
+}
+
+.step_one {
+    text-align: center;
+    position: absolute;
+    width: 93px;
+    height: 255px;
+    z-index: 1;
+    margin-left: 3px;
+    -pie-background: linear-gradient(top, #f3d6ce 7%, #ffffff 93%);
+    background-image: -o-linear-gradient(top, #f3d6ce 7%, #ffffff 93%);
+    background-image: -moz-linear-gradient(top, #f3d6ce 7%, #ffffff 93%);
+    background-image: -webkit-gradient(linear, 100% 0, 100% 100%, color-stop(0.07, #f3d6ce), color-stop(0.93, #ffffff));
+    background-image: -webkit-linear-gradient(top, #f3d6ce 7%, #ffffff 93%);
+    behavior: url(layer-view-script/common/PIE/PIE.htc)
+}
+
+.group-number {
+    margin-top: 13px;
+    margin-left: -6px
+}
+
+.text-number {
+    color: #818181;
+    font-size: 10px;
+    padding-left: 3px
+}
+
+.container {
+    padding: 5px 0 0
+}
+
+.margin {
+    height: 25px;
+    padding-left: 5px;
+    position: relative
+}
+
+.separate-textarea-number {
+    margin-top: 5px;
+    padding-left: 82px
+}
+
+.height-div {
+    height: 59px
+}
+
+.text-number-marcado {
+    color: #818181;
+    font-size: 11px;
+    font-weight: bold
+}
+
+.attribute-texarea {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    resize: none;
+    overflow: hidden;
+    height: 75px;
+    padding: 7px;
+    width: 85px;
+    font-size: 10px;
+    color: #818181;
+    behavior: url(layer-view-script/common/PIE/PIE.htc)
+}
+
+.separate-textarea-bottuns {
+    padding: 118px 0 0 0
+}
+
+.attribute-button {
+    background: #f3e9e9;
+    border: 1px solid #f3e9e9;
+    height: 15px;
+    width: 98px;
+    cursor: pointer
+}
+
+.text {
+    color: #7b090b;
+    font-size: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    padding: 0 0 0 1px
+}
+
+.separate-bottun {
+    padding: 1px
+}
+
+.attribute-button:hover {
+    background: #efd6d6;
+    border: 1px solid #efd6d6;
+    height: 15px;
+    width: 98px;
+    cursor: pointer
+}
+
+.icon {
+    padding: 4px 6px 5px 5px
+}
+
+.right {
+    padding-left: 297px
+}
+
+.super3 {
+    background: url("../../../layer-view-image/game/super3/banner_super3.png") no-repeat top left;
+    border-radius: 0 0 6px 6px;
+    float: left;
+    height: auto !important;
+    margin-left: 32px;
+    width: 614px;
+    behavior: url(layer-view-script/common/PIE/PIE.htc)
+}
+
+.check_ {
+    margin-left: 0;
+    margin-right: -1px
+}
+
+.paso {
+    background: url("../../../layer-view-image/game/super3/elige_s3.jpg");
+    height: 35px;
+    width: 285px;
+    margin-top: -5px
+}
+
+.font-play {
+    background: #ffffff;
+    border-radius: 0 6px 6px 6px;
+    height: auto !important;
+    margin-top: -1px;
+    min-height: 370px !important;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    padding-top: 18px;
+    width: 605px;
+    /*z-index: 1;*/
+    /*behavior: url(layer-view-script/common/PIE/PIE.htc)*/
+}
+
+#help {
+    background: url(../../../layer-view-image/common/ayuda.png) no-repeat;
+    background-position: 0 -6px;
+    cursor: pointer;
+    margin-top: -30px;
+    width: 60px;
+    margin-left: 550px;
+    height: 30px;
+    display: block;
+}
+
+#help:hover {
+    background-position: 0 -42px;
+}
+
+.transition-one {
+    background-color: #ffffff;
+    background-image: url(../../../layer-view-image/game/super3/titulo_s3.jpg);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    height: 31px;
+    border-radius: 5px 5px 0 0;
+    padding-right: 7px;
+    margin-top: 65px;
+    behavior: url(layer-view-script/common/PIE/PIE.htc);
+    width: 328px
+}
+
+.transition-two {
+    background-color: #ffffff;
+    background-image: url(../../../layer-view-image/game/super3/titulo_s3.jpg);
+    background-repeat: no-repeat;
+    background-position: center -29px;
+    height: 31px;
+    border-radius: 5px 5px 0 0;
+    padding-right: 7px;
+    margin-top: 65px;
+    behavior: url(layer-view-script/common/PIE/PIE.htc);
+    width: 328px
+}
+
+.linear {
+    float: left
+}
+
+.font {
+    background: none repeat scroll 0 0 rgb(217, 217, 217);
+    width: 595px;
+    height: 56px;
+    border-radius: 6px;
+    margin-top: 380px;
+    behavior: url(layer-view-script/common/PIE/PIE.htc);
+}
+
+.center {
+    padding: 13px 15px
+}
+
+.bold-type {
+    font-weight: bold
+}
+
+.text-distance {
+    padding-left: 442px
+}
+
+.color-text {
+    float: left;
+    font-size: 11px;
+    color: #000000;
+    width: 420px;
+}
+
+div.selectBox {    
+    position: relative;
+    width: 169px;
+    height: 18px;
+    border: 1px solid #949494;
+    background: #e4e4e2 url("../../../layer-view-image/game/kinelo/flecha-combo.png") no-repeat 151px 8px;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 10px;
+    top: 360px;
+    behavior: url(layer-view-script/common/PIE/PIE.htc);
+}
+
+div.selectBox div.box {
+    position: absolute;
+    left: 6px;
+    top: 1px;
+    width: 157px;
+    height: 18px;
+    line-height: 17px;
+    font-family: arial;
+    font-size: 10px;
+    color: #4e4e4d;
+    overflow: hidden;
+}
+
+div.selectBox select {
+    background: none repeat scroll 0 0 #E4E4E2;
+    border: 1px solid #949494;
+    cursor: pointer;
+    font-size: 10px;
+    height: 18px;
+    opacity: 0;
+    width: 169px;
+    z-index: 1;
+    position: absolute;
+    left: 1px;
+    filter: alpha(opacity=0);
+}
+
+div.selectBox select option {
+    font-size: 10px;
+    color: #4e4e4d;
+    border-bottom: 1px solid #e4e4e2;
+    cursor: pointer
+}
+
+div.selectBox select option.ultimo {
+    border-bottom: 0 none
+}
+
+.visible {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0
+}
+
+#center-text {
+    float: left;
+    margin-left: 132px;
+    margin-top: 19px;
+    text-align: center;
+}
+
+#premio {
+    color: #7A090B;
+    font-family: 'Myriad Pro',sans-serif;
+    font-size: 18px;
+    font-weight: bold
+}
+
+#aviso {
+    color: #005b84;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center
+}
+
+#hora-ini-juego {
+    color: #ce3513;
+    font-size: 11px;
+    font-family: Arial;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-left: 480px
+}
+.center-text-time { padding-left: 30px }
+#hora-fin-juego {
+    color: #CE3513;
+    float: left;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 8px 0 0 7px;
+}
+/*cotejador*/
+.datos_enunciado_cotejo_right {
+    margin-left: 26px;
+    margin-top: 70px;
+    font-family: Arial;
+    font-size: 11px;
+    color: #c9240e;
+    font-weight: bold
+}
+
+.datos_enunciado_contenido_cotejo_right {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+
+.datos_enunciado_cotejo_left {
+    margin-left: 250px;
+    margin-top: 70px;
+    font-family: Arial;
+    font-size: 11px;
+    color: #c9240e;
+    font-weight: bold
+}
+
+.cotejadores {
+    font-family: Arial;
+    margin-left: 26px;
+    font-size: 11px;
+    color: #454545
+}
+
+.datos_enunciado_contenido_cotejo_left {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+
+.datos_separador {
+    margin-left: 26px;
+    color: #f1831b;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 26px;
+    margin-bottom: 5px
+}
+
+.logo_super_tres {
+    margin-left: 26px;
+    color: #306d20;
+    font-family: Arial
+}
+
+.calculo_premio {
+    margin-left: 26px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    color: #0681bb;
+    font-family: Arial;
+    font-size: 11px
+}
+
+.cont_calculo {
+    color: #454545
+}
+
+.table_superTres {
+    font-family: Arial;
+    font-size: 11px;
+    width: 650px
+}
+
+.th_superTres {
+    background-color: #fdfbc4;
+    color: #c9240e;
+    height: 11px;
+    width: 50px;
+    border-color: #a8a8a9
+}
+
+.td_superTres {
+    color: #454545;
+    height: 11px;
+    text-align: center;
+    border-color: #a8a8a9
+}
+
+.table_result_superTres {
+    color: white;
+    background-color: #c9240e;
+    height: 11px;
+    border-bottom-color: #a8a8a9
+}
+
+.mensaje_superTres {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545;
+    margin-left: 26px
+}
+
+.indicador_cotejo {
+    margin-left: 26px;
+    margin-top: 20px;
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+
+.cotejador {
+    font-family: Arial;
+    font-size: 11px;
+    color: #454545
+}
+
+.PortletContent{
+	background: url(../../../layer-view-image/game/super3/btn_coteja_super3.png) no-repeat scroll 0px 0px transparent;
+    height: 156px;
+    margin-left: -33px;
+    position: fixed;
+    top: 250px;
+    width: 33px;
+    cursor: pointer;
+}
+
+.descripcion-apuesta{
+	color: #818181;
+    font-size: 10px;
+    left: 18px;
+    margin-top: 0;
+    position: absolute;
+    top: 145px;
+}
+
+.title-descripcion-apuesta{
+	color: #818181;
+    font-size: 10px;
+    left: 18px;
+    margin-top: 0;
+    position: absolute;
+    top: 132px;
+}

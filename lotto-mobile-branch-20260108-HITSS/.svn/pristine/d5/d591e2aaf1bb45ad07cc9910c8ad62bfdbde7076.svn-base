@@ -1,0 +1,152 @@
+#prize-title-total-main-page {
+	background-color: #383a35;
+	padding-bottom: 14px;
+	padding-top: 7px;
+}
+
+.prize-content-iframe {
+	position: relative;
+	margin: 0 auto;
+	top: -13px;
+}
+
+#prize-total-balance-main-page {
+	background-color: #F2F2F2;
+	padding-bottom: 10px;
+	padding-top: 0px;
+}
+
+.btn_red_new{
+    background-color: #ff010b !important;
+    border-radius: 50px !important;
+}
+
+.main-wallet .top-wallet-jg .jg-tt-wallet h3 {
+    padding: 20px !important;
+}
+
+.main-wallet .top-wallet-jg .jg-tt-wallet h1 {
+    padding: 8px !important;
+}
+
+.prizebox {
+    width: 200px;
+    height: 36px !important;
+    background-color: white;
+    display: block;
+    border: 1px solid #E2E2E2;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fffff;
+    font-weight: 700;
+    font-size: 14px !important;
+    text-decoration: none;
+    position: relative;
+    margin-top: 12px;
+    font-family: AllerBold, Arial, sans-serif !important;
+    text-align: center !important;
+    padding: 0.7em 1em 0.7em 1.5em !important;
+    line-height: 1em !important;
+}
+
+.main-wallet .top-wallet-jg .jg-tt-wallet {
+    padding-bottom: 10px;
+}
+
+/* ====================
+   Mejoras de Tinka Express 3.0
+   ==================== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #00cc88;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.auto-payment-table {
+    width: 100%;
+}
+
+.auto-payment-table .title {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 700;
+}
+
+.auto-payment-table .right {
+    text-align: right;
+}
+
+.auto-payment-table .spacer {
+    height: 10px;
+}
+
+.auto-payment-table .subtitle {
+    font-size: 14px;
+    color: #7f7d77;
+    font-weight: 700;
+}
+
+.auto-payment-table .description {
+    font-size: 14px;
+    color: #7f7d77;
+}
+
+.justify-text {
+    text-align: justify;
+}
+
+.button.button-orange-reverse.no-margin.green {
+    background-color: #f2f2f2;
+    color: #000000;
+    box-shadow: none;
+    border-radius: 30px;
+    text-transform: none;
+    height: 2.9em;
+    line-height: 1em;
+    text-align: center;
+    display: block;
+    border: 2px solid #07663a;
+    font-family: AllerBold, Arial, sans-serif;
+    cursor: pointer;
+    padding: 0;
+}

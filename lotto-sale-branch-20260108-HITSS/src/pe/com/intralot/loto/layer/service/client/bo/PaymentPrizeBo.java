@@ -1,0 +1,93 @@
+package pe.com.intralot.loto.layer.service.client.bo;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureCreateRequest;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureCreateRequestAutomatic;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureCreateRequestAutomaticDQR;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureCreateRequestTrans;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureCreateRequestTransAutomatic;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureCreateRequestVisa;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureCreateRequestVisaAutomatic;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureDefineDebitQR;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureDeleteAccount;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureEvalPopupInformativo;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureEvalRulesAutomatic;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureEvalRulesAutomaticV2;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetDataCollectPrizes;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetDataCookie;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetLastNotifications;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetNotifications;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetResultEvalRulesAgora;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetResultEvalRulesCash;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetResultEvalRulesTrans;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetResultEvalRulesVisa;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetSavingsAccount;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetTicketsPrizes;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetTicketsPrizesDebitQR;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureGetTicketsPrizesOld;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureHasPendingNotificationsRead;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureHisPayment;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureInBlackList;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureListPrizesMajor;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedurePasswordNotification;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureRegisterErrorCA;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureRegisterTYCPDPLog;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureUpdateNotification;
+import pe.com.intralot.loto.layer.model.domain.PaymentPrizeProcedureUpdatePasswordNotification;
+import pe.com.intralot.loto.layer.model.domain.ProcedureaApproveRequestVisa;
+import pe.com.intralot.loto.layer.model.domain.ProcedureaRefuseRequestAutomatic;
+import pe.com.intralot.loto.layer.model.domain.TransactionPaymentCreatePin;
+import pe.com.intralot.loto.layer.model.domain.TransactionPaymentLogPin;
+import pe.com.intralot.loto.layer.model.domain.TransactionPaymentRequestIp;
+import pe.com.intralot.loto.layer.model.domain.TransactionPaymentValidatePin;
+import pe.com.intralot.loto.layer.model.domain.ProcedureErrorVisa;
+
+public interface PaymentPrizeBo {
+
+	public PaymentPrizeProcedureGetDataCollectPrizes getDataCollectPrizes(Integer clientId) throws Exception;
+	public List<PaymentPrizeProcedureHisPayment> getHisPayment(Integer clientId) throws Exception;
+	public List<PaymentPrizeProcedureHisPayment> getHisPaymentByReangeDate(Integer clientId, String desde, String hasta) throws Exception;
+	public List<PaymentPrizeProcedureGetTicketsPrizes> getTicketsPrizes(Integer clientId, Integer requestNumber) throws Exception;
+	public List<PaymentPrizeProcedureGetTicketsPrizesOld> getTicketsPrizesOld(Integer clientId, String ticket) throws Exception;
+	public PaymentPrizeProcedureCreateRequest createRequest(String clientId, Double amount, String ip, String paymentType, String plataform, String imageDNI, String loadedImge) throws Exception;
+	public Long generateTokenPurchaseNumber() throws Exception;
+	public PaymentPrizeProcedureCreateRequestVisa createRequestVisa(String clientId, Double amount, String ip, String paymentType, String plataform, String cardToken, String cardNumber, String transactionId, String json, String imageDNI, String loadedImge, double comision) throws Exception;
+	public PaymentPrizeProcedureGetResultEvalRulesVisa getResultEvalRulesVisa(Integer clientId, Double amountVisa) throws Exception;
+	public PaymentPrizeProcedureGetResultEvalRulesCash getResultEvalRulesCash(Integer clientId, Double amountCash) throws Exception;
+	public PaymentPrizeProcedureCreateRequestVisaAutomatic createRequestVisaAutomatic(String clientId, Double amount, String ip, String paymentType, String plataform, String cardToken, String cardNumber, String transactionId, String json, String imageDNI, String loadedImge, double comision) throws Exception;
+	public ProcedureaApproveRequestVisa approveRequestVisa(Object[] values) throws Exception;
+	public ProcedureaRefuseRequestAutomatic refuseRequestAutomatic(Object[] values) throws Exception;
+	public PaymentPrizeProcedureCreateRequestAutomatic createRequestAutomatic(String clientId, Double amount, String ip, String paymentType, String plataform, String imageDNI, String loadedImge) throws Exception;
+	public ProcedureErrorVisa errorVisa(Object[] values) throws Exception;
+	public PaymentPrizeProcedureGetResultEvalRulesAgora getResultEvalRulesAgora(Integer clientId, Double amountVisa) throws Exception;
+	public PaymentPrizeProcedureInBlackList inBlackList(Integer clientId) throws Exception;
+	public PaymentPrizeProcedureEvalRulesAutomatic evalRulesAutomatic(Integer clientId) throws Exception;
+	public PaymentPrizeProcedureEvalRulesAutomaticV2 evalRulesAutomaticV2(Integer clientId, String typePayment) throws Exception;
+	public PaymentPrizeProcedureGetResultEvalRulesTrans getResultEvalRulesTrans(Integer clientId, Double amountTransferencia, String rango) throws Exception;
+	public PaymentPrizeProcedureCreateRequestTransAutomatic createRequestTransAutomatic(String clientId,Double amount, String ip, String typePayment, String plataform, String imgDNI, String loadedImage, String banco, String cuenta, String departamento, String idBanco, String guardarRecurrente) throws Exception;
+	public PaymentPrizeProcedureCreateRequestTrans createRequestTrans(String clientId, BigDecimal amount, String ip, String typePayment, String plataform, String imgDNI, String loadedImage, String banco, String cuenta, String departamento, String idBanco, String guardarRecurrente, String rango, String tipo, String ticket, String gameId, Double prizeAmount, Double freeAmount) throws Exception;
+	public List<PaymentPrizeProcedureGetSavingsAccount> getSavingsAccount(Integer clientId) throws Exception;
+	public PaymentPrizeProcedureDeleteAccount deleteAccount(Integer clientId, String cuenta) throws Exception;
+	public PaymentPrizeProcedureEvalPopupInformativo evalPopupInformativo(Integer clientId) throws Exception;
+	public List<PaymentPrizeProcedureListPrizesMajor> listPrizesMajor(Integer clientId) throws Exception;
+	public List<PaymentPrizeProcedureGetNotifications> getNotifications(Integer clientId) throws Exception;
+	public List<PaymentPrizeProcedureGetLastNotifications> getLastNotifications(Integer clientId) throws Exception;
+	public PaymentPrizeProcedureHasPendingNotificationsRead hasPendingNotificationsRead(Integer clientId) throws Exception;
+	public PaymentPrizeProcedureUpdateNotification updateNotification(Integer clientId, String idNotificacion) throws Exception;
+	public TransactionPaymentRequestIp transactionRequestIp(String channel, String request, String clientId, String ip, String uuid, String medio, String amount);
+	public TransactionPaymentCreatePin transactionCreatePin(String channel, String request, String clientId, String ip, String pinuuid, String medio, String amount, String pin, String p_sms);
+	public TransactionPaymentLogPin transactionLogPin(String channel, String request, String clientId, String ip, String pinuuid, String medio, String amount, String status, String result);
+	public TransactionPaymentValidatePin transactionValidatePin(String channel, String request, String clientId, String ip, String uuid, String medio, String amount, String mail, String pin);
+
+	public PaymentPrizeProcedureGetDataCookie getDataCookie() throws Exception;
+	public PaymentPrizeProcedurePasswordNotification passwordNotification(Integer clientId) throws Exception;
+	public PaymentPrizeProcedureUpdatePasswordNotification updatePasswordNotification(Integer clientId, String idNotificacion) throws Exception;
+	public PaymentPrizeProcedureRegisterErrorCA registerErrorCA(Object[] values) throws Exception;
+	public PaymentPrizeProcedureRegisterTYCPDPLog registerTYCPDPLog(Object[] values) throws Exception;
+	
+	public List<PaymentPrizeProcedureGetTicketsPrizesDebitQR> getTicketsPrizesDebitQR(Integer clientId, Integer requestNumber) throws Exception;
+	public PaymentPrizeProcedureDefineDebitQR defineDebitQR(Object[] values) throws Exception;
+	public PaymentPrizeProcedureCreateRequestAutomaticDQR createRequestAutomaticDQR(Integer clientId, Double amount, String paymentType, String plataform, String imageDNI, String loadedImge, Double amountKiron, Double amountNeo, Integer debitIQr, Integer balanceItemKiron, Integer balanceItemNeo) throws Exception;
+}

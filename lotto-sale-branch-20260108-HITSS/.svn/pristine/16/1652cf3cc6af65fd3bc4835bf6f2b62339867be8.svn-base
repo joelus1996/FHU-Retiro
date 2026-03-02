@@ -1,0 +1,615 @@
+body {
+	line-height: 1;
+	/*background:url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-pxbg.gif) repeat-x;*/
+	  background:url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-pxbg.gif) repeat-x;
+	
+}
+.content-box-body {
+	display: block;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+.grid-header {
+	float: left;
+	width: 725px;
+	height: 34px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: #FFED00;
+}
+.grid-header .ganadiario-html-logo { 	
+	display: inline;
+	float: left; 
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-tit.gif); 	
+    background-repeat: no-repeat;
+	width: 287px;
+	height: 34px;
+}
+.grid-footer {
+	float: left;
+	width: 697px;
+	height: 30px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: #FFED00;
+}
+.grid-footer a.link-text-compare {
+	float: left;
+	display: inline;
+	width: 108px;
+	height: 21px;
+	padding: 3px 0px 3px 0px;
+	border: 0;
+	background: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-button-cotejar.gif) no-repeat top left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal; 
+	text-align: center;
+	text-decoration: none;
+	color: #7D7D7D;
+}
+.grid-footer a.link-text-back {
+	float: left;
+	display: inline;
+	width: 108px;
+	height: 21px;
+	padding: 3px 0px 3px 0px;
+	border: 0;
+	background: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-button-regresar.gif) no-repeat top left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal; 
+	text-align: center;
+	text-decoration: none;
+	color: #7D7D7D;
+}
+.grid-footer a.link-text-print {
+	float: left;
+	display: inline;
+	width: 108px;
+	height: 21px;
+	padding: 3px 0px 3px 0px;
+	border: 0;
+	background: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-button-imprimir.gif) no-repeat top left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal; 
+	text-align: center;
+	text-decoration: none;
+	color: #7D7D7D;
+}
+/*Inicio de Estilos de Apuestas */
+.spacer-content {
+	display: block;
+	clear: both;
+	height: 1px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+.grid-criterion {
+	float: left;
+	width: 697px;
+	height: 30px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: #CEEDFB;
+}
+.grid-cell-label-01 {
+	float: left;
+	width: 116px;
+	height: 12px;
+	background: #CEEDFB;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #454545;	
+}
+.grid-cell-label-02 {
+	float: left;
+	width: 66px;
+	height: 12px;
+	background: #CEEDFB;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #454545;	
+}
+.grid-cell-label-03 {
+	float: left;
+	width: 34px;
+	height: 12px;
+	background: #CEEDFB;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #454545;	
+}
+.grid-cell-label-04 {
+	float: left;
+	width: 37px;
+	height: 12px;
+	background: #CEEDFB;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #454545;	
+}
+.grid-cell-select-01 {
+	float: left;
+	width: 40px;
+	height: 12px;
+	background: #CEEDFB;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+.grid-cell-select-02 {
+	float: left;
+	width: 100px;
+	height: 12px;
+	background: #CEEDFB;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+.grid-cell-input {
+	float: left;
+	width: 40px;
+	height: 12px;
+	background: #CEEDFB;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+.grid-cell-input input {
+	float: left;
+	display: inline;
+	width: 38px;
+	height: 18px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: right;
+	color: #454545;
+}
+.type-select-01 { 
+	border:1px solid #9F9F9F;
+	background-color:#FFFFFF;
+	color:#000000; 
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size:11px;
+	width:40px;
+}
+.type-select-02 { 
+	border:1px solid #9F9F9F;
+	background-color:#FFFFFF;
+	color:#000000; 
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size:11px;
+	width:130px;
+}
+.ganadiario-html-jugada-element-compare {
+	display: block;
+	float: left;
+	width: 172px;
+	height: 340px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-01 { 	
+	display: block;
+	float: left; 
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-small-card-01.gif); 	
+    background-repeat: no-repeat;
+	width: 172px;
+	height: 340px;
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-02 { 	
+	display: block;
+	float: left; 
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-small-card-02.gif); 	
+    background-repeat: no-repeat;
+	width: 172px;
+	height: 340px;
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-03 { 	
+	display: block;
+	float: left; 
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-small-card-03.gif); 	
+    background-repeat: no-repeat;
+	width: 172px;
+	height: 340px;
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-04 { 	
+	display: block;
+	float: left;	
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-small-card-04.gif); 	
+    background-repeat: no-repeat;
+	width: 172px;
+	height: 340px;
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-01 .ganadiario-html-print-instruction-compare textarea,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-02 .ganadiario-html-print-instruction-compare textarea,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-03 .ganadiario-html-print-instruction-compare textarea,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-04 .ganadiario-html-print-instruction-compare textarea {			
+	display: block;
+	float: left;
+	width: 158px;
+	height: 40px;
+	padding: 0;
+	border: 0;
+	background: #FFFFFF;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: normal;
+	text-align: justify;
+	color: #454545;
+	overflow: auto;
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-01 .ganadiario-html-print-number-compare textarea,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-02 .ganadiario-html-print-number-compare textarea,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-03 .ganadiario-html-print-number-compare textarea,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-04 .ganadiario-html-print-number-compare textarea {			
+	display: block;
+	float: left;
+	width: 158px;
+	height: 28px;
+	padding: 0;
+	border: 0;
+	background: #FFFFFF;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: normal;
+	text-align: left;
+	color: #454545;
+	overflow: auto;	
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-01 .ganadiario-html-unique-number-compare .ganadiario-html-button-number-compare,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-02 .ganadiario-html-unique-number-compare .ganadiario-html-button-number-compare,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-03 .ganadiario-html-unique-number-compare .ganadiario-html-button-number-compare,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-04 .ganadiario-html-unique-number-compare .ganadiario-html-button-number-compare { 
+	display: block;
+	float: left;
+	width: 21px;
+	height: 21px;
+	border: 0;
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-button-deactive.gif);
+	background-repeat: no-repeat;
+	text-decoration: none;
+	padding-top: 0px;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	color: #0091D7;
+	overflow: auto;
+}
+.ganadiario-html-unique-number-active-compare .ganadiario-html-button-number-compare {
+	display: block;
+	float: left;
+	width: 21px;
+	height: 21px;
+	border: 0;
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-button-active.gif);
+	background-repeat: no-repeat;
+	text-decoration: none;
+	padding-top: 2px;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	color: #FFFFFF;
+}
+.ganadiario-html-unique-number-deactive-compare .ganadiario-html-button-number-compare {
+	display: block;
+	float: left;
+	width: 21px;
+	height: 21px;
+	border: 0;
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-button-deactive.gif);
+	background-repeat: no-repeat;
+	text-decoration: none;				
+	padding-top: 2px;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	color: #0091D7;
+}
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-01 .ganadiario-html-unique-option-clean-compare .ganadiario-html-button-option-clean-compare,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-02 .ganadiario-html-unique-option-clean-compare .ganadiario-html-button-option-clean-compare,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-03 .ganadiario-html-unique-option-clean-compare .ganadiario-html-button-option-clean-compare,
+.ganadiario-html-jugada-element-compare .ganadiario-html-body-smallcard-compare-04 .ganadiario-html-unique-option-clean-compare .ganadiario-html-button-option-clean-compare { 
+	display: block;
+	float: left;
+	width: 85px;
+	height: 21px;
+	border: 0;
+	background-image: url(../../../../layer-view-image/game/ganadiario/compare/ganadiario-button-option-clean.gif);
+	background-repeat: no-repeat;
+	text-decoration: none;
+	padding-top: 0px;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	color: #005221;
+	overflow: auto;
+}
+/*Fin de Estilos de Apuestas*/
+
+/*Inicio de Estilos de Respuesta */
+.grid-resp-criterion {
+	float: left;
+	width: 394px;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #CCCCDF;*/
+}
+.grid-resp-criterion .grid-resp-label-title {
+	float: left;
+	width: 120px;
+	height: 13px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-title-01 {
+	float: left;
+	width: 54px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-content-01 {
+	float: left;
+	width: 55px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;	
+}
+.grid-resp-criterion .grid-resp-label-title-02 {
+	float: left;
+	width: 39px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-content-02 {
+	float: left;
+	width: 62px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;	
+}
+.grid-resp-criterion .grid-resp-label-title-03 {
+	float: left;
+	width: 121px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-content-03 {
+	float: left;
+	width: 100px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;	
+}
+.grid-resp-criterion .grid-resp-label-title-04 {
+	float: left;
+	width: 52px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-content-04 {
+	float: left;
+	width: 20px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;	
+}
+.grid-resp-criterion .grid-resp-label-title-05 {
+	float: left;
+	width: 39px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-content-05 {
+	float: left;
+	width: 100px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;	
+}
+.grid-resp-criterion .grid-resp-label-title-06 {
+	float: left;
+	width: 280px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-content-06 {
+	float: left;
+	width: 240px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;	
+}
+.grid-resp-criterion .grid-resp-label-title-07 {
+	float: left;
+	width: 100px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0091D7;	
+}
+.grid-resp-criterion .grid-resp-label-content-07 {
+	float: left;
+	width: 120px;
+	height: 11px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;	
+}
+.grid-resp-criterion .grid-resp-label-title-08 {
+	float: left;
+	width: 240px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;
+}
+.grid-resp-criterion .grid-resp-label-title-09 {
+	float: left;
+	width: 398px;
+	height: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/*background: #FFFFFF;*/	
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;
+}
+/*Fin de Estilos de Respuesta */

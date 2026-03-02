@@ -1,0 +1,90 @@
+<%@page import="pe.com.intralot.loto.util.Constants"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<html lang="es">
+<head>
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	<script type="text/javascript" src="layer-view-script/common/jquery-3.6.3.min.js"></script>
+	<script src="<%=Constants.fdCheckoutJs%>"></script>
+<!-- 	<script src="https://static-content-qas.vnforapps.com/vToken/js/checkout.js"></script> -->
+<!-- 	<script src="https://static-content-nlb.vnforapps.com/vToken/js/checkout.js?static=true"></script>  -->
+	<script>
+		function openNiubiz(data) {
+			VisanetCheckout.configure({
+				sessiontoken : JSON.parse(data.json).sessionKey,
+				channel : 'paycard',
+				merchantid : data.merchantid,
+				purchasenumber : data.purchasenumber,
+				amount : '1',
+				formbuttoncolor : '#FF8000',
+				formbuttontext : data.formbuttontext,
+				merchantlogo : data.merchantlogo,
+				showamount : 'false',
+				cardholdername : data.cardholdername.replace(/[0123456789]/g,''),
+				cardholderlastname : data.cardholderlastname.replace(/[0123456789]/g,''),
+				usertoken : data.userToken,
+				cardholderemail : data.cardholderemail,
+				expirationminutes : '20',
+				timeouturl : data.timeouturl,
+				action: 'tokenizeCardAgora.html',
+				method: 'POST',
+				cancel: function (){
+					console.log("Cancel VisanetCheckout");
+					try { window.parent.postMessage('hideLightboxTokenizationAgora','*'); } catch (e) {   }	
+				},
+				close: function (){
+					console.log("Close VisanetCheckout");
+				},
+				qrcomplete: function (){
+					console.log("QRcomplete VisanetCheckout");
+				},
+				addfingerprint: function (){
+					console.log("Addfingerprint VisanetCheckout");
+				},
+				complete: function (params) {
+					console.log("Complete VisanetCheckout");
+				}
+			});
+			VisanetCheckout.open();
+		}
+	
+		function createSessionTokenization(){
+			$.ajax({
+		        type: "POST",
+		        url: "createSessionTokenizationCard.html",
+		        dataType: "json",
+		        beforeSend: function (xhr, settings) {
+		        	xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
+		        },
+			})
+			.done(function(data) {
+				if(data.status=="OK"){
+					var sesion = JSON.parse(data.json).sessionKey;
+					openNiubiz(data);
+					setTimeout(function(){ try { window.parent.postMessage('hideLoadingTokenization','*'); } catch (e) {   } }, 1500);
+					setTimeout(function(){ try { window.parent.postMessage('observerLightboxTokenizationAgora','*'); } catch (e) {   } }, 5000);
+					setTimeout(function(){ try { window.parent.postMessage('hideLightboxTokenizationAgora','*'); } catch (e) {   } }, 900000);
+				}else{
+					window.parent.postMessage('errorLoadingTokenizationAgora|'+data.message,'*');	
+				}
+			})
+			.fail(function(jqXHR, textStatus, errorThrown ) {
+				if(jqXHR.status==403){
+					window.location.href = 'inicio.html';
+		    	}else{
+		    		window.parent.postMessage('errorLoadingTokenizationAgora|Por favor, inténtalo de nuevo en unos minutos','*');	
+		    	}
+			});
+						
+		}
+	</script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			createSessionTokenization();
+		});
+	</script>
+</head>
+<body>
+
+</body>
+</html>

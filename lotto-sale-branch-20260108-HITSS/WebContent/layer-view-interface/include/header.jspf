@@ -1,0 +1,1229 @@
+<%@page import="pe.com.intralot.loto.util.Constants"%>
+<%@page import="java.util.Calendar"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% 
+response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+response.setDateHeader("Expires", Calendar.getInstance().getTime().getTime()); //Causes the proxy cache to see the page as "stale"
+response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+%>
+<div>
+<input type="hidden" value="${sessionScope.User.pClientid}" id="clientId">
+<input type="hidden" value="${sessionScope.User.pSessionCode}" id="sessionCodeIndex">
+<input type="hidden" value="${sessionScope.User.pSessionid}" id="sesionId">
+<input type="hidden" value="${sessionScope.User.pMailStatus}" id="mailStatus">
+<input type="hidden" value="${sessionScope.User.pMonto}" id="saldoUser">
+<input type="hidden" value="${sessionScope.User.pAgreement}" id="agreement">
+<input type="hidden" value="${sessionScope.User.pBilletera2}" id="billetera2">
+<input type="hidden" value="${sessionScope.User.pBilletera3}" id="billetera3">
+<input type="hidden" value="${sessionScope.User.pBilletera3Cant}" id="billetera3Cant">
+<input type="hidden" value="${isDataComplete}" id="isDataComplete">
+<input type="hidden" id="openSession" name="openSession" value="${requestScope.openSession}">
+<input type="hidden" id="closeSession2" name="closeSession2" value="${closeSession}">
+
+<!-- pay -->
+<input type="hidden" id="bcpSale" value="<c:out value='${isBcpSale}'/>">
+<input type="hidden" id="bizpaySale" value="<c:out value='${isBizpaySale}'/>">
+<input type="hidden" value="<c:out value='${isPagoEfectivo}'/>" id="pagoefectivoSale">
+<input type="hidden" value="<c:out value='${pagoEfectivoHelp}'/>" id="pagoEfectivoHelp">
+<input type="hidden" value="<c:out value='${advaisURL}'/>" id="advaisURL">
+<input type="hidden" value="<c:out value='${isAdvaisEnabled}'/>" id="isAdvaisEnabled">
+<input type="hidden" value="<c:out value='${isPaysafecardEnabled}'/>" id="isPaysafecardEnabled">
+<input type="hidden" value="<c:out value='${isCulqiEnabled}'/>" id="isCulqiEnabled">
+<input type="hidden" value="<c:out value='${vkeyboardEnabled}'/>" id="isVKeyboardEnabled">
+<input id="gamesXML" type="hidden" value="<%= Constants.gamesXML %>">
+<input id="portalServiceKinelo" type="hidden" value="<%= Constants.portalServiceKinelo %>">
+<input type="hidden" value="<%= Constants.flagPromoBicolor %>" id="flagPromoBicolor">
+<%-- <input type="hidden" value="<%= Constants.flagPromoTinka %>" id="flagPromoTinka"> --%>
+<input type="hidden" value="" id="flagPromoTinka">
+<input type="hidden" value="<%= Constants.getBeanTinkaBo().isPopup3x12Active() %>" id="flagPromoTinka3x12">
+<input type="hidden" value="<%= Constants.getBeanGanadiarioBo().isPopup3x5solesActive() %>" id="flagPromoGD3x5">
+<input type="hidden" value="<%= Constants.URL_QW%>" id="urlQw">
+<input type="hidden" value="<%= Constants.flagPromoHincha %>" id="flagPromoHincha">
+<input type="hidden" value="<%= Constants.flagPromoCasino %>" id="flagPromoCasino">
+</div>
+<script type='text/javascript' src='layer-view-script/common/jquery-3.6.3.min.js'></script>
+<script type='text/javascript' src='layer-view-script/client/validateDataClient.js?v=8'></script>
+<script type='text/javascript' src='layer-view-script/client/abrirOpcionMicuenta.js?v1'></script>
+<script type="text/javascript" src="layer-view-script/common/popup_time.js"></script>
+<script type="text/javascript" src="layer-view-script/game/copabicolor/popup_time.js?v=1"></script>
+<script type="text/javascript" src="layer-view-script/game/tinka/tinka-popup_time.js"></script>
+<script type="text/javascript" src="layer-view-script/game/casino/casino-popup_time.js"></script>
+<script type="text/javascript" src="layer-view-script/game/aviondelhincha/hincha-popup_time.js"></script>
+<script type="text/javascript" src="layer-view-script/game/ganagol/GG3VS-popup_time.js"></script>
+<script type="text/javascript" src="layer-view-script/game/virtuales/motazoDDVV-popup_time.js"></script>
+<script type="text/javascript" src="layer-view-script/game/teapuesto/avionQatar/lotto-avionQatar.js?v=3"></script>
+<script type="text/javascript" src="layer-view-script/game/virtuales/juegaGanaConVirtuales.js?v=2"></script>
+
+<script type="text/javascript" src="layer-view-script/common/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript" charset="UTF-8" src="layer-view-script/client/analytics.js?v=<%=Constants.analytics_js%>"></script>
+<script type="text/javascript" src="layer-view-script/common/popupGenerate.js?v=10"></script>
+<script type="text/javascript" src="layer-view-script/game/teapuesto/avionEstambul/lotto-avionEstambul.js?v=9"></script>
+<script type="text/javascript" src="layer-view-script/game/teapuesto/avionPeru/lotto-avionPeru.js?v=4"></script>
+<script type="text/javascript" src="layer-view-script/common/cookies.js?v=3"></script>
+
+<link media="screen" rel="stylesheet" type="text/css" href="layer-view-style/common/popModal.css?v=<%=Constants.popModal_css%>">
+
+<link media="screen" rel="stylesheet" type="text/css" href="layer-view-style/client/bannerCookies.css?v=6">
+
+<div class="window-message"></div>
+<noscript><div id="no-script">JavaScript debe estar habilitado para poder utilizar este Sitio. Sin embargo, parece que esta funcionalidad no está habilitada o que no es compatible con tu navegador. <br>Habilita JavaScript cambiando las opciones de tu navegador y, a continuación, <a href>inténtalo de nuevo</a>.</div></noscript>
+<header id="main-header">
+    <div class="main-content clearfix">
+        <div class="box-header">
+            <div class="logo">
+                <a href="./">
+                    <img src="layer-view-image/v2/logo.svg?v=3" alt="Resultados La Tinka" />
+                </a>
+            </div>
+        </div>
+        <div class="box-header">
+            <div id='cssmenu'>
+                <ul>
+                    <li id="plays-1" class='has-sub'><a href="juega-tinka.html"><span class="salto">Juegos de</span><span class="salto">Lotería</span></a>
+                        <ul>
+                            <li><a href="juega-tinka.html"><span>Tinka</span></a></li>
+                            <li><a href="juega-kabala.html"><span>Kábala</span></a></li>
+                            <li><a href="juega-ganadiario.html"><span>Gana Diario</span></a></li>
+                            <li><a href="juega-kinelo.html"><span>Kinelo</span></a></li>
+                        </ul>
+                    </li>
+                    <li id="plays-2" class="has-sub vl"><a href="juega-latinka-video-loterias.html"><span class="salto">Video</span><span class="salto">Loterías</span></a>
+                        <ul>
+                        </ul>
+                    </li>
+                    <li id="plays-3" class="has-sub ta"><a onclick="toTAV2();" class="hand"><span class="salto" >Te Apuesto</span></a>
+                        <ul> 
+                        	<li><a href="#" onclick="toTAV2();"><span>Apuestas Deportivas</span></a></li>
+                        	<li><a href="#" onclick="toJuegosVirtuales('casino');"><span>Casino</span></a></li>
+                        	<li><a href="#" onclick="toJuegosVirtuales('virtuales');"><span>Virtuales</span></a></li> 
+                        	<li><a href="juega-ganagol.html"><span>Ganagol</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <!--<li id="plays-2" class="has-sub ta"><a href="juega-ganagol.html"><span class="salto">Apuestas</span><span class="salto">deportivas</span></a>
+                        <ul>
+                            <li><a href="juega-ganagol.html"><span>Ganagol</span></a></li>
+                            <c:if test="${isLaPolla}">
+                                <li><a href="#" id="game_lapolla_show_menu" onclick="toLaPolla();"><span>La Polla</span><span class='nuevo'>nuevo</span></a></li>
+                            </c:if>
+                            <li><a onclick="toTAV2();" class="hand"><span>Te Apuesto</span></a></li>
+                            <li><a href="#" onclick="toJuegosVirtuales('virtuales');"><span>Virtuales</span></a></li>
+                        </ul>
+                    </li>
+                    <li id="plays-3" class='has-sub sub_casino casino'><a href="#" onclick="toJuegosVirtuales('casino');"><span class="salto_casino">Casino</span></a>
+                        <ul>
+                            <li><a href="#" onclick="toJuegosVirtuales('casino/detail?gameType=Top%20Juegos#toFilter');"><span>Slots</span></a></li>
+                            <li><a href="#" onclick="toJuegosVirtuales('live-casino');"><span>Casino en vivo</span></a></li>
+                            <li><a href="#" onclick="toJuegosVirtuales('casino/detail?gameType=Crash%20Games#toFilter');"><span>Crash</span></a></li>
+                            <li><a href="#" onclick="toJuegosVirtuales('ganaya');"><span>&#161;GanaYá&#33;</span></a></li>
+                            <li><a href="#" onclick="toJuegosVirtuales('casino/detail?gameType=Jackpots#toFilter');"><span>Jackpots</span></a></li>                            
+                            <li><a href="#" onclick="toJuegosVirtuales('casino/detail?gameType=Juegos%20de%20Mesa#toFilter');"><span>Juegos de mesa</span></a></li>
+                            <li><a href="#" onclick="toJuegosVirtuales('casino/detail?gameType=Juegos%20de%20BINGO#toFilter');"><span>Bingo</span></a></li>                            
+                        </ul>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="box-header box-right">
+            <div class="main-boxes clearfix" id="main-user">
+                <div class="box-pop flex-link unlogout">
+                	<a href="#" class="box-button box-link login" id="openModal">
+                        <img height="12" alt="Ingresar" class="mr-2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDk1LjY2NyA5NS42NjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk1LjY2NyA5NS42Njc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0zOS4xNzMsNzIuMzQ0bDM5LjQ0Ny0yMi43NzdjMC42MTktMC4zNTYsMS0xLjAxOCwxLTEuNzMxcy0wLjM4MS0xLjM3NS0xLTEuNzMyTDM5LjE3MywyMy4zMjQgICAgYy0wLjYxOS0wLjM1Ny0xLjM4MS0wLjM1Ny0yLDBjLTAuNjE5LDAuMzU3LTEsMS4wMTgtMSwxLjczMnYxMC42MDVIMi4xMjFjLTEuMTA0LDAtMiwwLjg5Ni0yLDJ2MjAuMzQ0YzAsMS4xMDQsMC44OTYsMiwyLDIgICAgaDM0LjA1M3YxMC42MDRjMCwwLjcxNiwwLjM4MSwxLjM3NSwxLDEuNzMyYzAuMzEsMC4xOCwwLjY1NSwwLjI2OCwxLDAuMjY4QzM4LjUxOSw3Mi42MDksMzguODY0LDcyLjUyMSwzOS4xNzMsNzIuMzQ0eiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojMDA2YjJkIiBkYXRhLW9sZF9jb2xvcj0iI2ZmZmZmZiI+PC9wYXRoPgoJCTxwYXRoIGQ9Ik04MC43NzUsMEg0MC4wMjZjLTEuMTA0LDAtMiwwLjg5Ni0yLDJ2NmMwLDEuMTA0LDAuODk2LDIsMiwyaDQwLjc0OWMyLjYzMiwwLDQuNzcxLDIuMTQxLDQuNzcxLDQuNzcxdjY2LjEyNSAgICBjMCwyLjYzMS0yLjE0MSw0Ljc3MS00Ljc3MSw0Ljc3MUg0MC4wMjZjLTEuMTA0LDAtMiwwLjg5Ni0yLDJ2NmMwLDEuMTA0LDAuODk2LDIsMiwyaDQwLjc0OWM4LjE0NiwwLDE0Ljc3MS02LjYyNywxNC43NzEtMTQuNzcxICAgIFYxNC43NzJDOTUuNTQ2LDYuNjI3LDg4LjkyLDAsODAuNzc1LDB6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDZiMmQiIGRhdGEtb2xkX2NvbG9yPSIjZmZmZmZmIj48L3BhdGg+Cgk8L2c+CjwvZz48L2c+IDwvc3ZnPg==">Ingresa                    </a>
+                    <a href="registro.html" class="box-link" id="buttonRegistrar">
+                       <img height="12" align="Regístrate" class="mr-2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDI1OC43NSAyNTguNzUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI1OC43NSAyNTguNzU7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgY2xhc3M9IiI+PGc+PGc+Cgk8Y2lyY2xlIGN4PSIxMjkuMzc1IiBjeT0iNjAiIHI9IjYwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDZiMmQiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIj48L2NpcmNsZT4KCTxwYXRoIGQ9Ik0xMjkuMzc1LDE1MGMtNjAuMDYxLDAtMTA4Ljc1LDQ4LjY4OS0xMDguNzUsMTA4Ljc1aDIxNy41QzIzOC4xMjUsMTk4LjY4OSwxODkuNDM2LDE1MCwxMjkuMzc1LDE1MHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6IzAwNmIyZCIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiPjwvcGF0aD4KPC9nPjwvZz4gPC9zdmc+">Regístrate
+                    </a>
+                        <div class="box-body" id="loginBox">
+                        <div class="body-form">
+                            <form action="login.html" class="js-form-login" id="frmLoginClientIndex" method="post" data-response-type="text" autocomplete="off" novalidate="novalidate" >
+                            	<div class="fixeds-input marginbottom1rem">
+                            		<input name="user-client" id="user-client-header" type="text" style="transition: background-color 5000s ease-in-out 0s; filter: brightness(1.1); -webkit-text-fill-color: #07663a !important; "  autocomplete="off"  required>
+                            		<label for="user-client-header">Usuario o N° de documento de identidad</label>
+                            		<div class="errorTxt onlyuser"></div>
+                            	</div>
+                                <div class="fixeds-input">
+                            		<input name="password-client" id="password-client-header" type="password" style="transition: background-color 5000s ease-in-out 0s; filter: brightness(1.1); -webkit-text-fill-color: #07663a !important; "  autocomplete="off" required>
+                            		<label for="password-client-header" id="password-client-header-label">Contraseña</label>
+                            		<div class="errorTxt onlypass" id="errorTxt-onlypass"></div>
+                            		<button class="view-password" type="button" id="toglePasswordHeader"></button>
+                            	</div>                                
+                                <input type="hidden" name ="game-code" id="game-code-header" value="0">                                
+                                <button type="submit" class="btn-inicia-session" id="index-btnlogin">INGRESAR</button>
+                            </form>
+                            <div class="login-links">
+                                <ul>
+                                    <c:choose>
+                                        <c:when test="${isRestoreSale == true}"><li><a href="restablecer.html">Recupera o cambia tu contraseña</a></li><li><a href="recordar-usuario.html" style="margin-top: 0px;">¿Olvidaste tu usuario?</a></li></c:when>
+                                        <c:otherwise><li><a href="${lotocardSrv}i.do?m=restablecer" >Recupera o cambia tu contraseña</a></li><li><a href="recordar-usuario.html" style="margin-top: 0px;">¿Olvidaste tu usuario?</a></li></c:otherwise>
+                                    </c:choose>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-pop logout flex-line" style="display: none;">
+                	<ul>
+                		<li class="cargar-saldo">
+                			<a href="javascript:void(0)" id="addSaldo" class="nav-btn">
+	                            <img height="12" align="Cargar Saldo" class="mr-2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDkxLjg2IDQ5MS44NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkxLjg2IDQ5MS44NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjUuMTY3LDIxMS42MTRIMjgwLjI0NVYyNi42OTFjMC04LjQyNC0xMS40MzktMjYuNjktMzQuMzE2LTI2LjY5cy0zNC4zMTYsMTguMjY3LTM0LjMxNiwyNi42OXYxODQuOTI0SDI2LjY5ICAgIEMxOC4yNjcsMjExLjYxNCwwLDIyMy4wNTMsMCwyNDUuOTI5czE4LjI2NywzNC4zMTYsMjYuNjksMzQuMzE2aDE4NC45MjR2MTg0LjkyNGMwLDguNDIyLDExLjQzOCwyNi42OSwzNC4zMTYsMjYuNjkgICAgczM0LjMxNi0xOC4yNjgsMzQuMzE2LTI2LjY5VjI4MC4yNDVINDY1LjE3YzguNDIyLDAsMjYuNjktMTEuNDM4LDI2LjY5LTM0LjMxNlM0NzMuNTksMjExLjYxNCw0NjUuMTY3LDIxMS42MTR6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwNzY2M2EiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIj48L3BhdGg+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+CjwvZz48L2c+IDwvc3ZnPg==">
+	                            Cargar Saldo
+	                        </a>
+                		</li>
+                		<li class="data-saldo">
+                			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" onclick="closeMensajeNotificacion()">
+	                            <svg xmlns="http://www.w3.org/2000/svg" width="25.902" height="25.902" viewBox="0 0 25.902 25.902">
+	                                <g id="Grupo_3396" data-name="Grupo 3396" opacity="1">
+	                                    <path id="Trazado_2159" data-name="Trazado 2159" d="M12.951,0A12.951,12.951,0,1,0,25.9,12.951,12.966,12.966,0,0,0,12.951,0Zm0,24.725A11.774,11.774,0,1,1,24.725,12.951,11.787,11.787,0,0,1,12.951,24.725Z" fill="#07663a"></path>
+	                                    <path id="Trazado_2160" data-name="Trazado 2160" d="M29.463,19.5a9.963,9.963,0,1,0,9.963,9.963A9.974,9.974,0,0,0,29.463,19.5Zm0,19.595a9.632,9.632,0,1,1,9.632-9.632A9.643,9.643,0,0,1,29.463,39.095Z" transform="translate(-16.512 -16.511)" fill="#07663a"></path>
+	                                    <g id="Grupo_3380" data-name="Grupo 3380" transform="translate(6.974 7.97)">
+	                                       <g id="S" transform="translate(0 0)">
+	                                       <g id="Grupo_3379" data-name="Grupo 3379">
+	                                          <path id="Trazado_2164" data-name="Trazado 2164" d="M155.115,417.911a2.612,2.612,0,0,0,.359,1.283,2.346,2.346,0,0,0,2.126.924,3.674,3.674,0,0,0,1.243-.2,1.426,1.426,0,0,0,1.084-1.4,1.227,1.227,0,0,0-.459-1.081,4.536,4.536,0,0,0-1.459-.55l-1.218-.285a5.429,5.429,0,0,1-1.691-.614,1.962,1.962,0,0,1-.858-1.739,2.716,2.716,0,0,1,.843-2.055,3.327,3.327,0,0,1,2.388-.8,4.071,4.071,0,0,1,2.415.705,2.573,2.573,0,0,1,.994,2.254H159.7a2.393,2.393,0,0,0-.389-1.145,2.2,2.2,0,0,0-1.873-.727,2.1,2.1,0,0,0-1.534.468,1.5,1.5,0,0,0-.467,1.088,1.07,1.07,0,0,0,.552,1,7.939,7.939,0,0,0,1.636.505l1.262.3a3.811,3.811,0,0,1,1.409.589,2.226,2.226,0,0,1,.859,1.89,2.378,2.378,0,0,1-1.095,2.208,4.8,4.8,0,0,1-2.544.664,3.747,3.747,0,0,1-2.645-.885,3.022,3.022,0,0,1-.937-2.385Z" transform="translate(-153.932 -411.385)" fill="#07663a"></path>
+	                                       </g>
+	                                       </g>
+	                                       <rect id="Rectángulo_1938" data-name="Rectángulo 1938" width="9.796" height="0.996" transform="matrix(0.25, -0.968, 0.968, 0.25, 7.739, 9.971)" fill="#07663a"></rect>
+	                                    </g>
+	                                </g>
+	                            </svg>
+	                            <span id="clientSale-amount">${sessionScope.User.pMonto}</span>
+	                        </a>
+	                        <div class="dropdown-menu account shadow">
+	                            <h6 class="dropdown-header d-flex align-items-flex">                               
+	                                Saldo <span id="clientSale-amount-2">${sessionScope.User.pMonto}</span>
+	                            </h6>
+	                            <a href="mi-cuenta.html#movimientobono" id="misMovimientosBono" class="micuenta__link dropdown-item text-left" data="#tab-item_6">Bono Te Apuesto <span id="billetera2-amount">${sessionScope.User.pBilletera2}</span></a>
+	                            <a href="mi-cuenta.html#movimientootro" id="misMovimientosOtro" class="micuenta__link dropdown-item text-left" data="#tab-item_7">Jugadas gratis <span id="billetera3-amount">${sessionScope.User.pBilletera3Cant}</span></a>
+	                        </div>
+                		</li>
+                		<li class="data-usuario">
+                			<a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-toggle="dropdown" aria-expanded="true" onclick="closeMensajeNotificacion()">									
+									<svg version="1.1" id="bellNotification" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 viewBox="0 0 39.7 42.5" style="enable-background:new 0 0 39.7 42.5; display: none;" xml:space="preserve">
+									<style type="text/css">
+										.stbb0{fill-rule:evenodd;clip-rule:evenodd;fill:#07663A;}
+										.stbb1{fill:#E30B17;}
+										.stbb2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+									</style>
+									<path id="Trazado_1718" class="stbb0" d="M18,28.6c-3.4,0-6.2-2.8-6.2-6.2s2.8-6.2,6.2-6.2s6.2,2.8,6.2,6.2l0,0
+										C24.2,25.8,21.4,28.6,18,28.6z M18,41.6c9.5,0,17.2-7.7,17.2-17.2S27.4,7.2,18,7.2S0.8,14.9,0.8,24.4S8.5,41.6,18,41.6z M8,36.3
+										c2.3-5.5,8.5-8.2,14.1-5.9c2.7,1.1,4.8,3.2,5.9,5.9c6.7-5.5,7.5-15.4,2-21.9c-5.6-6.7-15.4-7.5-22-2s-7.5,15.4-2,21.9
+										C6.6,35,7.2,35.8,8,36.3z"/>
+									<circle class="stbb1" cx="30.3" cy="9.2" r="8.7"/>
+									<path class="stbb2" d="M30.3,2.4c-0.8,0-0.8,0.3-1.2,1c-0.2,0.2-0.2,0.3-0.5,0.5c-1.3,0.5-1.8,1.7-1.8,2.8C26.6,7.9,27,9,26.6,9.9
+										c-0.2,0.3-0.5,0.8-0.8,1.3c-0.3,0.5-0.5,1.2-0.3,1.7h4.8h4.8c0.2-0.7,0-1.2-0.3-1.7c-0.3-0.5-0.8-1-0.8-1.3c-0.3-0.8-0.2-2-0.2-3.2
+										s-0.5-2.3-1.8-2.8c-0.3-0.2-0.5-0.3-0.5-0.5C31.3,2.7,31.1,2.4,30.3,2.4 M32.1,13.5c-0.2,0.8-0.8,1.3-1.7,1.3s-1.5-0.7-1.7-1.3h1.7
+										H32.1z"/>
+									</svg>
+																		
+	                				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="iconoUser" style="display: none;">
+			                                <path id="Trazado_1718" data-name="Trazado 1718" d="M239.6,838.65a5.818,5.818,0,1,1,5.818-5.818,5.818,5.818,0,0,1-5.818,5.818Zm0,12.027a16,16,0,1,0-16-16,16,16,0,0,0,16,16Zm-9.275-4.848a10.015,10.015,0,0,1,18.55,0,14.505,14.505,0,1,0-18.55,0Z" transform="translate(-223.595 -818.677)" fill="#07663a" fill-rule="evenodd"></path>
+			                        </svg>
+	                            <c:set var="nombres" value="${sessionScope.fullName}" />
+	                            <c:set var="aNombres" value="${fn:split(nombres, ' ')}" />
+	                            <span id="clientSale-name">${fn:toUpperCase(fn:substring(aNombres[0], 0, 1))}${fn:toLowerCase(fn:substring(aNombres[0], 1,fn:length(aNombres[0])))}</span>
+	                        </a>
+	                        <div class="dropdown-menu account shadow">
+	                        	<div class="drop--u">
+	                            <h6 class="dropdown-header d-flex align-items-center">
+	                                <p class="a_micuenta">
+	                  				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+	                                    <path id="Trazado_1718" data-name="Trazado 1718" d="M239.6,838.65a5.818,5.818,0,1,1,5.818-5.818,5.818,5.818,0,0,1-5.818,5.818Zm0,12.027a16,16,0,1,0-16-16,16,16,0,0,0,16,16Zm-9.275-4.848a10.015,10.015,0,0,1,18.55,0,14.505,14.505,0,1,0-18.55,0Z" transform="translate(-223.595 -818.677)" fill="#fff" fill-rule="evenodd"></path>
+	                                </svg>                                 
+	                                Mi cuenta
+	                                </p>
+	                            </h6>
+	                            <div class="drop-a">
+	                            <a href="mi-cuenta.html#movimientos" id="misMovimientos" class="dropdown-item micuenta__link" data="#tab-item_5">Mis movimientos</a>
+	                            <a href="mi-cuenta.html#jugadas" id="misJugadas" class="dropdown-item micuenta__link" data="#tab-item_3">Mis jugadas</a>
+	                            <a href="mi-cuenta.html#premios" id="misPremios" class="dropdown-item micuenta__link" data="#tab-item_2">Retirar mis premios</a>
+	                            <a href="mi-cuenta.html#yo" id="misDatos" class="dropdown-item micuenta__link" data="#tab-item_1">Mi Perfil</a>
+	                            </div>
+	                            </div>
+	                            <h6 class="dropdown-header d-flex align-items-center">
+	                            	<a href="notificaciones.html" target="_self" class="a_promotions">
+	                            	
+	                            	<svg version="1.1" id="iconoNotificacionOn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 viewBox="0 0 39.1 40.8" style="enable-background:new 0 0 39.1 40.8; display: none;" xml:space="preserve">
+									<style type="text/css">
+										.stb0{fill:#D6D6D6;stroke:#D6D6D6;stroke-miterlimit:10;}
+										.stb1{fill:#E20E18;}
+									</style>
+									<g id="desktop_desactivado">
+										<path class="stb0" d="M31.9,25.9c-0.8-1.1-1.6-1.8-1.6-3.2v-6.8c0-5.5-2.6-9.5-7.1-10.8c-0.3-1.6-1.8-2.9-3.7-2.9
+											c-1.8,0-3.2,1.3-3.7,2.9c-4.5,1.3-7.1,5.3-7.1,10.8v6.8c0,1.6-0.8,2.4-1.6,3.2c-1.1,1.3-2.6,3.2-2.6,7.1c0,0.3,0.3,0.5,0.5,0.5h8.2
+											c0.3,3.2,2.9,5.8,6.3,5.8s6.1-2.6,6.3-5.8H34c0.3,0,0.5-0.3,0.5-0.5C34.5,28.8,33,27.3,31.9,25.9z M19.5,38.6c-2.9,0-5.3-2.1-5.5-5
+											h10.8C24.8,36.2,22.4,38.6,19.5,38.6z M25.6,32.5H13.7H5.8c0-3.4,1.3-5,2.4-6.1c0.8-1.1,1.6-2.1,1.6-3.9v-6.6
+											c0-5.3,2.4-8.7,6.8-9.7c0.3,0,0.3-0.3,0.3-0.5c0.3-1.3,1.3-2.4,2.6-2.4c1.3,0,2.6,1.1,2.6,2.4c0,0.3,0.1,0.4,0.3,0.5
+											c4.2,1.1,6.8,4.7,6.8,9.7v6.8c0,1.8,0.8,2.9,1.6,4c1.1,1.3,2.5,2.4,2.5,5.8L25.6,32.5L25.6,32.5z"/>
+									</g>
+									<circle class="stb1" cx="31.3" cy="7.5" r="6.5"/>
+									</svg>
+									
+									<svg version="1.1" id="iconoNotificacionOff" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 viewBox="0 0 39.1 40.8" style="enable-background:new 0 0 39.1 40.8; display: none;" xml:space="preserve">
+									<style type="text/css">
+										.stb0{fill:#D6D6D6;stroke:#D6D6D6;stroke-miterlimit:10;}
+									</style>
+									<g id="desktop_desactivado">
+										<path class="stb0" d="M31.9,25.9c-0.8-1.1-1.6-1.8-1.6-3.2v-6.8c0-5.5-2.6-9.5-7.1-10.8c-0.3-1.6-1.8-2.9-3.7-2.9
+											c-1.8,0-3.2,1.3-3.7,2.9c-4.5,1.3-7.1,5.3-7.1,10.8v6.8c0,1.6-0.8,2.4-1.6,3.2C6,27.2,4.5,29.1,4.5,33c0,0.3,0.3,0.5,0.5,0.5h8.2
+											c0.3,3.2,2.9,5.8,6.3,5.8s6.1-2.6,6.3-5.8H34c0.3,0,0.5-0.3,0.5-0.5C34.5,28.8,33,27.3,31.9,25.9z M19.5,38.6c-2.9,0-5.3-2.1-5.5-5
+											h10.8C24.8,36.2,22.4,38.6,19.5,38.6z M25.6,32.5H13.7H5.8c0-3.4,1.3-5,2.4-6.1c0.8-1.1,1.6-2.1,1.6-3.9v-6.6
+											c0-5.3,2.4-8.7,6.8-9.7c0.3,0,0.3-0.3,0.3-0.5c0.3-1.3,1.3-2.4,2.6-2.4c1.3,0,2.6,1.1,2.6,2.4c0,0.3,0.1,0.4,0.3,0.5
+											c4.2,1.1,6.8,4.7,6.8,9.7v6.8c0,1.8,0.8,2.9,1.6,4c1.1,1.3,2.5,2.4,2.5,5.8H25.6L25.6,32.5z"/>
+									</g>
+									</svg>
+	                            	Notificaciones</a>
+	                            </h6> 
+	                            <h6 class="dropdown-header d-flex align-items-center">
+	                            	<a href="<%=Constants.URL_QW%>/promociones/" target="_blank" class="a_promotions">
+	                            	<svg xmlns="http://www.w3.org/2000/svg" width="18.908" height="15.023" viewBox="0 0 18.908 15.023">
+									  <g id="Grupo_4000" data-name="Grupo 4000" transform="translate(0.25 -53.77)">
+									    <path id="Trazado_2355" data-name="Trazado 2355" d="M465.332,246h-1.008a.359.359,0,0,0,0,.719h1.008a.359.359,0,0,0,0-.719Z" transform="translate(-447.283 -185.079)" fill="#d6d6d6" stroke="#d6d6d6" stroke-width="0.5"/>
+									    <path id="Trazado_2356" data-name="Trazado 2356" d="M464.321,188.71a.358.358,0,0,0,.179-.048l.66-.381a.359.359,0,1,0-.359-.623l-.66.381a.36.36,0,0,0,.18.671Z" transform="translate(-447.281 -128.787)" fill="#d6d6d6" stroke="#d6d6d6" stroke-width="0.5"/>
+									    <path id="Trazado_2357" data-name="Trazado 2357" d="M465.161,294.218l-.66-.381a.36.36,0,0,0-.359.623l.66.381a.36.36,0,1,0,.359-.623Z" transform="translate(-447.281 -231.148)" fill="#d6d6d6" stroke="#d6d6d6" stroke-width="0.5"/>
+									    <path id="Trazado_2358" data-name="Trazado 2358" d="M13.787,54.02a.762.762,0,0,0-.349.084L.22,59.656a.359.359,0,0,0-.22.331v2.588a.359.359,0,0,0,.22.331l1.939.815h0l.929.39v2.256a1.026,1.026,0,0,0,1.025,1.025H7.388a1.026,1.026,0,0,0,1.024-1.025v-.02l5.026,2.112a.765.765,0,0,0,.348.084c.634,0,1.114-.752,1.469-2.3a23.291,23.291,0,0,0,.472-4.961,23.289,23.289,0,0,0-.472-4.961C14.9,54.772,14.42,54.02,13.787,54.02ZM7.693,66.369a.306.306,0,0,1-.306.306H4.116a.306.306,0,0,1-.306-.306V64.415l3.883,1.631ZM3.248,63.4h0l-.587-.247-.719-.3L1.4,62.624l-.684-.287v-2.11l11.923-5.008q-.092.239-.175.527l0,.012c-.018.058-.1.32-.184.713-.052.234-.109.515-.158.828-.041.258-.077.539-.1.832h0a27.687,27.687,0,0,0-.171,3.151,23.291,23.291,0,0,0,.472,4.961,8.28,8.28,0,0,0,.324,1.1Zm9.346-3.441a1.348,1.348,0,0,1,0,2.657c-.02-.434-.03-.88-.03-1.333S12.574,60.389,12.594,59.958Zm1.961,6.125c-.328,1.432-.695,1.743-.768,1.743l-.01,0-.018-.009-.009,0c-.12-.073-.441-.461-.731-1.729a18.532,18.532,0,0,1-.383-2.747,2.067,2.067,0,0,0,0-4.1,18.543,18.543,0,0,1,.383-2.756c.29-1.267.61-1.656.731-1.729l.032-.013h.005c.073,0,.44.31.768,1.743a22.549,22.549,0,0,1,.454,4.8A22.549,22.549,0,0,1,14.555,66.082Z" transform="translate(0 0)" fill="#d6d6d6" stroke="#d6d6d6" stroke-width="0.5"/>
+									  </g>
+									</svg>	                            	
+	                            	Promociones</a>
+	                            </h6>                   
+	                            <div class="drop--u">
+	                            <c:choose>
+                                    <c:when test="${isHelpSale == true}">
+                                    	<h6 class="dropdown-header d-flex align-items-center a_help">
+                                    	<svg id="_906794" data-name="906794" xmlns="http://www.w3.org/2000/svg" width="15.888" height="15.888" viewBox="0 0 15.888 15.888">
+										  <g id="Grupo_3233" data-name="Grupo 3233">
+										    <g id="Grupo_3232" data-name="Grupo 3232">
+										      <circle id="Elipse_115" data-name="Elipse 115" cx="0.776" cy="0.776" r="0.776" transform="translate(7.168 10.97)" fill="#d6d6d6"/>
+										      <path id="Trazado_2156" data-name="Trazado 2156" d="M7.944,0a7.944,7.944,0,1,0,7.944,7.944A7.94,7.94,0,0,0,7.944,0Zm0,14.647a6.7,6.7,0,1,1,6.7-6.7A6.7,6.7,0,0,1,7.944,14.647Z" fill="#d6d6d6"/>
+										      <path id="Trazado_2157" data-name="Trazado 2157" d="M178.483,128.5A2.485,2.485,0,0,0,176,130.983a.621.621,0,0,0,1.241,0,1.241,1.241,0,1,1,1.241,1.241.621.621,0,0,0-.621.621V134.4a.621.621,0,0,0,1.241,0v-1.009a2.483,2.483,0,0,0-.621-4.887Z" transform="translate(-170.538 -124.512)" fill="#d6d6d6"/>
+										    </g>
+										  </g>
+										</svg>                                    	
+                                    	Ayuda
+			                            </h6>
+                                    </c:when>                                    
+                                    <c:otherwise></c:otherwise>
+                                </c:choose>
+                                <div class="drop-a">
+	                            <a href="<%=Constants.URL_QW%>/tutoriales/" target="_blank" class="dropdown-item">Tutoriales</a>
+	                            <a href="javascript: autocontrolLink();" class="dropdown-item">Autocontrol</a>
+	                            <a href="<%=Constants.URL_QW%>/preguntas-frecuentes/" target="_blank" class="dropdown-item">Preguntas frecuentes</a>
+	                            </div>
+	                            </div>
+	                            <a href="<%=Constants.URL_QW%>/puntos-de-venta/" target="_blank" class="dropdown-item location">
+	                            	<svg xmlns="http://www.w3.org/2000/svg" width="15.965" height="20.959" viewBox="0 0 15.965 20.959">
+									  <g id="_612801" data-name="612801" transform="translate(-61)">
+									    <g id="Grupo_3918" data-name="Grupo 3918" transform="translate(64.684 3.725)">
+									      <g id="Grupo_3917" data-name="Grupo 3917">
+									        <path id="Trazado_2359" data-name="Trazado 2359" d="M152.842,91a1.842,1.842,0,1,0,1.842,1.842A1.844,1.844,0,0,0,152.842,91Zm0,2.456a.614.614,0,1,1,.614-.614A.615.615,0,0,1,152.842,93.456Z" transform="translate(-151 -91)" fill="#d6d6d6"/>
+									      </g>
+									    </g>
+									    <g id="Grupo_3920" data-name="Grupo 3920" transform="translate(69.597 8.637)">
+									      <g id="Grupo_3919" data-name="Grupo 3919">
+									        <path id="Trazado_2360" data-name="Trazado 2360" d="M272.842,211a1.842,1.842,0,1,0,1.842,1.842A1.844,1.844,0,0,0,272.842,211Zm0,2.456a.614.614,0,1,1,.614-.614A.615.615,0,0,1,272.842,213.456Z" transform="translate(-271 -211)" fill="#d6d6d6"/>
+									      </g>
+									    </g>
+									    <g id="Grupo_3922" data-name="Grupo 3922" transform="translate(65.912 3.725)">
+									      <g id="Grupo_3921" data-name="Grupo 3921">
+									        <path id="Trazado_2361" data-name="Trazado 2361" d="M186.866,91.1a.614.614,0,0,0-.852.17L181.1,98.641a.614.614,0,0,0,1.022.681l4.912-7.368A.614.614,0,0,0,186.866,91.1Z" transform="translate(-180.999 -90.999)" fill="#d6d6d6"/>
+									      </g>
+									    </g>
+									    <g id="Grupo_3924" data-name="Grupo 3924" transform="translate(61)">
+									      <g id="Grupo_3923" data-name="Grupo 3923">
+									        <path id="Trazado_2362" data-name="Trazado 2362" d="M68.983,0A8.012,8.012,0,0,0,61,8.023,7.915,7.915,0,0,0,62.585,12.8l5.905,7.914a.614.614,0,0,0,.984,0l6.012-8.06.008-.012a7.93,7.93,0,0,0,1.47-4.617A8.012,8.012,0,0,0,68.983,0ZM74.5,11.924l-5.515,7.395-5.413-7.254a6.7,6.7,0,0,1-1.341-4.04,6.755,6.755,0,1,1,13.509,0A6.708,6.708,0,0,1,74.5,11.924Z" transform="translate(-61)" fill="#d6d6d6"/>
+									      </g>
+									    </g>
+									  </g>
+									</svg>
+	                            	Puntos de venta
+	                            </a>
+<%-- 	                            <c:choose> --%>
+<%--                                     <c:when test="${isContactusSale == true}"> --%>
+                                    	<a href="<%=Constants.URL_QW%>/contactanos/" target="_blank" class="dropdown-item contact">
+			                                <svg xmlns="http://www.w3.org/2000/svg" width="16.521" height="12.124" viewBox="0 0 16.521 12.124"><g id="_133667" data-name="133667" transform="translate(0.2 -5.8)"><g id="Grupo_125" data-name="Grupo 125" transform="translate(0 6)"><g id="Grupo_124" data-name="Grupo 124"><path id="Trazado_304" data-name="Trazado 304" d="M15.754,6H.366A.366.366,0,0,0,0,6.366V17.357a.366.366,0,0,0,.366.366H15.754a.366.366,0,0,0,.366-.366V6.366A.366.366,0,0,0,15.754,6Zm-.366,10.1-4.539-4.538-.518.518,4.906,4.906H.883l4.906-4.906-.518-.518L.733,16.1V6.733H15.387Z" transform="translate(0 -6)" fill="#959595" stroke="#959595" stroke-width="0.4"></path></g></g><g id="Grupo_127" data-name="Grupo 127" transform="translate(0.733 6.733)"><g id="Grupo_126" data-name="Grupo 126"><path id="Trazado_305" data-name="Trazado 305" d="M15.914,8,9.327,14.587,2.74,8H2v.3l7.068,7.068a.366.366,0,0,0,.518,0L16.655,8.3V8Z" transform="translate(-2 -8)" fill="#959595" stroke="#959595" stroke-width="0.4"></path></g></g></g></svg> Contáctanos
+			                            </a>
+<%--                                     </c:when> --%>
+<%--                                 </c:choose>		                            	                             --%>
+	                            <c:choose>
+                                    <c:when test="${isLogoutSale == true}">
+                                    	<a href="salir.html" class="dropdown-item logout"><img height="16" alt="Cerrar sesión" class="mr-3" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMS45ODkgNTExLjk4OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTExLjk4OSA1MTEuOTg5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGNsYXNzPSIiPjxnPjxnPgoJPGc+CgkJPGc+CgkJCTxwYXRoIGQ9Ik0xMTAuOTMzLDIyMS43ODJjLTQuNzEsMC04LjUzMywzLjgyMy04LjUzMyw4LjUzM3Y1MS4yYzAsNC43MSwzLjgyMyw4LjUzMyw4LjUzMyw4LjUzM3M4LjUzMy0zLjgyMyw4LjUzMy04LjUzM3YtNTEuMiAgICAgQzExOS40NjcsMjI1LjYwNSwxMTUuNjQ0LDIyMS43ODIsMTEwLjkzMywyMjEuNzgyeiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iIzAwMDAwMCI+PC9wYXRoPgoJCQk8cGF0aCBkPSJNMTExLjg1NSwyLjMwNEwzMS4xNzIsMzQuNTg2QzguNDQ4LDQzLDAsNTQuNDE4LDAsNzYuNzE1djM1OC40NzdjMCwyMi4yOTgsOC40NDgsMzMuNzE1LDMwLjk1OSw0Mi4wNjFsODEuMDU4LDMyLjQyNyAgICAgYzQuMDExLDEuNTE5LDguMDM4LDIuMjg3LDExLjk4MSwyLjI4N2MxNy4xNTIsMCwyOS42MDItMTQuMzM2LDI5LjYwMi0zNC4wOTFWMzQuMDQ5QzE1My42LDkuNzgsMTM0LjI0Ni02LjEyNiwxMTEuODU1LDIuMzA0eiAgICAgIE0xMzYuNTMzLDQ3Ny44NzZjMCwxMC4xOC01LjAzNSwxNy4wMjQtMTIuNTM1LDE3LjAyNGMtMS44NjksMC0zLjg4My0wLjQwMS01LjgwMy0xLjExOEwzNy4xMDMsNDYxLjMzICAgICBjLTE2LjEwMi01Ljk2NS0yMC4wMzYtMTEuMTAyLTIwLjAzNi0yNi4xMzhWNzYuNzE1YzAtMTUuMDM2LDMuOTM0LTIwLjE2NCwyMC4yNDEtMjYuMjA2bDgwLjcyNS0zMi4yOSAgICAgYzIuMDgyLTAuNzg1LDQuMDg3LTEuMTg2LDUuOTU2LTEuMTg2YzcuNTAxLDAsMTIuNTQ0LDYuODM1LDEyLjU0NCwxNy4wMTZWNDc3Ljg3NnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiPjwvcGF0aD4KCQkJPHBhdGggZD0iTTE3OC4xMzMsNTEuMTE1aDEyMC41MzNjMTQuMTE0LDAsMjUuNiwxMS40ODYsMjUuNiwyNS42djEyOGMwLDQuNzEsMy44MTQsOC41MzMsOC41MzMsOC41MzMgICAgIGM0LjcxOSwwLDguNTMzLTMuODIzLDguNTMzLTguNTMzdi0xMjhjMC0yMy41MjYtMTkuMTQtNDIuNjY3LTQyLjY2Ny00Mi42NjdIMTc4LjEzM2MtNC43MSwwLTguNTMzLDMuODIzLTguNTMzLDguNTMzICAgICBTMTczLjQyMyw1MS4xMTUsMTc4LjEzMyw1MS4xMTV6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIj48L3BhdGg+CgkJCTxwYXRoIGQ9Ik0zMzIuOCwyOTguNTgyYy00LjcxOSwwLTguNTMzLDMuODIzLTguNTMzLDguNTMzdjEyOGMwLDE0LjExNC0xMS40ODYsMjUuNi0yNS42LDI1LjZIMTc5LjIgICAgIGMtNC43MSwwLTguNTMzLDMuODIzLTguNTMzLDguNTMzczMuODIzLDguNTMzLDguNTMzLDguNTMzaDExOS40NjdjMjMuNTI2LDAsNDIuNjY3LTE5LjE0LDQyLjY2Ny00Mi42Njd2LTEyOCAgICAgQzM0MS4zMzMsMzAyLjQwNSwzMzcuNTE5LDI5OC41ODIsMzMyLjgsMjk4LjU4MnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiPjwvcGF0aD4KCQkJPHBhdGggZD0iTTUxMS4zNDMsMjUyLjY1NWMtMC40MzUtMS4wNS0xLjA1OC0xLjk4OC0xLjg1Mi0yLjc4MmwtODUuMzI1LTg1LjMzM2MtMy4zMzctMy4zMzYtOC43My0zLjMzNi0xMi4wNjYsMCAgICAgYy0zLjMzNywzLjMzNy0zLjMzNyw4LjczLDAsMTIuMDY2bDcwLjc2Nyw3MC43NzVIMTk2LjI2N2MtNC43MSwwLTguNTMzLDMuODIzLTguNTMzLDguNTMzYzAsNC43MSwzLjgyMyw4LjUzMyw4LjUzMyw4LjUzMyAgICAgaDI4Ni42MDFMNDEyLjEsMzM1LjIxNWMtMy4zMzcsMy4zMzctMy4zMzcsOC43MywwLDEyLjA2NmMxLjY2NCwxLjY2NCwzLjg0OSwyLjUsNi4wMzMsMi41YzIuMTg1LDAsNC4zNjktMC44MzYsNi4wMzMtMi41ICAgICBsODUuMzI1LTg1LjMyNWMwLjc5NC0wLjc5NCwxLjQxNy0xLjczMiwxLjg1Mi0yLjc4MkM1MTIuMjA1LDI1Ny4wOTMsNTEyLjIwNSwyNTQuNzM4LDUxMS4zNDMsMjUyLjY1NXoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiPjwvcGF0aD4KCQk8L2c+Cgk8L2c+CjwvZz48L2c+IDwvc3ZnPg==">Cerrar Sesión</a>
+                                    </c:when>
+                                </c:choose> 
+	                        </div>
+                		</li>
+                	</ul>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+			<%-- 	Desarrollo copa en tu casa DRUIZ no tocar	
+			<footer id="footer-copacasa">
+    
+    	           <div id="popup-copacasa" class="overlay">
+						<div class="popup popup-sm-copacasa">
+							<a class="close-copa js-close-modal" href="#">&times;</a>
+							<div class="wrap-modal">
+								<div class="gana-copa-header">
+									<img class="img-logo-teapuesto-popup" src="layer-view-image/game/copaentucasa/logo-teapuesto.gif">
+									<div class="descripcion-copa-casa">
+										<span>¡GANA CON</span><br>
+										<span>LA COPA EN TU CASA!</span>
+									</div>
+								</div>
+								<div class="gana-copa-footer">
+									<img class="home-popup" src="layer-view-image/game/copaentucasa/Home_popup.jpg">
+									<div class="descripcion-footer">
+										<span>Todas tus jugadas desde S/ 5</span><br>
+										<span>participan AUTOMÁTICAMENTE</span>
+									</div>
+									<button type="button" id="btn_desktop_ingresar_copacasa" onclick="return false;"class="button-ingresar"><a href="#" style="text-decoration: none;color: white;">Ingresa aquí</a></button>								
+								</div>
+																							
+							</div>
+						</div>
+					</div>
+    
+    </footer> --%>
+    
+    <%-- 	Desarrollo copa bicolor en tu casa DRUIZ no tocar	--%>
+	<%-- footer id="footer-copacasa">
+		<div id="popup-copacasa" class="overlay">
+			<div class="popup popup-sm-copacasa" style="border-radius: 20px;">
+				<a class="close-copa js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-copa-footer" style="background-color:#fff;border-radius: 20px;">
+						<img class="home-popup" src="layer-view-image/game/premiazoganagol/img-popup-premiazogg.png">
+						<button type="button" id="btn_desktop_ingresar_copacasa" onclick="return false;"class="button-ingresar" ><a href="#" style="text-decoration: none;color: white;">Infórmate aquí</a></button>								
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer --%> 
+    
+    <!-- Popup avion qatar -->
+    <footer class="footerPromSorteo" >
+		<div id="popup-avionQatar" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#fff;border-radius: 20px;">
+						<img class="home-popup" src="layer-view-image/game/teapuesto/avionQatar/popup_taqatar.png" alt="Apuestas Mundial Qatar 2022 Te Apuesto">
+						<button style="top: -86px;position: relative;cursor:pointer;" type="button" id="btnAvionqatarInfo" onclick="return false;"class="button-avion-qatar-amarillo" >Infórmate aquí</button>								
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer>
+    
+    <footer class="footerPromSorteo" >
+		<div id="popup-avionQatar-nivel" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#fff;border-radius: 20px;">
+						<img src="layer-view-image/game/teapuesto/avionQatar/cabecera_popup.png" alt="Apuestas Mundial Qatar 2022 Te Apuesto" style="display: block;">
+						<div id= "nivel-avionQatar"></div>
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer>
+    
+    <!-- Popup avion Estambul -->
+    <footer class="footerPromSorteo" >
+		<div id="popup-avionEstambul" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#" onclick="evalPopupInformativo();">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#fff;border-radius: 20px;">
+						<img class="home-popup" src="layer-view-image/game/teapuesto/avionEstambul/popup-estambul.png" alt="Te Apuesto te lleva a la Final de la Champions 2023">
+						<button style="top: -60px;position: relative;cursor:pointer;" type="button" id="btnAvionEstambulInfo" onclick="return false;"class="button-avion-qatar-naranja" >Infórmate aquí</button>								
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer>
+    
+    <footer class="footerPromSorteo" >
+		<div id="popup-avionEstambul-nivel" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#" onclick="evalPopupInformativo();">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#fff;border-radius: 20px;">
+						<img src="layer-view-image/game/teapuesto/avionEstambul/popup-categorias-estambul.png" alt="Te Apuesto te lleva a la Final de la Champions 2023" style="display: block;">
+						<div id= "nivel-avionEstambul" style="background-color: #d7e2e4;"></div>
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer>
+    
+    <!-- Popup avion Peru -->
+    <!-- Se comenta solicitado por NNDD 23/05/2024 -->
+    <!-- --> <footer class="footerPromSorteo" >
+		<div id="popup-avionPeru" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#" onclick="evalPopupInformativo();">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#fff;border-radius: 20px;">
+						<img class="home-popup" src="layer-view-image/game/teapuesto/avionPeru/popup-peru.png" alt="Avión del Hincha Eliminatorias 2026.">
+						<button style="top: -60px;position: relative;cursor:pointer;" type="button" id="btnAvionPeruInfo" onclick="return false;"class="button-avion-qatar-naranja" >Infórmate aquí</button>								
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer>
+    
+    
+    <footer class="footerPromSorteo" >
+		<div id="popup-avionPeru-nivel" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#" onclick="evalPopupInformativo();">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#fff;border-radius: 20px;">
+						<img src="layer-view-image/game/teapuesto/avionPeru/popup-categorias-peru.png" alt="Avión del Hincha Eliminatorias 2026." style="display: block;">
+						<div id= "nivel-avionPeru" style="background-color: #d7e2e4;"></div>
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer>
+    
+    <!-- Popup juegaddvv ddvv-->
+    <!-- <footer class="footerPromSorteo" >
+		<div id="popup-juegaddvv" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#F1650a;border-radius: 20px;">
+						<img class="home-popup" src="layer-view-image/game/virtuales/juegaGanaConVirtuales/popup_juegaddvv.png" alt="Juega Deportes Virtuales">
+						<button style="top: -50px;position: relative;cursor:pointer;" type="button" id="btnJuegaddvvInfo" onclick="return false;"class="button-juegaddvv-naranja" >Infórmate aquí</button>								
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer> -->
+    <footer class="footerPromSorteo" >
+		<div id="popup-juegaddvv-nivel" class="overlay">
+			<div class="popup popup-sm-PromSorteo" style="border-radius: 20px;">
+				<a class="close-PromSorteo js-close-modal" href="#" onclick="evalPopupInformativo();">&times;</a>
+				<div class="wrap-modal">
+					<div class="gana-PromSorteo-footer" style="background-color:#fff;border-radius: 20px;">
+						<img src="layer-view-image/game/virtuales/juegaGanaConVirtuales/cabecera_popup.png" alt="Juega Deportes Virtuales" style="display: block;">
+						<div id= "nivel-juegaddvv"></div>
+					</div> 														
+				</div>
+			</div>
+		</div>
+    </footer>
+    
+    <!-- Popup Casino -->
+	<footer id="footer-popup-tinka">
+ 	    <div id="popup-casino" class="overlay">
+			<div class="popup popup-sm-tinka">
+				<a class="close-tinka js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="popup-tinka-footer" style="background-color:#fff;">
+						<img class="home-popup" src="layer-view-image/game/casino/popup_casino.jpg" alt="Jugar Casino Online">
+						<button type="button" id="btn_desktop_ingresar_casino" onclick="return false;"class="button-ingresar" style="background-color:#febb05 ;margin-right: 15px;"><a href="#" style="text-decoration: none;color: #000000;">Juega aquí</a></button>								
+					</div>																			
+				</div>
+			</div>
+		</div>
+    
+    </footer>
+	<!-- fin popup Casino -->
+	
+    <!-- Popup La Tinka -->
+	<footer id="footer-popup-tinka">
+ 	    <div id="popup-tinka" class="overlay">
+			<div class="popup popup-sm-tinka">
+				<a class="close-tinka js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="popup-tinka-footer" style="background-color:#fff;">
+						<img class="home-popup" src="layer-view-image/game/tinka/popup_siosi_100.jpg?v=1" alt="Jugar La Tinka Lotería">
+						<button type="button" id="btn_desktop_ingresar_tinka" onclick="return false;"class="button-ingresar" style="background-color:#E30613;margin-right: 15px;"><a href="#" style="text-decoration: none;color: white;">Juega aquí</a></button>								
+					</div>																			
+				</div>
+			</div>
+		</div>
+    
+    </footer>
+	<!-- fin popup La Tinka -->
+	
+	<!-- Popup La Tinka 3x12 -->
+    <div id="popup-tinka-3x12" class="overlay">
+	    <div class="popup popup-standard">
+			<a class="close-popup" onclick="closePopup(this)" >&times;</a> 
+			<div class="popup-img-button">
+				<img class="home-popup" src="layer-view-image/game/tinka/popup_juega_tinka.jpg" alt="Juega Tinka">
+				<div class="footer-button accion-1">
+					<button id="btn_juega_tinka_3x12" class="button-ingresar">Juega aquí</button>
+				</div>
+				<div class="footer-button accion-2">
+					<a id="enlace_ingresar_tinka_3x12">Infórmate de los términos y condiciones</a>
+				</div>
+			</div>
+		</div>						
+	</div>
+   	<!-- fin popup La Tinka 3x12 -->
+   	
+   	<!-- Popup Gana Diario 3x5 -->
+    <div id="popup-ganadiario-3x5" class="overlay">
+	    <div class="popup popup-standard">
+			<a class="close-popup" onclick="closePopup(this)" >&times;</a> 
+			<div class="popup-img-button">
+				<img class="home-popup" src="layer-view-image/game/ganadiario/popup_juega_gana_diario_3x5.jpg" alt="Juega Gana Diario">
+				<div class="footer-button accion-1">
+					<button id="btn_juega_ganadiario_3x5" class="button-ingresar">Juega aquí</button>
+				</div>
+				<div class="footer-button accion-2">
+					<a id="enlace_ingresar_ganadiario_3x5">Infórmate de los términos y condiciones</a>
+				</div>
+			</div>
+		</div>						
+	</div>
+   	<!-- fin popup La Gana Diario 3x5 -->
+   	
+   	<%@ include file="popups.jspf" %>
+	
+	<!-- popup Faltan Datos de Usuario --> 
+    <div id="popupDataComplete" class="overlay">
+		<div class="popup popup-sm">
+			<a class="close-tinka js-close-modal" href="javascript:popup.close()">&times;</a>
+			<div>
+				<div><img id="imgPopupData" src="layer-view-image/client/icon-editar.png" style="margin-bottom:20px;"></div>
+				<div class="mensaje-popup" >
+					<span id="popupDataTitulo" >Vemos que a tu perfil le faltan algunos datos </span>
+					<span>¡Complétalo ahora!</span>
+					<span id="popupDataMensaje">Recuerda que para poder procesar tu retiro, necesitamos validar tus datos, los cuales deben ser precisos y estar completos.</span>
+				</div>
+				<div class="popupDataButton">
+					<button id="btnEditarPerfil" class="my-button" type="button" style="width: 50%;">EDITAR PERFIL</button>
+				</div>
+					
+			</div>
+		</div>
+	</div> 
+     <!-- fin popup Faltan Datos de Usuario --> 
+     
+     <!-- popup Mi Perfil --> 
+	<div id="popupMiPerfil" class="overlay">
+		<div class="popup popup-sm"> 
+			<div>
+				<div><img id="imgPopupPerfil" src="layer-view-image/client/icon-ok.png"></div>
+				<div class="mensaje-popup" >
+					<span id="popupPerfilTitulo" ></span>
+					<span id="popupPerfilMensaje"></span>
+				</div>
+				<div class="popupDataButton" id="popupPerfilButton">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- fin popup Mi Perfil --> 
+	
+	<!-- Popup avion del hincha -->
+	<footer id="footer-popup-hincha">    
+ 	    <div id="popup-hincha-informate" class="overlay">
+			<div class="popup popup-sm-hincha" style="border-radius: 7px;">
+				<a class="close-hincha js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="popup-hincha-footer" style="background-color:#fff;">
+						<img class="home-popup" style="border-radius: 7px;" src="layer-view-image/game/aviondelhincha/popup-informate.jpg" alt="tinka">
+						<button type="button" id="btn_desktop_informate_hincha" onclick="return false;"class="button-informate" style="margin-right: 15px;"><a href="#" style="text-decoration: none;color: white;">INFÓRMATE AQUÍ</a></button>								
+					</div>																			
+				</div>
+			</div>
+		</div>
+    
+    </footer>
+    
+    <footer id="footer-popup-hincha">    
+ 	    <div id="popup-hincha-participa" class="overlay">
+			<div class="popup popup-sm-hincha" style="border-radius: 7px;">
+				<a class="close-hincha js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="popup-hincha-footer" style="background-color:#fff;">
+						<img class="home-popup" style="border-radius: 7px;" src="layer-view-image/game/aviondelhincha/popup-participa.jpg" alt="tinka">
+						<button type="button" id="btn_desktop_participa_hincha" onclick="return false;"class="button-participa" style="margin-right: 15px;"><a href="#" style="text-decoration: none;color: white;">PARTICIPA AQUÍ<img src="layer-view-image/game/aviondelhincha/check.png" style="margin-left: 10px;vertical-align: text-bottom;"></a></button>								
+					</div>																			
+				</div>
+			</div>
+		</div>
+    
+    </footer>
+	<!-- fin popup avion del hincha -->
+ 
+ 	<!-- Popup GG-3VS -->
+	<footer id="footer-popup-GG-3VS">
+ 	    <div id="popup-GG-3VS" class="overlay">
+			<div class="popup popup-sm-GG-3VS" >
+				<a class="close-GG-3VS js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="popup-GG-3VS-footer" style="background-color:#fff;">
+						<img class="home-popup" src="layer-view-image/game/ganagol/popup_gg.jpg" alt="Jugar Ganagol Apuestas de Fútbol">
+						<button type="button" id="btn_desktop_GG_3VS" onclick="return false;"class="button-GG-3VS">
+							<a href="#" style="text-decoration: none;color: white;">Haz tu jugada aquí</a>
+						</button>								
+					</div>																			
+				</div>
+			</div>
+		</div>
+    </footer>
+	<!-- fin Popup GG-3VS -->
+ 
+ 	<!-- Popup motazo-DDVV -->
+	<footer id="footer-popup-motazoDDVV">
+ 	    <div id="popup-motazoDDVV" class="overlay">
+			<div class="popup popup-sm-GG-3VS" >
+				<a class="close-GG-3VS js-close-modal" href="#">&times;</a>
+				<div class="wrap-modal">
+					<div class="popup-GG-3VS-footer" style="background-color:#fff;">
+						<img class="home-popup" src="layer-view-image/game/virtuales/popupMotazoDDVV.jpg" alt="Jugar Deportes Virtuales">
+						<button type="button" id="btn_desktop_motazo_DDVV" onclick="return false;"class="button-GG-3VS">
+							<a href="#" style="text-decoration: none;color: white;">Infórmate aquí</a>
+						</button>								
+					</div>																			
+				</div>
+			</div>
+		</div>
+    </footer>
+	<!-- fin Popup motazo-DDVV -->
+ 
+ 	<!-- Banner Cookies header-->		
+<!-- 	<div id="bannerCookies" class="BannerCookies closeBanner" > -->
+<!-- 		<div class="txtBanner"> -->
+<!-- 			La Tinka utiliza cookies. Al hacer click en el botón Aceptar, aceptas su uso. -->
+<!-- 				 Obtén más información sobre las cookies y cómo evitar su uso en este <span id="enlaceBanner">enlace.</Span> -->
+<!-- 		</div> -->
+<!-- 		<button type="button" id="btnBannerCookies" onclick="return false;" class="buttonBanner"> -->
+<!-- 			Aceptar -->
+<!-- 		</button> -->
+<!-- 	</div>			 -->
+
+<div>
+	<div id="bannerCookiesModal"></div>
+	<div id="bannerCookies" class="ck-font-family ck-banner-cookies" style="letter-spacing: normal;"> 
+		<div class="ck-cookie-bar shadow-lg z-50" id="cookieBanner" style="z-index: 100;">
+	      <div>
+	        <div class="ck-cookie-paragraph">
+	          La Tinka utiliza cookies para ofrecer la mejor experiencia a nuestros usuarios. Al seguir navegando aceptas el uso de cookies.
+	        </div>
+	      </div>
+	      <div class="ck-btn-container d-flex">
+	        <button
+	          class="ck-custom-botton ck-conf-btn"
+	          data-bs-toggle="modal"
+	          data-bs-target="#cookieModal"
+	        >
+	          Configurar cookies
+	        </button>
+	        <button id="acceptAllBtn" class="ck-custom-botton ck-accept-btn">
+	          Aceptar todas
+	        </button>
+	      </div>
+	    </div>
+	<div class="ckb-modal fade" tabindex="-1" id="cookieModal" style="z-index: 2000;">
+	      <div class="ckb-modal-dialog">
+	        <div class="ckb-modal-content ck-custom-modal-content" style="text-align: justify !important;">
+	          <div class="ckb-modal-header ck-custom-modal-header">
+	            <h5 class="ck-custom-modal-title">Configuración de Cookies</h5>
+	            <img class="ck-logo" src="layer-view-image/client/logo-banner-cookies.png" />
+	          </div>
+			  
+	          <div class="ckb-modal-body">
+	            <div class="ck-main-text">
+	              Nuestros sitios web podrían obtener o guardar información en tu
+	              navegador, mediante el uso de cookies. Respetando tu derecho a la
+	              privacidad, puedes escoger no permitirnos usar ciertas cookies,
+	              sin embargo, el bloqueo de algunos tipos de cookies puede afectar
+	              tu experiencia en nuestros sitios y con los servicios que te
+	              ofrecemos.
+	            </div>
+	            <div
+	              class="accordion ck-accordion accordion-flush"
+	              id="accordionFlushExample"
+	            >
+	              <div class="accordion-item">
+	                <div
+	                  class="accordion-header ck-accordion-header d-flex" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+	                >
+	                  <div
+	                    class="collapsed d-flex ck-coll"
+	                    type="button"
+	                    data-bs-toggle="collapse"
+	                    data-bs-target="#flush-collapseOne"
+	                    aria-expanded="false"
+	                    aria-controls="flush-collapseOne"
+	                  >
+	                    <label class="ck-color-gray">
+	                      Estrictamente necesarias
+	                    </label>
+	                  </div>
+	                  <div class="ck-switch-arrow">
+	                    <label
+	                      class="ck-siempre-label"
+	                      onclick="event.stopPropagation()"
+	                    >
+	                      Siempre activas
+	                    </label>
+	                    <svg
+	                      id="arrow"
+	                      aria-expanded="false"
+	                      data-bs-toggle="collapse"
+	                      aria-controls="flush-collapseOne"
+	                      data-bs-target="#flush-collapseOne"
+	                      class="accord ck-accord ck-arrow-1"
+	                      xmlns="http://www.w3.org/2000/svg"
+	                      width="16"
+	                      height="16"
+	                      viewBox="0 0 16 16"
+	                      fill="none"
+	                    >
+	                      <path
+	                        d="M2 5C2 5 7.65625 11 8 11C8.34375 11 14 5 14 5"
+	                        stroke="#404040"
+	                        stroke-width="1.5"
+	                        stroke-linecap="round"
+	                      />
+	                    </svg>
+	                  </div>
+	                </div>
+	                <div
+	                  id="flush-collapseOne"
+	                  class="accordion-collapse collapse"
+	                  data-bs-parent="#accordionFlushExample"
+	                >
+	                  <div class="accordion-body ck-accordion-body">
+	                    Estas cookies son necesarias para que el sitio web funcione,
+	                    no se pueden desactivar en nuestro sistema. No guardan
+	                    ninguna información personal identificable. Puedes
+	                    configurar tu navegador para bloquear o alertar sobre estas
+	                    cookies, pero algunas partes del sitio no funcionarán.
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="accordion-item">
+	                <div
+	                  id="main-accord"
+	                  class="accordion-header ck-accordion-header d-flex" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+	                >
+	                  <div
+	                    class="collapsed d-flex ck-coll"
+	                    type="button"
+	                    data-bs-toggle="collapse"
+	                    data-bs-target="#flush-collapseTwo"
+	                    aria-expanded="false"
+	                    aria-controls="flush-collapseTwo"
+	                  >
+	                    <label class="ck-color-gray"> Estadísticas </label>
+	                  </div>
+	                  <div class="ck-switch-arrow">
+	                    <div class="ck-switch-container">
+	                      <div class="ck-switch">
+	                        <input
+	                          id="userAcceptsStatistics"
+	                          type="checkbox"
+	                          class="ck-switch-input"
+	                        />
+	                        <label
+	                          for="userAcceptsStatistics"
+	                          class="ck-switch-label"
+	                        ></label>
+	                      </div>
+	                    </div>
+	                    <svg
+	                      id="arrow"
+	                      aria-expanded="false"
+	                      data-bs-toggle="collapse"
+	                      aria-controls="flush-collapseTwo"
+	                      data-bs-target="#flush-collapseTwo"
+	                      class="accord ck-accord ck-arrow-2"
+	                      xmlns="http://www.w3.org/2000/svg"
+	                      width="16"
+	                      height="16"
+	                      viewBox="0 0 16 16"
+	                      fill="none"
+	                    >
+	                      <path
+	                        d="M2 5C2 5 7.65625 11 8 11C8.34375 11 14 5 14 5"
+	                        stroke="#404040"
+	                        stroke-width="1.5"
+	                        stroke-linecap="round"
+	                      />
+	                    </svg>
+	                  </div>
+	                </div>
+	                <div
+	                  id="flush-collapseTwo"
+	                  class="accordion-collapse collapse"
+	                  data-bs-parent="#accordionFlushExample"
+	                >
+	                  <div class="accordion-body ck-accordion-body">
+	                    Estas cookies registran el número de visitantes y su
+	                    comportamiento en el sitio, para medir su actividad y
+	                    elaborar perfiles de navegación de usuarios.
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="accordion-item">
+	                <div
+	                  id="main-accord"
+	                  class="accordion-header ck-accordion-header d-flex" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
+	                >
+	                  <div
+	                    class="collapsed d-flex ck-coll"
+	                    type="button"
+	                    data-bs-toggle="collapse"
+	                    data-bs-target="#flush-collapseThree"
+	                    aria-expanded="false"
+	                    aria-controls="flush-collapseThree"
+	                  >
+	                    <label class="ck-color-gray"> Marketing </label>
+	                  </div>
+	                  <div class="ck-switch-arrow">
+	                    <div class="ck-switch-container">
+	                      <div class="ck-switch">
+	                        <input
+	                          id="userAcceptsMarketing"
+	                          type="checkbox"
+	                          class="ck-switch-input"
+	                        />
+	                        <label
+	                          for="userAcceptsMarketing"
+	                          class="ck-switch-label"
+	                        ></label>
+	                      </div>
+	                    </div>
+	                    <svg
+	                      id="arrow"
+	                      aria-expanded="false"
+	                      data-bs-toggle="collapse"
+	                      aria-controls="flush-collapseThree"
+	                      class="accord ck-accord ck-arrow-3"
+	                      data-bs-target="#flush-collapseThree"
+	                      xmlns="http://www.w3.org/2000/svg"
+	                      width="16"
+	                      height="16"
+	                      viewBox="0 0 16 16"
+	                      fill="none"
+	                    >
+	                      <path
+	                        d="M2 5C2 5 7.65625 11 8 11C8.34375 11 14 5 14 5"
+	                        stroke="#404040"
+	                        stroke-width="1.5"
+	                        stroke-linecap="round"
+	                      />
+	                    </svg>
+	                  </div>
+	                </div>
+	                <div
+	                  id="flush-collapseThree"
+	                  class="accordion-collapse collapse"
+	                  data-bs-parent="#accordionFlushExample"
+	                >
+	                  <div class="accordion-body ck-accordion-body">
+	                    Estas cookies son utilizadas para fines
+	                    publicitarios (registrar una identificación geográfica en
+	                    dispositivos móviles, medir la eficacia de un anuncio y
+	                    almacenar preferencias del reproductor de video del
+	                    usuario).
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	
+	          <div class="ckb-modal-footer ck-modal-footer">
+	            <div class="ck-modal-btns d-flex">
+	              <button
+	                id="rejectCustomizationsBtn"
+	                class="ck-custom-botton ck-rechazar-btn"
+	                data-bs-dismiss="modal" onclick="hideModalCK();"
+	              >
+	                Rechazar todas
+	              </button>
+	              <button
+	                data-bs-dismiss="modal" onclick="hideModalCK();"
+	                id="acceptCustomizationsBtn"
+	                class="ck-custom-botton ck-guarder-btn"
+	              >
+	                Guardar cambios
+	              </button>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	</div> 
+</div>
+	<!-- fin Banner Cookies -->	
+<script type="text/javascript" src="layer-view-script/client/bannerCookies.js?v=16"></script>
+
+	<div id="popup-message" class="overlay">							
+		<div class="popup popup-sm login-error">	
+		<a class="close-popup " id="close-popup-message" onclick="closePopup(this); clearDocument();">&times;</a>							
+			<div class="main-modal" id="msg-message"></div>
+			
+		</div>
+	</div>
+	<div id="popup-message-dt" class="overlay">							
+									<div class="popup popup-sm login-error" style="background-color: #f2f2f2;">	
+									<a class="close-popup " id="close-popup-message-dt" onclick="closePopup(this)">&times;</a>							
+										<div class="main-modal" id="msg-message-dt">
+											<div><div class="titulo-login-error" id="titulo-dt"></div><br>
+							                    <form class="form-login has-validation-callback" action="common_login_dt.html" method="post" id="frmLoginDT" style="padding: 0em 0;">
+								                    <input type="hidden" value="" name="lrdn" id="lrdn">
+								                    <div class="control-form form__select_2 has-success">
+								                    	<label for="document-type" style="background-color: #f2f2f2;">Tipo de documento</label>
+								                    	<select  name="lg-document-type" id="lg-document-type" tabindex="10" data-validation="required" data-validation-error-msg="Seleccionar un tipo de documento" data-validation-depending-value="CAREX" style="background-color: #f2f2f2; height: 52px;">
+								                    		<option value="DNI" selected="" >DNI</option>
+								                    		<option value="PASAP" >Pasaporte</option>
+								                    		<option value="CAREX" >Carnet de Extranjer&iacute;a</option>
+								                    	</select>
+								                    </div>
+								                    <button class="btn btn-login-error"   id="ingresar_doc_type">Aceptar</button>
+								                    
+							                    </form>
+							                    </div>
+										</div>
+										
+									</div>
+								</div>           
+ 
+<script type="text/javascript">
+
+		function closeMensajeNotificacion(){
+			try {
+				cerrarMensajeNotificacion();
+			} catch (e) {
+				
+			}
+		}
+		
+		$(document).ready(function(){			
+			$.ajax({
+		        type: "POST",
+		        url: "hasPendingNotificationsRead.html",
+		        dataType: "json",
+		        async: false
+			})
+			.done(function(data) {
+				if(data.notificacionesPendientes>0){
+					//$("#iconoNotificacion").html('<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 20.2" style="enable-background:new 0 0 22 20.2;" xml:space="preserve"> <style type="text/css"> .st0{display:none;} .st1{display:inline;fill:#959595;stroke:#959595;stroke-width:0.25;stroke-miterlimit:10;} .st2{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;} .st3{fill:#E20E18;} </style> <g id="Capa_1_00000042699466363403887480000008827349134144596363_" class="st0"> <path class="st1" d="M16.9,12.5c-0.4-0.5-0.7-0.8-0.7-1.6V7.7c0-2.6-1.3-4.5-3.5-5.1c-0.2-0.8-0.9-1.4-1.7-1.4 c-0.9,0-1.6,0.6-1.7,1.4C7.1,3.2,5.8,5.1,5.8,7.7V11c0,0.7-0.3,1.1-0.7,1.6c-0.5,0.7-1.2,1.5-1.2,3.5c0,0.1,0.1,0.2,0.2,0.2H8 c0.1,1.6,1.4,2.8,3,2.8s2.9-1.3,3-2.8h3.9c0.1,0,0.2-0.1,0.2-0.2C18.1,14,17.4,13.2,16.9,12.5z M11,18.6c-1.4,0-2.5-1.1-2.6-2.4 h5.2C13.5,17.5,12.4,18.6,11,18.6z M13.8,15.8H8.2H4.3c0-1.7,0.6-2.3,1.1-3c0.4-0.5,0.8-1,0.8-1.8V7.7c0-2.5,1.2-4.2,3.3-4.7 c0.1,0,0.2-0.1,0.2-0.2c0.1-0.7,0.6-1.2,1.3-1.2s1.2,0.5,1.3,1.2c0,0.1,0.1,0.2,0.2,0.2c2.1,0.5,3.3,2.3,3.3,4.7V11 c0,0.9,0.4,1.4,0.8,1.8c0.5,0.6,1.1,1.3,1.1,3H13.8z"/> </g> <g id="Capa_2_00000119838497877818948670000001067888719881944213_"> <path class="st2" d="M17.4,12.7c-0.4-0.5-0.8-0.9-0.8-1.7V7.5c0-2.8-1.4-4.9-3.8-5.5c-0.2-0.9-1-1.5-1.8-1.5c-1,0-1.7,0.6-1.8,1.5 C6.8,2.7,5.4,4.7,5.4,7.5v3.6c0,0.8-0.3,1.2-0.8,1.7c-0.5,0.8-1.3,1.6-1.3,3.8c0,0.1,0.1,0.2,0.2,0.2h4.2c0.1,1.7,1.5,3,3.2,3 s3.1-1.4,3.2-3h4.2c0.1,0,0.2-0.1,0.2-0.2C18.7,14.3,17.9,13.5,17.4,12.7z M11,19.3c-1.5,0-2.7-1.2-2.8-2.6h5.6 C13.7,18.1,12.5,19.3,11,19.3z M14,16.3H8H3.8c0-1.8,0.6-2.5,1.2-3.2c0.4-0.5,0.9-1.1,0.9-1.9V7.5c0-2.7,1.3-4.5,3.6-5.1 c0.1,0,0.2-0.1,0.2-0.2C9.7,1.5,10.2,1,11,1s1.3,0.5,1.4,1.3c0,0.1,0.1,0.2,0.2,0.2C14.9,3,16.2,5,16.2,7.5v3.6 c0,1,0.4,1.5,0.9,1.9c0.5,0.6,1.2,1.4,1.2,3.2H14z"/> <circle class="st3" cx="15.1" cy="3.3" r="2.4"/> </g></svg>');
+					
+					$("#iconoNotificacionOff").css("display","none");
+					$("#iconoNotificacionOn").css("display","initial");
+					
+					$("#iconoUser").css("display","none");
+					$("#bellNotification").css("display","block");
+				}else{
+					//$("#iconoNotificacion").html('<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 20" style="enable-background:new 0 0 22 20;" xml:space="preserve">  <style type="text/css"> 	.st0{display:none;}	.st1{display:inline;fill:#959595;stroke:#959595;stroke-width:0.25;stroke-miterlimit:10;} .st2{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;} 	.st3{display:none;fill:#E20E18;}  </style>  <g id="Capa_1_00000171680712685116261680000003486186573347873176_" class="st0"> <path class="st1" d="M16.9,12.1c-0.4-0.5-0.7-0.8-0.7-1.6V7.3c0-2.6-1.3-4.5-3.5-5.1c-0.2-0.8-0.9-1.4-1.7-1.4 c-0.9,0-1.6,0.6-1.7,1.4C7.1,2.8,5.8,4.7,5.8,7.3v3.3c0,0.7-0.3,1.1-0.7,1.6c-0.5,0.7-1.2,1.5-1.2,3.5c0,0.1,0.1,0.2,0.2,0.2H8 c0.1,1.6,1.4,2.8,3,2.8s2.9-1.3,3-2.8h3.9c0.1,0,0.2-0.1,0.2-0.2C18.1,13.6,17.4,12.8,16.9,12.1z M11,18.2c-1.4,0-2.5-1.1-2.6-2.4 h5.2C13.5,17.1,12.4,18.2,11,18.2z M13.8,15.4H8.2H4.3c0-1.7,0.6-2.3,1.1-3c0.4-0.5,0.8-1,0.8-1.8V7.3c0-2.5,1.2-4.2,3.3-4.7 c0.1,0,0.2-0.1,0.2-0.2c0.1-0.7,0.6-1.2,1.3-1.2s1.2,0.5,1.3,1.2c0,0.1,0.1,0.2,0.2,0.2c2.1,0.5,3.3,2.3,3.3,4.7v3.3 c0,0.9,0.4,1.4,0.8,1.8c0.5,0.6,1.1,1.3,1.1,3H13.8z"/> </g> <g id="Capa_2_00000003796936993783929490000011905197827838987707_"> <path class="st2" d="M17.4,12.5c-0.4-0.5-0.8-0.9-0.8-1.7V7.3c0-2.8-1.4-4.9-3.8-5.5c-0.2-0.9-1-1.5-1.8-1.5c-1,0-1.7,0.7-1.8,1.5 C6.8,2.4,5.3,4.5,5.3,7.3v3.6c0,0.8-0.3,1.2-0.8,1.7c-0.5,0.8-1.3,1.6-1.3,3.8c0,0.1,0.1,0.2,0.2,0.2h4.2c0.1,1.7,1.5,3,3.3,3 s3.2-1.4,3.3-3h4.2c0.1,0,0.2-0.1,0.2-0.2C18.7,14.2,18,13.3,17.4,12.5z M11,19.2c-1.5,0-2.7-1.2-2.8-2.6h5.7 C13.7,18,12.5,19.2,11,19.2z M14,16.1H8H3.7c0-1.8,0.7-2.5,1.2-3.3c0.4-0.5,0.9-1.1,0.9-2V7.3c0-2.7,1.3-4.6,3.6-5.1 c0.1,0,0.2-0.1,0.2-0.2c0.1-0.8,0.7-1.3,1.4-1.3s1.3,0.5,1.4,1.3c0,0.1,0.1,0.2,0.2,0.2c2.3,0.5,3.6,2.5,3.6,5.1v3.6 c0,1,0.4,1.5,0.9,2c0.5,0.7,1.2,1.4,1.2,3.3H14z"/> <circle class="st3" cx="15.1" cy="3.1" r="2.4"/>  </g>  </svg>');
+					
+					$("#iconoNotificacionOn").css("display","none");
+					$("#iconoNotificacionOff").css("display","initial");
+					
+					$("#bellNotification").css("display","none");
+					$("#iconoUser").css("display","block");
+				}
+			})
+			.fail(function( jqXHR, textStatus, errorThrown ) {
+		    	console.log("error hasPendingNotificationsRead");
+		    });
+
+			renderNewPasswordFieldHeader();
+
+			//Llamar a url del home para cerrar sesion
+		  	var closeSession2 = $('#closeSession2').val();
+    		if(closeSession2!=''){
+    			window.location.href = "inicio.html";
+    		}
+
+			//Llamar a url de TA para cerrar sesion
+		  	var openSession = $('#openSession').val();
+    		if(openSession!=''){
+				$.ajax({
+			        type: 'post',
+			        url: 'tav2-session.html',
+			        dataType: 'json'
+				}).done(function(d) {
+					if(d.message=="OK") {
+						fetch(d.redireccion+"?authToken="+d.authToken)
+					    .then(response => {
+					      // Manejar la respuesta
+					    })
+					    .catch(error => {
+					      // Manejar errores
+					    });
+					} 
+			    });
+			}
+		});	
+		
+
+		var URLactual = window.location.pathname;
+		
+/*Desarrollo copa bicolor en tu casa DRUIZ no tocar*/
+ 		
+		 $('.popup .js-close-modal').click(function(event){
+		    	$('.overlay.opened').removeClass('opened');
+		    	$('body').removeClass('modal');
+		    });
+
+		$('#btn_desktop_GG_3VS').click(function(event){
+			$('.overlay.opened').removeClass('opened');
+	    	$('body').removeClass('modal');
+		});
+
+		$('#user-client-header , #password-client-header').on('focusout', function(e) { 
+			if($(this).val() != '') datalayerLoginForm(this);     
+		});
+			
+		    function openModal(popup,ctrl) {
+		    	$(popup).addClass('opened');
+		    	$('body').addClass('modal');
+		    	if($.trim(ctrl).length>0) control = $.trim(ctrl);
+		    }
+
+		  //popup PremiazoGG
+		    $(document).delegate('#btn_desktop_ingresar_copacasa', 'click', function () {			
+				 window.location.href = 'premiazoganagol.html';		   
+			});
+
+		  //popup casino
+		    var flagPromoCasino = $("#flagPromoCasino").val();
+			var fechaFinCasino = new Date(2022,8,30,23,59,59); // 30/09/22
+			var fechaActualCasino = new Date();
+			if( (fechaActualCasino.getTime() < fechaFinCasino.getTime() )  && window.location.pathname.includes("juega-casino.html") && flagPromoCasino == '1'){
+				let timeUp = (getCookieBanner('bannerCookies') != "") ? 0 : 3000;
+				setTimeout(activarPopupCasino , timeUp) ; 
+			}																				
+			//fin popup casino  
+		  
+		  //popup PremiazoGG
+		  /*  var idsession = $("#clientId").val();	
+		    var URLactual = window.location.pathname;
+		    var estadoWeb = URLactual.includes("premiazoganagol.html");
+		    var flagPromoBicolor = $("#flagPromoBicolor").val();
+		    $(document).ready(function(){ 
+				if(idsession == '' && flagPromoBicolor == '1' && URLactual.includes("juega-ganagol.html")){
+					let timeUp = (getCookieBanner('bannerCookies') != "") ? 0 : 3000;
+					setTimeout(checkCount , timeUp) ;
+				}
+		    }); */
+
+		    //popup hincha
+			var flagPromoHincha = $("#flagPromoHincha").val();
+			if(flagPromoHincha == '1'){
+				if(idsession == ''){//popup informate
+					if(window.location.pathname.includes("juega-ganagol.html") || window.location.pathname.includes("juega-casino.html")){
+						activarPopupHincha('','informate');
+					}
+				}else{//popup participa
+					if(window.location.pathname.includes("juega-ganagol.html") || window.location.pathname.includes("juega-casino.html")){
+						activarPopupHincha('','participa');
+					}				
+				}
+			}
+			//fin popup hincha
+			
+		    //popup tinka
+			var flagPromoTinka = $("#flagPromoTinka").val();
+			$.ajax({type: "POST", url: "flag-popup-siosi.html",async:false, success: function (e) {
+            	flagPromoTinka = e;
+			}})
+			if(flagPromoTinka == 'true'){
+				if(window.location.pathname.includes("juega-tinka.html")){
+					let timeUp = (getCookieBanner('bannerCookies') != "") ? 0 : 3000;
+					setTimeout(activarPopupTinka , timeUp) ;					
+				}
+			}
+			//if(flagPromoTinka == '1' && !window.location.pathname.includes("juega-ganagol.html") && !window.location.pathname.includes("juega-casino.html") && !window.location.pathname.includes("mi-cuenta.html") ){
+			//	activarPopupTinka('');
+			//}																				
+			//fin popup tinka
+			
+			//popup GG-3VS
+			var fechaFin = new Date(2022,4,28,23,59,59);
+			var fechaActual = new Date();
+			if( (fechaActual.getTime() < fechaFin.getTime() )  && window.location.pathname.includes("juega-ganagol.html") ){
+				let timeUp = (getCookieBanner('bannerCookies') != "") ? 0 : 3000;
+				setTimeout(activarPopupGG3VS , timeUp) ; 
+			}																				
+			//fin popup GG-3VS
+			
+			
+			//popup motazo-DDVV
+			
+			$(document).delegate('#btn_desktop_motazo_DDVV', 'click', function () {			
+				window.location.href = 'http://latinkaportal.com.pe/promociones/ganaconvirtuales/'; 
+				//window.location.href = 'http://qa.intralotportal.com.pe/promociones/ganaconvirtuales/'; // QA
+			});	 
+			
+			 fechaFin = new Date(2022,4,29,23,59,59); // 14 de abril al 29 de Mayo
+			 fechaActual = new Date();
+			if( (fechaActual.getTime() < fechaFin.getTime() )  && window.location.pathname.includes("juega-virtuales.html") ){
+				let timeUp = (getCookieBanner('bannerCookies') != "") ? 0 : 3000;
+				setTimeout(activarPopupmotazoDDVV , timeUp) ;
+			}				
+																			
+			//fin popup motazo-DDVV
+			
+			var autocontrolLink = function(){
+// 				sessionStorage.setItem('autocontrol', 'autocontrol');
+				var pathname = $(location).attr('pathname');
+				
+				if(pathname.indexOf("mi-cuenta.html") == -1){
+					window.location.href = "mi-cuenta.html#yo-autocontrol";
+				}else{ 
+					$("#tab-item_1").click();
+					$("#tabAutoControl").prop("checked",true);
+					window.location.hash="yo-autocontrol";
+				}
+				
+			};
+
+
+			$(document).ready(function(){
+				// validando jugadas en session
+				validarJugadasSession();
+				
+			});
+
+			$(document).ready(function(){
+				var clientIdSesion= $('#clientId').val();
+				 if(clientIdSesion!=''){
+					 validateSession();
+					document.addEventListener("click", validateSession);
+					document.addEventListener("keypress", validateSession);
+				 }
+				
+			});
+
+			
+			// escuchando el iframe para eliminar la session tinka
+			window.addEventListener('message', function(event) {
+			  if (event.data === 'eliminarTinkaSession') {
+				// eliminando la session de jugada tinka		
+				eliminarCookieDeJugada("jugadaSessionTinka");		  
+				//buscando el marcado de que existe session de tinka y elimnarlo
+		        gameLink = $('#plays-1 > ul > li > a[href="juega-tinka.html"]');
+		        gameLink.children('.jugadaSession').remove();
+		        // si la categoria ya no tiene jugadas en session se debe eliminar el marcado de la categoria
+		        categoryElement = $('#plays-1');
+		        if (categoryElement.find('ul .jugadaSession').length == 0) {
+		            var categoryLink = categoryElement.find('> a');
+		            categoryLink.find('.jugadaSession').remove();
+		        }
+			  }
+			}, false);
+					
+			
+</script>
+

@@ -1,0 +1,267 @@
+/* Añadir Nuevos estilos */
+
+.btn-icon[type='button'],
+.btn-icon[type='reset'],
+.btn-icon[type='submit'] {
+  align-items: center;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: bold;
+  justify-content: center;
+  line-height: 22px;
+  outline: none;
+  padding: 8px;
+}
+
+.btn-icon-red {
+  color: #d71b22;
+}
+
+.btn-icon-green {
+  color: #006b2d;
+}
+
+.btn-link {
+  display: inline-flex;
+  font-family: AllerRegular;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.btn-link.btn-link-green {
+  color: #006b2d;
+}
+
+.btn-outline-green {
+  color: #006b2d;
+  background-color: transparent;
+  border: 1px solid #006b2d;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-green:hover {
+  color: #ffffff;
+  background-color: #006b2d;
+  border: 1px solid #006b2d;
+}
+
+.btn-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.heading-2 {
+  font-size: 24px;
+  line-height: 30px;
+  margin: 0;
+}
+
+.heading-3 {
+  font-size: 22px;
+  line-height: 26px;
+  margin: 0;
+}
+
+.text-body {
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.text-green {
+  color: #006b2d;
+}
+
+.font-regular {
+  font-family: AllerRegular;
+  font-weight: 400;
+}
+
+.font-bold {
+  font-family: AllerBold;
+  font-weight: 700;
+}
+
+.font-display {
+  font-family: AllerDisplay;
+  font-weight: 400;
+}
+
+.select-field {
+  position: relative;
+}
+
+.select-field select::-ms-expand {
+  display: none;
+}
+
+.select-field select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 24px;
+  background: #ffffff;
+  border: 1px solid #818181;
+  border-radius: 999px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-field > i {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  pointer-events: none;
+  position: absolute;
+  right: 16px;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.3s ease-in-out;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  color: #000000;
+}
+
+.select-field > select:focus ~ i {
+  transform: rotate(-180deg);
+}
+
+.select-field select option {
+  color: #000000;
+  border: none;
+}
+
+.select-field select option:hover,
+.select-field select option:focus,
+.select-field select option:active,
+.select-field select option:checked,
+.select-field select option[selected]:checked {
+  background: #006b2d !important;
+  color: #ffffff !important;
+}
+
+.ml-8 {
+  margin-left: 8px;
+}
+
+.mr-8 {
+  margin-right: 8px;
+}
+
+.mb-4 {
+  margin-bottom: 4px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.divider {
+  margin: 24px 0;
+  border-top: 1px solid #c2c4c2;
+}
+
+.shadow-none {
+  box-shadow: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Game summary card */
+.game-summary {
+  width: 100%;
+  border: 1px solid #006b2d;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.game-summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.game-summary-item p {
+  color: #000000;
+  font-family: AllerRegular;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.game-summary-item p.mr-4 {
+  margin-right: 4px;
+}
+
+.game-summary .line {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-top: 1px solid #000000;
+}
+
+.game-summary-info {
+  color: #000000;
+  font-family: AllerRegular;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0;
+}
+
+.footer-game-summary .btn-footer{
+	margin-bottom: 2.5em;
+}
+

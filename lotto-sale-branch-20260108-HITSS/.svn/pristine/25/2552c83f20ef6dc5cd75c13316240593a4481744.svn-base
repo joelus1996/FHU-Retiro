@@ -1,0 +1,124 @@
+/*
+ * Created by George Minaya
+ **/
+.group:after{content:'';display:table;clear:both}
+.hidden{display:none}
+.prominent{color:#333333;font-weight:bold}
+:-moz-placeholder{color:#999}
+::-moz-placeholder{color:#999}
+:-ms-input-placeholder{color:#999}
+::-webkit-input-placeholder{color:#999}
+#sign-up{float:left;margin:7px 0 0 32px;position:relative;width:614px}
+#sign-up a{color:#5f5e5e}
+#sign-up a:active{color:#ff7107}
+#sign-up .tab-title{background-color:#ffffff;border-radius:7px 7px 0 0;color:#ff7107;font-size:18px;margin:0;padding:8px 20px 0 50px;text-transform:uppercase}
+#register-activate{background-image:url(../../layer-view-image/client/register.png);background-repeat:no-repeat;background-position:14px 4px;width:320px}
+#sign-up .content{background-color:#ffffff;border-radius:0 0 7px 7px;min-height:450px;padding:10px 0;position:relative}
+#nav-bar{background-color:#dadcdb;border-radius:7px;height:23px;margin:0 auto;width:580px}
+#nav-bar .indicator{background-color:#ffffff;border-radius:0 5px 5px 0;background-image:url(../../layer-view-image/client/register-activate.png);background-repeat:no-repeat;width:288px}
+#nav-bar .indicator.start{background-position:50% 0}
+#nav-bar .indicator.end{background-position:50% 100%}
+#nav-bar .indicator .half{float:left;width:50%}
+#nav-bar .indicator .half span{color:#ffffff;font-size:12px;font-weight:bolder;line-height:23px;text-shadow:0 0 1px rgba(0, 0, 0, .5)}
+#nav-bar .indicator .half .one{margin:0 0 0 13px}
+#nav-bar .indicator .half .register{margin:0 0 0 8px}
+#nav-bar .indicator .half .two{margin:0 0 0 6px}
+#nav-bar .indicator .half .activate{margin:0 0 0 7px}
+#sign-up .inner-content{margin:0 auto;width:580px;position:relative}
+.inner-content .instructions{color:#818181;font-size:12px;margin:15px 0 0 0;text-align:justify;width:580px}
+#register .placeholder{color:#999999}
+#frm-user-register{position:relative}
+#frm-user-register table{width:100%}
+#frm-user-register table td{font-size:0;padding:0;white-space-collapse:discard}
+#frm-user-register table .clabel{width:70px}
+#frm-user-register table .clabel.aloft{vertical-align:top}
+#frm-user-register table .cinputs .gread-box{width:98px}
+#frm-user-register table .cinputs .gread-box td{height:18px}
+#frm-user-register .account-data-fields{width:245px}
+#frm-user-register .personal-data-fields{padding:0 0 0 10px;width:320px}
+#frm-user-register .personal-data-fields .cinputs{width:245px}
+#frm-user-register .account-data-fields,
+#frm-user-register .personal-data-fields{display:inline-block;margin:15px 0 0 0;vertical-align:top}
+#frm-user-register .account-data-fields label,
+#frm-user-register .personal-data-fields label,
+#frm-user-register .other-fields label{color:#5f5e5e;font-weight:bold;vertical-align:middle}
+#frm-user-register .account-data-fields label,
+#frm-user-register .personal-data-fields label{font-size:11px;line-height:11px}
+#frm-user-register .other-fields label{margin:0 0 0 10px}
+#frm-user-register .question-mark{color:#666666;cursor:pointer;font-size:12px;font-weight:bold;margin:0 4px 0 0}
+#frm-user-register .other-fields{margin:15px 0 0}
+#frm-user-register .internal-label{font-weight:normal!important;margin:0 10px 0 5px;text-transform:capitalize}
+#frm-user-register .large{width:152px}
+#frm-user-register .max{width:99.5%}
+#frm-user-register .min{width:75px}
+#frm-user-register .medium{width:111px}
+#frm-user-register .small{width:76px}
+#frm-user-register .short{margin-left:2%;width:70px}
+#frm-user-register .half{width:49%}
+#frm-user-register .half:first-child{margin-right:2%!important}
+#frm-user-register input{font-size:11px;margin:2px 0;vertical-align:middle}
+#frm-user-register .select{left:-9999px;position:absolute}
+#frm-user-register .value-in{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.custom-select{cursor:default;font-size:11px;margin:2px 2% 2px 0;padding-right:20px!important;position:relative}
+.custom-select:after{background:transparent;border-color:#4fa6ff transparent transparent transparent;border-style:solid;border-width:4px;content:'';height:0;position:absolute;top:12px;right:6px;width:0}
+.custom-select:focus{border:1px solid red}
+.text-in,
+.custom-select{background-color:#f4f9ff;border:1px solid #b9dbff;box-sizing:border-box;border-radius:5px;display:block;float:left;line-height:15px;min-height:15px;min-width:30px;padding:6px 5px;vertical-align:middle;transition:all .3s ease}
+.text-in:hover,
+.custom-select:hover{border:1px solid #abcff4}
+#cinputs{padding-top:3px !important}
+.text-in:focus,
+.custom-select:focus{border:1px solid #89d4ff;box-shadow:0 0 5px 0 rgba(0,0,0,.2) inset, 0 0 5px 0 #ffffff}
+.option-list{background-color:#f4f9ff;border:1px solid #b9dbff;border-radius:0 0 5px 5px;box-shadow:1px 2px 5px 0 #c4c4c4;display:none;font-size:11px;left:0;list-style:none outside none;margin:0;max-height:200px;max-width:230px;min-width:50px;overflow-x:hidden;overflow-y:auto;padding:0;position:absolute;top:28px;z-index:10}
+#x-comMovil{width:100px}
+.option-list.open{display:block}
+.option-list .option-item{cursor:default;padding:1px 20px 1px 5px;white-space:nowrap}
+.option-list .option-item:hover{background-color:#b9dbff}
+.option-list .option-item.on{background-color:#a8d7ff}
+#switch-document-type{width:86px}
+#switch-document-type .value-in{width:63px}
+#switch-day{width:25%}
+#switch-month{width:40%}
+#switch-year{margin-right:0!important;width:30%}
+.icon{background-repeat:no-repeat;display:inline-block;font-size:0!important}
+.icon.lucky{background-image:url(../../layer-view-image/client/lucky.png);margin:0 0 0 5px;vertical-align:middle}
+.icon.lucky.clover{background-position:0 -5px;height:19px;width:18px}
+.icon.lucky.rabbits-foot{background-position:-2px -25px;height:24px;width:22px}
+.icon.lucky.horse{background-position:-2px -53px;height:22px;width:30px}
+.icon.lucky.horseshoe{background-position:-2px -80px;height:20px;width:20px}
+.icon.lucky.soccer-ball{background-position:-7px -103px;height:20px;width:20px}
+.icon.lucky.pink-elephant{background-position:-1px -124px;height:23px;width:27px}
+.regiter-info, .mandatory{color:#818181;font-size:11px;text-align:justify}
+.mandatory:before{content:'*';margin:0 2px 0 4px}
+/*#btn-register{background-color:#FFFFFF;background-image:url(../../layer-view-image/client/btn-register.png);background-position:0 1px;background-repeat:no-repeat;border:1px solid #FFFFFF;border-radius:8px 8px 8px 8px;color:#FFFFFF;display:block;font-size:11px;font-weight:bold;height:32px;margin:0 0 0 auto;padding:0;text-transform:uppercase;width:92px}*/
+/*#btn-register:hover{background-position:0 -35px}*/
+/*#btn-register:active{top:1px}*/
+#frm-user-verify{margin:15px 0 40px 0;width:450px}
+#frm-user-verify table{width:100%}
+.verify-info{border-color:#eeeced;border-style:solid;border-width:10px 0 0 0;color:#818181;font-weight:bold;margin:0 0 10px 0;padding:5px 0 0 0}
+#frm-user-verify label{color:#818181;font-weight:bold}
+#frm-user-verify .text-in{width:180px}
+#frm-email-update .text-in.max{display:block;margin:0 0 10px 0;width:100%}
+#btn-activate{background-color:#FFFFFF;background-image:url(../../layer-view-image/client/btn-activate.png);background-position:center top;background-repeat:no-repeat;border:1px solid #FFFFFF;border-radius:8px 8px 8px 8px;color:#FFFFFF;display:block;font-size:11px;font-weight:bold;height:32px;float: left; margin:20px 0 0 0;/* 0 0 auto;*/padding:0;text-transform:uppercase;width:130px}
+#btn-activate:hover{background-position:center -35px}
+#msg-activate{float:left; background:#FFF9DF; padding:10px; margin:0 0 0 10px; width:400px; border:1px solid #cccccc; border-radius:10px;}
+.optional-actions{margin:0 0 105px}
+.action-info{font-size:11px;margin:0 0 5px 0}
+.full-action{padding:0 20px 0 0;width:385px;font-size:12px;}
+.first-action{padding:0 20px 0 0;width:210px}
+.second-action{border-color:#bababa;border-style:solid;border-width:0 1px;padding:0 20px;width:158px}
+.third-action{padding:0 0 0 20px;width:130px}
+.full-action, .first-action, .second-action, .third-action{color:#818181;float:left;height:130px}
+#btn-update-email{background-color:#FFFFFF;background-image:url(../../layer-view-image/client/btn-update.png);background-position:center top;background-repeat:no-repeat;border:1px solid #FFFFFF;border-radius:8px 8px 8px 8px;color:#FFFFFF;display:block;font-size:11px;font-weight:bold;height:28px;padding:0;text-transform:capitalize;width:80px}
+#btn-update-email:hover{background-position:center -31px}
+#btn-request-code{background-color:#FFFFFF;background-image:url(../../layer-view-image/client/btn-request-code.png);background-position:center top;background-repeat:no-repeat;border:1px solid #FFFFFF;border-radius:8px 8px 8px 8px;color:#FFFFFF;display:block;font-size:11px;font-weight:bold;height:28px;padding:0;text-transform:capitalize;width:125px}
+#btn-request-code:hover{background-position:center -31px}
+#loader-frm-register{background-color:#ffffff;background-image:url('../../layer-view-image/common/bcb-loading.gif');background-position:center;background-repeat:no-repeat;cursor:wait;filter:alpha(opacity=70);height:100%;opacity:.7;position:absolute;top:0;width:100%;z-index:100}
+#locked-layer{background-color:#ffffff;cursor:not-allowed;filter:alpha(opacity=60);height:100%;opacity:.6;position:absolute;top:0;width:100%;z-index:100}
+#tag-manager{height:0;opacity:0;visibility:hidden;width:0}
+.tooltip-info-arrow-img{display:none;position:absolute;width:15px;height:8px;background:url(../../layer-view-image/common/img_flecha.png) no-repeat;z-index:2;top:119px;left:86px;behavior:url(layer-view-script/common/PIE/PIE.htc)}
+.tooltip-info2{z-index:1;display:none;position:absolute;padding:4px 6px 3px 7px;background-color:#ffffff;border-style:solid;border-color:#919191;border-width:1px;border-radius:4px;box-shadow:0 0 .25em #cccccc;font-size:11px;color:#5e5e5e;text-align:left;top:126px;left:78px;behavior:url(layer-view-script/common/PIE/PIE.htc)}
+.locked{opacity:0.3}
+.ui-invalid-output{box-shadow:0 0 1.5px 1px #ffffff}
+#frm-email-update #btn-update-mail{background:#ffffff;background-image:url(../../layer-view-image/common/btn-actualizar.png);background-repeat:no-repeat;height:34px;width:91px;border:0px solid;border-radius:5px;margin:0;/*-31px 0 0 400px;*/float:left;}
+#frm-email-update #btn-update-mail:hover{background-position:0px -40px;}

@@ -1,0 +1,233 @@
+@CHARSET "UTF-8";
+
+body{
+	background: #DDDEDF url(../../../layer-view-image/estadistica/tk-pxgris.gif) repeat-x fixed 0 0;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:11px;
+	line-height:1;
+}
+
+.contenido{
+	margin-left:18px;
+	width:672px;
+}
+
+.controles{
+	padding:10px 0 10px 10px;
+}
+.tinka .controles2{
+	background: transparent url(../../../layer-view-image/estadistica/tk-line-down.gif) no-repeat scroll 0 0;
+}
+.ganadiario .controles2{
+	background: transparent url(../../../layer-view-image/estadistica/gd-line-down.gif) no-repeat scroll 0 0;
+}
+.kabala .controles2{
+	background: transparent url(../../../layer-view-image/estadistica/ka-line-down.gif) no-repeat scroll 0 0;
+}
+
+.controles .mensaje1{
+	float:left;
+	padding: 7px 0;
+}
+.controles2 .mensaje1{
+	float:left;
+	padding: 11px 0 9px;
+}
+
+.controles .formulario{
+	float:right;
+	font-weight:bold;
+}
+.controles2 .formulario{
+	padding:3px 0;
+}
+
+.tinka .formulario{
+	color:#00832d;
+}
+.kabala .formulario{
+	color:#f39900;
+}
+.super3 .formulario{
+	color:#850a0c;
+}
+.ganadiario .formulario{
+	color:#0186d1;
+}
+
+.controles .formulario div{
+	float:right;
+}
+.controles .mensaje2{
+	width:55px;
+	padding:7px 0;
+}
+.subtitulo{
+	background-color: #e7e7e9;
+	color: #454545;
+	width:650px;
+	padding: 7px 10px;
+	margin-bottom:6px;
+	font-size:12px;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+.datos{
+	text-align:center;
+	padding-bottom:8px;
+}
+.ganadiario .datos{
+	padding-bottom:12px !important;
+}
+
+.datos .col{
+	float:left;
+}
+.datos .col-margen{
+	margin-right:32px;
+}
+
+.datos table{
+	border-collapse: collapse;
+}
+
+.datos .tabla-cabecera{
+	width:202px;
+	height:20px;
+	color:white;
+	font-weight:bold;
+}
+.tinka .tabla-cabecera{
+	background: #00832d url(../../../layer-view-image/estadistica/tinka-cab-cell.gif) no-repeat scroll top left;
+}
+.ganadiario .tabla-cabecera{
+	background: #0186d1 url(../../../layer-view-image/estadistica/gd-cab-cell.gif) no-repeat scroll top left;
+}
+.kabala .tabla-cabecera{
+	background: #f39900 url(../../../layer-view-image/estadistica/ka-cab-cell.gif) no-repeat scroll top left;
+}
+.super3 .tabla-cabecera{
+	background: #c81622 url(../../../layer-view-image/estadistica/s3-cab-cell.gif) no-repeat scroll top left;
+}
+
+.datos .tabla-cabecera .titulo1{
+	float:left;
+	width:40px;
+	margin-top:4px;
+	text-align:center;
+}
+.datos .tabla-cabecera .titulo2{
+	float:left;
+	margin-top:4px;
+	margin-left:5px;
+	text-align:center;
+}
+.datos .tabla-cabecera .titulo3{
+	float:left;
+	width:66px;
+	margin-top:4px;
+	text-align:center;
+}
+.datos .tabla-cabecera .titulo4{
+	float:right;
+	width:54px;
+	margin-top: 4px;
+	text-align:center;
+}
+
+.datos .tabla-fila{
+	background:white;
+}
+
+.tinka .celdai,.kabala .celdai{
+	border-left:1px solid #c2e429;
+	border-bottom:1px solid #c2e429;
+}
+.tinka .celdad,.kabala .celdad{
+	border-right:1px solid #c2e429;
+	border-bottom:1px solid #c2e429;
+}
+.ganadiario .celdai,.super3 .celdai{
+	border-left:1px solid #9f9f9f;
+	border-bottom:1px solid #9f9f9f;
+}
+.ganadiario .celdad,.super3 .celdad{
+	border-right:1px solid #9f9f9f;
+	border-bottom:1px solid #9f9f9f;
+}
+
+.datos .celda-bolilla{
+	width:39px;
+	padding:7px 0;
+	font-weight:bold;
+	text-align:center;
+}
+.tinka .celda-bolilla{
+	background: transparent url(../../../layer-view-image/estadistica/tinka-bg-bolo.gif) no-repeat scroll center center;
+	color: #000000;
+}
+.ganadiario .celda-bolilla{
+	background: transparent url(../../../layer-view-image/estadistica/gd-bg-bolo.gif) no-repeat scroll center center;
+	color: #000000;
+}
+.kabala .celda-bolilla{
+	background: transparent url(../../../layer-view-image/estadistica/ka-bg-bolo.gif) no-repeat scroll center center;
+	color: #000000;
+}
+.super3 .celda-bolilla{
+	background: transparent url(../../../layer-view-image/estadistica/s3-bg-bolo.gif) no-repeat scroll center center;
+	color: #dc3020;
+}
+
+.datos-por-mes .celda-mes{
+	/*width:59px;*/
+	padding:7px 0;
+	font-weight:bold;
+	text-align:center;
+}
+
+.datos .celda-barra{
+	padding:6px 0 5px;
+}
+.datos-por-bolilla .celda-barra{
+	width:106px;
+}
+.datos-por-mes .celda-barra{
+	width:81px;
+}
+
+.datos .celda-barra .barra{
+	margin-left:2px;
+	height:14px;
+}
+.tinka .celda-barra .barra{
+	background: transparent url(../../../layer-view-image/estadistica/tinka-px-barra.gif) repeat-x scroll 0 0;
+}
+.ganadiario .celda-barra .barra{
+	background: transparent url(../../../layer-view-image/estadistica/gd-px-barra.gif) repeat-x scroll 0 0;
+}
+.kabala .celda-barra .barra{
+	background: transparent url(../../../layer-view-image/estadistica/ka-px-barra.gif) repeat-x scroll 0 0;
+}
+.super3 .celda-barra .barra{
+	background: transparent url(../../../layer-view-image/estadistica/s3-px-barra.gif) repeat-x scroll 0 0;
+}
+
+.datos .celda-numero{
+	padding:7px 0;
+	text-align:center;
+	color:#454545;
+	width:53px;
+}
+
+
+.izq{
+	float:left;
+}
+.der{
+	float:right;
+}
+table,tr,td{
+	margin:0;
+	padding:0;
+}

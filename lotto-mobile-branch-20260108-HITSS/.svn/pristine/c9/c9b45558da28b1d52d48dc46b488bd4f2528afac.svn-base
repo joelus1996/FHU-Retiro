@@ -1,0 +1,76 @@
+<div class="m-overlay"></div>
+<div class="m-popup m-popup-winner m-popup__gana-diario" id="winners-popup">
+  <a class="m-popup__close-element" href="javascript:void(0)" title="cerrar">&nbsp;</a>
+  <picture class="m-background">
+    <source srcset="./layer-view-image/game/ganadiario/live/bg-popup-winner.png  1x, ./layer-view-image/game/ganadiario/live/bg-popup-winner@2x.png  2x" media="(min-width: 1024px)" type="image/png">
+    <source srcset="./layer-view-image/game/ganadiario/live/bg-popup-winner-mob.png  1x, ./layer-view-image/game/ganadiario/live/bg-popup-winner-mob@2x.png  2x"><img class="m-popup-winner__bg" src="./layer-view-image/game/ganadiario/live/bg-popup-winner-mob.png " alt="gana diario">
+  </picture>
+  <div class="m-popup-winner__content"><a class="m-popup-winner__logo" href="javascript:void(0)">
+      <picture>
+        <source srcset="./layer-view-image/game/ganadiario/live/logo-gana-diario.png  1x, ./layer-view-image/game/ganadiario/live/logo-gana-diario@2x.png  2x" media="(min-width: 1024px)" type="image/png"><img srcset="./layer-view-image/game/ganadiario/live/logo-gana-diario-mob.png  1x, ./layer-view-image/game/ganadiario/live/logo-gana-diario-mob@2x.png  2x">
+      </picture></a>
+    <div class="m-popup-winner__title m-title">Jugada ganadora:</div>
+    <div class="m-popup-winner__numbers">
+      <div id="numer-one">22</div>
+      <div id="numer-two">01</div>
+      <div id="numer-three">09</div>
+      <div id="numer-four">11</div>
+      <div id="numer-five">33</div>
+    </div>
+    <div class="glide  m-popup-winner__slider" id="m-winners__slider">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides"></ul>
+      </div>
+      <div class="glide__controls glide__arrows" data-glide-el="controls">
+        <button class="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev glide__arrow--circle glide__arrow--hover glide__arrow--disabled" data-glide-dir="&lt;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 9 15" fill="none">
+            <path xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" d="M9 1.75L3.40541 7.5L9 13.25L7.2973 15L2.98319e-08 7.5L7.2973 -2.23283e-07L9 1.75Z" fill="#F06500"></path>
+          </svg>
+        </button>
+        <div class="slider__bullet-wrapper">  
+          <div class="slider__bullets-index"><small><span class="slider-bullet-current-index">1 </span><span> de </span><span class="slider-bullet-count"></span></small></div>
+        </div>
+        <button class="slider__arrow slider__arrow--next glide__arrow glide__arrow--next glide__arrow--circle glide__arrow--hover" data-glide-dir="&gt;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 9 15" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M-5.79176e-07 13.25L5.59459 7.5L-7.64949e-08 1.75L1.7027 7.44275e-08L9 7.5L1.7027 15L-5.79176e-07 13.25Z" fill="#F06500"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="m-popup m-popup-count-down" id="count-down-popup"><a class="m-popup__close-element" href="javascript:void(0)" title="cerrar">&nbsp;</a>
+  <div class="m-popup-count-down__title m-title-white">El sorteo comienza en</div>
+  <div class="m-count-down">
+    <div><span id="popup-hours">00</span> 
+      <p>Horas</p>
+    </div><span>:</span>
+    <div><span id="popup-minutes">00</span> 
+      <p>Minutos</p>
+    </div><span>:</span>
+    <div><span id="popup-seconds">00</span> 
+      <p>Segundos</p>
+    </div>
+  </div>
+  <div class="m-popup-count-down__msg">
+      <p>Esta ventana se cerrar&aacute; cuando el contador llegue a 0.</p>
+      <p>Haz click en el banner de transmisi&oacute;n en vivo para ver el sorteo.</p>
+  </div>
+  <picture>
+    <source srcset="./layer-view-image/game/ganadiario/live/bg-popup-start-lot.png  1x, ./layer-view-image/game/ganadiario/live/bg-popup-start-lot@2x.png  2x" media="(min-width: 1024px)" type="image/png">
+    <source srcset="./layer-view-image/game/ganadiario/live/bg-popup-start-lot-mobile.png  1x, ./layer-view-image/game/ganadiario/live/bg-popup-start-lot-mobile@2x.png  2x"><img class="m-popup-count-down__bg" src="./layer-view-image/game/ganadiario/live/bg-popup-start-lot-mobile.png ">
+  </picture><a class="m-button" href="https://www.youtube.com/user/intralotdeperu/playlists" title="Ir a sorteos anteriores">Ir a sorteos anteriores</a>
+</div>
+
+<div class="m-popup m-popup-video" id="video-popup"><a class="m-popup__close-element" href="javascript:void(0)" title="cerrar">&nbsp;</a>
+  <div class="m-popup__content"></div>
+</div>
+
+<div class="m-popup m-popup-error" id="error-popup"><a class="m-popup__close-element" href="javascript:void(0)" title="cerrar">&nbsp;</a>
+  <div class="m-popup-error__title m-title-white">Sigue cruzando los dedos, en unos minutos estaremos de vuelta</div>
+  <picture>
+    <source srcset="./layer-view-image/game/ganadiario/live/bg-popup-start-lot.png  1x, ./layer-view-image/game/ganadiario/live/bg-popup-start-lot@2x.png  2x" media="(min-width: 1024px)" type="image/png">
+    <source srcset="./layer-view-image/game/ganadiario/live/bg-popup-start-lot-mobile.png  1x, ./layer-view-image/game/ganadiario/live/bg-popup-start-lot-mobile@2x.png  2x"><img class="m-popup-count-down__bg" src="./layer-view-image/game/ganadiario/live/bg-popup-start-lot-mobile.png ">
+  </picture><a class="m-button" href="javascript:void(0)" title="Ok">Ok</a>
+</div>

@@ -1,0 +1,622 @@
+#kinelo {
+	float: left;
+	margin: 0 0 0 32px;
+	position: relative;
+	width: 614px;
+}
+
+#banner {
+	background: url("../../../layer-view-image/game/kinelo/banner_kinelo.png") no-repeat top left;
+	border-radius: 0 0 6px 6px;
+	height: 60px;
+	behavior: url(layer-view-script/common/PIE/PIE.htc);
+}
+
+.transition-one {
+	background-color: #FFF;
+	background-image: url("../../../layer-view-image/game/kinelo/transition-one-two.png");
+	background-position: center 0;
+	background-repeat: no-repeat;
+	border-radius: 5px 5px 0 0;
+	height: 31px;
+	margin-top: 6px;
+	padding-right: 7px;
+	width: 328px;
+}
+
+.transition-two {
+	background-color: #FFF;
+	background-image: url("../../../layer-view-image/game/kinelo/transition-one-two.png");
+	background-position: center -29px;
+	background-repeat: no-repeat;
+	border-radius: 5px 5px 0 0;
+	height: 31px;
+	margin-top: 6px;
+	padding-right: 7px;
+	width: 328px;
+}
+
+#table-of-prize {
+	background-color: #D9D9D9;
+	background-image: url("../../../layer-view-image/game/kinelo/btn-ver-tabla-premios.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	border-radius: 6px 6px 6px 6px;
+	height: 26px;
+	width: 58px;
+	right: 80px;
+	position: absolute;
+	top: 65px;
+	cursor: pointer;
+}
+
+#table-of-prize:hover {
+	background-position: 0 -31px;
+}
+
+#help {
+	background-image: url("../../../layer-view-image/common/ayuda-off.png");
+	background-repeat: no-repeat;
+	font-size: 0;
+	height: 18px;
+	position: absolute;
+	right: 7px;
+	top: 70px;
+	width: 54px;
+	cursor: pointer;
+	display: block;
+}
+
+#help:hover {
+	background-image: url("../../../layer-view-image/common/ayuda-on.png");
+}
+
+#transition { /*
+    background-color: #FFF;
+    margin: 7px 0 0 0;
+    width: 342px;*/	
+}
+
+#content {
+	background-color: #FFFFFF;
+	border-radius: 0 6px 6px 6px;
+	font-family: arial;
+	font-size: 11px;
+	padding-bottom: 10px;
+}
+#back-cont{
+	background: #FFFFFFF;
+}
+.finalize-purchase {
+	background-color: #ffffff;
+	border-radius: 0 6px 6px 6px;
+	font-family: arial;
+	font-size: 11px;
+	height: 403px;
+	padding: 18px 0 20px 10px
+}
+
+.text-play {
+	background: #0168a6;
+	-pie-background: linear-gradient(bottom, #0168a6 9%, #1983c3 69%);
+	background: -o-linear-gradient(bottom, #0168a6 9%, #1983c3 69%);
+	background: -moz-linear-gradient(bottom, #0168a6 9%, #1983c3 69%);
+	background: -webkit-gradient(linear, 100% 100%, 100% 0%, color-stop(0.09, #0168a6), color-stop(0.69, #1983c3));
+	background: -webkit-linear-gradient(bottom, #0168a6 9%, #1983c3 69%);
+	background: -ms-linear-gradient(bottom, #0168a6 9%, #1983c3 69%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0168a6, endColorstr=#1983c3, gradientType=0);
+	border-radius: 5px 5px 0px 0px;
+	border-color: #1983c3;
+	height: 22px;
+	width: 518px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FFF;
+	line-height: 22px;
+	behavior: url(layer-view-script/common/PIE/PIE.htc);
+}
+
+.plays {
+	height: 270px;
+	left: 38px;
+	/*position: relative;*/
+	top: 10px;
+}
+
+.dotted-border {
+	padding: 5px 0px 0px 0px;
+	border-top: 0px;
+	border-left: 2px;
+	border-right: 2px;
+	border-bottom: 2px;
+	border-style: dotted;
+	border-color: #e0e0e0;
+	width: 515px;
+	height: 250px;
+	padding-top: 0px;
+}
+
+.banner-play {
+	background-image: url("../../../layer-view-image/game/kinelo/pasos-seleccion.png");
+	background-repeat: no-repeat;
+	width: 509px;
+	height: 32px;
+	margin: 0 auto;
+}
+
+.font {
+	background: none repeat scroll 0% 0% rgb(217, 217, 217);
+	width: 595px;
+	height: 56px;
+	border-radius: 6px;
+	margin: 60px auto 0;
+	/*behavior: url(layer-view-script/common/PIE/PIE.htc)*/
+}
+
+.center {
+	padding: 13px 15px;
+}
+
+.color-text {
+	float: left;
+	font-size: 11px;
+	font-family: arial;
+	color: #000000;
+	width: 420px;
+}
+
+.bold-type {
+	font-weight: bold;
+}
+
+.text-distance {
+	float: right;
+	width: 125px;
+}
+/*
+#buy{
+    background: url(../../layer-view-image/common/comprar.png) top left no-repeat;
+    border:0px solid #999;
+    cursor:pointer;
+    width:109px;
+    height:30px;
+    border-radius: 8px;
+    behavior:url(layer-view-script/common/PIE/PIE.htc);
+}
+#buy:hover{
+    background:url(../../layer-view-image/common/comprar.png) bottom left no-repeat;
+
+}
+*/
+#consecutive-draws {
+	color: #818181;
+	font-family: arial;
+	font-size: 11px;
+	margin: 30px 0 0 39px;
+}
+
+#message-draws {
+	float: left;
+	margin: 0 8px 0 0;
+}
+
+#abs-selectBox {
+	float: left;
+}
+
+.selectBox {
+	position: relative;
+	width: 169px;
+	height: 18px;
+	border: 1px solid #949494;
+	background: #e4e4e2 url("../../../layer-view-image/game/kinelo/flecha-combo.png") no-repeat 151px 8px;
+	border-radius: 5px;
+	font-family: Arial;
+	font-size: 10px;
+	top: -2px;
+	behavior: url(layer-view-script/common/PIE/PIE.htc);
+}
+
+.box {
+	position: absolute;
+	left: 6px;
+	top: 1px;
+	width: 157px;
+	height: 18px;
+	line-height: 17px;
+	font-family: arial;
+	font-size: 10px;
+	color: #4e4e4d;
+	overflow: hidden;
+}
+
+div.selectBox select {
+	background: none repeat scroll 0 0 #E4E4E2;
+	border: 1px solid #949494;
+	cursor: pointer;
+	font-size: 10px;
+	height: 18px;
+	opacity: 0;
+	width: 169px;
+	z-index: 1;
+	filter: alpha(opacity = 0);
+}
+
+div.selectBox select option {
+	font-size: 10px;
+	color: #4e4e4d;
+	border-bottom: 1px solid #e4e4e2;
+	cursor: pointer;
+}
+
+div.selectBox select option.ultimo {
+	border-bottom: 0px none;
+}
+
+.your-bet {
+	-pie-background: linear-gradient(right, #007CB6 95%, #0E8BC9 100%, #007CB6 100%);
+	float: left;
+	height: 213px;
+	width: 140px;
+	color: #818181;
+	font-family: arial;
+	font-size: 10px;
+	background-image: linear-gradient(top, #bde6f0 0%, #ffffff 100%);
+	background-image: -moz-linear-gradient(top, #bde6f0 0%, #ffffff 100%);
+	background-image: -o-linear-gradient(top, #bde6f0 0%, #ffffff 100%);
+	background-image: -webkit-gradient(top, #bde6f0 0%, #ffffff 100%);
+	background-image: -webkit-linear-gradient(top, #bde6f0 0%, #ffffff 100%);
+	background-image: -ms-linear-gradient(top, #bde6f0 0%, #ffffff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#bde6f0, endColorstr=#ffffff, gradientType='0');
+	margin: 4px 0 0 3px;
+	behavior: url(layer-view-script/common/PIE/PIE.htc);
+}
+
+.your-numbers {
+	float: left;
+	height: 216px;
+	width: 253px;
+	margin: 12px 0 0 5px;
+}
+
+.your-numbers-are {
+	float: left;
+	height: 216px;
+	width: 114px;
+	color: #818181;
+	font-family: arial;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.play {
+	height: 216px;
+	margin: 0 auto;
+}
+
+.margin {
+	height: 25px;
+	padding-left: 5px;
+}
+
+.margin-top {
+	margin: 1px 0 0 0;
+}
+
+.your-bet-a {
+	margin: 15px 0 0 8px;
+}
+
+.your-bet-b {
+	margin: 40px 0 0 8px;
+}
+
+.margin-II {
+	margin: 0 0 7px 7px;
+	line-height: 10px
+}
+
+.attribute-texarea {
+	background: #FFF;
+	border: 1px solid #e1e1e1;
+	border-radius: 10px;
+	resize: none;
+	overflow: hidden;
+	height: 35px;
+	width: 89px;
+	font-size: 10px;
+	font-family: Arial;
+	color: #818181;
+	margin: 20px 0 0 3px;
+	padding: 6px;
+	/*behavior: url(layer-view-script/common/PIE/PIE.htc);*/
+	margin: 4px 0 0 5px;
+}
+
+.separate-textarea-bottuns {
+	padding: 57px 0px 0px 0px;
+}
+
+.attribute-button {
+	background: #e9e6ed;
+	border: 1px solid #e9e6ed;
+	height: 15px;
+	width: 100px;
+	cursor: pointer;
+	margin: 0 auto;
+}
+
+.attribute-button:hover {
+	background: #ffd7d8;
+	border: 1px solid #ffd7d8;
+	height: 15px;
+	width: 100px;
+	cursor: pointer;
+	margin: 0 auto;
+}
+
+.separate-bottun {
+	padding: 1px;
+}
+
+.icon {
+	padding: 4px 6px 4px 5px;
+}
+
+.text {
+	color: #ac1280;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: bold;
+	vertical-align: top;
+}
+
+.top-message {
+	margin: 11px 0 0 5px;
+}
+
+#right-arrow {
+	left: 562px;
+	position: absolute;
+	top: 104px;
+	width: 25px;
+}
+
+.arrow-next {
+	background-image: url("../../../layer-view-image/game/kinelo/btn_jugadas.png");
+	background-repeat: no-repeat;
+	background-position: -35px 0;
+	width: 25px;
+	height: 22px;
+	cursor: pointer;
+}
+
+.arrow-next:hover {
+	background-image: url("../../../layer-view-image/game/kinelo/btn_jugadas.png");
+	background-repeat: no-repeat;
+	background-position: -35px -28px;
+}
+
+.arrow-back {
+	background-image: url("../../../layer-view-image/game/kinelo/btn_jugadas.png");
+	background-repeat: no-repeat;
+	background-position: 0 0px;
+	width: 25px;
+	height: 22px;
+	cursor: pointer;
+}
+
+.arrow-back:hover {
+	background-image: url("../../../layer-view-image/game/kinelo/btn_jugadas.png");
+	background-repeat: no-repeat;
+	background-position: 0 -28px;
+}
+
+.warning-next {
+	background-image: url("../../../layer-view-image/game/kinelo/ir_jugada.png");
+	background-repeat: no-repeat;
+	background-position: -26px 0;
+	width: 21px;
+	height: 98px;
+}
+
+.warning-back {
+	background-image: url("../../../layer-view-image/game/kinelo/ir_jugada.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 21px;
+	height: 98px;
+}
+
+#arrow-warning {
+	margin: 0 auto;
+}
+
+#message-discount {
+	color: #818181;
+	font-family: arial;
+	font-size: 9px;
+}
+
+#div-message-discount {
+	margin: 10px 0 0 25px;
+}
+
+.visible {
+	height: 0;
+	position: absolute;
+	visibility: hidden;
+	width: 0;
+}
+
+.check_ {
+	margin-left: 0;
+	margin-right: -1px;
+}
+
+.hide_play {
+	display: none;
+}
+
+.show_play {
+	display: block;
+}
+
+#prize {
+	color: #0268A6;
+	font-family: 'Myriad Pro', sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	left: 156px;
+	position: absolute;
+	text-align: center;
+	top: 3px;
+	width: 200px;
+}
+
+#horary {
+	color: #ffffff;
+	font-family: 'Myriad Pro', sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	left: 420px;
+	position: absolute;
+	text-align: center;
+	top: 3px;
+	width: 150px
+}
+
+#prize_table_kinelo {
+	background-color: #FFFFFF;
+	padding: 10px 20px;
+	width: 597px;
+}
+
+#title-prize {
+	font-family: arial, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 0 10px;
+	color: #444444;
+}
+
+.message-prize {
+	font-family: arial, sans-serif;
+	font-size: 10px;
+	color: #444444;
+	margin: 0;
+}
+
+/*cotejador*/
+.datos_enunciado_cotejo_right {
+	margin-left: 26px;
+	font-family: Arial;
+	font-size: 11px;
+	color: #0681bb;
+	font-weight: bold;
+}
+
+.datos_enunciado_contenido_cotejo_right {
+	font-family: Arial;
+	font-size: 11px;
+	color: #454545
+}
+
+.datos_enunciado_cotejo_left {
+	font-family: Arial;
+	font-size: 11px;
+	color: #0681bb;
+}
+
+.cotejadores {
+	font-family: Arial;
+	margin-left: 26px;
+	font-size: 11px;
+	color: #454545;
+	margin-bottom: 10px;
+}
+
+.datos_enunciado_contenido_cotejo_left {
+	font-family: Arial;
+	font-size: 11px;
+	color: #454545
+}
+
+.datos_separador {
+	margin-left: 26px;
+	color: #0681bb;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 26px;
+	margin-bottom: 5px;
+}
+
+.logo_kinelo {
+	margin-left: 26px;
+	color: #306d20;
+	font-family: Arial;
+	font-size: 15px;
+	margin-top: -10px;
+}
+
+.calculo_premio {
+	margin-left: 26px;
+	margin-top: 2px;
+	margin-bottom: 10px;
+	color: #0681bb;
+	font-family: Arial;
+	font-size: 11px;
+}
+
+.table_kinelo {
+	font-family: Arial;
+	font-size: 11px;
+	width: 550px
+}
+
+.th_kinelo {
+	background-color: #faedb8;
+	color: #0681bb;
+	height: 11px;
+	width: 50px;
+	border-color: #a8a8a9
+}
+
+.td_kinelo {
+	color: #323232;
+	height: 11px;
+	text-align: center;
+	border-color: #a8a8a9
+}
+
+.table_result_kinelo {
+	color: black;
+	background-color: #ffcfaa;
+	height: 11px;
+	border-bottom-color: #a8a8a9
+}
+
+.mensaje_kinelo {
+	font-family: Arial;
+	margin-top: 14px;
+	color: #454545;
+	margin-left: 26px;
+	font-size: 10px;
+}
+
+.indicador_cotejo {
+	margin-left: 26px;
+	margin-top: 20px;
+	font-family: Arial;
+	font-size: 11px;
+	color: #454545;
+}
+
+.cotejador {
+	font-family: Arial;
+	font-size: 11px;
+	color: #454545
+}

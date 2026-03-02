@@ -1,0 +1,76 @@
+.WebContentContainer .WebContentInformation { padding:0!important }
+.HomeNavigationMenu { float:left }
+.HomeNavigationMenu div#menu-content { background-color:#f00;background:transparent }
+.HomeNavigationMenu div#menu-content div#main-nav { padding:0;overflow:hidden }
+.HomeNavigationMenu div#menu-content div#main-nav a { text-decoration:none; padding:5px 0 1px }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list { line-height:12px;margin-top:23px;margin-bottom:0;margin-left:32px;padding:0;overflow:hidden }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item { list-style:none;display:block;float:left;margin-right:2px }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item a { text-decoration:none;display:block;cursor:pointer;padding:5px 0 5px 0;text-align:center;text-transform:uppercase;color:#333335;font-family:Arial;font-size:10px;background:url(../../layer-view-image/common/bg_off.png) top left no-repeat #bfbfc0 }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item a img { margin:3px 5px 0 0;padding:0;float:right;background:transparent;border:0 }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item:hover a { background:url(../../layer-view-image/common/bg_over.gif) top left no-repeat #4d4d4d;color:#fff }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item:hover ul.subnav-list { display:block;position:absolute;z-index:50;width:inherit }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item ul.subnav-list { margin:0;padding:0;display:none }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item ul.subnav-list li.subnav-list-item { list-style:none }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item ul.subnav-list li.subnav-list-item a { text-decoration:none;background:#4d4d4d;color:#fff }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.main-nav-list-item ul.subnav-list li.subnav-list-item:hover a { background:#777777 }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.current-menu-item a,
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li.current-menu-item:hover a { background:url(../../layer-view-image/common/bg_on.gif) top left no-repeat #f7901f;color:#fff }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-1,
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-1 a { width:107px }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-2,
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-2 a { width:92px }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-3,
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-3 a { width:100px }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-4,
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-4 a { width:92px }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-5,
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-5 a { width:90px }
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-6,
+.HomeNavigationMenu div#menu-content div#main-nav ul.main-nav-list li#menu-item-6 a { width:90px }
+.HomeNavigationMenu li#border-inf-menu-item-2 { background:url(../../img/home/basemenu_loterias.png) top left no-repeat }
+.HomeNavigationMenu li#border-int-menu-item-2 { background:url(../../img/home/px_sep_loterias.gif) top left no-repeat #4d4d4d }
+.HomeNavigationMenu li#border-inf-menu-item-3 { background:url(../../img/home/basemenu_apuestasdepor.png) top left no-repeat }
+.HomeNavigationMenu li#border-int-menu-item-3 { background:url(../../img/home/px_sep_apuestas.gif) top left no-repeat #4d4d4d }
+.HomeNavigationMenu li#border-inf-menu-item-4 { background:url(../../img/home/basemenu_raspa.png) top left no-repeat }
+.HomeNavigationMenu li#border-int-menu-item-4 { background:url(../../img/home/px_sep_raspa.gif) top left no-repeat #4d4d4d }
+.HomeNavigationMenu li#border-inf-menu-item-5 { background:url(../../img/home/basemenu_juegoenlinea.png) top left no-repeat }
+.HomeNavigationMenu li#border-int-menu-item-5 { background:url(../../img/home/px_sep_juegosenlinea.gif) top left no-repeat #4d4d4d }
+.HomeNavigationMenu li#border-inf-menu-item-6 { background:url(../../img/home/basemenu_juegoenlinea.png) top left no-repeat }
+.HomeNavigationMenu li#border-int-menu-item-6 { background:url(../../img/home/px_sep_juegosenlinea.gif) top left no-repeat #4d4d4d }
+.HomeNavigationMenu li.border-int-menu-item { height:1px;display:block }
+.HomeNavigationMenu li.border-inf-menu-item { height:12px;display:block }
+.insuranceGame { float:right;margin:0;padding:0;border:0;background:url(../../img/home/ic_18.gif) no-repeat center center;width:43px;height:40px }
+.main-nav-list li { padding-bottom:0px;padding-top:0px }
+#ico-block{display:none;}
+#ico-title{padding:5px 10px;text-align:left;color:#07663a;font-family:Arial;font-size:14px;font-weight:bold;/*top left no-repeat;*/}
+#ico-panel{float:left;padding: 10px 20px;/*125px;*/border-top: 3px solid #E5E5E5;margin: 0px 19px 10px 12px;border-bottom: 3px solid #E5E5E5;clear:both;width:520px;/*310px;*/}
+#ico-panel .button-icotinka{background-color:#ffffff;background-image:url(../../layer-view-image/client/btn-tinka.png);/*img-tinka.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icotinka:hover{background-image:url(../../layer-view-image/client/btn-tinka-over.png);/*img-tinka-over.png);*/}
+#ico-panel .button-icoganagol{background-color:#ffffff;background-image:url(../../layer-view-image/client/btn-ganagol.png);/*img-ganagol.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:15px 0px 0px 0px;padding:0;border:0}
+#ico-panel .button-icoganagol:hover{background-image:url(../../layer-view-image/client/btn-ganagol-over.png);/*img-ganagol-over.png);*/}
+#ico-panel .button-icoteapuesto{background-color:#ffffff;background-image:url(../../layer-view-image/client/btn-teapuesto.png);/*img-teapuesto.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:15px 10px 0px 132px;padding:0;border:0}
+#ico-panel .button-icoteapuesto:hover{background-image:url(../../layer-view-image/client/btn-teapuesto-over.png);/*img-teapuesto-over.png);*/}
+#ico-panel .button-icoclicygana{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-clicygana.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icoclicygana:hover{background-image:url(../../layer-view-image/client/img-clicygana-over.png);}
+#ico-panel .button-icodeportesvirtuales{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-deportesvirtuales.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icodeportesvirtuales:hover{background-image:url(../../layer-view-image/client/img-deportesvirtuales-over.png);}
+#ico-panel .button-icoganadiario{background-color:#ffffff;background-image:url(../../layer-view-image/client/btn-ganadiario.png);/*img-ganadiario.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icoganadiario:hover{background-image:url(../../layer-view-image/client/btn-ganadiario-over.png);/*img-ganadiario-over.png);*/}
+#ico-panel .button-icokabala{background-color:#ffffff;background-image:url(../../layer-view-image/client/btn-kabala.png);/*img-kabala.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icokabala:hover{background-image:url(../../layer-view-image/client/btn-kabala-over.png);/*img-kabala-over.png);*/}
+#ico-panel .button-icosuper3{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-super3.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icosuper3:hover{background-image:url(../../layer-view-image/client/img-super3-over.png);}
+#ico-panel .button-icoelreventon{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-elreventon.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icoelreventon:hover{background-image:url(../../layer-view-image/client/img-elreventon-over.png);}
+#ico-panel .button-icorapitinkas{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-rapitinkas.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icorapitinkas:hover{background-image:url(../../layer-view-image/client/img-rapitinkas-over.png);}
+#ico-panel .button-icorapigana{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-rapigana.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icorapigana:hover{background-image:url(../../layer-view-image/client/img-rapigana-over.png);}
+#ico-panel .button-icokinelo{background-color:#ffffff;background-image:url(../../layer-view-image/client/btn-kinelo.png);/*img-kinelo.png);*/background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:122px;/*59px;*/height:48px;/*59px;*/text-decoration:none;margin:0px 0px 0px 0px;padding:0;border:0}
+#ico-panel .button-icokinelo:hover{background-image:url(../../layer-view-image/client/btn-kinelo-over.png);/*img-kinelo-over.png);*/}
+#ico-panel .button-icogiromagico{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-giromagico.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icogiromagico:hover{background-image:url(../../layer-view-image/client/img-giromagico-over.png);}
+#ico-panel .button-icofechaza{background-color:#ffffff;background-image:url(../../layer-view-image/client/img-fechaza.png);background-position:top left;background-repeat:no-repeat;float:left;font-size:0;width:59px;height:59px;text-decoration:none;margin:0px 10px 0px 0px;padding:0;border:0}
+#ico-panel .button-icofechaza:hover{background-image:url(../../layer-view-image/client/img-fechaza-over.png);}
+
+

@@ -1,0 +1,117 @@
+package pe.com.intralot.loto.layer.dto.golden;
+
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+
+public class Event {
+	
+
+
+	
+	@SerializedName("eventId")
+    private int eventId;
+
+    @SerializedName("playlistId")
+    private int playlistId;
+
+    @SerializedName("playlistDescription")
+    private String playlistDescription;
+
+    @SerializedName("gameType")
+    private GameType gameType;
+
+    @SerializedName("eventTime")
+    private String eventTime;
+
+    @SerializedName("serverStatus")
+    private String serverStatus;
+
+
+    @SerializedName("data")
+    private EventData data;
+
+
+
+    @SerializedName("bets")
+    private List<Bet> bets;
+    
+    
+
+	public int getEventId() {
+		return eventId;
+	}
+
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
+
+	public int getPlaylistId() {
+		return playlistId;
+	}
+
+	public void setPlaylistId(int playlistId) {
+		this.playlistId = playlistId;
+	}
+
+	public String getPlaylistDescription() {
+		return playlistDescription;
+	}
+
+	public void setPlaylistDescription(String playlistDescription) {
+		this.playlistDescription = playlistDescription;
+	}
+
+	public GameType getGameType() {
+		return gameType;
+	}
+
+	public void setGameType(GameType gameType) {
+		this.gameType = gameType;
+	}
+
+	public String getEventTime() {
+		return eventTime;
+	}
+
+	public void setEventTime(String eventTime) {
+		this.eventTime = eventTime;
+	}
+
+	public String getServerStatus() {
+		return serverStatus;
+	}
+
+	public void setServerStatus(String serverStatus) {
+		this.serverStatus = serverStatus;
+	}
+
+
+	public EventData getData() {
+		return data;
+	}
+
+	public void setData(EventData data) {
+		this.data = data;
+	}
+
+	public List<Bet> getBets() {
+		return bets;
+	}
+
+	public void setBets(List<Bet> bets) {
+		this.bets = bets;
+	}
+    
+    
+    
+    
+    
+
+    
+
+
+
+
+
+}

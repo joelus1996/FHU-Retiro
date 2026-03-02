@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:device="http://www.springframework.org/schema/mobile/device"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	                    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		                http://www.springframework.org/schema/beans 
+		                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		                http://www.springframework.org/schema/mobile/device 
+		                http://www.springframework.org/schema/mobile/device/spring-mobile-device-1.0.xsd
+		                http://www.springframework.org/schema/context 
+		                http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<mvc:resources location="/layer-view-image/" mapping="/layer-view-image/**"/>
+	<mvc:resources location="/layer-view-style/" mapping="/layer-view-style/**"/>
+	<mvc:resources location="/layer-view-script/" mapping="/layer-view-script/**"/>
+
+	<!-- Configuracion de mobile -->
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<beans:bean id="SitePreferenceWebArgumentResolver" class="org.springframework.mobile.device.site.SitePreferenceWebArgumentResolver" />
+		</mvc:argument-resolvers>			
+	</mvc:annotation-driven>
+
+	<!-- Configuracion de wurfl -->	
+    <mvc:interceptors>        
+        <beans:bean id="DeviceResolverHandlerInterceptor" class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor">
+            <beans:constructor-arg>
+            	<device:wurfl-device-resolver id="WurflDeviceResolver" root-location="/layer-view-interface/wurfl-api/wurfl-2.3.4.zip"/>
+            </beans:constructor-arg>		
+        </beans:bean>
+        <beans:bean id="SitePreferenceHandlerInterceptor" class="org.springframework.mobile.device.site.SitePreferenceHandlerInterceptor" />
+    </mvc:interceptors>
+
+	<!-- Configuracion de vista -->
+    <beans:bean id="InternalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="layer-view-interface/" />	      
+        <beans:property name="suffix" value=".jsp" />     
+    </beans:bean>
+
+	<context:component-scan base-package="pe.com.intralot.loto.layer.view" />
+	
+</beans:beans>

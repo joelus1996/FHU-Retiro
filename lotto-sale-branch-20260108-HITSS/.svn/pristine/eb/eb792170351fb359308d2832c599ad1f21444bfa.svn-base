@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+/* ImageFlow Settings
+==================================== */
+@media screen, projection {
+	.imageflow {
+		overflow:hidden;
+		position:static; 
+		text-align:left;
+		visibility:hidden;
+		width:530px
+	}
+	.imageflow img {
+		border:none;
+		cursor:pointer;
+		position:absolute;
+		top:0px;
+		visibility:hidden;
+		-ms-interpolation-mode:bicubic; /* Enables bicubic image resampling for the IE7 */
+	}
+	.imageflow p {
+		margin:0 auto;
+		text-align:center;
+	}
+	/*.imageflow .loading {
+	   border:1px solid white;
+        height:15px;
+        left:50%;
+        margin-left:-106px;
+        padding:5px;
+        position:relative;
+        visibility:visible;
+        width:200px
+	}*/
+	.imageflow .loading {
+	    background: url(../../../layer-view-image/game/rapitinkas/loader.gif) center no-repeat!important;
+		height: 55px;
+		left: 50%;
+		margin-left: -10px;
+		position:relative;
+		visibility:visible;
+		width:55px
+	}
+	.imageflow .loading_bar {
+		background: transparent;
+		height:15px;
+		visibility:hidden;
+		width:1%;
+	}
+	.imageflow .navigation{
+		z-index:10000;
+	}
+	.imageflow .caption {
+		position:relative; 
+		text-align:center;
+		z-index:10001;
+	}
+	.imageflow .scrollbar {
+		border-bottom:6px solid #D4B5C5;
+		position:relative; 
+		visibility:hidden;
+		z-index:10002;
+		height:1px;
+	}
+	.imageflow .slider {
+		background:url(../../../layer-view-image/game/rapitinkas/slider.png) no-repeat;
+		height:18px;
+		margin:-6px 0 0 -7px;
+		position:absolute;
+		width:85px;
+		z-index:10003;
+	}
+	.imageflow .slideshow {
+		cursor:pointer;
+		height:14px;
+		margin:20px 0 0 20px;
+		position:absolute;
+		width:14px;
+		z-index:10003;
+	}
+	.imageflow .slideshow.pause {
+		background:url(button_pause.png) no-repeat;
+	}
+	.imageflow .slideshow.play {
+		background:url(button_play.png) no-repeat;
+	}
+	.imageflow .images {
+		overflow:hidden;
+		white-space:nowrap;
+	}
+	.imageflow .button {
+		cursor:pointer;
+		height:17px;
+		position:relative;
+		width:17px;
+	}
+	.imageflow .previous {
+		background: url(button_left.png) top left no-repeat;
+		float:left;
+		margin: -7px 0 0 -30px;
+	}
+	.imageflow .next {
+		background: url(button_right.png) top left no-repeat;
+		float:right;	
+		margin:-7px -30px 0 30px;
+	}
+}

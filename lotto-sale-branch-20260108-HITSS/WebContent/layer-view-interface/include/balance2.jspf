@@ -1,0 +1,84 @@
+<c:if test="${channel2Order == 'IBK'}">
+	<tr>
+		<td><input type="radio" name="option-card" value="12" id="option-card-12"/></td>
+		<td><label for="option-card-12">En Interbank agentes<span>NUEVO</span></label><div id="logo_transaccion_12"></div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div id="panel_transaccion_12">
+				<div class="panel_messages">
+					<span class="label_option_2">Permite cargas a partir de S/10 hasta S/10,000.<br/>Solicita tu recarga La Tinka, indica el código 0731802, el número de tu DNI y el monto a recargar<br/><strong><a id="ibkMapShow" class="dark-blue" target="_blank"  href="https://interbank.pe/puntos-de-atencion?rfid=navegacion:menu-home:link">Ubica aqu&iacute; d&oacute;nde pagar</a></strong><br/><br/></span></div></div>
+		</td>
+	</tr>
+</c:if>
+<c:if test="${channel2Order == 'LOTOCARD'}">
+	<tr>
+		<td><input type="radio" name="option-card" value="1" id="option-card-1"></td>
+		<td><label for="option-card-1">Con tu Lotocard</label><div id="logo_transaccion_1"></div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div id="panel_transaccion_1">
+				<label class="label_option_1">Ingresa el c&oacute;digo</label>
+				<input type="text" class="text-in" name="pin-number" maxlength="14" />
+				<a href="#" class="btn btn-orange" id="btncargar1" data-type="LOTOCARD">Cargar</a>
+				<span class="label_option_2">Encu&eacute;ntralas en todos los puntos de venta a nivel nacional.</span>
+			</div>
+		</td>
+	</tr>
+</c:if>
+<c:if test="${channel2Order == 'PEFE'}">
+	<c:if test="${isPagoEfectivo == true}">
+		<tr>
+			<td><input type="radio" name="option-card" value="9" id="option-card-9"></td>
+			<td><label for="option-card-9">Con PagoEfectivo: Dep&oacute;sito en Efectivo</label><div id="logo_transaccion_9"></div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div id="panel_transaccion_9">
+					<label class="label_option_1">Monto de carga S/.</label>
+					<input type="text" class="text-in" id="pagoEfectivo-val" name="pagoEfectivo-amnt" value="40" />
+					<a href="#" class="btn btn-orange" id="btncargar9" data-type="PEFE">Cargar</a>
+					<div class="panel_messages">
+						<span class="label_option_4">PagoEfectivo permite cargas a partir de S/ <span id="pagoEfectivo-lbl"></span>.<br/>Ac&eacute;rcate a cualquier Agente corresponsal del BBVA, BCP, INTERBANK, SCOTIABANK y BANBIF, KASNET, WESTEN UNION - Pago de Servicios y FULLCARGA.<br/>
+						<strong><a class="dark-blue" target="_blank" href="https://ubicanos.pagoefectivo.pe" >Ubica aqu&iacute; d&oacute;nde pagar. </a>-<a  href="#" id="pagoEfecHelp"> &iquest;C&oacute;mo funciona PagoEfectivo? </a></strong></span>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</c:if>
+</c:if>
+<c:if test="${channel2Order == 'SPAY'}">
+	<tr>
+		<td><input type="radio" name="option-card" value="3" id="option-card-3"/></td>
+		<td><label for="option-card-3">Con SafetyPay: en Agentes o Bancos</label><div id="logo_transaccion_3"></div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div id="panel_transaccion_3">
+				<label class="label_option_1">Monto de carga S/.</label> 
+				<input type="text" class="text-in" id="safetypay-val" name="safetypay-amnt" value="40" />
+				<a href="#" class="btn btn-orange" id="btncargar3" data-type="SPAY">Cargar</a>
+				<div class="panel_messages">
+					<span class="label_option_4">Paga con dinero en efectivo sin necesidad de cuenta bancaria o tarjeta de cr&eacute;dito.<br/><br/></span></div></div>
+		</td>
+	</tr>
+</c:if>
+<c:if test="${channel2Order == 'RDDG'}">
+<tr>
+	<td><input type="radio" name="option-card" value="10" id="option-card-10"/></td>
+	<td><label for="option-card-10">Red Digital</label><div id="logo_transaccion_10"></div></td>
+</tr>
+<tr>
+	<td></td>
+	<td>
+		<div id="panel_transaccion_10">
+			<div class="panel_messages">
+				<span class="label_option_2"><strong>Dep&oacute;sito en efectivo en todos sus agentes autorizados</strong><br/><br/>Se permite cargas a partir de S/ 10 hasta S/ 150.<br/>Solicita la recarga Te Apuesto o La Tinka. Indica tu DNI, n&uacute;mero de celular y el monto a recargar. &iexcl;Listo!<br/><br/></span></div></div>
+	</td>
+</tr>
+</c:if>

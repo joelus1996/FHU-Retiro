@@ -1,0 +1,279 @@
+@charset "UTF-8";
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+.padding1 {
+  padding-top: 38px;
+}
+
+.cropimg {		
+			width: 257px; 
+			height: 65px; 
+			object-fit: cover;		
+		}
+
+.game-desc.golazo200 h2 {
+  margin-top: 25px;
+}
+		
+.contenedor {
+			border-radius: 7px;
+			color: #fff;
+		}
+		
+.game-desc.golazo200 h2 text {
+  font-size: 0.75em;
+}
+		
+.text {
+		    width: 95%;
+		    height: 70px;
+		    background-color: transparent;
+		    padding: 10px;
+		    color: #ffec13;
+		    position: absolute;
+		    z-index: 1;
+		    border-radius: 7px;
+		    margin-top: 5px
+		}
+		 
+.background {
+		    width: 100%;
+		    background-color: #004d16;
+		    padding: 10px;
+		    margin-top: 5px
+		    border-radius: 7px;
+		}
+		
+.text2 {
+		    width: 95%;
+		    background-color: transparent;
+		    padding: 10px;
+		    color: #fff;
+		    position: absolute;
+		    z-index: 1;
+		    border-radius: 7px;
+		    margin-top: 5px;		    
+		}
+		
+.trans-resultados{
+	font-weight:400; 
+	letter-spacing: 3px;
+	margin-bottom: 10px;
+}
+
+.trans-resultados2{
+	opacity: 0;
+	font-weight:400; 
+	letter-spacing: 3px;
+	margin-bottom: 10px;
+}
+
+.trans-resultado-g200{
+	font-weight:400;
+	margin-bottom: 5px; 
+}
+
+.trans-resultado-g200-2{
+	opacity: 0;
+	font-weight:400;
+	margin-bottom: 5px; 
+}
+		
+.background2 {
+		    width: 100%;
+		    background-color: #42AC72;
+		    padding: 10px;
+		    border-radius: 7px;
+		    margin-bottom: 3px;
+		}
+ 
+.trans {
+		    opacity: 0.5;
+		    border-radius: 7px;
+		}
+		
+.padding2 {
+  padding-top: 28px;
+}
+
+.game-desc h5 {
+  margin-top: 20px;
+}
+
+.main-ganagol .teams-match .team-match {
+  font-size: 17px;
+}
+
+@media (min-width: 260px) {
+  	.main-ganagol .teams-match .center-match {
+    	display: table-cell;
+    	vertical-align: middle;
+    	max-width: 1em;
+    	padding-bottom: 0px; 
+  	}
+	.main-ganagol .teams-match .left-match.right-match,
+	.main-ganagol .teams-match .right-match.right-match {
+  		text-align: left;
+  		padding-left: 5px;
+  		padding-bottom: 0px; 
+	}
+	.main-ganagol .teams-match .left-match.left-match,
+	.main-ganagol .teams-match .right-match.left-match {
+  		text-align: right;
+  		padding-right: 5px;
+  		padding-bottom: 0px; 
+	}		
+}
+
+.f_item:after {
+  top: 40px;
+}
+
+.main-ganagol .desc-program span {
+  font-size: 13px;
+}
+
+.f_item .desc-program {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.main-ganagol .desc-program {
+  margin-top: 0px;
+}
+
+.f_item {
+  padding: 10px 0px;
+}
+
+.f_inline {
+  margin: 3px 5px;
+}
+
+.f_inline .box-checkbox.golazo200 [type='checkbox']:not(:checked) + label, 
+.f_inline .box-checkbox.golazo200 [type='checkbox']:checked + label{
+    line-height: 2.8em;
+}
+
+.f_inline .box-checkbox.golazo200 [type='checkbox']:not(:checked) + label:before{
+    width: 65px;  
+    height: 40px;   
+}
+
+.f_inline .box-checkbox.golazo200 [type='checkbox']:checked + label:before{
+	height: 40px;  
+}
+
+.box-play.f_inline.golazo200_seccion{
+	margin: 10px 6px;
+}
+
+.game-des-cgolazo200{
+	padding-top: 16px;
+}
+
+
+
+ .popup.popup-sm-GG-3VS{
+    height: 446px;
+    width: 338px;
+    margin: 0 auto;
+    display: table;
+    top: 50%;
+    transform: translateY(-50%);	
+}
+
+.popup .close-GG-3VS{
+	position: absolute;
+    top: -0.7em;
+    right: 1px;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -o-transition: all 200ms;
+    font-size: 4.25em;
+    color: #dddddd;
+    width: 0.5em;
+    line-height: 0.8em;
+    margin-left: -0.5em;
+    text-decoration: none;
+    font-family: ui-monospace;
+}
+
+.popup-GG-3VS-footer{
+	background-color: #052dbf;
+    height: 305px;
+}
+
+.popup-GG-3VS-footer .descripcion-footer{
+	font-size: 15px;
+    font-family: GothamBook;
+    color: #fff;
+    line-height: 1.5em;
+    padding-bottom: 10px;
+}
+
+.popup-GG-3VS-footer .descripcion-footer h3 {
+	margin: 0px;
+}
+
+.popup--GG-3VS--footer{
+	background-color: #052dbf;
+    height: 305px;
+}
+
+.popup--GG-3VS--footer .button-ingresar{
+	
+	border-radius: 17px;
+    border: medium none;
+    height: 34px;
+    font-size: 14px;
+    background-color: #ff5d00;
+    color: #fff;
+    font-family: GothamBook;
+    margin-left: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+	top: -60px;
+    position: relative;
+} 
+
+.popup-GG-3VS-footer .button-GG-3VS{
+	
+	border-radius: 17px;
+    border: medium none;
+    height: 34px;
+    font-size: 15px;
+    background-color: #F9020C;
+    color: #fff;
+    font-family: GothamBook;
+    padding-left: 25px;
+    padding-right: 25px;
+	top: -55px;
+    position: relative;
+} 
+
+.popup.popup-sm-tinka {
+    height: 446px;
+    width: 338px;
+    display: table;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+}
+
+.popup .close-tinka {
+    position: absolute;
+    top: -0.7em;
+    right: 1px;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -o-transition: all 200ms;
+    font-size: 3.25em;
+    color: #dddddd;
+    width: 0.5em;
+    line-height: 0.8em;
+    margin-left: -0.5em;
+    text-decoration: none;
+    font-family: ui-monospace;
+}
+

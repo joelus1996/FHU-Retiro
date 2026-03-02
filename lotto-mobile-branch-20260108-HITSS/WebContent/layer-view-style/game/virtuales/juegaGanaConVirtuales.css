@@ -1,0 +1,234 @@
+
+/* Buttons */
+#btn_home_juegaGanaVirtuales{
+	top: -52px;
+	position: relative; 
+	width: 163px;
+	padding-bottom: 0.4rem;
+	font-size: 15px;
+}
+
+.button-juegaGanaVirtuales-naranja{
+	border-radius: 17px;
+    border: medium none;
+    height: 34px;
+    font-size: 14px;
+    background-color: #e16e1a;
+    color: #fff;
+    font-family: AmsiPro-Bold;
+}
+
+.button-juegaGanaVirtuales-blanco{
+    height: 34px;
+    border-radius: 17px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: AmsiPro-Bold;
+    font-size: 14px;
+    border-color: #f75b1e;
+    border-style: solid;
+}
+
+/*
+.button-juegaGanaVirtuales-naranjaaaaa {
+    width: 168px;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-top: 10px;
+}
+
+.button-avion-qatar-blanco {
+    border-color: #f75b1e;
+    color: #000000;
+    border-radius: 17px;
+    height: 34px;
+    font-size: 14px;
+    font-family: AmsiPro-Bold;
+    width: 168px;
+    background-color: #ffffff;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-style: double;
+    border-width: 1px;
+}*/
+
+/* Buttons */
+
+.main-game.juegaGanaVirtuales {
+    padding: 0.6em 1.5em;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.main-game.juegaGanaVirtuales h2 {
+    font-size: 18px;
+    font-family: GothamBook;
+    color: #e16e1a;
+    margin-bottom: 5px;
+}
+
+.main-game.juegaGanaVirtuales h3 {
+    font-size: 16px;
+    font-family: GothamBook;
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.main-game.juegaGanaVirtuales .copa-descripcion h3 {
+    color: #000000;
+    font-size: 13px;
+    font-family: GothamBook;
+    margin-top: 18px;
+}
+
+.popup.popup-sm-juegaGanaVirtuales {
+    height: 446px;
+    width: 338px;
+    margin: 0 auto;
+    display: table;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    padding: 0px;
+}
+
+.popup.popup-sm-juegaGanaVirtuales .close-juegaGanaVirtuales {
+    position: absolute;
+    top: -0.7em;
+    right: 1px;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -o-transition: all 200ms;
+    font-size: 3.25em;
+    color: #dddddd;
+    width: 0.5em;
+    line-height: 0.8em;
+    margin-left: -0.5em;
+    text-decoration: none;
+    font-family: ui-monospace;
+}
+
+#nivel-juegaGanaVirtuales {
+    background-color: #D7E2E4;
+    height: 305px;
+}
+
+.TyC_Enfatizar_JuegaGanaVirtuales{ 
+	color: #e16e1a !important;
+	text-decoration: underline !important; 
+}
+
+
+.juegaGanaConVirtuales-reglas{
+	margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    font-size: 13px;       
+    background-color:rgba(255, 255, 255, 1);
+    padding-bottom: 20px;
+    width: 339px;
+    height: 365px;
+    border-radius: 11px;
+}
+
+.juegaGanaConVirtuales-reglas li{
+	margin-right:20px;
+}
+
+.juegaGanaConVirtuales-reglas h3{
+	font-size: 13px;
+	color: #e16e1a;
+	font-family: AmsiPro-Bold;
+	margin-left: 14px;
+	padding-top: 15px;
+}
+
+.juegaGanaConVirtuales-reglas ul{
+	padding-left: 30px;
+    line-height: 1.4em;
+    margin-top: 5px;
+    font-size: 12px;
+    font-family: AmsiPro-Bold;
+    margin-bottom: 0px;
+    text-align: justify;
+}
+
+.juegaGanaConVirtuales-sorteos{  
+   margin-top: 0px;
+   padding-bottom: 15px;
+   padding-top: 10px;
+}
+
+.juegaGanaConVirtuales-sorteos .premios1 .desc-premios1{
+	color:#e16e1a;
+	font-size: 13px;
+    line-height: 1.4em;
+    font-family: AmsiPro-Bold;
+}
+
+.juegaGanaConVirtuales-sorteos .premios2 .desc-premios2{
+	color:#e16e1a;
+	font-size: 13px;
+    line-height: 1.4em;
+    font-family: AmsiPro-Bold;
+}
+
+.juegaGanaConVirtuales-sorteos .premios3 .desc-premios3{
+	color:#e16e1a;
+	font-size: 13px;
+    line-height: 1.4em;
+    font-family: AmsiPro-Bold;
+}
+
+.juegaGanaConVirtuales-sorteos h4{
+	line-height: 1.4em;
+	text-align: justify;
+    margin-right: 14px;
+    font-family: GothamBook;
+    font-size: 12px;
+}
+
+.juegaGanaConVirtuales-sorteos ul{
+	padding-left: 30px;
+    line-height: 1.4em;
+    margin-top: 0px;
+    margin-right: 22px;
+    text-align: justify;
+    font-family: AmsiPro-Bold;
+    font-size: 12px;
+    padding-bottom: 10px;	
+    margin-bottom: 0px;
+}
+
+
+.juegaGanaConVirtuales-juegas-web{
+	text-align: center;
+	line-height: 1.5em;
+	margin-bottom: 24px;
+	font-family: AmsiPro-Bold;
+}
+
+
+.juegaGanaConVirtuales-juegas-web h3{
+	font-size: 18px;	
+	color: #e16e1a;
+}
+
+.juegaGanaConVirtuales-juegas-web h4{
+	color:#000000;
+	font-size: 16px;	
+}
+
+.juegaGanaConVirtuales-punto-venta{
+	text-align: center;
+	line-height: 1.5em;
+	padding-bottom: 30px;
+	font-family: AmsiPro-Bold;
+}
+
+.juegaGanaConVirtuales-punto-venta h3{
+    font-size: 18px;
+    font-family:AmsiPro-Bold;
+    margin-bottom:10px;
+}

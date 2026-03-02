@@ -1,0 +1,532 @@
+/*
+ * Created by George Minaya
+ *
+ */
+ol, ul { margin: 0; padding: 0; list-style: none }
+a:active, a:visited, a:focus,
+input:active, input:focus,
+button:active, button:focus { outline: none }
+.hidden { display: none }
+.invisible { visibility: hidden; position: absolute }
+.through { text-decoration: line-through }
+.no-scroll { overflow: hidden }
+#te-apuesto { float: left; margin: 0 0 0 32px; position: relative; width: 614px }
+#te-apuesto h4 { margin: 0 }
+#te-apuesto a { text-decoration: none !important }
+.banner-game { border-radius: 0 0 10px 10px; font-size: 0; height: 60px; position: relative }
+.banner-game .game-motto,
+.banner-game .game-message { font-family: 'Arial', sans-serif; position: absolute }
+.banner-game .game-motto { color: #ffffff; font-size: 18px; font-weight: bold; left: 170px; top: 19px }
+.banner-game .game-message { color: #f98d18; font-size: 12px; font-weight: bold; right: 55px; top: 13px; width: 135px }
+#nav-bar { background-color: #ffffff; border-radius: 7px 7px 0 0; margin: 7px 0 0 0; padding: 4px; width: 332px; overflow: hidden; position: relative }
+#nav-bar .indicator { background-color: #ffffff; background-image: url(../../../layer-view-image/game/teapuesto/transition.png); cursor: default; height: 23px; position: relative; width: 331px }
+#nav-bar .indicator.start { background-position: 50% 0 }
+#nav-bar .indicator.end { background-position: 50% 100% }
+#nav-bar .indicator .half { float: left; width: 50% }
+#nav-bar .indicator .half span { color: #ffffff; font-size: 12px; font-weight: bolder; line-height: 23px }
+#nav-bar .indicator .half .one { margin: 0 0 0 13px }
+#nav-bar .indicator .half .choose { margin: 0 0 0 11px }
+#nav-bar .indicator .half .two { margin: 0 0 0 26px }
+#nav-bar .indicator .half .finalize { margin: 0 0 0 12px }
+#help { background-image: url(../../../layer-view-image/common/ayuda.png); background-repeat: no-repeat; font-size: 0; height: 36px; position: absolute; right: 7px; top: 60px; width: 68px; display: block }
+#help:hover { background-position: 0 -36px }
+#menu { background-color: #ffffff; height: 25px; padding: 3px 0 0 0 }
+#menu .tab { float: left; position: relative; vertical-align: bottom; width: 150px }
+#menu .tab a { background-color: #f2f2f2; border-radius: 0 7px 0 0; box-shadow: -6px -8px 16px 0 #929292 inset; color: #000000; display: block; float: none; font-weight: bolder; line-height: 25px; text-align: center; text-shadow: 0 1px 2px #ffffff; text-transform: uppercase }
+#menu .tab.current { background-color: #f2f2f2 }
+#menu .tab.current a { background-color: #443b35; box-shadow: 0 0 0 #ffffff; color: #ffffff; text-shadow: 0 0 1px #000000 }
+#content { background-color: #443b35; border-radius: 0 0 7px 7px }
+.top-box { height: 331px }
+.bottom-bar { background-color: #e4e4e4; height: 58px }
+.top-bar, .bottom-bar, .top-box, .bottom-box { border-radius: 7px; margin: 0 auto; width: 600px }
+.top-box { border-radius: 7px 7px 0 0 !important }
+.bottom-bar { margin: 7px auto }
+#section-programs { width: 65% }
+#section-info { text-align: right; width: 35% }
+#section-programs, #section-info { color: #ffffff; float: left; font-size: 10px; height: 36px; line-height: 36px; vertical-align: top }
+#section-programs .title,
+#section-info .title { font-weight: bold; text-transform: capitalize }
+#section-programs .btn-program { background-color: #443b35; background-image: url(../../../layer-view-image/game/teapuesto/all-layout.png); background-repeat: no-repeat; background-position: -188px -3px; border: 1px solid #443b35; border-radius: 6px; font-weight: bold; height: 20px; padding: 0; margin: 0 0 0 2px; width: 28px }
+#section-programs .btn-program.current { background-position: -188px -26px; color: #ffffff }
+#section-programs .btn-program:active { border-color: #666666; box-shadow: 0 0 4px 0 #69676b inset; position: relative; top: 1px }
+#section-info .color-info { height: 10px }
+#section-info .color-info .three { background-color: #267eea }
+#section-info .color-info .two { background-color: #f8ea02 }
+#section-info .color-info .one { background-color: #f37233 }
+#section-info .color-info .three,
+#section-info .color-info .two,
+#section-info .color-info .one { display: inline-block; height: 10px; position: relative; top: 1px; width: 10px }
+.number { font-size: 11px; font-weight: bold; margin: 0 0 0 10px }
+.top-panel { border-radius: 7px 7px 0 0 }
+.bottom-panel { border-radius: 0 0 7px 7px; height: 109px }
+.top-panel, .bottom-panel { background-color: #ffffff; padding: 5px }
+.cell { cursor: default; display: inline-block; font-size: 11px; text-align: center }
+.row { font-size: 0 }
+#game-list { border-radius: 7px; height: 285px; position: relative }
+#game-list .cell.hour { width: 35px }
+#game-list .cell.code { width: 27px }
+#game-list .cell.tourney { width: 28px }
+#game-list .cell.sel { vertical-align: middle !important; line-height: 15px !important; width: 6px }
+#game-list .cell.vs { width: 183px }
+#game-list .cell.ball { position: relative; width: 21px }
+#game-list .cell.head { border-color: #ffffff; border-style: solid; border-width: 0 1px 0 1px; width: 89px; text-transform: capitalize }
+#game-list .cell.head.short { width: 59px }
+#game-list .cell.head.gread { width: 269px }
+#game-list .cell.op { width: 29px }
+#game-list .cell.sel.minimun-3 { background-color: #267eea; color: #267eea }
+#game-list .cell.sel.minimun-2 { background-color: #f8ea02; color: #f8ea02 }
+#game-list .cell.sel.minimun-1 { background-color: #f37233; color: #f37233 }
+#game-list .row.em { background-color: #ffffff !important; box-shadow: 0 0 0 0 #ffffff inset !important; color: #000000 !important; font-weight: bold; text-align: center }
+#game-list .head-list { border-radius: 0 7px 0 0; color: #ffffff; height: 44px; position: absolute; overflow: hidden; width: 571px; z-index: 100 }
+#game-list .head-list.fix { box-shadow: 0 6px 10px -5px #666666 }
+#game-list .head-list .row { background-color: #ffffff; box-shadow: -6px -6px 6px 3px #df0d0d inset; height: 22px; line-height: 22px }
+#game-list .head-list .row .cell { line-height: 22px }
+#game-list .head-list .header-events { position: absolute; left: 0; height: 44px; width: 300px; z-index: 100 }
+#game-list .head-list .header-events .row { background-color: #ea0e0e }
+#game-list .head-list .header-events .row:last-child { border-radius: 5px 5px 0 0 }
+#game-list .head-list .header-options { font-weight: bold; height: 44px; left: 300px; position: relative; width: 692px }
+#game-list .head-list .header-options .cell { background-color: #ea0e0e }
+#game-list .head-list .header-options .row .cell.head { border-radius: 5px 5px 0 0 }
+#game-list .head-list .header-options .row .cell.head,
+#game-list .head-list .header-options .row .cell.op { border-color: #ffffff; border-style: solid; border-width: 0 1px 0 0 }
+#game-list .head-list .header-options .row .cell.head:first-child,
+#game-list .head-list .header-options .row .cell.op:first-child { border-color: #ffffff; border-style: solid; border-width: 0 1px 0 1px }
+#game-list .inner-body-list { width: 991px }
+#game-list .body-list { background-color: #f5f5f5; box-shadow: inset 0 -10px 10px -5px #dedede; height: 240px; overflow: scroll; position: relative; top: 44px; width: 588px }
+#game-list .body-list .row { border-color: #d1d1d1; border-style: solid; border-width: 0 0 1px 0; height: 17px; line-height: 17px; position: relative }
+#game-list .body-list .row .cell { line-height: 17px; vertical-align: top }
+#game-list .body-list .row:nth-child(odd) { background-color: #ffffff }
+#game-list .body-list .row:nth-child(even) { background-color: #eeeeee }
+#game-list .body-list .content-events { background-color: #ffffff; float: left; width: 300px }
+#game-list .body-list .content-events .cell.vs { padding: 0 0 0 3px; overflow: hidden; text-align: left; text-overflow: ellipsis; white-space: nowrap; width: 180px }
+#game-list .body-list .content-events .cell.vs:hover { }
+#game-list .head-list .header-events.fix,
+#game-list .body-list .content-events.fix { background-color: #ffffff; box-shadow: 6px -3px 10px -5px #333333; position: absolute; z-index: 90 }
+#game-list .body-list .content-options { float: right; width: 691px }
+#game-list .body-list .content-options .row .cell.op { border-color: #ffffff; border-style: solid; border-width: 0 1px 0 0 }
+#game-list .body-list .content-options .row .cell.op:first-child { border-width: 0 1px 0 1px }
+#game-list .body-list .content-options .row:nth-child(even) .cell.op:nth-child(6n+1),
+#game-list .body-list .content-options .row:nth-child(even) .cell.op:nth-child(6n+2),
+#game-list .body-list .content-options .row:nth-child(even) .cell.op:nth-child(6n+3) { background-color: #dadada }
+#game-list .body-list .content-options .row:nth-child(even) .cell.op:nth-last-child(3) { background-color: #eeeeee }
+#game-list .body-list .content-options .row:nth-child(odd) .cell.op:nth-child(6n+1),
+#game-list .body-list .content-options .row:nth-child(odd) .cell.op:nth-child(6n+2),
+#game-list .body-list .content-options .row:nth-child(odd) .cell.op:nth-child(6n+3) { background-color: #e9e9e9 }
+#game-list .body-list .content-options .row:nth-child(odd) .cell.op:nth-last-child(3) { background-color: #ffffff }
+#exact-maker { position: relative }
+#exact-maker .cell.head.gread { width: 160px }
+#exact-maker .cell.head.short { width: 80px }
+#exact-maker .cell.op { border-color: #ff0000; border-style: solid; border-width: 0 1px 0 0; width: 35px }
+#exact-maker .general-info { height: 50px }
+#exact-maker .general-info .info-game { float: left; font-weight: bold; padding: 8px 0; text-align: center; text-transform: uppercase; width: 167px }
+#exact-maker .general-info .header-game-info { float: right; width: 398px }
+#exact-maker .general-info .header-game-info .row { height: 14px; margin: 5px 0 0 }
+#exact-maker .top-panel { height: 311px; position: relative; top: 10px }
+#exact-maker .unique-game-list { float: left; height: 270px; min-height: 200px; overflow-x: hidden; overflow-y: auto; width: 188px; height: 258px }
+#exact-maker .game-maker { float: right; height: 260px; width: 398px }
+#exact-maker .game-maker .column { float: left; border-color: #ffffff; border-style: solid; border-width: 0 1px }
+#exact-maker .game-maker .column.large { width: 152px }
+#exact-maker .game-maker .column.small { width: 81px }
+#exact-maker .row.em .cell { font-weight: bold; text-transform: uppercase }
+#exact-maker .game-maker .header-list { background-color: red; border-radius: 5px 5px 0 0; color: #ffffff; font-weight: bold; text-transform: capitalize }
+#exact-maker .game-maker .header-list .row { height: 22px; line-height: 22px }
+#exact-maker .game-maker .header-list .row .cell { height: 22px }
+#exact-maker .game-maker .header-list .row .cell.op:nth-child(odd) { font-weight: normal !important }
+#exact-maker .game-maker .body-list { background-color: #ffffff }
+#exact-maker .game-maker .body-list .row { border-color: #aeaeae; border-style: solid; border-width: 0 0 1px 0; height: 17px; line-height: 17px }
+#exact-maker .game-maker .body-list .row.end { width: 81px }
+#exact-maker .game-maker .body-list .row:nth-child(odd) { background-color: #ffffff }
+#exact-maker .game-maker .body-list .row:nth-child(even) { background-color: #eeeeee }
+#exact-maker .game-maker .body-list .row .cell { border-color: #ffffff; border-style: solid; border-width: 0 0 0 1px; height: 17px; line-height: 17px; vertical-align: top }
+#exact-maker .game-maker .body-list .row .cell:last-child { }
+#exact-maker .game-maker .body-list .row:nth-child(odd) .cell:nth-child(even) { background-color: #e9e9e9 }
+#exact-maker .game-maker .body-list .row:nth-child(even) .cell:nth-child(even) { background-color: #dadada }
+#special-bets .top-panel { height: 311px; position: relative; top: 10px }
+#special-bets .sports { margin: 2px 0 0 0; padding: 0 0 0 10px; text-transform: lowercase }
+#special-bets .sports .btn-sport { background-color: #ffffff; border: 2px solid #ffffff; border-radius: 7px; color: #999999; font-weight: bold; height: 24px; padding: 1px 4px; margin: 0 10px 0 0; width: 100px }
+#special-bets .sports .btn-sport.on { background-color: #e71c1b; color: #ffffff; border-color: #bc0700 }
+#special-bets .sports .btn-sport .btn-content { line-height: 18px; margin: 0 0 0 5px; text-transform: capitalize; vertical-align: middle }
+#special-bets .title { font-weight: bold; height: 15px; margin: 5px 0 2px 195px; position: relative }
+#special-bets .menu-game-list { float: left; height: 259px; overflow-x: hidden; overflow-y: auto; width: 188px }
+#special-bets .menu-game-list .menu-item { text-transform: capitalize }
+#special-list { border-radius: 7px; float: right; height: 260px; overflow-x: hidden; overflow-y: auto; padding: 0 2px 0 0; width: 396px }
+#special-list .group-item { padding: 0 3px 0 0 }
+#special-list .special-item { border: 1px solid #999999; border-radius: 7px; margin: 0 0 3px 0; overflow: hidden; position: relative }
+#special-list .special-item:last-child { margin: 0 }
+#special-list .special-item .list { border-radius: 7px }
+#special-list .tab { background: #f9f9f9; background-image: linear-gradient(top, #fefefe 0%, #cdcecf 100%); background-image: -ms-linear-gradient(top, #fefefe 0%, #cdcecf 100%); background-image: -moz-linear-gradient(top, #fefefe 0%, #cdcecf 100%); background-image: -webkit-linear-gradient(top, #fefefe 0%, #cdcecf 100%); border-radius: 7px; color: #000000; cursor: pointer; display: block; height: 24px; line-height: 24px; padding: 0 0 0 32px; transition: all .3s ease }
+#special-list .tab:hover { box-shadow: 0 0 5px 0 #999999 }
+#special-list .tab:after { background: transparent; border-color: #000000 transparent transparent transparent; border-style: solid; border-width: 4px; content: ''; height: 0; position: absolute; right: 12px; top: 10px; width: 0; z-index: 1 }
+#special-list .tab.on { background-color: #ff0000; background-image: linear-gradient(top, #c80000 0%, #ff0000 100%); background-image: -ms-linear-gradient(top, #c80000 0%, #ff0000 100%); background-image: -moz-linear-gradient(top, #c80000 0%, #ff0000 100%); background-image: -webkit-gradient(linear, top, #c80000 0%, #ff0000 100%); background-image: -webkit-linear-gradient(top, #c80000 0%, #ff0000 100%); border-radius: 7px 7px 0 0; box-shadow: 0 0 5px 0 #6c0000 inset; color: #ffffff }
+#special-list .tab.on:after { border-color: transparent transparent #ffffff transparent; top: 6px }
+#special-list .tab .group-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 340px }
+#special-list .row { border-color: #d1d1d1; border-style: solid; border-width: 0 0 1px }
+#special-list .row.header { background-color: #494949; color: #ffffff }
+#special-list .row.header .cell { height: 22px; line-height: 22px; text-transform: capitalize }
+#special-list .row .cell { height: 17px; line-height: 17px; vertical-align: top }
+#special-list .row .cell.date { width: 65px }
+#special-list .row .cell.hour { width: 35px }
+#special-list .row .cell.code { width: 35px }
+#special-list .row .cell.img { width: 18px }
+#special-list .row .cell.team { text-align: left; width: 175px }
+#special-list .row .cell.op { font-weight: bold; width: 45px }
+#special-list .row .cell.head.img { width: 0 }
+#special-list .row .cell.head.team { font-weight: bold; text-transform: uppercase; width: 190px }
+#special-list .list .row:nth-child(odd) { background-color: #ffffff }
+#special-list .list .row:nth-child(even) { background-color: #eeeeee }
+#special-list .list .row:last-child { border-radius: 0 0 7px 7px }
+#daily-programs .game,
+#exact-maker .game,
+#special-bets .game { background-color: transparent; border-radius: 5px; cursor: pointer; display: block; transition: all .3s ease }
+#daily-programs .game.on,
+#exact-maker .game.on { background-color: #443b35; color: #ffffff }
+#daily-programs .no-game,
+#exact-maker .no-game,
+#special-bets .no-game { cursor: url(../../../layer-view-image/game/teapuesto/not-allowed.ico), not-allowed; display: block }
+#special-bets .game { background-color: #dadada; border-radius: 0 }
+#special-bets .game.on { background-color: #da1415; border-radius: 5px; color: #ffffff }
+.sub-panel { padding: 2px 0 5px 0 }
+.sub-panel .area-name { color: #666666; float: left; font-weight: bold; line-height: 21px; margin: 0 0 0 10px; position: relative; width: 90px }
+.sub-panel .area-name:after { content: ':'; left: 80px; margin: 0 0 0 2px; position: absolute }
+.sub-panel .area-content { border: 1px solid #d1d1d1; border-radius: 7px; color: #818181; height: 44px; transition: all .5s ease }
+.sub-panel .area-content:hover { box-shadow: 0 0 5px -1px #999999 inset; color: #232323 }
+.sub-panel .area-content,
+.sub-panel .group-button { float: left; width: 480px }
+.sub-panel .area-content .inner-area-content { padding: 2px 5px }
+.sub-panel .group-button .btn-multiplier,
+.sub-panel .group-button .btn-combined { background: #f9f9f9; background-image: linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); background-image: -ms-linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); background-image: -moz-linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); border: 1px solid #c0bcb9; border-radius: 5px; color: #646462; cursor: pointer; display: inline-block; font-size: 10px; font-weight: bold; height: 21px; line-height: 21px; padding: 0; text-align: center; width: 26px; transition: all .3s ease }
+.sub-panel .group-button .btn-multiplier:enabled:hover,
+.sub-panel .group-button .btn-combined:enabled:hover { box-shadow: 0 0 4px 0 #999999 }
+.sub-panel .group-button .btn-multiplier.disabled,
+.sub-panel .group-button .btn-combined.disabled { border: 1px solid #ededed; cursor: url(../../../layer-view-image/game/teapuesto/not-allowed.ico), not-allowed; opacity: 0.3 }
+.sub-panel .group-button .btn-multiplier.on,
+.sub-panel .group-button .btn-combined.on { background-color: #443b35; background-image: linear-gradient(top, #373737 0%, #443b35 100%); background-image: -ms-linear-gradient(top, #373737 0%, #443b35 100%); background-image: -moz-linear-gradient(top, #373737 0%, #443b35 100%); background-image: -webkit-linear-gradient(top, #373737 0%, #443b35 100%); border: 1px solid #575351; color: #ffffff }
+.info-bet { float: left; width: 475px }
+.cost { padding: 10px 0 0 10px }
+.cost li:after { content: '|'; font-weight: bold; margin: 0 4px }
+.cost li:last-child:after { content: '' }
+.total { padding: 5px 0 0 10px }
+.section-buy { float: right; margin: 14px 0 0; width: 125px }
+.total { font-weight: bold }
+.cost li, .total li { float: left; vertical-align: bottom }
+.total li { margin: 0 8px 0 0 }
+#buy { background-color: #e4e4e4; background-image: url(../../../layer-view-image/common/buy.png); background-position: 0 -30px; background-repeat: no-repeat; border: 1px solid #e4e4e4; border-radius: 8px; color: #ffffff; font-weight: bold; font-size: 12px; height: 34px; padding: 0; position: relative; text-transform: uppercase; width: 112px }
+#buy:hover { background-position: 0 1px }
+#buy:active { top: 1px }
+#back-layer { background-color: #000000; height: 100%; opacity: .4; position: fixed; width: 100%; z-index: 500 }
+#alert-message { background: url(../../../layer-view-image/common/important.gif) no-repeat scroll 35px 40px #ffffff; border: 4px solid #999999; border-radius: 5px; box-shadow: 0 0 3px 0 #000000; height: 120px; left: 50%; margin: -62px 0 0 -172px; position: fixed; width: 340px; z-index: 999 }
+#alert-message .title { background: url(../../../layer-view-image/common/title.gif) repeat-x scroll 50% top #cccccc; border-color: #ffffff #ffffff #999999; border-style: solid; border-width: 1px; color: #666666; cursor: default; font-size: 14px; font-weight: bold; line-height: 1.75em; text-align: center; text-transform: capitalize }
+#alert-message.pulse { box-shadow: 0 0 10px 0 #ffffff }
+#alert-message .confirm { border-radius: 0 0 7px 7px; position: relative; text-align: center }
+#message { font-size: 12px; padding: 15px 20px 15px 55px; text-align: center }
+#loading { background-image: url(../../../layer-view-image/game/teapuesto/loader.gif); background-position: center; background-repeat: no-repeat; color: #ffffff; font-weight: bold; height: 377px; line-height: 447px; text-align: center; width: 614px }
+.action { padding: 2px 20px; text-transform: capitalize }
+.arrow-button { background: #f9f9f9; background-image: linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); background-image: -ms-linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); background-image: -moz-linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); background-image: -webkit-gradient(linear, top, #f9f9f9 0%, #c7c6c2 100%); background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #c7c6c2 100%); border: 1px solid #c0bcb9; border-radius: 5px; cursor: pointer; height: 14px; margin: 0 0 4px 0; padding: 3px; position: relative; transition: all .2s ease-out; width: 159px; z-index: 10 }
+.arrow-button:hover { box-shadow: 0 0 4px 0 #999999 }
+.arrow-button:after { border-color: transparent; border-style: solid; border-width: 10px; content: ''; height: 0; opacity: 0; position: absolute; right: -21px; top: 0; transition: all .2s ease-out; width: 0 }
+.arrow-button.on { background: #443b35; border: 1px solid #443b35; border-radius: 5px 0 0 5px; color: #ffffff; width: 149px }
+.arrow-button.on:after { border-color: transparent transparent transparent #443b35; opacity: 1 }
+.arrow-button span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 154px }
+#collapse-all { background-image: url(../../../layer-view-image/game/teapuesto/collapse-all.png); background-repeat: no-repeat; background-position: center; display: none; font-size: 0; height: 23px; position: absolute; right: 25px; top: 25px; width: 22px }
+#shopping-cart { background-color: #ffffff; background-image: url(../../../layer-view-image/common/secure-zone.png); background-position: 20px 97%; background-repeat: no-repeat; border-radius: 0 7px 7px; display: none; min-height: 387px; padding: 22px 0 40px }
+.tooltip { background-color: #ffffff; border-color: #919191; border-radius: 4px 4px 4px 4px; border-style: solid; border-width: 1px; box-shadow: 0 0 0.25em #cccccc; color: #5e5e5e; display: inline; padding: 4px; position: absolute; top: 30px; white-space: nowrap; z-index: 200 }
+.tooltip:after { background-image: url(../../../layer-view-image/common/img_flecha_up.png); background-repeat: no-repeat; bottom: 13px; content: ''; display: block; height: 8px; position: absolute; top: -8px; width: 15px; z-index: 201 }
+.icon { background-repeat: no-repeat; display: inline-block; font-size: 0; position: relative; vertical-align: top }
+.icon.sA { background-image: url(../../../layer-view-image/game/teapuesto/iconsA.png); background-position: -315px 0; height: 14px }
+.tourney .icon.sA { top: 2px; width: 26px }
+.ball .icon.sA { top: 2px; width: 21px }
+.sports .icon.sA { height: 18px; top: 0; width: 16px }
+.icon.sA.exact-goal { background-position: -292px -1px; cursor: pointer }
+.icon.sA.MUNDIAL { background-position: -299px -48px }
+.on .icon.sA.MUNDIAL { background-position: -323px -48px }
+.icon.sA.FUTBOL { background-position: -299px -48px }
+.on .icon.sA.FUTBOL { background-position: -323px -48px }
+.icon.sA.TENIS { background-position: -299px -68px }
+.on .icon.sA.TENIS { background-position: -323px -68px }
+.icon.sA.ATLETISMO { background-position: -297px -90px }
+.on .icon.sA.ATLETISMO { background-position: -321px -90px }
+.icon.sA.AUTOS { background-position: -298px -294px }
+.on .icon.sA.AUTOS { background-position: -323px -294px }
+.icon.sB { background-image: url(../../../layer-view-image/game/teapuesto/iconsB.png); left: 8px; height: 11px; position: absolute; top: 7px; width: 16px }
+.icon.sB.argentina { background-position: -10px -10px }
+.icon.sB.bolivia { background-position: -10px -31px }
+.icon.sB.brazil { background-position: -10px -52px }
+.icon.sB.chile { background-position: -10px -73px }
+.icon.sB.colombia { background-position: -10px -94px }
+.icon.sB.ecuador { background-position: -10px -115px }
+.icon.sB.paraguay { background-position: -10px -136px }
+.icon.sB.peru { background-position: -10px -157px }
+.icon.sB.uruguay { background-position: -10px -178px }
+.icon.sB.venezuela { background-position: -10px -199px }
+.icon.sB.fiji { background-position: -10px -220px }
+.icon.sB.frenchpolynesia { background-position: -10px -241px }
+.icon.sB.newcaledonia { background-position: -10px -262px }
+.icon.sB.newzealand { background-position: -10px -283px }
+.icon.sB.papuanewguinea { background-position: -10px -304px }
+.icon.sB.solomonislands { background-position: -10px -325px }
+.icon.sB.vanuatu { background-position: -10px -346px }
+.icon.sB.canada { background-position: -36px -10px }
+.icon.sB.costarica { background-position: -36px -31px }
+.icon.sB.elsalvador { background-position: -36px -52px }
+.icon.sB.guatemala { background-position: -36px -73px }
+.icon.sB.honduras { background-position: -36px -94px }
+.icon.sB.mexico { background-position: -36px -115px }
+.icon.sB.nicaragua { background-position: -36px -136px }
+.icon.sB.panama { background-position: -36px -157px }
+.icon.sB.puertorico { background-position: -36px -178px }
+.icon.sB.trinidadandtobago { background-position: -36px -199px }
+.icon.sB.unitedstates { background-position: -36px -220px }
+.icon.sB.austria { background-position: -36px -241px }
+.icon.sB.azerbaijan { background-position: -36px -262px }
+.icon.sB.belarus { background-position: -36px -283px }
+.icon.sB.belgium { background-position: -36px -304px }
+.icon.sB.bosnia-herzegovina { background-position: -36px -325px }
+.icon.sB.bulgaria { background-position: -36px -346px }
+.icon.sB.croatia { background-position: -62px -10px }
+.icon.sB.cyprus { background-position: -62px -31px }
+.icon.sB.czechrepublic { background-position: -62px -52px }
+.icon.sB.denmark { background-position: -62px -73px }
+.icon.sB.inglaterra { background-position: -62px -94px }
+.icon.sB.estonia { background-position: -62px -115px }
+.icon.sB.finland { background-position: -62px -136px }
+.icon.sB.francia { background-position: -62px -157px }
+.icon.sB.georgia { background-position: -62px -178px }
+.icon.sB.alemania { background-position: -62px -199px }
+.icon.sB.grecia { background-position: -62px -220px }
+.icon.sB.hungary { background-position: -62px -241px }
+.icon.sB.irelandrepublic { background-position: -62px -262px }
+.icon.sB.israel { background-position: -62px -283px }
+.icon.sB.italia { background-position: -62px -304px }
+.icon.sB.kazakhstan { background-position: -62px -325px }
+.icon.sB.latvia { background-position: -62px -346px }
+.icon.sB.lithuania { background-position: -88px -10px }
+.icon.sB.luxembourg { background-position: -88px -31px }
+.icon.sB.macedonia { background-position: -88px -52px }
+.icon.sB.moldova { background-position: -88px -73px }
+.icon.sB.montenegro { background-position: -88px -94px }
+.icon.sB.netherlands { background-position: -88px -115px }
+.icon.sB.norway { background-position: -88px -136px }
+.icon.sB.poland { background-position: -88px -157px }
+.icon.sB.portugal { background-position: -88px -178px }
+.icon.sB.romania { background-position: -88px -199px }
+.icon.sB.russia { background-position: -88px -220px }
+.icon.sB.scotland { background-position: -88px -241px }
+.icon.sB.serbia { background-position: -88px -262px }
+.icon.sB.slovakia { background-position: -88px -283px }
+.icon.sB.slovenia { background-position: -88px -304px }
+.icon.sB.espana { background-position: -88px -325px }
+.icon.sB.sweden { background-position: -88px -346px }
+.icon.sB.switzerland { background-position: -114px -10px }
+.icon.sB.turkey { background-position: -114px -31px }
+.icon.sB.ukraine { background-position: -114px -52px }
+.icon.sB.wales { background-position: -114px -73px }
+.icon.sB.australia { background-position: -114px -94px }
+.icon.sB.chinapr { background-position: -114px -115px }
+.icon.sB.frenchpolynesia { background-position: -114px -136px }
+.icon.sB.india { background-position: -114px -157px }
+.icon.sB.indonesia { background-position: -114px -178px }
+.icon.sB.iran { background-position: -114px -199px }
+.icon.sB.ivorycoast { background-position: -114px -220px }
+.icon.sB.japan { background-position: -114px -241px }
+.icon.sB.korearepublic { background-position: -114px -262px }
+.icon.sB.qatar { background-position: -114px -283px }
+.icon.sB.saudiarabia { background-position: -114px -304px }
+.icon.sB.singapore { background-position: -114px -325px }
+.icon.sB.slovenia { background-position: -114px -346px }
+.icon.sB.thailand { background-position: -140px -10px }
+.icon.sB.unitedarabemirates { background-position: -140px -31px }
+.icon.sB.uzbekistan { background-position: -140px -52px }
+.icon.sB.algeria { background-position: -140px -73px }
+.icon.sB.angola { background-position: -140px -94px }
+.icon.sB.botswana { background-position: -140px -115px }
+.icon.sB.burkinafaso { background-position: -140px -136px }
+.icon.sB.cameroon { background-position: -140px -157px }
+.icon.sB.congodr { background-position: -140px -178px }
+.icon.sB.egypt { background-position: -140px -199px }
+.icon.sB.ethiopia { background-position: -140px -220px }
+.icon.sB.frenchpolynesia { background-position: -140px -241px }
+.icon.sB.ghana { background-position: -140px -262px }
+.icon.sB.ivorycoast { background-position: -140px -283px }
+.icon.sB.kenya { background-position: -140px -304px }
+.icon.sB.libya { background-position: -140px -325px }
+.icon.sB.mali { background-position: -140px -346px }
+.icon.sB.morocco { background-position: -166px -10px }
+.icon.sB.mozambique { background-position: -166px -31px }
+.icon.sB.niger { background-position: -166px -52px }
+.icon.sB.nigeria { background-position: -166px -73px }
+.icon.sB.senegal { background-position: -166px -94px }
+.icon.sB.southafrica { background-position: -166px -115px }
+.icon.sB.sudan { background-position: -166px -136px }
+.icon.sB.tanzania { background-position: -166px -157px }
+.icon.sB.tunisia { background-position: -166px -178px }
+.icon.sB.zambia { background-position: -166px -199px }
+.icon.sB.zimbabwe { background-position: -166px -220px }
+.icon.sB.item, .icon.sB { background-color: transparent; background-position: -166px -346px }
+.icon.sA.A1P { background-position: 0 -2px }
+.icon.sA.A2P { background-position: 0 -26px }
+.icon.sA.ACL { background-position: 0 -50px }
+.icon.sA.AL1 { background-position: 0 -74px }
+.icon.sA.AL2 { background-position: 0 -98px }
+.icon.sA.AL3 { background-position: 0 -122px }
+.icon.sA.ALC { background-position: 0 -146px }
+.icon.sA.ALL { background-position: 0 -170px }
+.icon.sA.ALS { background-position: 0 -194px }
+.icon.sA.AMA { background-position: 0 -218px }
+.icon.sA.AMI { background-position: 0 -242px }
+.icon.sA.AR1 { background-position: 0 -266px }
+.icon.sA.AR2 { background-position: 0 -290px }
+.icon.sA.ARC { background-position: 0 -314px }
+.icon.sA.ARP { background-position: 0 -338px }
+.icon.sA.ASC { background-position: 0 -362px }
+.icon.sA.AU2 { background-position: 0 -386px }
+.icon.sA.AUC { background-position: 0 -410px }
+.icon.sA.AUF { background-position: 0 -434px }
+.icon.sA.AU1 { background-position: 0 -458px }
+.icon.sA.AUS { background-position: 0 -482px }
+.icon.sA.BEC { background-position: -41px -2px }
+.icon.sA.BEL { background-position: -41px -26px }
+.icon.sA.BR1 { background-position: -41px -50px }
+.icon.sA.BR2 { background-position: -41px -74px }
+.icon.sA.BRC { background-position: -41px -98px }
+.icon.sA.BRP { background-position: -41px -122px }
+.icon.sA.BSC { background-position: -41px -146px }
+.icon.sA.CAF { background-position: -41px -170px }
+.icon.sA.CAM { background-position: -41px -194px }
+.icon.sA.CAQ { background-position: -41px -218px }
+.icon.sA.CCC { background-position: -41px -242px }
+.icon.sA.CCF { background-position: -41px -266px }
+.icon.sA.CDO { background-position: -41px -290px }
+.icon.sA.CEU { background-position: -41px -314px }
+.icon.sA.CH1 { background-position: -41px -338px }
+.icon.sA.CHP { background-position: -41px -362px }
+.icon.sA.CIN { background-position: -41px -386px }
+.icon.sA.CLA { background-position: -41px -410px }
+.icon.sA.CMC { background-position: -41px -434px }
+.icon.sA.COL { background-position: -41px -458px }
+.icon.sA.COS { background-position: -41px -482px }
+.icon.sA.CSU { background-position: -83px -2px }
+.icon.sA.CZC { background-position: -83px -26px }
+.icon.sA.CZE { background-position: -83px -50px }
+.icon.sA.DAF { background-position: -83px -74px }
+.icon.sA.DAV { background-position: -83px -98px }
+.icon.sA.DES { background-position: -83px -122px }
+.icon.sA.DIC { background-position: -83px -146px }
+.icon.sA.DIN { background-position: -83px -170px }
+.icon.sA.E21 { background-position: -83px -194px }
+.icon.sA.ECL { background-position: -83px -218px }
+.icon.sA.EEU { background-position: -83px -242px }
+.icon.sA.ELI { background-position: -83px -266px }
+.icon.sA.ENF { background-position: -83px -290px }
+.icon.sA.ES1 { background-position: -83px -314px }
+.icon.sA.ES2 { background-position: -83px -338px }
+.icon.sA.ESA { background-position: -83px -362px }
+.icon.sA.ESC { background-position: -83px -386px }
+.icon.sA.ESS { background-position: -83px -410px }
+.icon.sA.EUR { background-position: -83px -434px }
+.icon.sA.EUS { background-position: -83px -458px }
+.icon.sA.FIC { background-position: -83px -482px }
+.icon.sA.FIL { background-position: -125px -2px }
+.icon.sA.FIN { background-position: -125px -26px }
+.icon.sA.FIP { background-position: -125px -50px }
+.icon.sA.FR { background-position: -125px -74px }
+.icon.sA.FR1 { background-position: -125px -98px }
+.icon.sA.FR2 { background-position: -125px -122px }
+.icon.sA.FRC { background-position: -125px -146px }
+.icon.sA.FRF { background-position: -125px -170px }
+.icon.sA.FRL { background-position: -125px -194px }
+.icon.sA.FRS { background-position: -125px -218px }
+.icon.sA.GEF { background-position: -125px -242px }
+.icon.sA.GAC { background-position: -125px -266px }
+.icon.sA.GRE { background-position: -125px -290px }
+.icon.sA.HOC { background-position: -125px -314px }
+.icon.sA.HOF { background-position: -125px -338px }
+.icon.sA.HOL { background-position: -125px -362px }
+.icon.sA.HOP { background-position: -125px -386px }
+.icon.sA.HSC { background-position: -125px -410px }
+.icon.sA.ICE { background-position: -125px -434px }
+.icon.sA.IN1 { background-position: -125px -458px }
+.icon.sA.IN2 { background-position: -125px -482px }
+.icon.sA.INC { background-position: -166px -2px }
+.icon.sA.ING { background-position: -166px -26px }
+.icon.sA.INP { background-position: -166px -50px }
+.icon.sA.INS { background-position: -166px -74px }
+.icon.sA.INX { background-position: -166px -98px }
+.icon.sA.IRL { background-position: -166px -122px }
+.icon.sA.IT1 { background-position: -166px -146px }
+.icon.sA.IT2 { background-position: -166px -170px }
+.icon.sA.ITA { background-position: -166px -194px }
+.icon.sA.ITC { background-position: -166px -218px }
+.icon.sA.ITL { background-position: -166px -242px }
+.icon.sA.ITP { background-position: -166px -266px }
+.icon.sA.ITS { background-position: -166px -290px }
+.icon.sA.JAP { background-position: -166px -314px }
+.icon.sA.LDE { background-position: -166px -338px }
+.icon.sA.LRE { background-position: -166px -362px }
+.icon.sA.M20 { background-position: -166px -386px }
+.icon.sA.MEL { background-position: -166px -410px }
+.icon.sA.MEX { background-position: -166px -434px }
+.icon.sA.MUN { background-position: -166px -458px }
+.icon.sA.NO2 { background-position: -166px -482px }
+.icon.sA.NOC { background-position: -208px -2px }
+.icon.sA.NOP { background-position: -208px -26px }
+.icon.sA.NOR { background-position: -208px -50px }
+.icon.sA.NSC { background-position: -208px -74px }
+.icon.sA.OLI { background-position: -208px -98px }
+.icon.sA.PER { background-position: -208px -122px }
+.icon.sA.PE2 { background-position: -208px -122px }
+.icon.sA.POC { background-position: -208px -146px }
+.icon.sA.POF { background-position: -208px -170px }
+.icon.sA.POR { background-position: -208px -194px }
+.icon.sA.POS { background-position: -208px -218px }
+.icon.sA.PRL { background-position: -208px -242px }
+.icon.sA.RSU { background-position: -208px -266px }
+.icon.sA.RUS { background-position: -208px -290px }
+.icon.sA.S1A { background-position: -208px -314px }
+.icon.sA.S1B { background-position: -208px -338px }
+.icon.sA.SC1 { background-position: -208px -362px }
+.icon.sA.SCC { background-position: -208px -386px }
+.icon.sA.SCF { background-position: -208px -410px }
+.icon.sA.SCP { background-position: -208px -434px }
+.icon.sA.SD2 { background-position: -208px -458px }
+.icon.sA.SD3 { background-position: -208px -482px }
+.icon.sA.SEF { background-position: -250px -2px }
+.icon.sA.SEP { background-position: -250px -26px }
+.icon.sA.SLC { background-position: -250px -50px }
+.icon.sA.SLN { background-position: -250px -74px }
+.icon.sA.SU1 { background-position: -250px -98px }
+.icon.sA.SU2 { background-position: -250px -122px }
+.icon.sA.SUC { background-position: -250px -146px }
+.icon.sA.SUI { background-position: -250px -170px }
+.icon.sA.SUS { background-position: -250px -194px }
+.icon.sA.SW2 { background-position: -250px -218px }
+.icon.sA.SWP { background-position: -250px -242px }
+.icon.sA.TSC { background-position: -250px -266px }
+.icon.sA.TUC { background-position: -250px -290px }
+.icon.sA.TUR { background-position: -250px -314px }
+.icon.sA.URF { background-position: -250px -338px }
+.icon.sA.URU { background-position: -250px -362px }
+.icon.sA.USA { background-position: -250px -386px }
+.icon.sA.M17 { background-position: -250px -410px }
+.icon.sA.C20 { background-position: -250px -434px }
+.icon.sA.PTI { background-position: -250px -458px }
+.icon.sA.PAR { background-position: -250px -482px }
+.icon.sA.ECU { background-position: -292px -482px }
+.icon.sA.BOL { background-position: -292px -458px }
+.icon .sC { background-image: url(../../../layer-view-image/game/teapuesto/iconsC.png); height: 26.02631578947368px; width: 26.73684210526316px }
+.datos_enunciado_cotejo_right { margin-left: 26px; margin-top: 70px; font-family: Arial; font-size: 11px; color: #52256a; font-weight: bold }
+.datos_enunciado_contenido_cotejo_right { font-family: Arial; font-size: 11px; color: #454545 }
+.datos_enunciado_cotejo_left { margin-left: 250px; margin-top: 70px; font-family: Arial; font-size: 11px; color: #52256a; font-weight: bold }
+.cotejadores { font-family: Arial; margin-left: 26px; font-size: 11px; color: #454545 }
+.datos_enunciado_contenido_cotejo_left { font-family: Arial; font-size: 11px; color: #454545 }
+.datos_separador { margin-left: 26px; color: #f22b26; font-family: Arial; font-size: 15px; font-weight: bold; margin-left: 26px; margin-bottom: 5px }
+.logo_teapuesto { margin-left: 26px; color: #306d20; font-family: Arial }
+.calculo_premio { margin-left: 26px; margin-top: 10px; margin-bottom: 10px; color: #0681bb; font-family: Arial; font-size: 11px }
+.table_teapuesto { font-family: Arial; font-size: 11px; width: 650px; margin-left: 26px; border-color: #a8a8a9 }
+.th_teapuesto { background-color: #e00d0d; color: white; height: 11px; border-color: #a8a8a9 }
+.td_teapuesto { color: #454545; height: 11px; text-align: center; border-color: #a8a8a9 }
+.table_result_teapuesto { color: #52256a; background-color: #c7b5d2; height: 15px; border-bottom-color: #a8a8a9; border-color: #a8a8a9 }
+.mensaje_teapuesto { font-family: Arial; font-size: 11px; color: #454545; margin-left: 26px }
+.indicador_cotejo { margin-left: 26px; margin-top: 20px; font-family: Arial; font-size: 11px; color: #454545 }
+.cotejador { font-family: Arial; font-size: 11px; color: #454545; margin-left: 26px; position: absolute; margin-top: -6px }
+.cont_calculo { font-family: Arial; font-size: 11px; color: #454545; font-weight: normal }
+#content-purchase { padding: 0 0 0 12px }

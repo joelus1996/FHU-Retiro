@@ -1,0 +1,105 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/layer-view-interface/include/taglib.jsp"%>
+<%@page import="pe.com.intralot.loto.utils.Constantes"%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-58FNN4L');</script>
+	<!-- End Google Tag Manager -->
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html">
+	    <title>Juega Video Loterías de La Tinka | Diversión y Premios al Instante​</title>
+    <meta name='description' content="Descubre la nueva Video Loterías de La Tinka: juegos rápidos, premios inmediatos y la emoción de ganar en segundos. ¡Juega ahora y prueba tu suerte!" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link media="screen" rel="stylesheet" type="text/css" href="layer-view-style/game/casino/theme.css">
+	<link media="screen" rel="stylesheet" type="text/css" href="layer-view-style/game/casino/themeCasino.css?v=1">
+	<link rel="stylesheet" href="layer-view-style/v2/styles.css?v=<%=Constantes.styles_css%>" type="text/css" />	
+	
+	<style>   
+    .mainContent {
+      float:left;
+      width:100%;
+      height:87.5vh;
+      border: hidden;
+    }
+    
+    @media (orientation: landscape){
+	    .mainContent {
+	      float:left;
+	      width:100%;
+	      height:81vh;
+	      border: hidden;
+	    }
+    }
+    #header {
+	  background-color: #f78f1e;
+	  height: 64px;
+	  position: relative;
+	  overflow: hidden;
+	  width: 100%;
+	  z-index: 10;
+	}
+  </style>
+  
+</head>
+<body >    
+<div class="black-menu <c:set var = "black_menu" scope = "session" value = "black_menu"/>">
+	<jsp:include page="../../include/header.jsp" />
+</div>							  	
+	
+<div class="titular_home_casino">							 
+	 <div>					 							 
+	 	<div class="main-play">							
+			<div id="games">
+				<div class="modals">	
+					<div id="popup2" class="overlay overlay-casino-game opened">
+						<div class="popup popup-casino-game">	
+							<button onclick="closeVideoLoteriaIframe();" class="btn-close-videoloteria">X</button>
+							<iframe frameborder="0" height="100%" width="100%" src="${lobbyIframe}">
+							</iframe>										            										            																					
+						</div>																					
+					</div>										
+				</div>
+			</div> 	
+		</div>		  							 
+	 </div>							 							 
+</div>						  	
+<jsp:include page="../../include/footer.jsp" />
+<script type='text/javascript' src='layer-view-script/game/videoloteria/lotto-videoloteria.js?v=1'></script>
+</body>
+<script>
+
+function actualiza_saldo(){
+	$.ajax({
+        type: "POST",
+        url: "load_recharge.html",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+        	$("#clientSale-amount").text("S/ "+floatFormat(data.billetera1));
+        	$("#billetera2-amount").text(data.billetera2);
+        	$("#billetera3-amount").text(data.billetera3);
+        	$("#clientSale-amount-menu-lateral").text("S/ "+floatFormat(data.billetera1));
+        }
+	});
+}
+
+$(".jsBtnIcon").click(function () {
+	actualiza_saldo();
+});
+
+$("#open-button").click(function () {
+	actualiza_saldo();
+});
+
+</script>
+</html>

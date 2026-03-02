@@ -1,0 +1,33 @@
+.main-login {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.main-tinka {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.main-login > h1,
+.main-tinka > h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.section {
+  max-width: 425px;
+  padding: 24px 16px;
+  margin: 0 auto;
+}
+
+.section > h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.section > p {
+  font-size: 16px;
+  font-weight: 400;
+}

@@ -1,0 +1,59 @@
+
+input[type=checkbox] {
+   position: absolute;
+   top: -9980px;
+   left: -9999px;     
+}
+label {   
+  cursor: pointer; 
+  font-size: 23px; 
+  color: #666669; 
+}
+.button {
+    
+	/*basic styles  */
+	width: 55px;  height: 35px;  color: white; background-color: #E6E6E6;
+	text-align: center;  font-size: 30px;  line-height: 30px;        
+    float: left;  
+ 
+	/*gradient styles*/
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#E6E6E6));
+	background: -moz-linear-gradient(19% 75% 90deg,#E6E6E6, #FFFFFF);
+ 
+	/*border styles*/
+	border-left: solid 1px #DDDDDD;
+	border-top: solid 1px #DDDDDD;
+	border-right: solid 1px #DDDDDD;
+	border-bottom: solid 1px #DDDDDD;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-gradient(linear, 0% 0%, 0% 100%, from(#99CF00), to(#6DB700))
+ 
+}
+
+.button_select {
+    	 
+	width: 56px;  height: 35px;  color: white; background-color: #5E87B0;
+	text-align: center;  font-size: 30px;  line-height: 30px;        
+    float: left;  
+ 
+	/*gradient styles*/
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5E87B0), to(#5D9BC4));
+	background: -moz-linear-gradient(19% 75% 90deg,#5D9BC4, #5E87B0);
+ 
+	/*border styles*/
+	border-left: solid 1px #5E87B0;
+	border-top: solid 1px #5E87B0;
+	border-right: solid 1px #5E87B0;
+	border-bottom: solid 1px #5E87B0;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-gradient(linear, 0% 0%, 0% 100%, from(#5E87B0), to(#5D9BC4)) 
+}
+   
+.button:hover {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E6E6E6), to(#FFFFFF));
+	background: -moz-linear-gradient(19% 75% 90deg,#FFFFFF, #E6E6E6);
+}

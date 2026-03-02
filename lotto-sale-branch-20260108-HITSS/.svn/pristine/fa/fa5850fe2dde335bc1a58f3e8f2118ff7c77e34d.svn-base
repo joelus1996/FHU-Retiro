@@ -1,0 +1,838 @@
+#grid_ganagol { font-family: Arial; width: 383px }
+.head_0 { height: 12px; width: 566px }
+#program { color: #236914; float: left; font-family: arial; font-size: 11px; font-weight: bold; position: absolute; top: 12px; margin-left: 10px; top: 13px }
+#allocations { color: #236914; float: left; font-family: arial; font-size: 10px; font-weight: bold; left: 87px; margin-left: 220px; position: absolute; top: 16px; cursor: pointer; text-decoration: underline }
+#marca { float: left; background-image: url(../../../layer-view-image/game/ganagol/img-marca-tu-apuesta.png); background-repeat: no-repeat; width: 176px; height: 32px; position: absolute; top: 0; left: 396px }
+.head { position: relative; height: 19px; width: 383px; background-color: #4c8d3c; font-size: 11px; color: #ffffff; font-weight: bold; background: -moz-linear-gradient(top, #5e9e4e 0%, #377a27 100%); background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5e9e4e), to(#377a27)); background: -webkit-linear-gradient(top, #5e9e4e 0%, #377a27 100%); background: -o-linear-gradient(top, #5e9e4e 0%, #377a27 100%); background: -ms-linear-gradient(top, #5e9e4e 0%, #377a27 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5e9e4e', endColorstr='#377a27', gradientType='0') }
+.head div { line-height: 11px }
+#grid_ganagol .head_title_1 { position: absolute; left: 0; top: 4px; text-align: center; width: 20px }
+#grid_ganagol .head_title_2 { position: absolute; left: 20px; top: 4px; text-align: right; width: 110px }
+#grid_ganagol .head_title_3 { position: absolute; left: 210px; top: 4px }
+#grid_ganagol .head_title_4 { position: absolute; left: 160px; top: 4px; text-align: center; width: 30px }
+#grid_ganagol .head_title_5 { position: absolute; left: 190px; top: 4px; text-align: left; width: 110px }
+#grid_ganagol .head_title_6 { position: absolute; left: 300px; top: 4px; text-align: center; width: 50px }
+#grid_ganagol .head_title_7 { position: absolute; left: 350px; top: 4px; text-align: center; width: 33px }
+.body { }
+.row1, .row2 { border-bottom: 1px solid #b2cdab; color: #000000; font-size: 11px; height: 19px; line-height: 11px; position: relative; width: 383px }
+.row1 { background-color: #ceddd1; -pie-background: linear-gradient(top, #e1e9e2 0%, #bcd1c0 100%); background: -moz-linear-gradient(top, #e1e9e2 0%, #bcd1c0 100%); background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e1e9e2), to(#bcd1c0)); background: -webkit-linear-gradient(top, #e1e9e2 0%, #bcd1c0 100%); background: -o-linear-gradient(top, #e1e9e2 0%, #bcd1c0 100%); background: -ms-linear-gradient(top, #e1e9e2 0%, #bcd1c0 100%) }
+.row2 { background-color: #f2eeee; background: -moz-linear-gradient(top, #ffffff 0%, #e2d9d9 100%); background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#e2d9d9)); background: -webkit-linear-gradient(top, #ffffff 0%, #e2d9d9 100%); background: -o-linear-gradient(top, #ffffff 0%, #e2d9d9 100%); background: -ms-linear-gradient(top, #ffffff 0%, #e2d9d9 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e2d9d9', gradientType='0') }
+.col1 { position: absolute; left: 0; top: 4px; text-align: center; width: 20px }
+.col2 { position: absolute; left: 20px; top: 4px; text-align: right; width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.col3 { background-image: url(../../../layer-view-image/game/ganagol/shields.png); background-position: no-repeat; height: 26.73076923076923px; left: 135px; position: absolute; text-align: center; top: -4px; width: 26.73076923076923px }
+.col4 { background-image: url(../../../layer-view-image/game/ganagol/shields.png); background-position: no-repeat; height: 26.73076923076923px; left: 163px; position: absolute; text-align: center; top: -4px; width: 26.73076923076923px }
+.col5 { position: absolute; left: 190px; top: 4px; text-align: left; width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.col6 { font-size: 10px; left: 300px; line-height: 20px; position: absolute; text-align: center; width: 50px }
+.col7 { position: absolute; left: 350px; top: 4px; text-align: center; width: 33px }
+.separate-bottun { padding: 1px }
+.attribute-texarea { background: #ffffff; border: 1px solid #e1e1e1; border-radius: 10px; resize: none; overflow: hidden; height: 121px; padding: 7px; width: 71px; font-size: 10px; font-family: Arial; color: #818181 }
+.attribute-button { background: #e1e9e2; margin: 0 0 1px 0; height: 15px; width: 89px; cursor: pointer }
+.attribute-button:hover { background: #d0dfb1 }
+.linear { float: left }
+.separate-textarea-bottuns { padding: 132px 0 0 0 }
+.separate-textarea-number { padding-left: 77px }
+.icon { margin: 5px 8px 0 5px }
+.height-div { height: 59px; padding-top: 4px }
+.text-play { background: -moz-linear-gradient(top, #5e9e4e 0%, #377a27 100%); background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5e9e4e), to(#377a27)); background: -webkit-linear-gradient(top, #5e9e4e 0%, #377a27 100%); background: -o-linear-gradient(top, #5e9e4e 0%, #377a27 100%); background: -ms-linear-gradient(top, #5e9e4e 0%, #377a27 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#5e9e4e, endColorstr=#377a27, gradientType=0); display: inline-block; border-radius: 5px 5px 0 0; height: 15px; width: 176px; text-align: center; font-family: Arial; font-size: 11px; font-weight: bold; color: #ffffff; padding: 4px 0 0 0; margin-bottom: 5px }
+.number-textarea-button { padding: 5px 0 0 0; border-top: 0; border-left: 2px; border-right: 2px; border-bottom: 2px; border-style: dotted; border-color: #e0e0e0; width: 173px; height: 280px; padding-top: 0 }
+.margin { height: 20px; padding-left: 5px }
+.text-number { color: #818181; font-family: arial; font-size: 11px; padding-left: 7px }
+.text-number-marcado { color: #818181; font-family: arial; font-size: 11px; font-weight: bold; margin-left: 8px }
+.container { padding: 2px 0 0; position: absolute; top: 18px }
+.check_ { margin-left: 0; margin-right: -1px }
+.text { color: #147a3e; font-family: Arial; font-size: 10px; font-weight: bold; vertical-align: top }
+.left { float: left }
+.right { left: 399px; position: absolute; top: 31px }
+.flecha_next_J1 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_sgte_off.png); height: 22px; width: 25px }
+.flecha_next_J2 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_sgte_off.png); height: 22px; width: 25px }
+.flecha_next_J3 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_sgte_off.png); height: 22px; width: 25px }
+.flecha_next_J4 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_sgte_deshabilitado.png); height: 22px; width: 25px }
+.right_flecha { position: absolute; right: 6px; top: 30px }
+.flecha-next-on { background-image: url(../../../layer-view-image/game/tinka/btn_jugada_sgte_on.png); height: 22px; width: 25px; cursor: pointer }
+.play_go_1_gd { background-image: url(../../../layer-view-image/game/ganagol/ir_jugada_1.gif); background-repeat: no-repeat; width: 21px; height: 115px; margin: 4.5px 3px }
+.flecha_back_J1 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_antes_deshabilitado.png); height: 22px; width: 25px }
+.flecha_back_J2 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_antes_off.png); height: 22px; width: 25px }
+.flecha_back_J3 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_antes_off.png); height: 22px; width: 25px }
+.flecha_back_J4 { background-image: url(../../../layer-view-image/game/ganagol/btn_jugada_antes_off.png); height: 22px; width: 25px }
+.flecha-back-on { background-image: url(../../../layer-view-image/game/tinka/btn_jugada_antes_on.png); height: 22px; width: 25px; cursor: pointer }
+.text-distance { padding-left: 442px }
+.ganagol { background: url(../../../layer-view-image/game/ganagol/banner_ganagol.png) no-repeat top left; border-radius: 0 0 6px 6px; float: left; margin-left: 32px; width: 614px; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+.color-text { float: left; font-size: 11px; font-family: arial; color: #000000; width: 420px }
+.bold-type { font-weight: bold }
+.center { padding: 10px 15px }
+.font { background: none repeat scroll 0% 0% rgb(217, 217, 217); width: 595px; bottom: 8px; position: absolute; height: 56px; border-radius: 6px; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+.font-play { background-color: #ffffff; border-radius: 0 6px 6px 6px; margin: 5px 0 0; min-height: 410px; padding: 19px 0 10px 10px; position: relative; width: 605px }
+.font-play-total { }
+.transition-one { background: #ffffff url(../../../layer-view-image/game/ganagol/transition-one.png) no-repeat 7px; width: 320px; height: 23px; border-radius: 5px 5px 0 0; padding-right: 9px; padding-top: 10px; margin-top: 8px; padding-bottom: 2px; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+.transition-two { background: #ffffff url(../../../layer-view-image/game/ganagol/transition-two.png) no-repeat 7px; width: 320px; height: 23px; border-radius: 5px 5px 0 0; padding-right: 9px; padding-top: 10px; margin-top: 8px; padding-bottom: 2px; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+div.selectBox { position: relative; width: 134px; height: 18px; border: 1px solid #949494; background: #e4e4e2 url(../../../layer-view-image/common/flecha-combo.png) no-repeat 120px 8px; border-radius: 5px; font-family: Arial; font-size: 10px; top: -2px; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+div.selectBox div.box { position: absolute; left: 6px; top: 1px; width: 124px; height: 18px; line-height: 17px; font-family: arial; font-size: 10px; color: #4e4e4d; overflow: hidden }
+div.selectBox select { background: #e4e4e2; width: 135px; height: 18px; font-size: 10px; border: 1px solid #949494; opacity: 0; filter: alpha(Opacity=0); -moz-opacity: 0; cursor: pointer; font-size: 10px; z-index: 1 }
+div.selectBox select option { font-size: 10px; color: #4e4e4d; border-bottom: 1px solid #e4e4e2; cursor: pointer }
+div.selectBox select option.ultimo { border-bottom: 0 none }
+#help { background: url(../../../layer-view-image/common/ayuda.png); background-repeat: no-repeat; cursor: pointer; margin-top: -38px; width: 60px; margin-left: 550px; height: 30px; display: block }
+#help:hover { background-position: 0 -36px }
+.visible { position: absolute; visibility: hidden; width: 0; height: 0 }
+#premio { color: #ffffff; font-family: 'Myriad Pro', sans-serif; font-weight: bold; margin-top: 6px }
+#program_num { font-size: 16px; position: relative; top: 4px }
+#aviso { font-size: 18px; position: relative; top: 2px }
+#hora-fin-juego, #hora-ini-juego { color: #006a29; float: right; font-family: Arial; font-size: 11px; font-weight: bold; margin: 9px 50px 0 0; padding: 0; text-align: center }
+#center-text-time { }
+#center-text { float: left; margin-left: 145px }
+.left-panel { position: relative; padding-top: 16px; float: left; width: 290px; height: 112px; margin-right: 28px; margin-left: 12px }
+.left-panel #ajax-loader { position: absolute; display: none; top: 50px; left: 135px }
+.right-panel { float: left; width: 270px; padding-top: 4px }
+.right-panel .result_purchase { position: relative; background-color: #e4e5e4; height: 65px; border-radius: 5px; behavior: url(layer-view-script/common/PIE/PIE.htc); padding: 10px 10px 10px 10px; margin-right: 27px }
+.result_purchase .label_resu1 { position: absolute; font-size: 12px; font-weight: bold; top: 10px; left: 10px; font-family: Arial }
+.result_purchase .label_resu2 { font-family: Arial; position: absolute; font-size: 12px; top: 31px; left: 10px }
+.result_purchase .result1 { font-family: Arial; position: absolute; font-weight: bold; font-size: 12px; top: 10px; left: 181px; text-align: right; width: 50px }
+.result_purchase .result2 { font-family: Arial; position: absolute; font-size: 12px; top: 29px; left: 181px; text-align: right; width: 50px }
+.image-cup { background-image: url(../../../layer-view-image/game/ganagol/ic_torneo.png); background-repeat: no-repeat; height: 18px; width: 18px; margin: auto; font-size: 0; cursor: pointer }
+.tooltip-info-arrow-img { background-image: url(../../../layer-view-image/common/img_flecha_up.png); background-repeat: no-repeat; display: none; height: 8px; position: absolute; right: 88px; top: 13px; width: 15px; z-index: 2 }
+.tooltip-info { background-color: #ffffff; border-color: #919191; border-radius: 4px 4px 4px 4px; border-style: solid; border-width: 1px; box-shadow: 0 0 0.25em #cccccc; color: #5e5e5e; display: none; left: 40px; padding: 8px 6px 6px; position: relative; text-align: justify; top: 6px; z-index: 1 }
+.cup-info-arrow-img { background-image: url(../../../layer-view-image/common/img_flecha_down.png); background-repeat: no-repeat; bottom: 35px; display: none; height: 8px; left: 14px; position: absolute; width: 15px; z-index: 2 }
+.cup-info { background-color: #ffffff; border-color: #919191; border-radius: 4px 4px 4px 4px; border-style: solid; border-width: 1px; bottom: 42px; box-shadow: 0 0 0.25em #cccccc; color: #5e5e5e; display: none; float: left; padding: 4px; position: relative; white-space: nowrap; z-index: 1 }
+.go_to_play_J1,
+.go_to_play_J2,
+.go_to_play_J3,
+.go_to_play_J4 { background-image: url(../../../layer-view-image/game/ganagol/ir_jugada.png); background-repeat: no-repeat; width: 21px; height: 115px; margin: 4px 2px; position: absolute; top: 42px }
+.go_to_play_J1 { background-position: 0 0 }
+.go_to_play_J2 { background-position: -22px 0 }
+.go_to_play_J3 { background-position: -44px 0 }
+.go_to_play_J4 { background-position: -66px 0 }
+#message-next-programming { background: none repeat scroll 0 0 #e6e6e6; font-size: 12px; height: 66px; padding: 120px 30px; text-align: center; width: 323px }
+#message-next-programming p { margin: 0 }
+#message-n-p1 { font-weight: bold; color: #236914 }
+.mess-n-p { font-weight: normal; color: #818181 }
+.datos_enunciado_cotejo_right { margin-left: 26px; margin-top: 70px; font-family: Arial; font-size: 11px; color: #236914; font-weight: bold }
+.datos_enunciado_contenido_cotejo_right { font-family: Arial; font-size: 11px; color: #454545 }
+.datos_enunciado_cotejo_left { margin-left: 250px; margin-top: 70px; font-family: Arial; font-size: 11px; color: #236914; font-weight: bold }
+.cotejadores { font-family: Arial; margin-left: 26px; font-size: 11px; color: #454545 }
+.datos_enunciado_contenido_cotejo_left { font-family: Arial; font-size: 11px; color: #454545 }
+.datos_separador { margin-left: 26px; color: #63aa54; font-family: Arial; font-size: 15px; font-weight: bold; margin-left: 26px; margin-bottom: 5px }
+.logo_ganagol { margin-left: 26px; color: #306d20; font-family: Arial }
+.calculo_premio { margin-left: 26px; margin-top: 3px; margin-bottom: 10px; color: #0681bb; font-family: Arial; font-size: 11px }
+.table_ganagol { font-family: Arial; font-size: 11px; width: 650px; margin-left: 26px; border-color: #a8a8a9 }
+.th_ganagol { background-color: #488a38; color: white; height: 11px; border-color: #a8a8a9 }
+.td_ganagol { color: #454545; height: 11px; text-align: center; border-color: #a8a8a9 }
+.table_result_ganagol { color: #b3b3b3; background-color: #000000; height: 15px; border-bottom-color: #a8a8a9; border-color: #a8a8a9 }
+.mensaje_ganagol { font-family: Arial; font-size: 11px; color: #454545; margin-left: 26px }
+.indicador_cotejo { margin-left: 26px; margin-top: 20px; font-family: Arial; font-size: 11px; color: #454545 }
+.cotejador { font-family: Arial; font-size: 11px; color: #454545; margin-left: 26px; position: absolute; margin-top: -6px }
+.cont_calculo { font-family: Arial; font-size: 11px; color: #454545; font-weight: normal }
+.PortletContent_collator { background: url(../../../layer-view-image/game/ganagol/btn_coteja_ganagol.png) no-repeat scroll 0 0 transparent; height: 156px; margin-left: -33px; position: fixed; top: 250px; width: 33px; cursor: pointer; }
+#marca_collator { float: left; background-image: url(../../../layer-view-image/game/ganagol/img-marca-tu-apuesta.png); background-repeat: no-repeat; float: left; height: 32px; left: 375px; position: absolute; top: 44px; width: 176px }
+#grid_ganagol_collator { background: none repeat scroll 0 0 #236914; font-family: Arial; margin-left: 28px; margin-top: 35px; width: 336px }
+.head_cotejador { background: -moz-linear-gradient(center top, #5e9e4e 0%, #377a27 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); color: #ffffff; font-size: 11px; font-weight: bold; height: 19px; position: relative; width: 336px }
+.head_title_1_collator { left: 0; position: absolute; text-align: center; top: 4px; width: 20px; line-height: 11px }
+.head_title_2_collator { left: 20px; position: absolute; text-align: right; top: 4px; width: 110px; line-height: 11px }
+.head_title_3_collator { left: 190px; position: absolute; text-align: left; top: 4px; width: 110px; line-height: 11px }
+.row1_collator { background: -moz-linear-gradient(center top, #ffffff 0%, #e2d9d9 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); border-bottom: 1px solid #b2cdab; color: #000000; font-size: 11px; height: 19px; line-height: 11px; position: relative; width: 336px }
+.row2_collator { background: -moz-linear-gradient(center top, #e1e9e2 0%, #bcd1c0 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); border-bottom: 1px solid #b2cdab; color: #000000; font-size: 11px; height: 19px; line-height: 11px; position: relative; width: 336px }
+.col1_collator { left: 0; position: absolute; text-align: center; top: 4px; width: 20px }
+.col2_collator { left: 20px; overflow: hidden; position: absolute; text-align: right; text-overflow: ellipsis; top: 4px; white-space: nowrap; width: 110px }
+.col3_collator { background-image: url(../../../layer-view-image/game/ganagol/shields.png); background-position: no-repeat; height: 26.73076923076923px; left: 130px; position: absolute; text-align: center; top: -4px; width: 26.73076923076923px }
+.col4_collator { background-image: url(../../../layer-view-image/game/ganagol/shields.png); background-position: no-repeat; height: 26.73076923076923px; left: 160px; position: absolute; text-align: center; top: -4px; width: 26.73076923076923px }
+.col5_collator { left: 190px; overflow: hidden; position: absolute; text-align: left; text-overflow: ellipsis; top: 4px; white-space: nowrap; width: 110px }
+.right_collator { left: 375px; position: absolute; top: 82px }
+.text-play-collator { background: -moz-linear-gradient(center top, #5e9e4e 0%, #377a27 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); border-radius: 5px 5px 0 0; color: #ffffff; display: inline-block; font-family: Arial; font-size: 11px; font-weight: bold; height: 15px; margin-bottom: 5px; padding: 4px 0 0; text-align: center; width: 176px }
+.number-textarea-button-collator { border-color: #e0e0e0; border-style: dotted; border-width: 0 2px 2px; height: 280px; padding: 0; width: 173px }
+.linear-collator { float: left }
+.icon-collator { margin: 1px 8px 0 5px }
+.separate-textarea-bottuns-collator { padding: 103px 0 0 0 }
+.text-collator { color: #147a3e; font-family: Arial; font-size: 10px; font-weight: bold; vertical-align: inherit }
+.attribute-texarea-collator { background: none repeat scroll 0 0 #ffffff; border: 1px solid #e1e1e1; border-radius: 10px 10px 10px 10px; color: #818181; font-family: Arial; font-size: 10px; height: 121px; margin-top: 3px; overflow: hidden; padding: 7px; resize: none; width: 71px }
+.validez_from_sorteo { color: #236914; font-family: arial; font-size: 11px; font-weight: bold; position: relative; margin-left: 82px; margin-top: -92px; width: 77px }
+.from_contenido { bottom: 84px; left: 169px; position: absolute; top: 52px }
+.team_contenidos { height: 281px; margin-left: 16px; margin-top: 42px; overflow: auto; width: 336px }
+.right_flecha_collator { left: 567px; top: -20px; position: relative; width: 26px }
+.team_contenidos_collater { height: 342px; margin-left: 16px; margin-top: 0; overflow: auto; width: 580px; display: none }
+.logo_kabala_cotejador { margin-bottom: 7px }
+.cotenedor_kabala_cotejador { background: none repeat scroll 0% 0% #fcfbfb; height: 482px; width: 650px }
+.right_flecha_cotejador { position: absolute; right: 23px; top: 63px }
+.kabala_fechas_cotejador { color: #818181; font-family: arial; font-size: 11px }
+.validez_boleto_cotejador { position: absolute; bottom: 90px; margin-left: 45px; float: left }
+.cont_opciones_cotejador { bottom: 84px; left: 140px; position: absolute }
+.flecha_back_cotejador { background-image: url(../../../layer-view-image/game/kabala/btn_jugada_antes_off.png); height: 22px; width: 25px; cursor: pointer; display: none }
+.validez_to_sorteo { position: absolute; bottom: 90px; margin-left: 455px; float: left }
+.cantFecha { bottom: 84px; left: 495px; position: absolute }
+.increases-your-prize_cotejador { background: #f2f2f2; height: 61px; margin: 12px 0 0; padding: 7px 0 17px 6px; height: 39px; margin-top: 82px }
+.attribute-button_cotejador { background: #eef4c6; border: 1px solid #eef4c6; height: 14.5px; width: 100px; cursor: pointer; position: absolute; margin-top: 54px }
+#award-kabala #primer-part input[type=checkbox] { display: none }
+#award-kabala #primer-part .number-textarea-button { padding: 5px 0 0 0; border-top: 0; border-left: 2px; border-right: 2px; border-bottom: 2px; border-style: dotted; border-color: #e0e0e0; width: 275px; height: 206px; padding-top: 0 }
+#award-kabala .font-play { margin: 0 }
+.font-cotejador { background-color: #1d261b; border-radius: 6px 6px 6px 6px; height: 56px; position: absolute; top: 410px; width: 565px; left: 28px; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+.font-cotejador-back { background-color: #c1d72d; border-radius: 6px 6px 6px 6px; height: 56px; position: absolute; top: 410px; width: 565px; left: 28px; display: none; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+.font-play { background-color: #ffffff; border-radius: 0 6px 6px 6px; margin-top: 4px; min-height: 426px; padding: 18px 0 10px 10px; width: 605px; /*z-index: 1; behavior: url(layer-view-script/common/PIE/PIE.htc)*/ }
+div.BotonCotejo { position: relative; width: 48px; height: 18px; border: 1px solid #949494; background: #e4e4e2 no-repeat 35px 8px; border-radius: 5px; font-family: Arial; font-size: 10px; top: -2px; behavior: url(layer-view-script/common/PIE/PIE.htc) }
+.align-clear-btn { margin-top: 91px }
+.align-title-cotejador { margin-top: 17px; position: absolute }
+.align-fecha-cotejador { margin-left: 314px }
+.ggdefault{ background-position: -0px -0px }
+.ggaalesund{ background-position: -26.76px -0px }
+.ggaberdeen{ background-position: -53.52px -0px }
+.ggacmilan{ background-position: -80.28px -0px }
+.ggacademia{ background-position: -107.04px -0px }
+.ggacademica{ background-position: -133.8px -0px }
+.ggadodenhaag{ background-position: -160.56px -0px }
+.ggaekatenas{ background-position: -187.32px -0px }
+.ggaeklarnaca{ background-position: -214.08px -0px }
+.ggafcgloria{ background-position: -240.84px -0px }
+.ggaik{ background-position: -267.6px -0px }
+.ggajaccio{ background-position: -294.36px -0px }
+.ggajax{ background-position: -321.12px -0px }
+.ggalbania{ background-position: -347.88px -0px }
+.ggalemania{ background-position: -374.64px -0px }
+/*.ggalianzaatletico{ background-position: -401.4px -0px }
+*.ggalianzalima{ background-position: -428.16px -0px }*/
+.ggallboys{ background-position: -454.92px -0px }
+.ggalteticomg{ background-position: -481.68px -0px }
+.ggamerica{ background-position: -508.44px -0px }
+.ggamericadecali{ background-position: -535.2px -0px }
+.ggamericarj{ background-position: -561.96px -0px }
+.ggamericarn{ background-position: -588.72px -0px }
+.ggamericasp{ background-position: -615.48px -0px }
+.gganderlecht{ background-position: -642.24px -0px }
+.ggangola{ background-position: -669px -0px }
+.gganorthosis{ background-position: -0px -26.76px }
+.ggantalyaspor{ background-position: -26.76px -26.76px }
+.ggantofagasta{ background-position: -53.52px -26.76px }
+.gganzoategui{ background-position: -80.28px -26.76px }
+.ggapoelnicosia{ background-position: -107.04px -26.76px }
+.ggarabiasaudita{ background-position: -133.8px -26.76px }
+.ggaragua{ background-position: -160.56px -26.76px }
+.ggargentina{ background-position: -187.32px -26.76px }
+.ggargentinosjrs{ background-position: -214.08px -26.76px }
+.ggaris{ background-position: -240.84px -26.76px }
+.ggarmenia{ background-position: -267.6px -26.76px }
+.ggarsenal{ background-position: -294.36px -26.76px }
+.ggarsenals{ background-position: -321.12px -26.76px }
+.ggastonvilla{ background-position: -347.88px -26.76px }
+.ggatnacional{ background-position: -374.64px -26.76px }
+.ggatalanta{ background-position: -401.4px -26.76px }
+.ggathleticbilbao{ background-position: -428.16px -26.76px }
+.ggatlas{ background-position: -454.92px -26.76px }
+.ggatleticogo{ background-position: -481.68px -26.76px }
+.ggatleticogoianense{ background-position: -508.44px -26.76px }
+.ggatleticomadrid{ background-position: -535.2px -26.76px }
+.ggatleticomadrid{ background-position: -561.96px -26.76px }
+.ggatleticomineiro{ background-position: -588.72px -26.76px }
+.ggatleticopr{ background-position: -615.48px -26.76px }
+.ggatleticotorino{ background-position: -642.24px -26.76px }
+.ggaucas{ background-position: -669px -26.76px }
+.ggaudax{ background-position: -0px -53.52px }
+.ggaugsburg{ background-position: -26.76px -53.52px }
+.ggaurora{ background-position: -53.52px -53.52px }
+.ggaustralia{ background-position: -80.28px -53.52px }
+.ggaustria{ background-position: -107.04px -53.52px }
+.ggavaifc{ background-position: -133.8px -53.52px }
+.ggazalkmaar{ background-position: -160.56px -53.52px }
+.ggazerbaiyan{ background-position: -187.32px -53.52px }
+.ggbahamas{ background-position: -214.08px -53.52px }
+.ggbahia{ background-position: -240.84px -53.52px }
+.ggbanantsyerevan{ background-position: -267.6px -53.52px }
+.ggbanfield{ background-position: -294.36px -53.52px }
+.ggbarcelona{ background-position: -321.12px -53.52px }
+.ggbarcelonag{ background-position: -347.88px -53.52px }
+.ggbasel{ background-position: -374.64px -53.52px }
+.ggbastia{ background-position: -401.4px -53.52px }
+.ggbateborisov{ background-position: -428.16px -53.52px }
+.ggbayernmunich{ background-position: -454.92px -53.52px }
+.ggbeerschotac{ background-position: -481.68px -53.52px }
+.ggbeiramar{ background-position: -508.44px -53.52px }
+.ggbelgica{ background-position: -535.2px -53.52px }
+.ggbelgrano{ background-position: -561.96px -53.52px }
+.ggbellavista{ background-position: -588.72px -53.52px }
+.ggbenfica{ background-position: -615.48px -53.52px }
+.ggbesiktas{ background-position: -642.24px -53.52px }
+.ggrealbetis{ background-position: -669px -53.52px }
+.ggblooming{ background-position: -0px -80.28px }
+.ggbneiyehuda{ background-position: -26.76px -80.28px }
+.ggbocajuniors{ background-position: -53.52px -80.28px }
+.ggbohemians{ background-position: -80.28px -80.28px }
+.ggbolivar{ background-position: -107.04px -80.28px }
+.ggbolivia{ background-position: -133.8px -80.28px }
+.ggbologna{ background-position: -160.56px -80.28px }
+.ggbolognesi{ background-position: -187.32px -80.28px }
+.ggbordortmund{ background-position: -214.08px -80.28px }
+.ggbordeaux{ background-position: -240.84px -80.28px }
+.ggbosnia{ background-position: -267.6px -80.28px }
+.ggbotafogo{ background-position: -294.36px -80.28px }
+.ggbotafogosp{ background-position: -321.12px -80.28px }
+.ggbraga{ background-position: -347.88px -80.28px }
+.ggbrann{ background-position: -374.64px -80.28px }
+.ggbrasil{ background-position: -401.4px -80.28px }
+.ggbrest{ background-position: -428.16px -80.28px }
+.ggbrondby{ background-position: -454.92px -80.28px }
+.ggburkinafaso{ background-position: -481.68px -80.28px }
+.ggbursaspor{ background-position: -508.44px -80.28px }
+.ggcacerro{ background-position: -535.2px -80.28px }
+.ggcariverplate{ background-position: -561.96px -80.28px }
+.ggcagliari{ background-position: -588.72px -80.28px }
+.ggcamerun{ background-position: -615.48px -80.28px }
+.ggcanada{ background-position: -642.24px -80.28px }
+.ggcaracasfc{ background-position: -669px -80.28px }
+.ggcartagena{ background-position: -0px -107.04px }
+.ggcatania{ background-position: -26.76px -107.04px }
+.ggcdnacional{ background-position: -53.52px -107.04px }
+.ggcdolmedo{ background-position: -80.28px -107.04px }
+.ggceara{ background-position: -107.04px -107.04px }
+.ggceltavigo{ background-position: -133.8px -107.04px }
+.ggceltic{ background-position: -160.56px -107.04px }
+.ggcerclebrugge{ background-position: -187.32px -107.04px }
+.ggcerro{ background-position: -214.08px -107.04px }
+.ggcerrolargo{ background-position: -240.84px -107.04px }
+.ggcerroporteno{ background-position: -267.6px -107.04px }
+/*.ggcesarvallejo{ background-position: -294.36px -107.04px }*/
+.ggcharleroi{ background-position: -321.12px -107.04px }
+.ggchelsea{ background-position: -347.88px -107.04px }
+.ggchernomore{ background-position: -374.64px -107.04px }
+.ggchicagofire{ background-position: -401.4px -107.04px }
+.ggchicofc{ background-position: -428.16px -107.04px }
+.ggchiev{ background-position: -454.92px -107.04px }
+.ggchievo{ background-position: -481.68px -107.04px }
+.ggchile{ background-position: -508.44px -107.04px }
+.ggchina{ background-position: -535.2px -107.04px }
+.ggchipre{ background-position: -561.96px -107.04px }
+.ggchivasguadalajara{ background-position: -588.72px -107.04px }
+.ggchivasusa{ background-position: -615.48px -107.04px }
+/*.ggcienciano{ background-position: -642.24px -107.04px }*/
+.ggcliftonville{ background-position: -669px -107.04px }
+.ggclubbrujas{ background-position: -0px -133.8px }
+.ggclubguarani{ background-position: -26.76px -133.8px }
+.ggnacionalasuncion{ background-position: -53.52px -133.8px }
+.ggnacional{ background-position: -80.28px -133.8px }
+.ggcluj{ background-position: -107.04px -133.8px }
+.ggcobreloa{ background-position: -133.8px -133.8px }
+.ggcobresal{ background-position: -160.56px -133.8px }
+.ggcobresol{ background-position: -187.32px -133.8px }
+.ggcolocolo{ background-position: -214.08px -133.8px }
+.ggcolombia{ background-position: -240.84px -133.8px }
+.ggcolon{ background-position: -267.6px -133.8px }
+.ggcoloradorapids{ background-position: -294.36px -133.8px }
+.ggcolumbuscrew{ background-position: -321.12px -133.8px }
+.ggcongo{ background-position: -347.88px -133.8px }
+.ggcopenhague{ background-position: -374.64px -133.8px }
+.ggcoreadelnorte{ background-position: -401.4px -133.8px }
+.ggcoreadelsur{ background-position: -428.16px -133.8px }
+.ggcorinthians{ background-position: -454.92px -133.8px }
+.ggcoritiba{ background-position: -481.68px -133.8px }
+.ggcorkcity{ background-position: -508.44px -133.8px }
+.ggcostademarfil{ background-position: -535.2px -133.8px }
+.ggcostarica{ background-position: -561.96px -133.8px }
+.ggcroacia{ background-position: -588.72px -133.8px }
+.ggcrusaders{ background-position: -615.48px -133.8px }
+.ggcruzazul{ background-position: -642.24px -133.8px }
+.ggcruzeiro{ background-position: -669px -133.8px }
+.ggcrvenazvezda{ background-position: -0px -160.56px }
+.ggcskamoscu{ background-position: -26.76px -160.56px }
+.ggcskasofia{ background-position: -53.52px -160.56px }
+.ggcuba{ background-position: -80.28px -160.56px }
+.ggcucuta{ background-position: -107.04px -160.56px }
+.ggdaciachisinau{ background-position: -133.8px -160.56px }
+.ggdanubio{ background-position: -160.56px -160.56px }
+.ggdcunited{ background-position: -187.32px -160.56px }
+.ggdebreceni{ background-position: -214.08px -160.56px }
+.ggdefensorsporting{ background-position: -240.84px -160.56px }
+.ggdepcali{ background-position: -267.6px -160.56px }
+.ggdepcuenca{ background-position: -294.36px -160.56px }
+.ggdepiquique{ background-position: -321.12px -160.56px }
+.ggdeppasto{ background-position: -347.88px -160.56px }
+.ggdepquindio{ background-position: -374.64px -160.56px }
+.ggdepquito{ background-position: -401.4px -160.56px }
+.ggderrycity{ background-position: -428.16px -160.56px }
+.ggdinamarca{ background-position: -454.92px -160.56px }
+.ggdinamobrest{ background-position: -481.68px -160.56px }
+.ggdinamobucarest{ background-position: -508.44px -160.56px }
+.ggdinamominsk{ background-position: -535.2px -160.56px }
+.ggdinamotirana{ background-position: -561.96px -160.56px }
+.ggdinamozagreb{ background-position: -588.72px -160.56px }
+.ggdjurgarden{ background-position: -615.48px -160.56px }
+.ggdnipro{ background-position: -642.24px -160.56px }
+.ggdnipro{ background-position: -669px -160.56px }
+.ggdomzale{ background-position: -0px -187.32px }
+.ggdrogheda{ background-position: -26.76px -187.32px }
+.ggdudelange{ background-position: -53.52px -187.32px }
+.ggdundalk{ background-position: -80.28px -187.32px }
+.ggdundeeutd{ background-position: -107.04px -187.32px }
+.ggdynamokiev{ background-position: -133.8px -187.32px }
+.ggecuador{ background-position: -160.56px -187.32px }
+.ggegipto{ background-position: -187.32px -187.32px }
+.ggeintrachfrankfurt{ background-position: -214.08px -187.32px }
+.ggelnacional{ background-position: -240.84px -187.32px }
+.ggelsalvador{ background-position: -267.6px -187.32px }
+.ggeltanquesisley{ background-position: -294.36px -187.32px }
+.ggelfsborg{ background-position: -321.12px -187.32px }
+.ggemelec{ background-position: -347.88px -187.32px }
+.ggemiratosarabesu{ background-position: -374.64px -187.32px }
+.ggenvigado{ background-position: -401.4px -187.32px }
+.ggequidad{ background-position: -428.16px -187.32px }
+.ggesbjerg{ background-position: -454.92px -187.32px }
+.ggescocia{ background-position: -481.68px -187.32px }
+.ggeskisehirspor{ background-position: -508.44px -187.32px }
+.ggeslovaquia{ background-position: -535.2px -187.32px }
+.ggeslovenia{ background-position: -561.96px -187.32px }
+.ggespanyol{ background-position: -588.72px -187.32px }
+.ggespana{ background-position: -615.48px -187.32px }
+.ggestadosunidos{ background-position: -642.24px -187.32px }
+.ggespanyol{ background-position: -669px -187.32px }
+.ggestuddemerida{ background-position: -0px -214.08px }
+.ggestudiantes{ background-position: -26.76px -214.08px }
+.ggeverton{ background-position: -53.52px -214.08px }
+.ggevianthonon{ background-position: -80.28px -214.08px }
+.ggfcdallas{ background-position: -107.04px -214.08px }
+.ggfcmoscu{ background-position: -133.8px -214.08px }
+.ggfcporto{ background-position: -160.56px -214.08px }
+.ggfczurich{ background-position: -187.32px -214.08px }
+.ggfehervar{ background-position: -214.08px -214.08px }
+.ggfenerbahce{ background-position: -240.84px -214.08px }
+.ggfenix{ background-position: -267.6px -214.08px }
+.ggferoe{ background-position: -294.36px -214.08px }
+.ggfeyenoord{ background-position: -321.12px -214.08px }
+.ggfigueirense{ background-position: -347.88px -214.08px }
+.ggfinlandia{ background-position: -374.64px -214.08px }
+.ggfiorentina{ background-position: -401.4px -214.08px }
+.ggfkbaki{ background-position: -428.16px -214.08px }
+.ggfkpartizan{ background-position: -454.92px -214.08px }
+.ggfksarajevo{ background-position: -481.68px -214.08px }
+.ggfksiauliai{ background-position: -508.44px -214.08px }
+.ggflamengo{ background-position: -535.2px -214.08px }
+.ggfloratallinn{ background-position: -561.96px -214.08px }
+.ggfluminense{ background-position: -588.72px -214.08px }
+.ggfrancia{ background-position: -615.48px -214.08px }
+.ggfredrikstad{ background-position: -642.24px -214.08px }
+.ggfreiburg{ background-position: -669px -214.08px }
+.ggfulham{ background-position: -0px -240.84px }
+.gggabon{ background-position: -26.76px -240.84px }
+.gggais{ background-position: -53.52px -240.84px }
+.gggalatasaray{ background-position: -80.28px -240.84px }
+.gggales{ background-position: -107.04px -240.84px }
+.gggambia{ background-position: -133.8px -240.84px }
+.gggantoise{ background-position: -160.56px -240.84px }
+.gggaziantepspor{ background-position: -187.32px -240.84px }
+.gggefle{ background-position: -214.08px -240.84px }
+.gggenk{ background-position: -240.84px -240.84px }
+.gggenova{ background-position: -267.6px -240.84px }
+.gggent{ background-position: -294.36px -240.84px }
+.gggeorgia{ background-position: -321.12px -240.84px }
+.gggetafe{ background-position: -347.88px -240.84px }
+.ggghana{ background-position: -374.64px -240.84px }
+.ggglentoran{ background-position: -401.4px -240.84px }
+.gggodoycruz{ background-position: -428.16px -240.84px }
+.gggoias{ background-position: -454.92px -240.84px }
+.gggomel{ background-position: -481.68px -240.84px }
+.gggorica{ background-position: -508.44px -240.84px }
+.gggoteborg{ background-position: -535.2px -240.84px }
+.gggranada{ background-position: -561.96px -240.84px }
+.gggrasshopper{ background-position: -588.72px -240.84px }
+.gggrecia{ background-position: -615.48px -240.84px }
+.gggremio{ background-position: -642.24px -240.84px }
+.gggremiobarueri{ background-position: -669px -240.84px }
+.gggremioprudente{ background-position: -0px -267.6px }
+.gggrevenmacher{ background-position: -26.76px -267.6px }
+.gggroningen{ background-position: -53.52px -267.6px }
+.ggguarani{ background-position: -80.28px -267.6px }
+.ggguatemala{ background-position: -107.04px -267.6px }
+.ggguimaraes{ background-position: -133.8px -267.6px }
+.ggguinea{ background-position: -160.56px -267.6px }
+.ggguineaecuatorial{ background-position: -187.32px -267.6px }
+.gggyorieto{ background-position: -214.08px -267.6px }
+.gghacken{ background-position: -240.84px -267.6px }
+.gghafnarfjordur{ background-position: -267.6px -267.6px }
+.gghaiti{ background-position: -294.36px -267.6px }
+.gghajduksplit{ background-position: -321.12px -267.6px }
+.gghaladas{ background-position: -347.88px -267.6px }
+.gghamburgo{ background-position: -374.64px -267.6px }
+.gghannover96{ background-position: -401.4px -267.6px }
+.gghapoeltelaviv{ background-position: -428.16px -267.6px }
+.ggheartofmidlothian{ background-position: -454.92px -267.6px }
+.ggheerenveen{ background-position: -481.68px -267.6px }
+.gghelsingborg{ background-position: -508.44px -267.6px }
+.ggheracles{ background-position: -535.2px -267.6px }
+.ggherenveen{ background-position: -561.96px -267.6px }
+.gghibernian{ background-position: -588.72px -267.6px }
+.gghoffenheim{ background-position: -615.48px -267.6px }
+.ggholanda{ background-position: -642.24px -267.6px }
+.gghonduras{ background-position: -669px -267.6px }
+.gghonved{ background-position: -0px -294.36px }
+.gghoustondynamo{ background-position: -26.76px -294.36px }
+.gghuachipato{ background-position: -53.52px -294.36px }
+.gghuila{ background-position: -80.28px -294.36px }
+.gghungria{ background-position: -107.04px -294.36px }
+.ggiaakranes{ background-position: -133.8px -294.36px }
+.gginddelvalle{ background-position: -160.56px -294.36px }
+.ggindepmedellin{ background-position: -187.32px -294.36px }
+.ggindepsantafe{ background-position: -214.08px -294.36px }
+.ggindependiente{ background-position: -240.84px -294.36px }
+.ggindonesia{ background-position: -267.6px -294.36px }
+.gginglaterra{ background-position: -294.36px -294.36px }
+.gginter{ background-position: -321.12px -294.36px }
+.gginternacional{ background-position: -347.88px -294.36px }
+.ggintigas{ background-position: -374.64px -294.36px }
+.gginverness{ background-position: -401.4px -294.36px }
+.ggiran{ background-position: -428.16px -294.36px }
+.ggirlandadelnorte{ background-position: -454.92px -294.36px }
+.ggiskrastali{ background-position: -481.68px -294.36px }
+.ggislandia{ background-position: -508.44px -294.36px }
+.ggisrael{ background-position: -535.2px -294.36px }
+.ggitaguiditaires{ background-position: -561.96px -294.36px }
+.ggitalia{ background-position: -588.72px -294.36px }
+.ggjagiellonia{ background-position: -615.48px -294.36px }
+.ggjaguareschiapas{ background-position: -642.24px -294.36px }
+.ggjamaica{ background-position: -669px -294.36px }
+.ggjapon{ background-position: -0px -321.12px }
+.ggjordania{ background-position: -26.76px -321.12px }
+.ggjosegalvez{ background-position: -53.52px -321.12px }
+.ggjoseteran{ background-position: -80.28px -321.12px }
+.ggjuanaurich{ background-position: -107.04px -321.12px }
+.ggjunior{ background-position: -133.8px -321.12px }
+.ggjuventus{ background-position: -160.56px -321.12px }
+.ggkaerjeng{ background-position: -187.32px -321.12px }
+.ggkalmarff{ background-position: -214.08px -321.12px }
+.ggkayserispor{ background-position: -240.84px -321.12px }
+.ggkilmarnock{ background-position: -267.6px -321.12px }
+.ggkoper{ background-position: -294.36px -321.12px }
+.ggkortrijk{ background-position: -321.12px -321.12px }
+.ggkvmechelen{ background-position: -347.88px -321.12px }
+.gglacalera{ background-position: -374.64px -321.12px }
+.gglacoruna{ background-position: -401.4px -321.12px }
+.gglaequidad{ background-position: -428.16px -321.12px }
+.gglagalaxy{ background-position: -454.92px -321.12px }
+.gglapaz{ background-position: -481.68px -321.12px }
+.gglaserena{ background-position: -508.44px -321.12px }
+.gglankaran{ background-position: -535.2px -321.12px }
+.gglanus{ background-position: -561.96px -321.12px }
+.gglara{ background-position: -588.72px -321.12px }
+.gglazio{ background-position: -615.48px -321.12px }
+.gglduloja{ background-position: -642.24px -321.12px }
+.gglduquito{ background-position: -669px -321.12px }
+.gglechpoznan{ background-position: -0px -347.88px }
+.gglegiawarszawa{ background-position: -26.76px -347.88px }
+.ggleon{ background-position: -53.52px -347.88px }
+.ggleondehuanuco{ background-position: -80.28px -347.88px }
+.gglevadiatallinn{ background-position: -107.04px -347.88px }
+.gglevante{ background-position: -133.8px -347.88px }
+.ggleverkusen{ background-position: -160.56px -347.88px }
+.gglevski{ background-position: -187.32px -347.88px }
+.gglibertad{ background-position: -214.08px -347.88px }
+.gglibia{ background-position: -240.84px -347.88px }
+.gglierse{ background-position: -267.6px -347.88px }
+.gglille{ background-position: -294.36px -347.88px }
+.gglillestrom{ background-position: -321.12px -347.88px }
+.gglisburn{ background-position: -347.88px -347.88px }
+.gglitexlovech{ background-position: -374.64px -347.88px }
+.gglituania{ background-position: -401.4px -347.88px }
+.ggliverpool{ background-position: -428.16px -347.88px }
+.ggliverpoolfc{ background-position: -454.92px -347.88px }
+.ggllaneli{ background-position: -481.68px -347.88px }
+.ggloja{ background-position: -508.44px -347.88px }
+.gglokeren{ background-position: -535.2px -347.88px }
+.gglokomotivmoscu{ background-position: -561.96px -347.88px }
+.gglokomotivplovdiv{ background-position: -588.72px -347.88px }
+.gglokomotivsofia{ background-position: -615.48px -347.88px }
+.gglorient{ background-position: -642.24px -347.88px }
+.ggluqueno{ background-position: -669px -347.88px }
+.ggluxemburgo{ background-position: -0px -374.64px }
+.gglyon{ background-position: -26.76px -374.64px }
+.ggmacara{ background-position: -53.52px -374.64px }
+.ggmaccabihaifa{ background-position: -80.28px -374.64px }
+.ggmaccabinetanya{ background-position: -107.04px -374.64px }
+.ggmaccabitelaviv{ background-position: -133.8px -374.64px }
+.ggmainz05{ background-position: -160.56px -374.64px }
+.ggmalaga{ background-position: -187.32px -374.64px }
+.ggmalasia{ background-position: -214.08px -374.64px }
+.ggmali{ background-position: -240.84px -374.64px }
+.ggmalines{ background-position: -267.6px -374.64px }
+.ggmallorca{ background-position: -294.36px -374.64px }
+.ggmalmoff{ background-position: -321.12px -374.64px }
+.ggmalta{ background-position: -347.88px -374.64px }
+.ggmanchestercity{ background-position: -374.64px -374.64px }
+.ggmanchesterunited{ background-position: -401.4px -374.64px }
+.ggmaracaibo{ background-position: -428.16px -374.64px }
+.ggmaribor{ background-position: -454.92px -374.64px }
+.ggmaritimo{ background-position: -481.68px -374.64px }
+.ggmarruecos{ background-position: -508.44px -374.64px }
+.ggmarsella{ background-position: -535.2px -374.64px }
+.ggmechelen{ background-position: -561.96px -374.64px }
+.ggmedellin{ background-position: -588.72px -374.64px }
+/*.ggmelgar{ background-position: -615.48px -374.64px }
+* .ggmelgar{ background-position: -642.24px -374.64px }*/
+.ggmetalistkharkhiv{ background-position: -669px -374.64px }
+.ggmetalurgdonetsk{ background-position: -0px -401.4px }
+.ggmetalurgs{ background-position: -26.76px -401.4px }
+.ggmexico{ background-position: -53.52px -401.4px }
+.ggmika{ background-position: -80.28px -401.4px }
+.ggmillonarios{ background-position: -107.04px -401.4px }
+.ggmineros{ background-position: -133.8px -401.4px }
+.ggmochengladbach{ background-position: -160.56px -401.4px }
+.ggmolde{ background-position: -187.32px -401.4px }
+.ggmonaco{ background-position: -214.08px -401.4px }
+.ggmonagas{ background-position: -240.84px -401.4px }
+.ggmonarcasmorelia{ background-position: -267.6px -401.4px }
+.ggmonchengladbach{ background-position: -294.36px -401.4px }
+.ggmontenegro{ background-position: -321.12px -401.4px }
+.ggmonterrey{ background-position: -347.88px -401.4px }
+.ggmontevideowanderers{ background-position: -374.64px -401.4px }
+.ggmontpellier{ background-position: -401.4px -401.4px }
+.ggmontrealimpact{ background-position: -428.16px -401.4px }
+.ggmotherwell{ background-position: -454.92px -401.4px }
+.ggmunicipal{ background-position: -481.68px -401.4px }
+.ggnacbreda{ background-position: -508.44px -401.4px }
+.ggnacionaldemadeira{ background-position: -535.2px -401.4px }
+.ggnacionaldepotosi{ background-position: -561.96px -401.4px }
+.ggnancy{ background-position: -588.72px -401.4px }
+.ggnapoli{ background-position: -615.48px -401.4px }
+.ggnautico{ background-position: -642.24px -401.4px }
+.ggnecnijmegen{ background-position: -669px -401.4px }
+.ggnewenglandrevs{ background-position: -0px -428.16px }
+.ggnewyorkredbulls{ background-position: -26.76px -428.16px }
+.ggnewcastle{ background-position: -53.52px -428.16px }
+.ggnewell'sob{ background-position: -80.28px -428.16px }
+.ggnice{ background-position: -107.04px -428.16px }
+.ggnigeria{ background-position: -133.8px -428.16px }
+.ggnitra{ background-position: -160.56px -428.16px }
+.ggnordsjaelland{ background-position: -187.32px -428.16px }
+.ggnorrkoping{ background-position: -214.08px -428.16px }
+.ggnoruega{ background-position: -240.84px -428.16px }
+.ggnorwich{ background-position: -267.6px -428.16px }
+.ggnsirunavik{ background-position: -294.36px -428.16px }
+.ggnuevazelanda{ background-position: -321.12px -428.16px }
+.ggnuremberg{ background-position: -347.88px -428.16px }
+.ggnublense{ background-position: -374.64px -428.16px }
+.ggoddgrenland{ background-position: -401.4px -428.16px }
+.ggodense{ background-position: -428.16px -428.16px }
+.ggoficrete{ background-position: -454.92px -428.16px }
+.ggo'higgins{ background-position: -481.68px -428.16px }
+.ggolimpia{ background-position: -508.44px -428.16px }
+.ggolimpiabalti{ background-position: -535.2px -428.16px }
+.ggolimpijaljubljana{ background-position: -561.96px -428.16px }
+.ggolimpyakos{ background-position: -588.72px -428.16px }
+.ggolimpyakospiraeus{ background-position: -615.48px -428.16px }
+.ggolimpyakosvolos{ background-position: -642.24px -428.16px }
+.ggolmedo{ background-position: -669px -428.16px }
+.ggoman{ background-position: -0px -454.92px }
+.ggoncecaldas{ background-position: -26.76px -454.92px }
+.ggorduspor{ background-position: -53.52px -454.92px }
+.ggorebro{ background-position: -80.28px -454.92px }
+.ggorientepetrolero{ background-position: -107.04px -454.92px }
+.ggosasuna{ background-position: -133.8px -454.92px }
+.ggotelulgalati{ background-position: -160.56px -454.92px }
+.ggpachuca{ background-position: -187.32px -454.92px }
+.ggpacosferreira{ background-position: -214.08px -454.92px }
+.ggpalermo{ background-position: -240.84px -454.92px }
+.ggpalestino{ background-position: -267.6px -454.92px }
+.ggpalmeiras{ background-position: -294.36px -454.92px }
+.ggpanama{ background-position: -321.12px -454.92px }
+.ggpanathinaikos{ background-position: -347.88px -454.92px }
+.ggpaok{ background-position: -374.64px -454.92px }
+.ggparaguay{ background-position: -401.4px -454.92px }
+.ggparissg{ background-position: -428.16px -454.92px }
+.ggparma{ background-position: -454.92px -454.92px }
+.ggpartizanbelgrado{ background-position: -481.68px -454.92px }
+.ggpenarol{ background-position: -508.44px -454.92px }
+.ggperu{ background-position: -535.2px -454.92px }
+.ggpescara{ background-position: -561.96px -454.92px }
+.ggpetare{ background-position: -588.72px -454.92px }
+.ggphiladelphiaunion{ background-position: -615.48px -454.92px }
+.ggpolonia{ background-position: -642.24px -454.92px }
+.ggpontepreta{ background-position: -669px -454.92px }
+.ggporttalbottown{ background-position: -0px -481.68px }
+.ggportadownfc{ background-position: -26.76px -481.68px }
+.ggportlandtimbers{ background-position: -53.52px -481.68px }
+.ggporto{ background-position: -80.28px -481.68px }
+.ggportugal{ background-position: -107.04px -481.68px }
+.ggportuguesa{ background-position: -133.8px -481.68px }
+.ggprudente{ background-position: -160.56px -481.68px }
+.ggpsveindhoven{ background-position: -187.32px -481.68px }
+.ggpuertorico{ background-position: -214.08px -481.68px }
+.ggqarabag{ background-position: -240.84px -481.68px }
+.ggqatar{ background-position: -267.6px -481.68px }
+.ggqueenparkrangers{ background-position: -294.36px -481.68px }
+.ggquilmes{ background-position: -321.12px -481.68px }
+.ggquindio{ background-position: -347.88px -481.68px }
+.ggracing{ background-position: -374.64px -481.68px }
+.ggracingmontevideo{ background-position: -401.4px -481.68px }
+.ggracingsantander{ background-position: -428.16px -481.68px }
+.ggrafaela{ background-position: -454.92px -481.68px }
+.ggranders{ background-position: -481.68px -481.68px }
+.ggrangers{ background-position: -508.44px -481.68px }
+.ggrapidbucarest{ background-position: -535.2px -481.68px }
+.ggrapidviena{ background-position: -561.96px -481.68px }
+.ggrayovallecano{ background-position: -588.72px -481.68px }
+.ggreading{ background-position: -615.48px -481.68px }
+.ggrealcartagena{ background-position: -642.24px -481.68px }
+.ggrealgarcilaso{ background-position: -669px -481.68px }
+.ggrealmadrid{ background-position: -0px -508.44px }
+.ggrealpotosi{ background-position: -26.76px -508.44px }
+.ggrealsaltlake{ background-position: -53.52px -508.44px }
+.ggrealsanluis{ background-position: -80.28px -508.44px }
+.ggrealsociedad{ background-position: -107.04px -508.44px }
+.ggredbullsalzburg{ background-position: -133.8px -508.44px }
+.ggreims{ background-position: -160.56px -508.44px }
+.ggrennes{ background-position: -187.32px -508.44px }
+.ggrepcheca{ background-position: -214.08px -508.44px }
+.ggrepdeirlanda{ background-position: -240.84px -508.44px }
+.ggried{ background-position: -267.6px -508.44px }
+.ggrioave{ background-position: -294.36px -508.44px }
+.ggriverplate{ background-position: -321.12px -508.44px }
+.ggrodajc{ background-position: -347.88px -508.44px }
+.ggroma{ background-position: -374.64px -508.44px }
+.ggrosenborg{ background-position: -401.4px -508.44px }
+.ggrosscounty{ background-position: -428.16px -508.44px }
+.ggruanda{ background-position: -454.92px -508.44px }
+.ggrubinkazan{ background-position: -481.68px -508.44px }
+.ggrubionu{ background-position: -508.44px -508.44px }
+.ggrudarvelenje{ background-position: -535.2px -508.44px }
+.ggrumania{ background-position: -561.96px -508.44px }
+.ggrusia{ background-position: -588.72px -508.44px }
+.ggruzomberok{ background-position: -615.48px -508.44px }
+/*.ggsportingcristal{ background-position: -642.24px -508.44px }*/
+.ggsaintetienne{ background-position: -669px -508.44px }
+.ggsampdoria{ background-position: -0px -535.2px }
+.ggsanfelipe{ background-position: -26.76px -535.2px }
+.ggsanjoseearth{ background-position: -53.52px -535.2px }
+.ggsanlorenzo{ background-position: -80.28px -535.2px }
+.ggsanluis{ background-position: -107.04px -535.2px }
+.ggsanmartin{ background-position: -133.8px -535.2px }
+.ggsanmartinsj{ background-position: -160.56px -535.2px }
+.ggsanmartintucuman{ background-position: -187.32px -535.2px }
+.ggsantosfc{ background-position: -214.08px -535.2px }
+.ggsaopaulo{ background-position: -240.84px -535.2px }
+.ggsarajevo{ background-position: -267.6px -535.2px }
+.ggschalke04{ background-position: -294.36px -535.2px }
+.ggseattlesounders{ background-position: -321.12px -535.2px }
+.ggsenegal{ background-position: -347.88px -535.2px }
+.ggserbia{ background-position: -374.64px -535.2px }
+.ggsetubal{ background-position: -401.4px -535.2px }
+.ggsevilla{ background-position: -428.16px -535.2px }
+.ggshakhtardonetsk{ background-position: -454.92px -535.2px }
+.ggshaktyor{ background-position: -481.68px -535.2px }
+.ggshalke04{ background-position: -508.44px -535.2px }
+.ggshelbourne{ background-position: -535.2px -535.2px }
+.ggsherifftiraspol{ background-position: -561.96px -535.2px }
+.ggsiena{ background-position: -588.72px -535.2px }
+.ggsillamaekalev{ background-position: -615.48px -535.2px }
+.ggsion{ background-position: -642.24px -535.2px }
+.ggsiria{ background-position: -669px -535.2px }
+.ggsiroki{ background-position: -0px -561.96px }
+.ggsivasspor{ background-position: -26.76px -561.96px }
+.ggskenderbeu{ background-position: -53.52px -561.96px }
+.ggskodaxanthi{ background-position: -80.28px -561.96px }
+.ggslaven{ background-position: -107.04px -561.96px }
+.ggsliemawanderers{ background-position: -133.8px -561.96px }
+.ggslovanbratislava{ background-position: -160.56px -561.96px }
+.ggsochaux{ background-position: -187.32px -561.96px }
+.ggsouthampton{ background-position: -214.08px -561.96px }
+.ggspartakmoscu{ background-position: -240.84px -561.96px }
+.ggspartaktrnava{ background-position: -267.6px -561.96px }
+/*.ggsportancash{ background-position: -294.36px -561.96px }
+*.ggsportboys{ background-position: -321.12px -561.96px }
+*.ggsporthuancayo{ background-position: -347.88px -561.96px }*/
+.ggsportrecife{ background-position: -374.64px -561.96px }
+.ggsportingcp{ background-position: -401.4px -561.96px }
+.ggsportingkc{ background-position: -428.16px -561.96px }
+.ggsportinglisboa{ background-position: -454.92px -561.96px }
+.ggsportivoluqueno{ background-position: -481.68px -561.96px }
+.ggstetienne{ background-position: -508.44px -561.96px }
+.ggstjohnstone{ background-position: -535.2px -561.96px }
+.ggstmirren{ background-position: -561.96px -561.96px }
+.ggstpatrick{ background-position: -588.72px -561.96px }
+.ggstabaek{ background-position: -615.48px -561.96px }
+.ggstaderennes{ background-position: -642.24px -561.96px }
+.ggstandardlieja{ background-position: -669px -561.96px }
+.ggsteauabucarest{ background-position: -0px -588.72px }
+.ggstokecity{ background-position: -26.76px -588.72px }
+.ggsturmgraz{ background-position: -53.52px -588.72px }
+.ggstuttgart{ background-position: -80.28px -588.72px }
+.ggsudafrica{ background-position: -107.04px -588.72px }
+.ggsuduva{ background-position: -133.8px -588.72px }
+.ggsuecia{ background-position: -160.56px -588.72px }
+.ggsuiza{ background-position: -187.32px -588.72px }
+.ggsunderland{ background-position: -214.08px -588.72px }
+.ggsvried{ background-position: -240.84px -588.72px }
+.ggswansea{ background-position: -267.6px -588.72px }
+.ggtachira{ background-position: -294.36px -588.72px }
+.ggtacuary{ background-position: -321.12px -588.72px }
+.ggtailandia{ background-position: -347.88px -588.72px }
+.ggtaurastaurage{ background-position: -374.64px -588.72px }
+.ggtecosuag{ background-position: -401.4px -588.72px }
+.ggthenewsaints{ background-position: -428.16px -588.72px }
+.ggthestrongest{ background-position: -454.92px -588.72px }
+.ggthun{ background-position: -481.68px -588.72px }
+.ggtigre{ background-position: -508.44px -588.72px }
+.ggtigresuanl{ background-position: -535.2px -588.72px }
+.ggtijuana{ background-position: -561.96px -588.72px }
+.ggtirana{ background-position: -588.72px -588.72px }
+.ggtiraspol{ background-position: -615.48px -588.72px }
+.ggtobolkostanay{ background-position: -642.24px -588.72px }
+.ggtogo{ background-position: -669px -588.72px }
+.ggtolima{ background-position: -0px -615.48px }
+.ggtoluca{ background-position: -26.76px -615.48px }
+.ggtorino{ background-position: -53.52px -615.48px }
+.ggtorontofc{ background-position: -80.28px -615.48px }
+.ggtottenham{ background-position: -107.04px -615.48px }
+.ggtoulouse{ background-position: -133.8px -615.48px }
+.ggtrabzonspor{ background-position: -160.56px -615.48px }
+.ggtransnarva{ background-position: -187.32px -615.48px }
+.ggtrinidadytobago{ background-position: -214.08px -615.48px }
+.ggtroyes{ background-position: -240.84px -615.48px }
+.ggtrujillanos{ background-position: -267.6px -615.48px }
+.ggtunez{ background-position: -294.36px -615.48px }
+.ggturquia{ background-position: -321.12px -615.48px }
+.ggtwente{ background-position: -347.88px -615.48px }
+.ggudechile{ background-position: -374.64px -615.48px }
+.ggucatolica{ background-position: -401.4px -615.48px }
+.gguconcepcion{ background-position: -428.16px -615.48px }
+.ggudesucre{ background-position: -454.92px -615.48px }
+.gguamaracaibo{ background-position: -481.68px -615.48px }
+.ggucrania{ background-position: -508.44px -615.48px }
+.ggudinese{ background-position: -535.2px -615.48px }
+.ggulysses{ background-position: -561.96px -615.48px }
+/*.ggunioncomercio{ background-position: -588.72px -615.48px }*/
+.ggunionespanola{ background-position: -615.48px -615.48px }
+.ggunionstafe{ background-position: -642.24px -615.48px }
+/*.gguniversitario{ background-position: -669px -615.48px }*/
+.gguruguay{ background-position: -0px -642.24px }
+.ggutrecht{ background-position: -26.76px -642.24px }
+.gguzbekistan{ background-position: -53.52px -642.24px }
+.ggvalencia{ background-position: -80.28px -642.24px }
+.ggvalenciennes{ background-position: -107.04px -642.24px }
+.ggvalerenga{ background-position: -133.8px -642.24px }
+.ggvalladolid{ background-position: -160.56px -642.24px }
+.ggvalurr{ background-position: -187.32px -642.24px }
+.ggvancouverwhitecaps{ background-position: -214.08px -642.24px }
+.ggvascodagama{ background-position: -240.84px -642.24px }
+.ggvaslui{ background-position: -267.6px -642.24px }
+.ggvelezsarsfield{ background-position: -294.36px -642.24px }
+.ggvenezuela{ background-position: -321.12px -642.24px }
+.ggvestmannaeyar{ background-position: -347.88px -642.24px }
+.ggvideoton{ background-position: -374.64px -642.24px }
+.ggvietnam{ background-position: -401.4px -642.24px }
+.ggvikingfk{ background-position: -428.16px -642.24px }
+.ggvitesse{ background-position: -454.92px -642.24px }
+.ggvitoriaguimaraes{ background-position: -481.68px -642.24px }
+.ggvitoriasetubal{ background-position: -508.44px -642.24px }
+.ggvorskla{ background-position: -535.2px -642.24px }
+.ggvvvvenlo{ background-position: -561.96px -642.24px }
+.ggwaalwijk{ background-position: -588.72px -642.24px }
+.ggwerderbremen{ background-position: -615.48px -642.24px }
+.ggwestbromwich{ background-position: -642.24px -642.24px }
+.ggwestham{ background-position: -669px -642.24px }
+.ggwigan{ background-position: -0px -669px }
+.ggwillemii{ background-position: -26.76px -669px }
+.ggwilstermann{ background-position: -53.52px -669px }
+.ggwislakrakow{ background-position: -80.28px -669px }
+.ggwolfsburg{ background-position: -107.04px -669px }
+.ggyaracuyanos{ background-position: -133.8px -669px }
+.ggyemen{ background-position: -160.56px -669px }
+.ggyoungboys{ background-position: -187.32px -669px }
+.ggzambia{ background-position: -214.08px -669px }
+.ggzamora{ background-position: -240.84px -669px }
+.ggzaragoza{ background-position: -267.6px -669px }
+.ggzenitsanpeters{ background-position: -294.36px -669px }
+.ggzhetysutaldykorgan{ background-position: -321.12px -669px }
+.ggzilina{ background-position: -347.88px -669px }
+.ggzrinjski{ background-position: -374.64px -669px }
+.ggzultewaregem{ background-position: -401.4px -669px }
+.ggzurich{ background-position: -428.16px -669px }
+.ggzwolle{ background-position: -454.92px -669px }
+.ggaab{ background-position: -481.68px -669px }

@@ -1,0 +1,73 @@
+#register .placeholder{color:#999999}
+.term-condiciones-cyber{color:#000000;font-family:arial;font-size:11px;font-weight:bold;left:-249px;margin-top:0;position:relative;right:0;text-decoration:underline;top:402px;cursor:pointer}
+.reg-cyber{color:#000000;font-family:arial;font-size:11px;font-weight:bold;left:-249px;margin-top:0;position:relative;right:0;text-decoration:underline;cursor:pointer;width:168px;-moz-border-radius:7px;-webkit-border-radius:7px;border-radius:7px;height:25px;left:365px;top:-151px}
+.style-iframe{display:block;margin-left:30px;margin-top:2px}
+.content-contact{width:620px;clear:both;background:#FFFFFF;border-radius:0 10px 10px 10px;float:left;margin-left:32px;behavior:url("layer-view-script/common/PIE/PIE.htc")}
+.content-contact-title{color:#F97312;text-transform:uppercase;background-image:url(../../layer-view-image/png);font-weight:bold;font-size:19px;width:336px;height:25px;background:#ffffff;margin-left:32px;border-radius:8px 8px 0 0;margin-top:10px}
+.contact-icon-title{background-image:url("../../layer-view-image/common/img-micuenta.png");background-repeat:no-repeat;background-position:-4px -367px;width:37px;height:24px;display:block;margin-left:21px;position:relative;top:7px}
+.contact-title-text{position:relative;display:block;top:-16px;left:60px}
+.content-contact-info{background:#F1F1F2;width:566px;height:60px;border-radius:10px;margin-top:20px;margin-left:22px;behavior:url("layer-view-script/common/PIE/PIE.htc")}
+.contact-icon-ubi{background-image:url("../../layer-view-image/common/img-micuenta.png");background-repeat:no-repeat;background-position:-7px -400px;width:32px;height:41px;display:block;position:relative;top:9px;margin-left:33px}
+.contact-text-ubi{width:270px;clear:both;position:relative;top:-19px;left:72px;color:#5f5e5e}
+.contact-text-call{width:170px;clear:both;position:relative;top:-93px;left:377px;color:#5f5e5e}
+.contact-icon-call{background-image:url("../../layer-view-image/common/img-micuenta.png");background-repeat:no-repeat;background-position:-4px -441px;width:37px;height:46px;display:block;position:relative;top:5px;top:-62px;margin-left:335px}
+.contact-text-form{font-size:12px;color:#818181;margin-left:22px;margin-top:12px;display:block}
+#table1{width:311px !important;margin-left:22px}
+#frm-book-claim table #clabel{width:65px !important}
+#max{width:95.5% !important}
+#last-name-paternal{width:44.9% !important}
+#switch-document-type{width:79px !important}
+#document-number{width:129px !important}
+#switch-year{width:26.9% !important}
+#switch-region{width:95.6% !important}
+.movil{position:absolute;display:block;margin-top:0px !important}
+#frm-book-claim .small{width:97px !important;margin-right:2% !important}
+#email{width:95.6% !important}
+h4{margin:0px 0px 5px 21px;color:#F97312}
+#frm-book-claim .cinputs .gread-box{width:200px !important}
+.personal-data-fields{position:relative}
+.margin-r{margin-left:21px !important}
+.font-b{margin-left:5px !important;font-weight:100 !important}
+.line{color:#000000;font-size:11px !important;padding-left:22px !important}
+.table-opntion{margin-left:22px}
+.width-td{width:100px !important}
+.mar-text{margin-left:17px}
+.text-title-option{font-size:11px;margin-bottom:3px;display:block}
+#block-text{display:block;height:90px;margin-left:22px;margin-top:12px;position:relative;resize:none;width:555px}
+.block-none{display:none;opacity:0;visibility:0}
+#btn-enviar{background-color:#ffffff;background-image:url(../../layer-view-image/common/btn-enviar.png);background-position:0 1px;background-repeat:no-repeat;border:1px solid #ffffff;border-radius:8px 8px 8px 8px;color:#ffffff;display:block;font-size:11px;font-weight:bold;height:34px;padding:0;text-transform:uppercase;width:81px;position:relative;margin-left:496px;top:-24px}
+#btn-enviar:hover{background-position:0 -34px}
+#btn-cancelar{background-color:#ffffff;background-image:url(../../layer-view-image/common/btn-cancelar.png);background-position:0 1px;background-repeat:no-repeat;border:1px solid #ffffff;border-radius:8px 8px 8px 8px;color:#ffffff;display:block;font-size:11px;font-weight:bold;height:34px;padding:0;text-transform:uppercase;width:81px;top:10px;position:relative;margin-left:397px}
+#btn-cancelar:hover{background-position:0 -34px}
+#x-year, #x-day{max-width:56px !important}
+#x-month{max-width:87px !important;max-height:207px !important}
+#x-document-type{max-width:130px !important}
+#frm-book-claim{position:relative}
+#frm-book-claim table{width:100%}
+#frm-book-claim table td{font-size:0;padding:0;white-space-collapse:discard}
+#frm-book-claim table .clabel{width:70px}
+#frm-book-claim table .clabel.aloft{vertical-align:top}
+#frm-book-claim table .cinputs .gread-box{width:98px}
+#frm-book-claim table .cinputs .gread-box td{height:18px}
+#frm-book-claim .personal-data-fields{padding:0 0 0 10px}
+#frm-book-claim .personal-data-fields .cinputs{width:245px}
+#frm-book-claim .account-data-fields,
+#frm-book-claim .personal-data-fields{display:inline-block;margin:15px 0 0 0;vertical-align:top}
+#frm-book-claim .account-data-fields label,
+#frm-book-claim .personal-data-fields label,
+#frm-book-claim .other-fields label{color:#5f5e5e;font-weight:bold;vertical-align:middle}
+#frm-book-claim .account-data-fields label,
+#frm-book-claim .personal-data-fields label{font-size:11px;line-height:11px}
+#frm-book-claim .other-fields label{margin:0 0 0 10px}
+#frm-book-claim .question-mark{color:#666666;cursor:pointer;font-size:12px;font-weight:bold;margin:0 4px 0 0}
+#frm-book-claim .other-fields{margin:15px 0 0}
+#frm-book-claim .internal-label{font-weight:normal!important;margin:0 10px 0 5px;text-transform:capitalize}
+#frm-book-claim .max{width:99.5%}
+#frm-book-claim .min{width:111px}
+#frm-book-claim .small{width:112px}
+#frm-book-claim .medium{width:111px}
+#frm-book-claim .half{width:49%}
+#frm-book-claim .half:first-child{margin-right:2%!important}
+#frm-book-claim input{font-size:11px;margin:2px 0;vertical-align:middle}
+#frm-book-claim .select{left:-9999px;position:absolute}
+#frm-book-claim .value-in{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

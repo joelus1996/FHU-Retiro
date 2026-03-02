@@ -1,0 +1,389 @@
+<div class="div-layer" id="generic-div-layer">
+    <div class="mask">  
+    </div>      
+    <div class="main">
+        <div class="border-top"></div>
+        <div class="body">
+            <div class="close">
+                <a href="javascript:closeDivLayer()">x</a>
+            </div>
+            <div class="title-icon"></div>
+            <div class="content">
+                <iframe id="generic-iframe" src="" frameborder="0" scrolling="auto" height="490" width="708"></iframe>
+            </div>
+        </div>
+        <div class="border-bottom"></div>
+    </div>
+</div>
+<%-- /*chatbot*/ --%>
+<!-- <script type="application/javascript" charset="UTF-8" src="https://cdn.agentbot.net/core/56512f807294eae4d4093733fc35cd13.js"></script> -->
+<!-- <script type="application/javascript" charset="UTF-8" src="https://cdn.agentbot.net/core/fae07a18e1a39731de9829e00096fa95.js"></script> -->
+<%-- /*fin chatbot*/ --%>
+<footer id="main-footer">
+    <div class="footer-top">
+        <div class="main-content clearfix">
+            <div class="row no-gutters">
+                <div class="col-12 col-md-4 box-footer">
+                    <ul class="menu-footer text-left">
+                        <li class="menu-title"><span>Información</span></li>
+                        <li><a href="<%=Constants.URL_QW%>/tutoriales/" target="_blank">Aprende a jugar</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/contactanos/" target="_blank">Contáctanos</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/como-cobrar-tu-premio/" id="reclama-premio" target="_blank">Reclama tu premio</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/terminos-y-condiciones/" target="_blank">Términos y Condiciones</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/politica-de-datos-personales/" target="_blank">Política de Datos Personales</a></li>
+                        <li><a href="derechos-arco.html" target="_self">Derechos ARCO</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/politica-de-cookies/" target="_blank">Política de Cookies</a></li>
+                        <li><a href="https://franquiciastinkateapuesto.com/" target="_blank">Solicita tu Franquicia</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/como-jugar/reglamentos/" target="_blank">Reglamentos</a></li>
+                        <li><a href="https://www.gob.pe/765-inscribirse-en-el-registro-de-personas-prohibidas-a-acceder-a-juegos-de-casinos-y-maquinas-tragamonedas" target="_blank">Registro de Personas Prohibidas</a></li>
+                        
+                        
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 box-footer">
+                    <ul class="menu-footer text-center">
+                        <li class="menu-title"><span>Juegos</span></li>
+                        <li><a href="/p/juega-tinka.html" target="_top">Tinka</a></li>
+                        <li><a href="/p/juega-kabala.html" target="_top">Kábala</a></li>
+                        <li><a href="/p/juega-ganadiario.html" target="_top">Gana Diario</a></li>
+                        <li><a href="juega-latinka-video-loterias.html" target="_top">Video Loterías</a></li>
+                        <li><a href="/p/juega-kinelo.html" target="_top">Kinelo</a></li>
+                        <li><a href="/p/juega-ganagol.html" target="_top">Ganagol</a></li>
+                        <li><a class="hand" onclick="toTAV2();">Te Apuesto</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 box-footer">
+                    <ul class="menu-footer text-right">
+                        <li class="menu-title"><span>La Tinka S.A.</span></li>
+                        <li><a href="<%=Constants.URL_QW%>/quienes-somos/" target="_blank">¿Quiénes somos?</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/proposito/" target="_blank">Propósito</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/valores/" target="_blank">Valores</a></li>
+                        <li><a href="<%=Constants.URL_QW%>/preguntas-frecuentes/" target="_blank">Preguntas frecuentes</a></li>
+                        <!-- li> <a href="juego-responsable.html" target="_top">Juego responsable </a></li -->
+                        <li> <a href="/p/juega-bien.html" target="_top">Juega Bien </a></li>
+<!--                         <li> <a href="/p/inversionistas.html" target="_top">Inversionistas </a></li> -->
+                        <!--  <li> <a href="/p/responsabilidad-social.html" target="_top">Responsabilidad social </a></li> -->
+                        <li><a href="https://www.bumeran.com.pe/perfiles/empresa_la-tinka-s.a._13083755.html" target="_blank">Trabaja con nosotros</a></li>
+<!--                         <li><a href="https://zonasegura.intralot.com.pe/a/">Agentes</a></li> -->
+                        <!--  <li><a id="footer-term" href="#">Términos y condiciones</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bot">
+        <div class="main-content clearfix">
+            <div class="body-footer-bot">
+                <p> La Tinka S.A. RUC 20506035121.</br>Juegos sólo para mayores de 18 años. Infórmate del reglamento de los juegos 
+                <a href="<%=Constants.URL_QW%>/como-jugar/reglamentos/" target="_blank" style="text-decoration: underline; font-weight: bold;">aquí</a> 
+                o en nuestros puntos de venta.</br>Los juegos y apuestas deportivas a distancia realizados en exceso pueden causar ludopatía.</p>
+            </div>
+            <div class="wrap-logos">
+                <div class="row no-gutters" style="align-items: center !important;">
+                     <div class="col-12 col-md-12">
+                        <div class="left-wrap-logos">
+                        	<img class="single-logo" src="layer-view-image/v2/paid-methods-latinka01.png?v=1"/>
+                            <!-- img class="single-logo" height="35" src="layer-view-image/v2/lotto-card.svg" />
+                            <img class="single-logo" height="14" src="layer-view-image/v2/bcp.svg" />
+                            <img class="single-logo" height="15" src="layer-view-image/v2/pago-efectivo.svg" />
+                            <img class="single-logo" height="14" src="layer-view-image/v2/safety.svg" / -->
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-12" style="margin-top: 50px;">
+                        <div class="left-wrap-logos">
+	                        <img height="97" src="layer-view-image/v2/latinka_iso9001.png" style="margin-right: 12px;">
+	                        <img height="97" src="layer-view-image/v2/latinka_iso37001.png" style="margin-right: 12px;">
+	                        <img height="97" src="layer-view-image/v2/latinka_iqnet.png" style="margin-right: 12px;">
+                        	<a style="margin: auto 0px; padding-right: 25px;" class="single-logo" target="_blank" href="https://www.world-lotteries.org/services/industry-standards/security-and-risk-management/certified-lotteries?q=la+tinka">
+                        		<img height="30" src="layer-view-image/v2/wla-certified-latinka2.png" style="margin: 12px;">
+                        	</a>
+                        	<a style="margin: auto 0px;" class="single-logo" target="_blank" href="https://apuestasdeportivas.mincetur.gob.pe/">
+                        		<img class="single-logo" height="28" width="150" src="layer-view-image/v2/logo_mincetur.png" style="margin: auto 0px;">
+                        	</a>
+							<img class="single-logo" height="40" src="layer-view-image/v2/+18.svg" style="margin: auto 57px;">
+                            <a style="margin: auto 0px;" class="single-logo" target="_blank" href="libro-reclamaciones.html">
+                                <img src="layer-view-image/v2/linkbook.png">
+                            </a>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	
+
+
+    
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js"></script>
+    <script type="text/javascript">
+
+    	$(document).ready(function(){    	
+    		iFrameResize({log:false}, '#myIframe');   
+    		
+    		if ( window.addEventListener ) {
+    		    window.addEventListener('message', handleMessage, false);
+    		} else if ( window.attachEvent ) { // ie8
+    		    window.attachEvent('onmessage', handleMessage);
+    		}
+    		
+    		var ban = localStorage.getItem("ban");
+			if(ban=="OK"){
+				window.location.href = 'inicio.html';
+			}
+    		
+    	});
+
+    	function handleMessage(e) {
+    		if(e.data=='closeLogin'){
+    			$('#loginBox').hide();
+    		}else if(e.data==='closeLightboxCollectPrize'){
+    			$('body').css('overflow-y', 'scroll');
+    			$('body').find('#loading-ilot').remove();
+    			$('body').find('#div-lightbox-collect-prize-ilot').remove();
+    			//location.reload();
+    			location.href="mi-cuenta.html#premios";
+    		}else if(e.data==='closeLightboxRecharge'){
+    			$('body').find('#loading-ilot').remove();
+    			$('body').css('overflow-y', 'scroll');
+    			$('body').find('#div-lightbox-recharge-ilot').remove();
+    			
+    			var ban = localStorage.getItem("ban");
+    			if(ban=="OK"){
+    				location.reload();
+    			}
+    		}else if(e.data==='closeLightboxAutocontrol'){
+    			$('body').find('#loading-ilot').remove();
+    			$('body').css('overflow-y', 'scroll');
+    			$('body').find('#div-lightbox-recharge-ilot').remove();
+    			window.location.href = 'autocontrol.html';
+    		} else if (e.data==='closeLightboxTYCPDP') {
+    			$('body').css('overflow-y', 'scroll');
+    			$('body').find('#loading-ilot').remove();
+    			$('body').find('#div-lightbox-tyc-pdp').remove();
+    		}
+    	}
+    	
+    </script>
+<script type="text/javascript" src="layer-view-script/client/book/validate.js"></script>
+<!-- <script type="text/javascript" src="layer-view-script/common/index.js?v=<%=Constants.index_js%>"></script> -->
+<script type="text/javascript" src="layer-view-script/common/chatbot.js"></script>
+<script>
+var thisBtnAddSaldo = null;
+$(window).on('load',function(){
+
+	$.ajax({
+        type: "POST",
+        url: "load_recharge.html",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+        	$("#clientSale-amount").text(floatFormat(data.billetera1));
+        	$("#billetera2-amount").text(data.billetera2);
+        	$("#billetera3-amount").text(data.billetera3);
+        	$("#clientSale-amount-2").text(floatFormat(data.billetera1));
+        }
+	});
+
+	$('#addSaldo').on('click', function () {
+		thisBtnAddSaldo = this;
+		// Se valida si el usuario tiene documentos pendientes de confirmación, el parámetro que recibe
+		// es una function que se realizará en caso no tenga docs pendientes de confirmacion
+		mainValidatePendingsDocsForAproval('footerAddSaldo');
+	});
+
+	$('#addSaldoW').on('click', function() {
+		datalayerCargarSaldoW();
+	    $('#addSaldo').trigger('click');
+	});
+	
+	$('#lnkInicio').on('click', function() {
+		$(parent.location).attr('href', 'mi-cuenta.html');
+		
+	});
+
+	var cargarSaldo = getUrlParameter('cargarSaldo');
+	if(cargarSaldo!=undefined && cargarSaldo!=null && cargarSaldo=="1"){
+		$( "#addSaldo" ).trigger( "click" );	
+	}
+	/*
+	
+	$('#clientSale-amount-2').text(floatFormat($('#saldoUser').val()));
+	$('#billetera3-amount').text(floatFormat($('#billetera3Cant').val()));*/
+});
+
+
+$('#openModal').on('click',function(e) {
+	e.preventDefault();
+	datalayerLogin(this);  
+	//$('#loginBox').toggle();
+	getFastTokenAndRedirect();
+});
+$('#buttonRegistrar').on('click',function(e) {
+	datalayerRegistro(this);
+});
+$('.dropdown-toggle').on('click',function(e){
+	e.stopPropagation();
+	let $this = $(this);
+	if ($this.hasClass('opacity')) {
+		$this.removeClass('opacity');
+		$this.closest('li').find('.dropdown-menu').hide();
+	} else {
+		$('.dropdown-menu').hide();
+		$this.closest('li').find('.dropdown-menu').show();
+		$('.dropdown-toggle').removeClass('opacity');
+		$this.addClass('opacity');
+	}
+});
+$('body').on('click',function(){
+	$('.dropdown-toggle').removeClass('opacity');
+	$('.dropdown-menu').hide();
+});
+
+function closeLightboxRechargeIlotF(){
+	$('body').css('overflow-y', 'scroll');
+	$('body').find('#loading-ilot').remove();
+	$('body').find('#div-lightbox-recharge-ilot').remove();
+	
+	$.ajax({
+        type: "POST",
+        url: "load_recharge.html",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+        	$("#clientSale-amount").text(floatFormat(data.billetera1));
+        	$("#billetera2-amount").text(data.billetera2);
+        	$("#billetera3-amount").text(data.billetera3);
+        	$("#clientSale-amount-2").text(floatFormat(data.billetera1));
+        }
+	});
+	
+	if (typeof refreshBalance == 'function'){//valida que exista la funcion, es para raspaYa
+		refreshBalance();	
+	}
+
+	if (typeof activaTimer == 'function'){//valida que exista la funcion, es para Casino
+		activaTimer();	
+	}
+	
+}
+function retirar_loading(){
+	setTimeout(function(){
+		$('body').find('#loading-ilot').remove();
+		$('#content-tab-item_4').find('#loading-ilot').remove();
+	},500);
+}
+
+function getFastTokenAndRedirect() {
+	var display = window.location.pathname;
+	$.ajax({
+        type: 'post',
+        url: 'get-fast-token.html',
+        dataType: 'json',
+        data: 'display='+display
+	}).done((res) => {
+		if(res.message=="OK") {
+			console.log(res);
+			window.location.assign(res.redirect+"&token="+res.token);
+			return res;
+		}
+    });
+}
+
+var $input = $('.fixeds-input input');
+$input.on('blur',function(){
+	let $ths = $(this);
+	if (!$ths.val()){
+		$ths.removeClass('active');
+	} else {
+		$ths.addClass('active');
+	}
+});
+for (let a=0;a<$input.length;a++){
+	if (!$input.eq(a).val()){
+		$input.eq(a).removeClass('valid');
+	} else {
+		$input.eq(a).addClass('valid');
+	}
+}
+
+$('#plays-1').on('mouseenter', function(){
+	$('#loginBox').hide();
+});
+$('#plays-2').on('mouseenter', function(){
+	$('#loginBox').hide();
+});
+$('body').on('click',function (e) {
+    if ($(e.target).is('#openModal')) {
+        // $('#loginBox').show();
+    } else {
+    	// $('#loginBox').hide();
+    }
+});
+$('#loginBox').on('click',function (e) {
+    e.stopPropagation();
+});
+
+
+$("#frmLoginClientIndex").validate({
+	rules: {
+		"user-client": "required",
+		"password-client": "required"
+	},
+	messages: {
+		"user-client": "DEBES INGRESAR TU USUARIO",
+		"password-client": "DEBES INGRESAR TU CONTRASEÑA"
+	},
+	onfocusout: function(element) {
+        this.element(element);  
+    },
+	errorElement : 'p',
+    errorLabelContainer: '.errorTxt'
+});
+
+$('.drop--u .dropdown-header').on('click',function(event){
+	  event.stopPropagation();
+	  event.preventDefault();
+	  var jQueryThis = $(this);
+	  var dropaa = jQueryThis.closest('.drop--u');
+	  if (dropaa.hasClass('active')){
+		  dropaa.removeClass('active');
+	  } else {
+		  $('.drop--u').removeClass('active');
+		  dropaa.addClass('active');
+		  jQueryThis.closest('.dropdown-menu').show();
+	  }
+	});
+$('aside .boxes-banner .box-banner a').on('click',function(){
+	   $('#loginBox').hide();
+	});
+	
+$("#password-client-header").bind("change keyup",function(){
+	if( $("#password-client-header").val().length==0 ){
+		$("#password-client-header-label").removeClass("fixeds-input-manual");
+	}else if( $("#password-client-header").val().length>0 ){
+		$("#password-client-header-label").addClass("fixeds-input-manual");
+		$("#password-client-header").removeClass("error");
+		$("#password-client-header").addClass("valid");
+		$("#password-client-header").addClass("active");
+		$("#errorTxt-onlypass").css("display","none");
+	}
+});
+
+function footerAddSaldo() {
+	validatePerfil("#"+$(thisBtnAddSaldo).prop('id'));
+}
+
+window.addEventListener("message", function(event) {
+    if (event.data === "footerAddSaldo") {
+    	footerAddSaldo(); 
+    } else if (event.data === "footerRetirarLoading") {
+    	retirar_loading();
+	}
+});
+
+</script>

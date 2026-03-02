@@ -1,0 +1,62 @@
+package pe.com.intralot.loto.layer.model.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.NamedNativeQuery;
+
+@Entity
+@NamedNativeQuery(
+		name = "TRANSACTIONCULQI_NOTIFYTRANSACTION",
+		query = "{ call LOTOCARD.TRANSACTIONCULQI.NOTIFYTRANSACTION(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }",
+		callable = true,
+		resultClass = CulqiProcedureNotifyTransaction.class
+)
+public class CulqiProcedureNotifyTransaction {
+	
+	@Id	
+	@Column(name="w_balance_item")
+	private Integer balanceItem;
+	
+	@Column(name="w_new_amount")
+	private Double newAmount;
+	
+	@Column(name="w_client_id")
+	private Integer clientId;
+	
+	@Column(name="w_message")
+	private String message;
+
+	public Integer getBalanceItem() {
+		return balanceItem;
+	}
+
+	public void setBalanceItem(Integer balanceItem) {
+		this.balanceItem = balanceItem;
+	}
+
+	public Integer getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Double getNewAmount() {
+		return newAmount;
+	}
+
+	public void setNewAmount(Double newAmount) {
+		this.newAmount = newAmount;
+	}
+}

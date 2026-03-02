@@ -1,0 +1,237 @@
+/*
+../../layer-view-image/client/
+*/
+* { outline: 0 }
+body { background: #ffffff!important }
+fieldset { border: 0; margin: 0; padding: 0; }
+.group:after { content: ''; display: table; clear: both }
+.hidden { display: none }
+.prominent { color: #333333; font-weight: bold }
+:-moz-placeholder { color: #999999 }
+::-moz-placeholder { color: #999999 }
+:-ms-input-placeholder { color: #999999 }
+::-webkit-input-placeholder { color: #999999 }
+#charge-account {
+    font-size: 11px;
+    height: 490px;
+    padding: 10px;
+    position: relative;
+    width: 710px
+}
+#charge-account a { color: #5f5e5e }
+#charge-account a:active { color: #fa9930 }
+#charge-account .tab-title {
+    background-color: #ffffff;
+    border-radius: 7px 7px 0 0;
+    color: #fa9930;
+    font-size: 16px;
+    margin: 0;
+    text-transform: uppercase
+}
+#charge-msg .tab-title {
+    background-color: #ffffff;
+    border-radius: 7px 7px 0 0;
+    color: #fa9930;
+    font-size: 16px;
+    margin: 0;
+    text-transform: uppercase
+}
+#charge { width: 320px }
+#charge:after {
+    color: #818181;
+    content: 'Completa todos los campos';
+    font-size: 12px;
+    font-weight: normal;
+    left: 200px;
+    position: absolute;
+    text-transform: none;
+    top: 12px
+}
+#charge-account .content {
+    background-color: #ffffff;
+    border-radius: 0 0 7px 7px;
+    padding: 10px 0;
+    position: relative
+}
+#charge-account .inner-content { margin: 0 auto; width: 710px; position: relative }
+.inner-content .security-info,
+.inner-content .responsibility-info,
+.inner-content .last-info {
+    color: #818181;
+    font-size: 10px;
+    margin: 10px 0 0 0;
+    text-align: justify
+}
+#frm-charge-account .placeholder { color: #999999 }
+#frm-charge-account table { width: 100% }
+#frm-charge-account table caption { padding: 0 0 5px 0; text-align: left }
+#frm-charge-account table td { font-size: 0; padding: 0; white-space-collapse: discard }
+#frm-charge-account table .clabel { width: 94px }
+#frm-charge-account .detail-data-fields {
+    background: whitesmoke;
+    background: -moz-linear-gradient(top, #fbfbfb 0%, #ebeaea 100%);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fbfbfb), to(#ebeaea));
+    background: -webkit-linear-gradient(top, #fbfbfb 20%, #ebeaea 100%);
+    background: -o-linear-gradient(top, #fbfbfb 0%, #ebeaea 100%);
+    background: -ms-linear-gradient(top, #fbfbfb 0%, #ebeaea 100%);
+    border-radius: 10px;
+    border: 1px solid #dadada;
+    padding: 10px 15px
+}
+#frm-charge-account .personal-data-fields { width: 360px }
+#frm-charge-account .personal-data-fields .cinputs { width: 245px }
+#frm-charge-account .personal-data-fields {
+    display: inline-block;
+    vertical-align: top
+}
+#frm-charge-account .detail-data-fields label,
+#frm-charge-account .detail-data-fields span {
+    color: #0481bb;
+    line-height: 16px !important
+}
+#frm-charge-account .detail-data-fields label {
+    font-weight: bold
+}
+#frm-charge-account .personal-data-fields label,
+#frm-charge-account .other-fields label {
+    color: #5f5e5e;
+    font-weight: bold;
+    vertical-align: middle
+}
+#frm-charge-account .detail-data-fields label,
+#frm-charge-account .personal-data-fields label,
+#frm-charge-account .detail-data-fields span,
+#frm-charge-account .personal-data-fields span {
+    font-size: 12px;
+    line-height: 11px
+}
+#frm-charge-account .other-fields label { margin: 0 0 0 10px }
+#frm-charge-account .question-mark {
+    color: #666666;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 4px 0 0
+}
+#frm-charge-account .other-fields {
+    margin: 15px 0 0
+}
+#frm-charge-account .additional-info {
+    display: inline-block;
+    padding: 0 0 0 10px;
+    width: 330px
+}
+
+.custom-select {
+    cursor: default;
+    font-size: 12px;
+    margin: 2px 2% 2px 0;
+    padding-right: 20px !important;
+    position: relative
+}
+.custom-select:after {
+    background: transparent;
+    border-color: #000000 transparent transparent transparent;
+    border-style: solid;
+    border-width: 4px;
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 12px;
+    right: 6px;
+    width: 0
+}
+.custom-select:focus { border: 1px solid red }
+.text-in,
+.custom-select {
+    background-color: #f4f9ff;
+    border: 1px solid #b9dbff;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-radius: 5px;
+    display: block;
+    float: left;
+    line-height: 16px;
+    min-height: 16px;
+    min-width: 30px;
+    padding: 6px 5px;
+    vertical-align: middle;
+    transition: all .3s ease
+}
+.text-in:hover,
+.custom-select:hover {
+    border: 1px solid #abcff4
+}
+.text-in:focus,
+.custom-select:focus {
+    border: 1px solid #89d4ff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2) inset, 0 0 5px 0 #ffffff
+}
+.option-list {
+    background-color: #f4f9ff;
+    border: 1px solid #b9dbff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 1px 2px 5px 0 #c4c4c4;
+    display: none;
+    font-size: 12px;
+    left: 0;
+    list-style: none outside none;
+    margin: 0;
+    max-height: 200px;
+    max-width: 230px;
+    min-width: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0;
+    position: absolute;
+    top: 28px;
+    z-index: 10
+}
+.option-list.open { display: block }
+.option-list .option-item { cursor: default; padding: 1px 20px 1px 5px; white-space: nowrap }
+.option-list .option-item:hover { background-color: #b9dbff }
+.option-list .option-item.on { background-color: #a8d7ff }
+#frm-charge-account .max { width: 99.5% }
+#frm-charge-account .small { margin: 2px 2% 2px 0; width: 90px }
+#frm-charge-account .medium { width: 150px }
+#frm-charge-account .half { width: 49% }
+#frm-charge-account .cinputs .half:first-child { margin-right: 2% !important; }
+#frm-charge-account input { font-size: 12px; margin: 2px 0; vertical-align: middle }
+#frm-charge-account .select { display: none; font-size: 12px }
+#frm-charge-account .value-in {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+#switch-document-type { width: 90px }
+#switch-document-type .value-in { width: 63px }
+#switch-region { margin-right: 0 !important }
+.regiter-info, .mandatory {
+    color: #818181;
+    font-size: 11px;
+    text-align: justify
+}
+.mandatory:before { content: '*'; margin: 0 2px 0 4px }
+#btn-register {
+    background-color: #ffffff;
+    background-image: url(../../layer-view-image/common/any-button.png);
+    background-position: 0 1px;
+    background-repeat: no-repeat;
+    border: 1px solid #ffffff;
+    border-radius: 8px 8px 8px 8px;
+    color: #ffffff;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 32px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    text-transform: uppercase;
+    width: 95px
+}
+#btn-register:hover { background-position: 0 -43px }
+#btn-register:active { top: 1px }
+
+.ui-invalid-output { box-shadow: 0 0 1.5px 1px #ff5656 }
+/* #ee8c0a */

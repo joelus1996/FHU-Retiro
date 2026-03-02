@@ -1,0 +1,474 @@
+/**<p> NAME:    ganadiario.css         
+ * </p>
+ * <p> VERSION LOG
+ * <pre>
+ * VER   BY					DATE        COMMENT
+ * 001   oscar.candela	08/03/2010  First comment
+ * </pre>
+ * </p>
+ */
+@CHARSET "ISO-8859-1";
+*{
+	margin:0;
+	padding:0;
+	outline:0;
+}
+body {
+	line-height: 1;
+	background:#D8DF20 url(../../img/home/ganadiario/bg_ganadiario.jpg) repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+}
+:focus {
+     outline: 0;
+}
+ol, ul {
+     list-style: none;
+}
+table {
+     border-collapse: collapse;
+     border-spacing: 0;
+}
+input, textarea {
+     margin: 0;
+     padding: 0;
+}
+hr {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     color: #000;
+     background-color: #000;
+     height: 1px;
+}
+#footer a {
+	text-decoration:none;	
+	color:#0092D7;	
+    line-height: 15px;
+    text-align: left;
+    width: 100%;
+}
+a:hover {
+	text-decoration:underline;
+}
+#header {
+	margin:0 auto;
+	width:100%;
+	min-height:60px;
+	background:#FEE801;
+}
+#header span {
+	background:url(../../img/home/ganadiario/txt_logo_ganadiario.jpg) no-repeat;
+	width:320px;
+	height:40px;
+	float:left;
+	margin:18px 0 0 160px;
+	color:#017338;
+}
+#logo a {
+	background:url(../../img/home/ganadiario/logo_ganadiario_H.png) no-repeat;
+	width:104px;
+	height:73px;
+	position:absolute;
+	left:12px;
+	top:2px	
+}
+#cont_header {
+	margin:0 auto;
+	width:740px;
+	position:relative;
+}
+#login-share {
+	background:url(../../img/home/bg_login-share.png) no-repeat;
+	width:259px;
+	height:38px;
+	float:right;
+	text-transform:uppercase;
+	font-size:10px;
+}
+#login-links{
+	width: 238px;/*165px;*/
+	float: right;
+	color: #0092D7;
+	font-size: 11px;
+	padding: 7px 22px 0 0;
+}
+#login-links a{
+	color: #0092D7;
+	text-decoration:underline;
+}
+#login {
+	width:86px;
+	float:left;
+	text-align:center;
+	padding:14px 0 0;
+}
+#login .aaccount {
+	color:#9D9EA0;
+	font-weight:bold;
+}
+#login .aaccount:hover {
+	color:#0092D7;
+}
+#register {
+	width:92px;
+	padding:14px 0 0;
+	float:left;
+	text-align:center;
+}
+#register .aregister {
+	color:#9D9EA0;
+	font-weight:bold;	
+}
+#register .aregister:hover {
+	color:#0092D7;
+}
+#uname {
+	width:92px;
+	padding:10px 0 0;
+	float:left;
+	text-align:center;
+}
+#uname .auser {
+	color:#000000;
+}
+#uname .auser:hover {
+	color:#0092D7;
+}
+#share {
+	width:80px;
+	float:left;
+}
+#share .mail {
+	width:28px;
+	height:28px;
+	display:block;
+	background:url(../../img/home/ico_mail.jpg) no-repeat;
+	float:left;
+	margin:4px 0 0 10px;
+}
+#share .facebook {
+	width:28px;
+	height:28px;
+	display:block;
+	background:url(../../img/home/ico_face.jpg) no-repeat;
+	float:left;
+	margin:4px 0 0 5px;
+}
+#collate .cotejar {
+    position:fixed;	
+	width:23px;
+	height:110px;
+	background:url(../../img/home/ganadiario/btn_coteja_ganadiario.png) no-repeat;
+	top:335px;
+	left:50%;
+	margin: 0 0 0 -392px;
+}
+/*#menu {
+	width:700px;
+	height: 23px;
+	margin: 21px 0 0 0;
+}
+#menu ul {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	list-style: none;
+}
+#menu li {
+	float:left;
+	position:relative;
+	margin: 0;
+}
+#menu .tinka:link, .tinka:visited {
+	display:block;
+	width:79px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat 0 -143px;
+}
+#menu .tinka:hover, .tinka:active {
+	background-position: 0 -167px;
+}
+#menu .teapuesto:link, .teapuesto:visited {
+	display:block;
+	width:65px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -79px -143px;
+}
+#menu .teapuesto:hover, .teapuesto:active {
+	background-position: -79px -167px;
+}
+#menu .ganagol:link, .ganagol:visited{
+	display:block;
+	width:56px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -144px -143px;
+}
+#menu .ganagol:hover, .ganagol:active {
+	background-position: -144px -167px;
+}
+#menu .ganadiario:link, .ganadiario:visited, .ganadiario:hover, .ganadiario:active {
+	display:block;
+	width:70px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -200px -143px;
+}
+#menu .kabala:link, .kabala:visited {
+	display:block;
+	width:48px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -270px -143px;
+}
+#menu .kabala:hover, .kabala:active {
+	background-position: -270px -167px;
+}
+#menu .super3:link, .super3:visited {
+	display:block;
+	width:49px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -318px -143px;
+}
+#menu .super3:hover, .super3:active {
+	background-position: -318px -167px;
+}
+#menu .elreventon:link, .elreventon:visited{
+	display:block;
+	width:70px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -367px -143px;
+}
+#menu .elreventon:hover, .elreventon:active {
+	background-position: -367px -167px;
+}
+#menu .rapitinkas:link, .rapitinkas:visited {
+	display:block;
+	width:64px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -437px -143px;
+}
+#menu .rapitinkas:hover, .rapitinkas:active {
+	background-position: -437px -167px;
+}
+#menu .clicygana:link, .clicygana:visited {
+	display:block;
+	width:108px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -501px -143px;
+}
+#menu .clicygana:hover, .clicygana:active {
+	background-position: -501px -167px;
+}
+#menu .fechaza:link, .fechaza:visited {
+	display:block;
+	width:91px;
+	height:24px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background:url(../../img/home/menus.jpg) no-repeat -609px -143px;
+}
+#menu .fechaza:hover, .fechaza:active {
+	background-position: -609px -167px;
+}
+#menu .active span {
+	position:absolute;
+	width:18px; 
+	height:10px;
+	background:url(../../img/home/arrow_active.gif) no-repeat -54px 0;
+	bottom:-10px;
+	left:205px;
+}*/
+.img1 {
+
+}
+.img2 {
+	float:left;
+	width:170px;
+	height:323px;
+	background:url(../../img/home/ganadiario/num_ganadiario_1.png) no-repeat;
+	position:absolute;
+	top:60px;
+	left:-169px;
+}
+.img3 {
+	float:left;
+	width:154px;
+	height:245px;
+	background:url(../../img/home/ganadiario/num_ganadiario_2.png) no-repeat;
+	position:absolute;
+	top:360px;
+	right:-155px;
+}
+#vessel {
+	width:740px;
+	margin:0 auto;
+	background:url(../../img/home/bg_container.jpg) repeat-y  #fff;
+	overflow:hidden;
+}
+#shadow {
+	background: url(../../img/home/ganadiario/bg_header_ganadiario.jpg) repeat-x;
+	width:100%;
+	min-height:4px;
+}
+#content {
+	background: url(../../img/home/bg_content.jpg) repeat-x;
+	float:left;
+	width:728px;
+	margin:0 6px;
+}
+#centerside {
+	float:left;
+	width:700px;
+	margin:0 0 0 14px;
+	position:relative;
+}
+#centerside iframe {
+	display: block;
+	width: 700px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+#footer {
+	color:#0092D7;
+	font-size:10px;
+	text-transform:uppercase;
+	font-weight:bold;
+	float:left;
+	margin:10px 0 25px 20px;
+}
+.links {
+	background:#FEE801;
+	float:left;
+	height:160px;
+	padding:8px 0 8px 8px;
+}
+.ancho1 {
+	width:130px;
+	margin-right:5px;
+	background:url(../../img/home/ganadiario/left_border_ganadiario.jpg) no-repeat bottom left #FEE801;
+}
+.ancho1 ul {
+	margin: 2px;
+	padding: 0;
+}
+.ancho1 li {
+	width:120px;
+}
+.ancho2 {
+	width:240px;
+	margin-right:5px;
+}
+.ancho2 div {	
+	width:58px;
+}
+.ancho2 p {	
+	margin: 5px 0;
+}
+.ancho2 ul.col2 {
+	list-style-type: disc;
+    padding: 0 2px 0 15px; 
+	width: 100%; 		
+}
+.ancho2 ul.col2 li {		
+	float: left; 	
+	width: 50%; 	
+}
+.ancho3 {
+	width:120px;
+	margin-right:5px;
+}
+.ancho3 div{
+	margin: 5px 0;
+}
+.ancho4 {
+	width:163px;
+	background:url(../../img/home/ganadiario/right_border_ganadiario.jpg) no-repeat bottom right #FEE801;
+}
+.ancho4 p {	
+	margin: 5px 0;
+}
+.ancho4 div {
+	float:left;
+	width:110px;
+}
+.ancho4 ul {
+	list-style-type: disc;
+    padding: 0 2px 0 15px; 
+	width: 100%; 		
+}
+.ancho4 li {
+	width:133px;
+}
+.youtube {
+	background: url(../../img/home/logo_youtube.png) no-repeat;
+	width:63px;
+	height:31px;
+	display:block; 
+	margin:13px 0 0 18px;
+}
+.flickr {
+	background:url(../../img/home/logo_flickr.png) no-repeat;
+	width:63px;
+	height:26px;
+	display:block;
+	margin:10px 0 0 18px;
+}
+.logo_footer_gptw {
+	float:left;
+	width:114px;
+	height:50px;
+	margin:0;
+	background:url(../../img/home/logo-gptw2011.png) no-repeat;
+}
+.logo_footer_gptw_latam {
+	float:left;
+	width:126px;
+	height:50px;
+	margin:0 0 0 2px;
+	background:url(../../img/home/logo-gptw-latam2012.png) no-repeat;
+}
+.terminos {
+	float:left;
+	margin:20px 0 0 8px;/*250px;*/
+	color:#231F20;
+	font-size:9px;
+}
+#footer .terminos a {
+	color:#0092D7;
+	width:auto;
+	margin-right:12px;
+}
+.logo_footer {
+	float:right;
+	width:113px;
+	height:49px;
+	background:url(../../img/home/logo_2.jpg) no-repeat;
+	margin-right:35px;
+}

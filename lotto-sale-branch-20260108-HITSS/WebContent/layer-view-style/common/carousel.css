@@ -1,0 +1,12 @@
+.list_carousel {padding:0 29px;position:absolute;width: 832px}
+.list_carousel ul {list-style:none;display:block;margin:0;padding:0}
+.list_carousel ul li {width:200px;height:128px;display:block;float:left;background:#ffffff;margin:0;padding:12px 4px 0 4px;border:0;}
+.list_carousel.responsive {width:auto;margin-left:0}
+.clearfix {float:none;clear:both}
+.prev {float:left;background:url(../../layer-view-image/common/left_arrow.jpg) no-repeat center}
+.next {float:right;background:url(../../layer-view-image/common/right_arrow.jpg) no-repeat center}
+.prev, .next {height:98px;margin-top:-108px;width:15px}
+.horizontal-back,.horizontal-forward {cursor:pointer;height:142px;position:absolute;width:29px;z-index:1}
+.horizontal-back {background:url(../../layer-view-image/common/left_arrow.jpg) no-repeat center transparent}
+.horizontal-forward { background:url(../../layer-view-image/common/right_arrow.jpg) no-repeat scroll center transparent;right:0}
+#carousel li {z-index:1}

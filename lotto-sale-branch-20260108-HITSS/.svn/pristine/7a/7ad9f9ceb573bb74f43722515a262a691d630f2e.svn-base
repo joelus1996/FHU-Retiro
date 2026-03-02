@@ -1,0 +1,29 @@
+/* Only for old IE 8 */
+#nav-bar .indicator .half span{filter:dropshadow(color=#333333, offx=0, offy=1)}
+#menu .tab a{background-color:#f2f2f2;background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-position:-2px -2px;background-repeat:no-repeat;filter:dropshadow(color=#ffffff, offx=0, offy=1)}
+#menu .tab.current a{background-color:#f2f2f2;background-position:-2px -30px;filter:dropshadow(color=#000000, offx=0, offy=1)}
+.cell{*display:inline;zoom:1}
+#daily-programs .game.on,
+#exact-maker .game.on,
+#special-bets .game.on{background-color:transparent;background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-repeat:no-repeat}
+#daily-programs .game.on{background-position:-219px -42px}
+#exact-maker .game.on{background-position:-219px -22px}
+#special-bets .game.on{background-position:-219px -2px;}
+#game-list .head-list.fix{border-color:#808080;border-style:solid;border-width:0 0 4px 0}
+#game-list .head-list .header-events.fix,
+#game-list .body-list .content-events.fix{border-color:#8f8f8f;border-style:solid;border-width:0 2px 0 0}
+.icon{*display:inline;zoom:1}
+#special-bets .sports .btn-sport.on{background-color:transparent;background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-position:-305px -4px;background-repeat:no-repeat;border:2px solid transparent}
+#special-list .special-item{border:1px solid transparent}
+#special-list .tab{background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-repeat:no-repeat;background-position:-1px -63px;height:26px;line-height:26px}
+#special-list .tab.on{background-color:transparent;background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-repeat:no-repeat;background-position:-1px -90px}
+.sub-panel .group-button .btn-multiplier,
+.sub-panel .group-button .btn-combined{border:1px solid transparent;background-color:transparent;background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-repeat:no-repeat;background-position:-157px -3px;width:27px}
+.sub-panel .group-button .btn-multiplier.disabled,
+.sub-panel .group-button .btn-combined.disabled{filter:alpha(opacity=30)}
+.sub-panel .group-button .btn-multiplier.on,
+.sub-panel .group-button .btn-combined.on{background-color:transparent;background-position:-158px -26px;border:1px solid transparent}
+#back-layer{filter:alpha(opacity=40)}
+.arrow-button{background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-position:-1px -120px;background-repeat:no-repeat;border:1px solid transparent}
+.arrow-button.on{background-color:transparent;background-image:url(../../../layer-view-image/game/teapuesto/all-layout.png);background-position:-172px -120px;border:1px solid transparent}
+.arrow-button.on:after{filter:alpha(opacity=100)}

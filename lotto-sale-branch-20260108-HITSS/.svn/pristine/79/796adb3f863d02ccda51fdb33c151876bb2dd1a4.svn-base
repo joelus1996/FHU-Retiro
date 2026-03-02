@@ -1,0 +1,111 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?>
+<data>
+      <tk_status>ACT</tk_status>
+      <tk_message>OK</tk_message>
+      <tk_pozo>4'000,000</tk_pozo>
+      <tk_millones>4.0</tk_millones>
+      <tk_sorteo_pozo>1996</tk_sorteo_pozo>
+      <tk_fecha_cierre>14/06/2023</tk_fecha_cierre>
+      <tk_hora_cierre>08:50 pm</tk_hora_cierre>
+      <tk_sorteo_apertura></tk_sorteo_apertura>
+      <tk_fecha_apertura></tk_fecha_apertura>
+      <tk_hora_apertura></tk_hora_apertura>
+      <tk_mas_salieron>35 21 12 1 44 43</tk_mas_salieron>
+      <tk_menos_salieron>47 46 48 23 39 20</tk_menos_salieron>
+      <tk_tipo_precio>NOR</tk_tipo_precio>
+      <tk_mensaje>Costo por jugada: S/.5</tk_mensaje>
+      <tk_precio>5</tk_precio>
+      <tk_sorteo>1989</tk_sorteo>
+      <tk_fecha>09/06/2023</tk_fecha>
+      <tk_bolos>1 2 3 4 47 48</tk_bolos>
+      <tk_yapa>07</tk_yapa>
+      <tk_siosi></tk_siosi>
+      <tk_total_premios>764'914,886</tk_total_premios>
+      <kb_status>ACT</kb_status>
+      <kb_message>OK</kb_message>
+      <kb_pozo></kb_pozo>
+      <kb_sorteo_pozo>2293</kb_sorteo_pozo>
+      <kb_fecha_cierre>2023-06-13 00:00:00.0</kb_fecha_cierre>
+      <kb_hora_cierre>08:50 pm</kb_hora_cierre>
+      <kb_sorteo_apertura></kb_sorteo_apertura>
+      <kb_fecha_apertura></kb_fecha_apertura>
+      <kb_hora_apertura></kb_hora_apertura>
+      <kb_mas_salieron>30 38 28 16 34 15</kb_mas_salieron>
+      <kb_menos_salieron>35 9 12 37 25 6</kb_menos_salieron>
+      <kb_tipo_precio>NOR</kb_tipo_precio>
+      <kb_mensaje>Costo por jugada: S/. 2.00</kb_mensaje>
+      <kb_precio>2</kb_precio>
+      <kb_sorteo_1>2217</kb_sorteo_1>
+      <kb_fecha_1>17/12/2022</kb_fecha_1>
+      <kb_bolos_1>15 32 3 24 19 11</kb_bolos_1>
+      <kb_siosi_1></kb_siosi_1>
+      <kb_chauchamba_1>11 20 12 33 36 13</kb_chauchamba_1>
+      <kb_siosichauchamba_1></kb_siosichauchamba_1>
+      <kb_sorteo_2>2218</kb_sorteo_2>
+      <kb_fecha_2>20/12/2022</kb_fecha_2>
+      <kb_bolos_2>35 38 30 36 23 34</kb_bolos_2>
+      <kb_siosi_2></kb_siosi_2>
+      <kb_chauchamba_2>31 30 9 8 14 13</kb_chauchamba_2>
+      <kb_siosichauchamba_2></kb_siosichauchamba_2>
+      <kb_sorteo_3>2219</kb_sorteo_3>
+      <kb_fecha_3>22/12/2022</kb_fecha_3>
+      <kb_bolos_3>28 3 30 23 20 1</kb_bolos_3>
+      <kb_siosi_3></kb_siosi_3>
+      <kb_chauchamba_3>11 7 28 15 20 37</kb_chauchamba_3>
+      <kb_siosichauchamba_3></kb_siosichauchamba_3>
+      <kb_total_premios>148'613,905</kb_total_premios>
+      <gg_status>LST</gg_status>
+      <gg_message>OK * ORA-01403: no data found</gg_message>
+      <gg_pozo>POZO ACUMULADO POR DEFINIR</gg_pozo>
+      <gg_sorteo_pozo></gg_sorteo_pozo>
+      <gg_fecha_cierre></gg_fecha_cierre>
+      <gg_hora_cierre></gg_hora_cierre>
+      <gg_sorteo_apertura></gg_sorteo_apertura>
+      <gg_fecha_apertura></gg_fecha_apertura>
+      <gg_hora_apertura>0:20 pm</gg_hora_apertura>
+      <gg_notas></gg_notas>
+      <gg_tipo_precio>ALG</gg_tipo_precio>
+      <gg_mensaje>Compra 3 jugadas y paga solo 2</gg_mensaje>
+      <gg_precio>2</gg_precio>
+      <gg_programa>1002</gg_programa>
+      <gg_fecha>17/05/2023</gg_fecha>
+      <gg_resultados>E E V L L L V L L E V V E L</gg_resultados>
+      <gg_resultado_g200>26</gg_resultado_g200>
+      <gg_total_premios>141'868,492</gg_total_premios>
+      <gg_last_pozo>760,839</gg_last_pozo>
+      <gd_status>ACT</gd_status>
+      <gd_message>OK</gd_message>
+      <gd_premio>100,000</gd_premio>
+      <gd_sorteo_premio>3055</gd_sorteo_premio>
+      <gd_fecha_cierre>10/03/2022</gd_fecha_cierre>
+      <gd_hora_cierre>08:05 pm</gd_hora_cierre>
+      <gd_sorteo_apertura></gd_sorteo_apertura>
+      <gd_fecha_apertura></gd_fecha_apertura>
+      <gd_hora_apertura></gd_hora_apertura>
+      <gd_mas_salieron>12 13 24 7 26</gd_mas_salieron>
+      <gd_menos_salieron>34 8 17 16 9</gd_menos_salieron>
+      <gd_tipo_precio>ALG</gd_tipo_precio>
+      <gd_mensaje>Compra 7 y paga solo S/ 5</gd_mensaje>
+      <gd_precio>1</gd_precio>
+      <gd_sorteo_1>3049</gd_sorteo_1>
+      <gd_fecha_1>04/03/2022</gd_fecha_1>
+      <gd_resultados_1>32 4 9 28 20</gd_resultados_1>
+      <gd_sorteo_2>3050</gd_sorteo_2>
+      <gd_fecha_2>05/03/2022</gd_fecha_2>
+      <gd_resultados_2>19 12 35 13 33</gd_resultados_2>
+      <gd_sorteo_3>3051</gd_sorteo_3>
+      <gd_fecha_3>06/03/2022</gd_fecha_3>
+      <gd_resultados_3>4 32 10 11 31</gd_resultados_3>
+      <gd_sorteo_4>3052</gd_sorteo_4>
+      <gd_fecha_4>07/03/2022</gd_fecha_4>
+      <gd_resultados_4>26 5 28 24 10</gd_resultados_4>
+      <gd_sorteo_5>3053</gd_sorteo_5>
+      <gd_fecha_5>08/03/2022</gd_fecha_5>
+      <gd_resultados_5>6 10 2 5 20</gd_resultados_5>
+      <gd_sorteo_6>3054</gd_sorteo_6>
+      <gd_fecha_6>09/03/2022</gd_fecha_6>
+      <gd_resultados_6>20 23 30 12 22</gd_resultados_6>
+      <gd_total_premios>92'932,554</gd_total_premios>
+      <gd_last_premio>100,000</gd_last_premio>
+
+</data>

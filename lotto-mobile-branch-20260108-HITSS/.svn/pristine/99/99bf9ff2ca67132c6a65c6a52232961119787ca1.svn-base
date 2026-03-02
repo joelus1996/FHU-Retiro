@@ -1,0 +1,48 @@
+/**<p> NAME:    body.css         
+ * </p>
+ * <p> VERSION LOG
+ * <pre>
+ * VER   BY					DATE        COMMENT
+ * 001   cristian.cortez	08/03/2010  First comment
+ * </pre>
+ * </p>
+ */
+@CHARSET "ISO-8859-1";
+body {
+	line-height: 2;
+}
+
+h3 {
+	padding: 0;
+	border: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: left;
+}
+
+label {
+	padding: 0;
+	margin: 3px 5px 10px 15px;
+	border: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	color: #5E0720;
+}
+
+.form-contact-button-limpiar:link, .form-contact-button-limpiar:visited, .form-contact-button-limpiar:hover, .form-contact-button-limpiar:active {
+	float: left;
+	width: 63px;
+	height: 22px;
+	padding: 2px 0 0 0;
+	margin: 5px 0 0 9px;
+	border: 0;
+	background: url(../../../layer-view-image/client/book/bg-button-form-reset.gif) no-repeat center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #3c3c3c;
+	text-align: center;
+	text-decoration: none;
+}
+

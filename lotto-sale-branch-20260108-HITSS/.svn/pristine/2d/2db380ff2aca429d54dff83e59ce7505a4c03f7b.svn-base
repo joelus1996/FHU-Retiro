@@ -1,0 +1,15 @@
+#dhtmlwindowoverlay{position:fixed;top:0;left:0;right:0;background:#000000;z-index:2147483000 !important;opacity:0.70;filter:alpha(opacity=70);bottom:0}
+#dhtmlwindowholder{z-index:100}
+.dhtmlwindow{position:absolute;border-top:5px solid #07663a;border-bottom:1px solid #07663a;border-right:5px solid #07663a;border-left:5px solid #07663a;visibility:hidden}
+.drag-handle{padding:2px 0;background:#07663a;cursor:move;width:auto;height:20px;font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;color:#ffffff;text-align:center}
+.drag-controls{position:absolute;right:0;top:0}
+.drag-controls a#lnkcerrar{float:left;width:58px;height:20px;text-decoration:none;background:#07663a url(../../layer-view-image/common/btn-cerrar-off.png?v=2) top left no-repeat}
+.drag-controls a#lnkcerrar:hover{background:#07663a url(../../layer-view-image/common/btn-cerrar-over.png?v=2) top left no-repeat}
+.drag-controls a#lnkregresar{float:left;width:82px;height:20px;text-decoration:none;background:#07663a url(../../layer-view-image/common/btn-regresar-off-terminos.png?v=2) top left no-repeat;display:none;}
+.drag-controls a#lnkregresar:hover{background:#07663a url(../../layer-view-image/common/btn-regresar-over-terminos.png?v=2) top left no-repeat}
+* html{width:100%}
+.drag-contentarea{background:#fcfbfb;color:black;height:150px;padding:2px;visibility:visible}
+.drag-foothandle{float:left;width:97%;height:14px;cursor:move}
+.drag-statusarea{padding:5px 0 0 0;background:#07663a;height:14px}
+.drag-resizearea{float:right;width:3%;height:14px;cursor:nw-resize;font-size:0}
+.dhtmlwindowloader{background-color:#ffffff;background-image:url('.../../layer-view-image/common/bcb-loading.gif');background-position:center;background-repeat:no-repeat;cursor:wait;filter:alpha(opacity=70);height:100%;opacity:.7;position:absolute;top:0;width:100%;z-index:100}

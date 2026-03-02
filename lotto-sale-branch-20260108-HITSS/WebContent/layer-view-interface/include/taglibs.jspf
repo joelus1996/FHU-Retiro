@@ -1,0 +1,146 @@
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@page import="pe.com.intralot.loto.lib.ConnectionFactory"%>
+<%@page import="pe.com.intralot.loto.layer.model.bean.UserBean"%>
+<%@page import="pe.com.intralot.loto.util.Constants"%>
+<%
+boolean isNewHome = true;
+// String appArea = String.valueOf(ConnectionFactory.operationProperty("applicationArea","CARD-WEB")).toString().trim().toUpperCase();
+// String userSale = String.valueOf(ConnectionFactory.operationProperty("lotosaleUsers", "CARD-WEB")).toString().trim();
+// String[] usersSale = null;
+// if(appArea.equals("PRODUCTION")) {
+// 	if (lotosale == false) {
+//     	if(userSale != null && !userSale.equals("")) {
+//     		usersSale = userSale.split(",");
+//     		String userSesion = "";
+//     		if(session.getAttribute(Constants.USR_SESION)!=null) 
+//                 userSesion = ((UserBean)session.getAttribute(Constants.USR_SESION)).getpUser();
+//     		for (int i=0; i<usersSale.length; i++) {
+//     			if(usersSale[i].equals(userSesion)) {
+//     				isNewHome = true;
+//     				break;
+//     			} else {
+//     			    isNewHome = false;
+//     			}
+//     		}
+//     	}
+// 	} else {
+//         isNewHome = true;
+//     }
+// }
+%>
+<c:set var="isLottoSale"><%=isNewHome%></c:set>
+<c:set var="lotocardSrv"><%=String.valueOf(ConnectionFactory.operationProperty("lotocardServerURI", Constants.contextCardWeb)).toString().trim()%></c:set>
+<c:set var="isTinkaSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("tinkaSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isKabalaSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("kabalaSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isGanadiarioSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("ganadiarioSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isSuper3Sale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("super3SaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isReventonSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("reventonSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isGanagolSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("ganagolSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isTeapuestoSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("teapuestoSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isClicyganaSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("clicyganaSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isRapitinkasSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("rapitinkasSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isDeportesvirtualesSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("deportesvirtualesSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isKineloSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("kineloSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isFechazaSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("fechazaSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isAccountSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("accountSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isPrizesSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("prizesSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isBalanceSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("balanceSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isBcpSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("bcpSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isBizpaySale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("bizpaySaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isPagoEfectivo"><%=Boolean.valueOf(ConnectionFactory.operationProperty("pagoEfectivoSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isContactusSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("contactusSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isHelpSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("helpSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isSelfcontrolSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("selfcontrolSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isLogoutSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("logoutSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isRegisterSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("registerSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isRestoreSale"><%=Boolean.valueOf(ConnectionFactory.operationProperty("restoreSaleEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="pagoEfectivoHelp"><%=String.valueOf(ConnectionFactory.operationProperty("pagoEfectivoHelp", Constants.contextCardWeb)).toString().trim()%></c:set>
+<%-- c:set var="safetyAPIKey"><%=String.valueOf(ConnectionFactory.operationProperty("safetyAPIKey", "CARD-WEB")).toString().trim()%></c:set --%>
+<%-- c:set var="safetyMerchantID"><%=String.valueOf(ConnectionFactory.operationProperty("safetyMerchantID", "CARD-WEB")).toString().trim()%></c:set --%>
+<%-- c:set var="safetyTransactionOkURL"><%=String.valueOf(ConnectionFactory.operationProperty("safetyTransactionOkURL", "CARD-WEB")).toString().trim()%></c:set --%>
+<%-- c:set var="safetyTransactionErrorURL"><%=String.valueOf(ConnectionFactory.operationProperty("safetyTransactionErrorURL", "CARD-WEB")).toString().trim()%></c:set --%>
+<%-- c:set var="safetySignatureKey"><%=String.valueOf(ConnectionFactory.operationProperty("safetySignatureKey", "CARD-WEB")).toString().trim()%></c:set --%>
+<%-- c:set var="safetyCreateExpressToken"><%=String.valueOf(ConnectionFactory.operationProperty("safetyCreateExpressToken", "CARD-WEB")).toString().trim()%></c:set --%>
+<c:set var="iframeHomeMicuentaURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeMicuentaURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeTinkaURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeTinkaURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeKabalaURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeKabalaURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeGanadiarioURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeGanadiarioURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeGanagolURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeGanagolURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeKineloURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeKineloURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeRaspaYaURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeRaspaYaURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeCasinoURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeCasinoURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeBannerCasinoURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeBannerCasinoURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeBannerVirtualesURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeBannerVirtualesURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeBannerRaspaYaURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeBannerRaspaYaURL", Constants.contextSale)).toString().trim()%></c:set>
+<c:set var="iframeHomeBannerVideoLoteriaURL"><%=String.valueOf(ConnectionFactory.operationProperty("iframeHomeBannerVideoLoteriaURL", Constants.contextSale)).toString().trim()%></c:set>
+
+<c:set var="plusEnabled"><%=String.valueOf(ConnectionFactory.operationProperty("kabalaPlusEnabled", Constants.contextCardWeb)).toString().trim()%></c:set>
+<c:set var="chauChambaEnabled"><%=String.valueOf(ConnectionFactory.operationProperty("kabalaChauChambaEnabled", Constants.contextCardWeb)).toString().trim()%></c:set>
+<c:set var="chChDrawEnabled"><%=Integer.valueOf(ConnectionFactory.operationProperty("kabalaChChDrawEnabled", Constants.contextCardWeb).trim()).intValue()%></c:set>
+
+<c:set var="isAdvaisEnabled"><%=Boolean.valueOf(ConnectionFactory.operationProperty("advaisEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="advaisURL"><%=String.valueOf(ConnectionFactory.operationProperty("advaisURL", Constants.contextSale)).toString().trim()%></c:set>
+
+<c:set var="isPaysafecardEnabled"><%=Boolean.valueOf(ConnectionFactory.operationProperty("paysafecardEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="awardsEnabled"><%=Boolean.valueOf(ConnectionFactory.operationProperty("awardsEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="vkeyboardEnabled"><%=Boolean.valueOf(ConnectionFactory.operationProperty("vkeyboardEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<%-- c:set var="cashPrizeEnabled"><%=Boolean.valueOf(ConnectionFactory.operationProperty("cashPrizeEnabled", Constants.contextSale).trim()).booleanValue()%></c:set --%>
+<c:set var="isCulqiEnabled"><%=Boolean.valueOf(ConnectionFactory.operationProperty("culqiEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isLaPolla"><%=Boolean.valueOf(ConnectionFactory.operationProperty("lapollaEnabled2022", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="isTAV2"><%=Boolean.valueOf(ConnectionFactory.operationProperty("tav2Enabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<c:set var="flagPromoBicolor"><%=Integer.valueOf(ConnectionFactory.operationProperty("flagPromoBicolor", Constants.contextCardWeb).trim()).intValue()%></c:set>
+<c:set var="flagPromoHincha"><%=Integer.valueOf(ConnectionFactory.operationProperty("flagPromoHincha", Constants.contextCardWeb).trim()).intValue()%></c:set>
+<%
+ String usersAdvais = String.valueOf(ConnectionFactory.operationProperty("paysafecardUsers", Constants.contextSale)).toString().trim();
+ String[] usersSale = null;
+if(usersAdvais != null && !usersAdvais.equals("")) {
+	usersSale = usersAdvais.split(",");
+	String userSesion = "";
+	if(session.getAttribute(Constants.USR_SESION)!=null) userSesion = ((UserBean)session.getAttribute(Constants.USR_SESION)).getpUser();
+	for (int i=0; i<usersSale.length; i++) {
+		if(usersSale[i].equals(userSesion)) {
+%>
+			<c:set var="isPaysafecardEnabled"><%=Boolean.valueOf("true").booleanValue()%></c:set>
+<%
+			break;
+		} else {
+%>
+			<c:set var="isPaysafecardEnabled"><%=Boolean.valueOf("false").booleanValue()%></c:set>
+<%
+		}
+	}
+}
+%>
+
+
+<%
+ String iflexUsers = ""; // String.valueOf(ConnectionFactory.operationProperty("iflexUsers", Constants.contextSale)).toString().trim();
+ if(iflexUsers != null && !iflexUsers.equals("")) {
+	usersSale = iflexUsers.split(",");
+	String userSesion = "";
+	if(session.getAttribute(Constants.USR_SESION)!=null) userSesion = ((UserBean)session.getAttribute(Constants.USR_SESION)).getpUser();
+	for (int i=0; i<usersSale.length; i++) {
+		if(usersSale[i].equals(userSesion)) {
+%>
+			<c:set var="isIflex"><%=Boolean.valueOf(ConnectionFactory.operationProperty("iflexEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<%
+			break;
+		} else {
+%>
+			<c:set var="isIflex"><%=Boolean.valueOf("false").booleanValue()%></c:set>
+<%
+		}
+	}
+ } else {
+%>
+	<c:set var="isIflex"><%=Boolean.valueOf(ConnectionFactory.operationProperty("iflexEnabled", Constants.contextSale).trim()).booleanValue()%></c:set>
+<%
+ }
+%>
+
+
+
