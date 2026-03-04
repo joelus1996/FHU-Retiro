@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g fill="var(--disp-fill, #FFD400)">
+    <rect x="3" y="7" width="20" height="12" rx="2"/>
+    <rect x="8" y="10" width="10" height="6" rx="1" fill="rgba(0,0,0,0.2)"/>
+    <circle cx="13" cy="13" r="2.2"/>
+    <!-- Flechas izquierda/derecha -->
+    <path d="M6.5 21l-2.8-2.4c-.3-.3-.3-.8 0-1.1L6.5 15v2l8.5.0v2H6.5v2z"/>
+    <path d="M19.5 15l2.8 2.4c.3.3.3.8 0 1.1L19.5 21v-2H11v-2h8.5v-2z"/>
+  </g>
+</svg>

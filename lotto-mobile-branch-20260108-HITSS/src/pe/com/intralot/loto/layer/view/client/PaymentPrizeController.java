@@ -164,12 +164,12 @@ public class PaymentPrizeController {
         String status = convertedObject.getString("status");
         if(!status.equals("OK")) {
         	request.setAttribute(WebConsts.ALERT_MSG, "Ha ocurrido un error en el servidor. Vuelva a intentar en unos minutos");
-        	return "client/interface-collect_prize_form_api";
+        	return "client/interface-collect_prize_form_api_ta";
         }
         String token=convertedObject.getString("token");
         objectModelMap.put("prizetoken",token);
         objectModelMap.put("operatorId","1");
-        return "client/interface-collect_prize_form_api";
+        return "client/interface-collect_prize_form_api_ta";
 	}
 	
 	@RequestMapping(value = "/pago-premio-api")
@@ -177,7 +177,7 @@ public class PaymentPrizeController {
 		String token=request.getParameter("prizetoken");	
 		objectModelMap.put("prizetoken",token);
 		objectModelMap.put("operatorId","6");
-		return "client/interface-collect_prize_form_api";
+		return "client/interface-collect_prize_form_api_ta";
 	}
 	
 	@RequestMapping(value = "/evalPopupInformativo")
@@ -272,7 +272,7 @@ public class PaymentPrizeController {
 				o.addProperty("msgMaxAmtPerWeekAgr", getDataCollectPrizes.getMsgMaxAmtPerWeekAgr());
 				o.addProperty("msgAmtAvblPerWeekAgr", getDataCollectPrizes.getMsgAmtAvblPerWeekAgr());
 				o.addProperty("stateRequestAgr", getDataCollectPrizes.getStateRequestAgr());
-				o.addProperty("balanceAmount", getDataCollectPrizes.getBalanceAmount());		
+				o.addProperty("balanceAmount", intralotUtils.formatCurrency(getDataCollectPrizes.getBalanceAmount()));		
 				o.addProperty("comMinRan1Visa", getDataCollectPrizes.getComMinRan1Visa());
 				o.addProperty("comMaxRan1Visa", getDataCollectPrizes.getComMaxRan1Visa());
 				o.addProperty("comAmtRan1Visa", getDataCollectPrizes.getComAmtRan1Visa());

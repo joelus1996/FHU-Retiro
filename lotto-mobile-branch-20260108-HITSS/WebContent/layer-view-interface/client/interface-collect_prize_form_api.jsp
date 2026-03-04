@@ -77,21 +77,21 @@
           	</table>
           	
           	<p style='text-align: left; line-height: 12px;'> 
-				<br><span style="font-size: 10px;">Para que tu retiro sea aprobado, tú debes ser el titular de la cuenta y los datos de tu cuenta de La Tinka deben ser iguales a los de tu cuenta bancaria. Caso contrario, tu retiro será rechazado.</span><br> 
+				<br><span style="font-size: 10px;">Para que tu retiro sea aprobado, tï¿½ debes ser el titular de la cuenta y los datos de tu cuenta de La Tinka deben ser iguales a los de tu cuenta bancaria. Caso contrario, tu retiro serï¿½ rechazado.</span><br> 
           	</p>
           	<div id="divRecurrencia">
 	          	<hr>
 	          		<div class="form__check">
 	                  <input type="checkbox" name="recurrenteTra" id="recurrenteTra" value="Y" style="position: absolute; opacity: 0;">
-	                  <label for="recurrenteTra" style="color: #086c46;font-size: 11px;">Guardar número de cuenta como recurrente</label>
+	                  <label for="recurrenteTra" style="color: #086c46;font-size: 11px;">Guardar nï¿½mero de cuenta como recurrente</label>
 	                </div>
 	          	<hr>
           	</div>
           </div>
           <button class="btn" id="aceptar-confirmar-retiro-transferencia" onclick="continuarRetiroTransferenciaPin()" style="background: #07663a; margin: 20px auto 0;">Confirmar retiro</button>
           <button class="btn" style="margin-top: 12px; background: #ffffff; border: 2px solid #07663a; color: #77736f;" id="regresar-transferencia" onclick="regresarRetiroTransferencia()">REGRESAR</button>
-          <p style="margin-top: 20px; margin-bottom: 0px; font-size: 11px; text-align: justify;">Algunos bancos cobran una comisión interplaza del 0.05% del monto retirado, o un mínimo de S/7.50. Si quieres actualizar tu nombre, apellidos o DNI,    
-             <a href="derechos-arco.html" target="_blank" style="text-decoration: underline; color: #e30613;">solicítalo aquí</a>
+          <p style="margin-top: 20px; margin-bottom: 0px; font-size: 11px; text-align: justify;">Algunos bancos cobran una comisiï¿½n interplaza del 0.05% del monto retirado, o un mï¿½nimo de S/7.50. Si quieres actualizar tu nombre, apellidos o DNI,    
+             <a href="derechos-arco.html" target="_blank" style="text-decoration: underline; color: #e30613;">solicï¿½talo aquï¿½</a>
           </p>
         </div>
       </div>
@@ -143,11 +143,11 @@
 			</div>
           	
           </div>
-          <p style="margin-top: 20px; margin-bottom: 0px; font-size: 11px; text-align: center;">¿No recibiste tu código?   
+          <p style="margin-top: 20px; margin-bottom: 0px; font-size: 11px; text-align: center;">ï¿½No recibiste tu cï¿½digo?   
           </p>
            <p style="margin-top: 10px;margin-bottom: 0px;font-size: 11px;text-align: center;">
-    		<a id="btnReenvioCodeEmail" style="display: block; text-decoration: underline; color: #e30613;" href="javascript:reenviarRetiroTransferenciaPinCorreo();">Reenviar código por Email</a>
-    		<a id="btnReenvioCodeSMS" style="display: block;text-decoration: underline;color: #e30613;margin-top: 8px;" href="javascript:reenviarRetiroTransferenciaPinSms();">Reenviar código por SMS</a>
+    		<a id="btnReenvioCodeEmail" style="display: block; text-decoration: underline; color: #e30613;" href="javascript:reenviarRetiroTransferenciaPinCorreo();">Reenviar cï¿½digo por Email</a>
+    		<a id="btnReenvioCodeSMS" style="display: block;text-decoration: underline;color: #e30613;margin-top: 8px;" href="javascript:reenviarRetiroTransferenciaPinSms();">Reenviar cï¿½digo por SMS</a>
 		  </p>
         </div>
       </div>
@@ -158,21 +158,21 @@
         <div class="modal__boby" style="padding-left: 25px; padding-right: 25px;">          
           <div>
 <!--           	<p style='text-align: center;'>  -->
-<!-- 	          	<span style='font-size: 16px; font-weight: 700;'>¡Cobra tus premios sin salir de casa!</span> <br><br>  -->
+<!-- 	          	<span style='font-size: 16px; font-weight: 700;'>ï¿½Cobra tus premios sin salir de casa!</span> <br><br>  -->
 <!-- 	          	<span>Recuerda que para recibir el dinero en tu cuenta bancaria, s&oacute;lo necesitas ingresar la </span>  -->
 <!-- 	          	<span style='font-weight: 700;'>tarjeta Visa d&eacute;bito </span>  -->
 <!-- 	          	<span>asociada a esa cuenta.</span> <br><br>  -->
-<!-- 	          	<span>¿A&uacute;n deseas retirar en efectivo</span> <br>  -->
+<!-- 	          	<span>ï¿½A&uacute;n deseas retirar en efectivo</span> <br>  -->
 <!-- 	          	<span>o prefieres retirar a tu cuenta con Visa?</span>  -->
 <!--           	</p> -->
-			<p style='text-align: center;'><span style='font-size: 16px; font-weight: 700;'>¡Cobra tus premios sin salir de casa!</span></p>
+			<p style='text-align: center;'><span style='font-size: 16px; font-weight: 700;'>ï¿½Cobra tus premios sin salir de casa!</span></p>
 			<p style='text-align: center;margin-bottom: 8px;'>Puedes retirar directo a tu cuenta bancaria.</p>
 			<button class="btn" style="margin-top: 8px; background: #07663a;" id="aceptar-ir-transferencia" onclick="irTransferencia()">IR A TRANSFERENCIA BANCARIA</button>
 			<br>
-			<p style='text-align: center;margin-bottom: 8px;'>o enviando los datos de tu tarjeta débito VISA asociado a esa cuenta.</p>
+			<p style='text-align: center;margin-bottom: 8px;'>o enviando los datos de tu tarjeta dï¿½bito VISA asociado a esa cuenta.</p>
 			<button class="btn" style="margin-top: 8px; background: #07663a;" id="aceptar-ir-visa" onclick="irVisa()">IR A VISA</button>
 			<br>
-			<p style='text-align: center; font-weight: 700;margin-bottom: 8px;'>¿Aún deseas retirar en efectivo?</p>
+			<p style='text-align: center; font-weight: 700;margin-bottom: 8px;'>ï¿½Aï¿½n deseas retirar en efectivo?</p>
 			<button class="btn" id="aceptar-confirmar-retiro-efectivo" style="margin-top: 8px;background: #ffffff; border: 2px solid #07663a; color: #77736f;" onclick="continuarRetiroEfectivo()">Confirmar retiro en efectivo</button>
           </div>
 <!--           <button class="btn" id="aceptar-confirmar-retiro-efectivo" onclick="continuarRetiroEfectivo()">Confirmar retiro en efectivo</button> -->
@@ -261,8 +261,7 @@
                     <a class="linkbox" style="display: none;" href="#" toggle-modal="#modal-retiro-premio-mayor" id="modal-retiro-premio-mayor"></a>
                     
                     <div id="listaPremiosMayoresLoterias"></div>
-                    <div class="infotext">Disponible para retirar: <strong id="saldoLiquidable">0</strong></div>
-                    <div class="title-method">Método de cobro</div>
+                    <div class="title-method">MÃ©todo de cobro</div>
                     <ul class="accordion is-method listaMetodosRetiro">
                     
                       <li class="accordion__item" id="accordion_efectivo" style="display: none;">
@@ -285,29 +284,29 @@
 							  <!-- Pedir DNI Efectivo -->  
                               <div id="divStepDNIEfectivo" class="step hidden"><i>2</i>                          
                                 <div class="fileup-image" id="divImgDniEfectivo">
-                                  <span id="stateDniPENEfectivo" style="display: none;">Registra tu DNI, por única vez, adjuntando el lado que muestra tu foto. (max <span id="pesoImgDniEfectivo"></span>MB)</span>
+                                  <span id="stateDniPENEfectivo" style="display: none;">Registra tu DNI, por ï¿½nica vez, adjuntando el lado que muestra tu foto. (max <span id="pesoImgDniEfectivo"></span>MB)</span>
                                   <label id="stateDniPENLabelEfectivo" class="btn is-secondary img-simple" style="margin-top: 16px; display: none;"><span class="text">Subir imagen</span>
                                     <input class="upimage is-simple" type="file" name="iimage_1" id="imgDNIEfectivo" accept="image/jpeg, image/png" data-valid="required">
                                     <canvas id="canvasDNIEfectivo" style="display: none;" ></canvas>
                                   </label>
                                   <span id="stateDniACTEfectivo" style="display: none; line-height: 16px; margin-bottom: 10px;">
                           			<img src="layer-view-image/client/icon-valid.svg" width="20" height="20">
-                          			<span style="vertical-align: top;">Tu DNI está registrado</span>
+                          			<span style="vertical-align: top;">Tu DNI estï¿½ registrado</span>
                                	  </span>
                                	  <span id="stateDniACTLabelEfectivo" style="display: none;">
-                           			<span>¿Quieres actualizarlo?</span>
+                           			<span>ï¿½Quieres actualizarlo?</span>
                            			<a id="updateDNIEfectivo" style="text-decoration: underline; color: #e30613;">
-                           				hazlo aquí
+                           				hazlo aquï¿½
                            			</a>
                                	  </span>      
-                                  <div class="filenames empty" id="filenamesDniEfectivo"><span class="filename-empty">No se adjuntó ninguna imagen</span>
+                                  <div class="filenames empty" id="filenamesDniEfectivo"><span class="filename-empty">No se adjuntï¿½ ninguna imagen</span>
                                     <div class="filename-simple"></div>
                                   </div>
                                 </div>
 							  
                               </div> 
 
-                              <div class="step hidden" id="stepKYCEfectivo"><i id="stepCardSDKVisa">2</i>Verifica tus datos por única vez cada 36 meses, si tus datos son correctos.
+                              <div class="step hidden" id="stepKYCEfectivo"><i id="stepCardSDKVisa">2</i>Verifica tus datos por ï¿½nica vez cada 36 meses, si tus datos son correctos.
 									<div class="form_visa" id="divEfectivoKYC">
 	                                	<img  class="form_visa_logo" src="layer-view-image/client/icon_dni.png?v=3" style="margin-left: 5px; margin-top: -10px; margin-right: 32px;">
 	                                	<label class="form_visa_card_button" id="efectivoSDKCardButton" style="padding: 0px 12px !important; font-size: 10px !important;" onclick="showSDK()">VERIFICA TU IDENTIDAD
@@ -317,14 +316,14 @@
 	                                	<span class="form_visa_card_mask hidden" id="sdkEfectivoCardText">
 	                                		<img id="iconKycE" src="layer-view-image/client/icon-valid.svg" width="16" height="16">
 	                                		<span class="span_mensaje_verificado" id="efectivoSDKVerificado"></span>
-	                                		<span id="efectivoSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquí para actualizar</u></span>
+	                                		<span id="efectivoSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquï¿½ para actualizar</u></span>
 	                                	</span>
 <!-- 	                                	<button type="button" id="consultResultKyc4" class = "btn-verificar" >Verificar</button> -->
 	                                </div>
-	                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberás permitir el acceso a tu cámara para realizar la verificación.</div>
+	                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberï¿½s permitir el acceso a tu cï¿½mara para realizar la verificaciï¿½n.</div>
 	                                
 	                           </div>
-	                           <div class="step" style="margin-top: 5px; font-size: 11px; ">Podrás cobrar tu retiro únicamente en efectivo, en nuestros Puntos de Venta</div>
+	                           <div class="step" style="margin-top: 5px; font-size: 11px; ">Podrï¿½s cobrar tu retiro ï¿½nicamente en efectivo, en nuestros Puntos de Venta</div>
 	                           
                               <button class="btn btn-solicitar">Solicitar Retiro</button>
                             </form>
@@ -339,7 +338,7 @@
                           <div class="inner" style="padding-top: 0px;">
                             <form class="metodo-visa steps" autocomplete="off" id="formvisa">
 <!--                               <div class="steps-title">Pasos a seguir:</div> -->
-                              <div><p style="font-size: 12px;">Retira entre S/ <span id="minAmountVisa"></span> y S/ <span id="maxAmountVisa"></span> hasta en <span id="maxRequestPerDayVisa"></span> transacciones diarias.<br>Retiro máximo semanal S/ <span id="maxAmountPerWeekVisa"></span>.</p></div>
+                              <div><p style="font-size: 12px;">Retira entre S/ <span id="minAmountVisa"></span> y S/ <span id="maxAmountVisa"></span> hasta en <span id="maxRequestPerDayVisa"></span> transacciones diarias.<br>Retiro mï¿½ximo semanal S/ <span id="maxAmountPerWeekVisa"></span>.</p></div>
                               <div class="step"><i>1</i>Ingresa el monto a retirar
                                 <div class="form-item ispad15" id="divMontoVisa">
                                   <div class="input">
@@ -353,28 +352,28 @@
 								    <!--  Pedir DNI VSA -->                 
                               <div id="divStepDNI" class="step hidden"><i>2</i>
                                 <div class="fileup-image" id="divImgDni">
-                                  <span id="stateDniPEN" style="display: none;">Registra tu DNI, por única vez, adjuntando el lado que muestra tu foto. (max <span id="pesoImgDni"></span>MB)</span>
+                                  <span id="stateDniPEN" style="display: none;">Registra tu DNI, por ï¿½nica vez, adjuntando el lado que muestra tu foto. (max <span id="pesoImgDni"></span>MB)</span>
                                   <label id="stateDniPENLabel" class="btn is-secondary img-simple" style="margin-top: 16px; display: none;"><span class="text">Subir imagen</span>
                                     <input class="upimage is-simple" type="file" name="iimage_1" id="imgDNI" accept="image/jpeg, image/png" data-valid="required">
                                     <canvas id="canvasDNI" style="display: none;" ></canvas>
                                   </label>
                                   <span id="stateDniACT" style="display: none; line-height: 16px; margin-bottom: 10px;">
                           			<img src="layer-view-image/client/icon-valid.svg" width="20" height="20">
-                          			<span style="vertical-align: top;">Tu DNI está registrado</span>
+                          			<span style="vertical-align: top;">Tu DNI estï¿½ registrado</span>
                                	  </span>
                                	  <span id="stateDniACTLabel" style="display: none;">
-                           			<span>¿Quieres actualizarlo?</span>
+                           			<span>ï¿½Quieres actualizarlo?</span>
                            			<a id="updateDNI" style="text-decoration: underline; color: #e30613;">
-                           				hazlo aquí
+                           				hazlo aquï¿½
                            			</a>
                                	  </span>      
-                                  <div class="filenames empty" id="filenamesDniVisa"><span class="filename-empty">No se adjuntó ninguna imagen</span>
+                                  <div class="filenames empty" id="filenamesDniVisa"><span class="filename-empty">No se adjuntï¿½ ninguna imagen</span>
                                     <div class="filename-simple"></div>
                                   </div>
                                 </div>
 								 
                               </div> 
-							  <div class="step"><i id="stepCard">2</i>Selecciona o añade tu tarjeta
+							  <div class="step"><i id="stepCard">2</i>Selecciona o aï¿½ade tu tarjeta
                                 <div class="form_visa" id="divVisa">
                                 	<img  class="form_visa_logo" src="layer-view-image/client/icon_visa.png" >
                                 	<label class="form_visa_card_button" id="visaCardButton" onclick="showTokenization()" style="padding: 0px 30px;">Seleccionar
@@ -391,7 +390,7 @@
                                 </div>
                               </div>   
 							  
-                              <div class="step hidden"  id="stepKYCVisa"><i id="stepCardSDKVisa">3</i>Verifica tus datos por única vez cada 36 meses, si tus datos son correctos.
+                              <div class="step hidden"  id="stepKYCVisa"><i id="stepCardSDKVisa">3</i>Verifica tus datos por ï¿½nica vez cada 36 meses, si tus datos son correctos.
                                 <div class="form_visa" id="divVisaKYC">
                                 	<img  class="form_visa_logo" src="layer-view-image/client/icon_dni.png?v=3" style="margin-left: 5px; margin-top: -10px; margin-right:32px;">
                                 	<label class="form_visa_card_button" id="visaSDKCardButton"  style="padding: 0px 12px !important; font-size: 10px !important;" onclick="showSDK()">VERIFICA TU IDENTIDAD
@@ -401,15 +400,15 @@
                                 	<span class="form_visa_card_mask hidden" id="visaSDKCardText">
                                 		<img id="iconKyc" src="layer-view-image/client/icon-valid.svg" width="16" height="16">
                                 		<span class="span_mensaje_verificado" id="visaSDKVerificado"></span>
-                                		<span id="visaSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquí para actualizar</u></span>
+                                		<span id="visaSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquï¿½ para actualizar</u></span>
                                 	</span>
 <!--                                 	<button type="button" id="consultResultKyc1" class = "btn-verificar" >Verificar</button> -->
                                 </div>
-                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberás permitir el acceso a tu cámara para realizar la verificación.</div>
+                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberï¿½s permitir el acceso a tu cï¿½mara para realizar la verificaciï¿½n.</div>
                                 
                               </div>
                               
-                              <div class="step" style="margin-top: 5px;font-size: 14px;">Una vez confirmado tu retiro se hará el abono a tu tarjeta en menos de 30 minutos. Si tienes tarjeta de crédito, esto puede tomar 2 días adicionales.</div>
+                              <div class="step" style="margin-top: 5px;font-size: 14px;">Una vez confirmado tu retiro se harï¿½ el abono a tu tarjeta en menos de 30 minutos. Si tienes tarjeta de crï¿½dito, esto puede tomar 2 dï¿½as adicionales.</div>
                               
                               <button class="btn btn-solicitar">Solicitar Retiro</button>
                             </form>
@@ -436,27 +435,27 @@
                               <!--                        
                               <div id="divStepDNIAgora" class="step hidden"><i>2</i>
                                 <div class="fileup-image" id="divImgDniAgora">
-                                  <span id="stateDniPENAgora" style="display: none;">Registra tu DNI, por única vez, adjuntando el lado que muestra tu foto. (max <span id="pesoImgDniAgora"></span>MB)</span>
+                                  <span id="stateDniPENAgora" style="display: none;">Registra tu DNI, por ï¿½nica vez, adjuntando el lado que muestra tu foto. (max <span id="pesoImgDniAgora"></span>MB)</span>
                                   <label id="stateDniPENLabelAgora" class="btn is-secondary img-simple" style="margin-top: 16px; display: none;"><span class="text">Subir imagen</span>
                                     <input class="upimage is-simple" type="file" name="iimage_1" id="imgDNIAgora" accept="image/jpeg, image/png" data-valid="required">
                                     <canvas id="canvasDNIAgora" style="display: none;" ></canvas>
                                   </label>
                                   <span id="stateDniACTAgora" style="display: none; line-height: 16px; margin-bottom: 10px;">
                           			<img src="layer-view-image/client/icon-valid.svg" width="20" height="20">
-                          			<span style="vertical-align: top;">Tu DNI está registrado</span>
+                          			<span style="vertical-align: top;">Tu DNI estï¿½ registrado</span>
                                	  </span>
                                	  <span id="stateDniACTLabelAgora" style="display: none;">
-                           			<span>¿Quieres actualizarlo?</span>
+                           			<span>ï¿½Quieres actualizarlo?</span>
                            			<a id="updateDNIAgora" style="text-decoration: underline; color: #e30613;">
-                           				hazlo aquí
+                           				hazlo aquï¿½
                            			</a>
                                	  </span>      
-                                  <div class="filenames empty" id="filenamesDniAgora"><span class="filename-empty">No se adjuntó ninguna imagen</span>
+                                  <div class="filenames empty" id="filenamesDniAgora"><span class="filename-empty">No se adjuntï¿½ ninguna imagen</span>
                                     <div class="filename-simple"></div>
                                   </div>
                                 </div>
                               </div> -->  
-							  <div class="step"><i id="stepCardAgora">2</i>Selecciona o añade tu tarjeta
+							  <div class="step"><i id="stepCardAgora">2</i>Selecciona o aï¿½ade tu tarjeta
                                 <div class="form_visa" id="divAgora">
                                 	<img  class="form_visa_agora" src="layer-view-image/client/logo-agora1.png" >
                                 	<label class="form_visa_card_button" id="visaCardButtonAgora" onclick="showTokenizationAgora()">Seleccionar
@@ -468,7 +467,7 @@
                                 	</span>
                                 </div>
                                 <!--  
-                                <div style="margin-top: 10px;">Una vez confirmado tu retiro se hará el abono a tu tarjeta en menos de 30 minutos.</div>
+                                <div style="margin-top: 10px;">Una vez confirmado tu retiro se harï¿½ el abono a tu tarjeta en menos de 30 minutos.</div>
                                 -->
                                 <div class="subcontent-comision hidden">
                                 	<p class="subcontent-text-comision" id="comision_agora"><span class="monto-comision-agora" id="monto_comision_agora"></span></p>
@@ -486,8 +485,8 @@
                                 		<span id="agoraSDKVerificado"></span>
                                 	</span>
                                 </div>
-                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberás permitir el acceso a tu cámara para realizar la verificación.</div>
-                                <div style="margin-top: 5px;">Una vez confirmado tu retiro se hará el abono a tu tarjeta en menos de 30 minutos.</div>
+                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberï¿½s permitir el acceso a tu cï¿½mara para realizar la verificaciï¿½n.</div>
+                                <div style="margin-top: 5px;">Una vez confirmado tu retiro se harï¿½ el abono a tu tarjeta en menos de 30 minutos.</div>
                               </div>
                                
                               <button class="btn btn-solicitar">Solicitar Retiro</button>
@@ -531,10 +530,10 @@
 										  <select class="bybank" name="ibanco" id="ibanco" data-valid="required">
 <!-- 											<option value="">Selecciona un banco</option> -->
 <!-- 											<option value="1">Interbank</option> -->
-<!-- 											<option value="2">BCP. Banco de Crédito del Perú</option> -->
+<!-- 											<option value="2">BCP. Banco de Crï¿½dito del Perï¿½</option> -->
 <!-- 											<option value="3">BBVA. Banco Continental</option> -->
 <!-- 											<option value="4">Scotiabank</option> -->
-<!-- 											<option value="5">Otro banco - usa tu CCI (código interbancario)</option> -->
+<!-- 											<option value="5">Otro banco - usa tu CCI (cï¿½digo interbancario)</option> -->
 										  </select>
 										</div>
 									  </div>
@@ -543,17 +542,17 @@
 									<div class="step" id="stepCuentaTransferencia"><i style="top: 8px;">3</i>
 									  <div class="form-item ispad15" style="padding-top: 0px;" id="divCuenta">
 										<div class="input">
-										  <label>Ingresa tu número de cuenta</label>
+										  <label>Ingresa tu nï¿½mero de cuenta</label>
 										  <input class="is-numeric" type="tel" name="inumacount" id="inumacount" maxlength="20" data-min="20" data-max="20" data-valid="account"/>
 										</div>
-										<div class="input__error">INGRESA UN NÚMERO DE CUENTA CORRECTO</div>
+										<div class="input__error">INGRESA UN Nï¿½MERO DE CUENTA CORRECTO</div>
 									  </div>
 									</div>									
 									
 									<!-- Pedir DNI Transferencia -->
 									<div id="divStepDNITransferencia" class="step hidden"><i id="stepDniTransferencia">4</i>
 		                                <div class="fileup-image" id="divImgDniTransferencia">
-		                                  <span id="stateDniPENTransferencia" style="display: none;">Adjunta, por única vez, la foto de tu DNI por el lado que muestra tu rostro (max <span id="pesoImgDniTransferencia"></span>MB)</span>
+		                                  <span id="stateDniPENTransferencia" style="display: none;">Adjunta, por ï¿½nica vez, la foto de tu DNI por el lado que muestra tu rostro (max <span id="pesoImgDniTransferencia"></span>MB)</span>
 		                                  <label id="stateDniPENLabelTransferencia" class="btn is-secondary img-simple" style="margin-top: 16px; display: none;"><span class="text">Subir imagen</span>
 		                                    <input class="upimage is-simple" type="file" name="iimage_1" id="imgDNITransferencia" accept="image/jpeg, image/png" data-valid="required">
 		                                    <canvas id="canvasDNITransferencia" style="display: none;" ></canvas>
@@ -563,12 +562,12 @@
 		                          			<span style="vertical-align: top;">La foto de tu DNI ya esta registrado</span>
 		                               	  </span>
 		                               	  <span id="stateDniACTLabelTransferencia" style="display: none;">
-		                           			<span>¿Quieres actualizarlo?</span>
+		                           			<span>ï¿½Quieres actualizarlo?</span>
 		                           			<a id="updateDNITransferencia" style="text-decoration: underline; color: #e30613;">
-		                           				hazlo aquí
+		                           				hazlo aquï¿½
 		                           			</a>
 		                               	  </span>      
-		                                  <div class="filenames empty" id="filenamesDniTransferencia"><span class="filename-empty">No se adjuntó ninguna imagen</span>
+		                                  <div class="filenames empty" id="filenamesDniTransferencia"><span class="filename-empty">No se adjuntï¿½ ninguna imagen</span>
 		                                    <div class="filename-simple"></div>
 		                                  </div>
 		                                </div>
@@ -582,17 +581,17 @@
 										  <select name="ideparment" id="ideparment" data-valid="required" onchange="if(enviarDataLayer) datalayerCobrarPremioMetodoCobroSelect(this,'Seleccionar departamento')">
 											<option value="">Selecciona un departamento</option>
 											<option value="1">Amazonas</option>
-											<option value="2">Áncash</option>
-											<option value="3">Apurímac</option>
+											<option value="2">ï¿½ncash</option>
+											<option value="3">Apurï¿½mac</option>
 											<option value="4">Arequipa</option>
 											<option value="5">Ayacucho</option>
 											<option value="6">Cajamarca</option>
 											<option value="7">Callao</option>
 											<option value="8">Cuzco</option>
 											<option value="9">Huancavelica</option>
-											<option value="10">Huánuco</option>
+											<option value="10">Huï¿½nuco</option>
 											<option value="11">Ica</option>
-											<option value="12">Junín</option>
+											<option value="12">Junï¿½n</option>
 											<option value="13">La Libertad</option>
 											<option value="14">Lambayeque</option>
 											<option value="15">Lima</option>
@@ -602,18 +601,18 @@
 											<option value="19">Pasco</option>
 											<option value="20">Piura</option>
 											<option value="21">Puno</option>
-											<option value="22">San Martín</option>
+											<option value="22">San Martï¿½n</option>
 											<option value="23">Tacna</option>
 											<option value="24">Tumbes</option>
 											<option value="25">Ucayali</option>
 										  </select>
 										</div>
 									  </div>
-									  <!--  <div style="margin-top: 10px; font-weight: 700; font-size: 10px; text-align: justify;">Asegúrate de ser el titular de la cuenta y que los datos de tu cuenta de La Tinka sean iguales a los de tu cuenta bancaria. Caso contrario, tu retiro será rechazado.</div> -->
-<!-- 									  <div style="margin-top: 10px; text-align: justify;">Una vez confirmado tu retiro, éste será transferido a tu cuenta dentro de los siguientes 60 minutos, siempre que se confirme de lunes a viernes de 9:00 am a 7:00 pm y sábados de 9:00 am a 2:00 pm.</div> -->
+									  <!--  <div style="margin-top: 10px; font-weight: 700; font-size: 10px; text-align: justify;">Asegï¿½rate de ser el titular de la cuenta y que los datos de tu cuenta de La Tinka sean iguales a los de tu cuenta bancaria. Caso contrario, tu retiro serï¿½ rechazado.</div> -->
+<!-- 									  <div style="margin-top: 10px; text-align: justify;">Una vez confirmado tu retiro, ï¿½ste serï¿½ transferido a tu cuenta dentro de los siguientes 60 minutos, siempre que se confirme de lunes a viernes de 9:00 am a 7:00 pm y sï¿½bados de 9:00 am a 2:00 pm.</div> -->
 									</div>
 									
-									<div class="step hidden" id="stepKYCTrans"><i id="stepCardSDKTransferencia">5</i>Verifica tus datos por única vez cada 36 meses, si tus datos son correctos.
+									<div class="step hidden" id="stepKYCTrans"><i id="stepCardSDKTransferencia">5</i>Verifica tus datos por ï¿½nica vez cada 36 meses, si tus datos son correctos.
 										<div class="form_visa" id="divTransferenciaKYC">
 		                                	<img  class="form_visa_logo" src="layer-view-image/client/icon_dni.png?v=3" style="margin-left: 5px; margin-top: -10px; margin-right: 32px;">
 		                                	<label class="form_visa_card_button" id="transferenciaSDKCardButton" style="padding: 0px 12px !important; font-size: 10px !important;" onclick="showSDK()">VERIFICA TU IDENTIDAD
@@ -623,15 +622,15 @@
 		                                	<span class="form_visa_card_mask hidden" id="sdkTransferenciaCardText">
 		                                		<img id="iconKycT" src="layer-view-image/client/icon-valid.svg" width="16" height="16">
 		                                		<span class="span_mensaje_verificado"  id="transferenciaSDKVerificado"></span>
-		                                		<span id="transferenciaSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquí para actualizar</u></span>
+		                                		<span id="transferenciaSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquï¿½ para actualizar</u></span>
 		                                	</span>
 <!-- 		                                	<button type="button" id="consultResultKyc3" class = "btn-verificar" >Verificar</button> -->
 		                                </div>
-		                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberás permitir el acceso a tu cámara para realizar la verificación.</div>
+		                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberï¿½s permitir el acceso a tu cï¿½mara para realizar la verificaciï¿½n.</div>
 		                                
 		                              </div>
 		                              
-		                              <div class="step" style="margin-top: 5px; font-size: 10px; font-weight: 700; ">Asegúrate de ser el titular de la cuenta y que los datos de tu cuenta de La Tinka sean iguales a los de tu cuenta bancaria. Caso contrario, tu retiro será rechazado.</div>
+		                              <div class="step" style="margin-top: 5px; font-size: 10px; font-weight: 700; ">Asegï¿½rate de ser el titular de la cuenta y que los datos de tu cuenta de La Tinka sean iguales a los de tu cuenta bancaria. Caso contrario, tu retiro serï¿½ rechazado.</div>
 									<button class="btn btn-solicitar">Solicitar Retiro</button>
                       			</form>
                       		</div>
@@ -680,7 +679,7 @@
                    						</tr>
                    					</tbody>
                    				</table>
-                      			<div style="background-color: #c0e4d6;float: left;width: 99%;font-family: Roboto, sans-serif;font-size: 11.5px;text-align: justify;color: #006841;"><p style="padding-right: 6.66667%;padding-left: 6.66667%;" id="lblConsideraciones">Por tu seguridad, un representante de La Tinka se contactará contigo para coordinar tu pago que se realizará en un plazo máximo de 30 días</p></div>  		
+                      			<div style="background-color: #c0e4d6;float: left;width: 99%;font-family: Roboto, sans-serif;font-size: 11.5px;text-align: justify;color: #006841;"><p style="padding-right: 6.66667%;padding-left: 6.66667%;" id="lblConsideraciones">Por tu seguridad, un representante de La Tinka se contactarï¿½ contigo para coordinar tu pago que se realizarï¿½ en un plazo mï¿½ximo de 30 dï¿½as</p></div>  		
                       			<form class="metodo-transferencia steps" autocomplete="off" id="formtransferenciapml" style="padding-right: 6.66667%; padding-left: 6.66667%; margin-top: 75px;">
                       				
 <!--                       				<div style="display: inline; vertical-align: middle;"> -->
@@ -717,17 +716,17 @@
 									<div class="step" id="stepCuentaTransferenciaPML"><i style="top: 8px;">2</i>
 									  <div class="form-item ispad15" style="padding-top: 0px;" id="divCuentaPML">
 										<div class="input">
-										  <label>Ingresa tu número de cuenta</label>
+										  <label>Ingresa tu nï¿½mero de cuenta</label>
 										  <input class="is-numeric" type="tel" name="inumacountPML" id="inumacountPML" maxlength="20" data-min="20" data-max="20" data-valid="account"/>
 										</div>
-										<div class="input__error">INGRESA UN NÚMERO DE CUENTA CORRECTO</div>
+										<div class="input__error">INGRESA UN Nï¿½MERO DE CUENTA CORRECTO</div>
 									  </div>
 									</div>									
 									
 									<!-- Pedir DNI Premio Mayor -->
 									<div id="divStepDNITransferenciaPML" class="step hidden"><i id="stepDniTransferenciaPML">3</i>
 		                                <div class="fileup-image" id="divImgDniTransferenciaPML">
-		                                  <span id="stateDniPENTransferenciaPML" style="display: none;">Adjunta, por única vez, la foto de tu DNI por el lado que muestra tu rostro (max <span id="pesoImgDniTransferenciaPML"></span>MB)</span>
+		                                  <span id="stateDniPENTransferenciaPML" style="display: none;">Adjunta, por ï¿½nica vez, la foto de tu DNI por el lado que muestra tu rostro (max <span id="pesoImgDniTransferenciaPML"></span>MB)</span>
 		                                  <label id="stateDniPENLabelTransferenciaPML" class="btn is-secondary img-simple" style="margin-top: 16px; display: none;"><span class="text">Subir imagen</span>
 		                                    <input class="upimage is-simple" type="file" name="iimage_1" id="imgDNITransferenciaPML" accept="image/jpeg, image/png" data-valid="required">
 		                                    <canvas id="canvasDNITransferenciaPML" style="display: none;" ></canvas>
@@ -737,19 +736,19 @@
 		                          			<span style="vertical-align: top;">La foto de tu DNI ya esta registrado</span>
 		                               	  </span>
 		                               	  <span id="stateDniACTLabelTransferenciaPML" style="display: none;">
-		                           			<span>¿Quieres actualizarlo?</span>
+		                           			<span>ï¿½Quieres actualizarlo?</span>
 		                           			<a id="updateDNITransferenciaPML" style="text-decoration: underline; color: #e30613;">
-		                           				hazlo aquí
+		                           				hazlo aquï¿½
 		                           			</a>
 		                               	  </span>      
-		                                  <div class="filenames empty" id="filenamesDniTransferenciaPML"><span class="filename-empty">No se adjuntó ninguna imagen</span>
+		                                  <div class="filenames empty" id="filenamesDniTransferenciaPML"><span class="filename-empty">No se adjuntï¿½ ninguna imagen</span>
 		                                    <div class="filename-simple"></div>
 		                                  </div>
 		                                </div>
 		                                
 	                                </div>
 	                                 
-	                                 <div id="divStepSDKPML"  class="step hidden"><i id="stepSDKPML">3</i>Verifica tus datos por única vez cada 36 meses, si tus datos son correctos.
+	                                 <div id="divStepSDKPML"  class="step hidden"><i id="stepSDKPML">3</i>Verifica tus datos por ï¿½nica vez cada 36 meses, si tus datos son correctos.
 										<div class="form_visa" id="divPMKYC">
 		                                	<img  class="form_visa_logo" src="layer-view-image/client/icon_dni.png?v=3" style="margin-left: 5px; margin-top: -10px; margin-right: 38px;">
 		                                	<label class="form_visa_card_button" id="PMSDKCardButton" onclick="showSDK()">VERIFICA TU IDENTIDAD 
@@ -759,11 +758,11 @@
 		                                	<span class="form_visa_card_mask hidden" id="sdkPMCardText">
 		                                		<img id="iconKycPM" src="layer-view-image/client/icon-valid.svg" width="16" height="16">
 		                                		<span class="span_mensaje_verificado" id="PMSDKVerificado"></span>
-		                                		<span id="PMSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquí para actualizar</u></span>
+		                                		<span id="PMSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquï¿½ para actualizar</u></span>
 		                                	</span>
 <!-- 		                                	<button type="button" id="consultResultKyc3" class = "btn-verificar" >Verificar</button> -->
 		                                </div>
-		                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberás permitir el acceso a tu cámara para realizar la verificación.</div>
+		                                <div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberï¿½s permitir el acceso a tu cï¿½mara para realizar la verificaciï¿½n.</div>
 		                                
 		                              </div>
 									
@@ -774,17 +773,17 @@
 										  <select name="ideparmentPML" id="ideparmentPML" data-valid="required">
 											<option value="">Selecciona un departamento</option>
 											<option value="1">Amazonas</option>
-											<option value="2">Áncash</option>
-											<option value="3">Apurímac</option>
+											<option value="2">ï¿½ncash</option>
+											<option value="3">Apurï¿½mac</option>
 											<option value="4">Arequipa</option>
 											<option value="5">Ayacucho</option>
 											<option value="6">Cajamarca</option>
 											<option value="7">Callao</option>
 											<option value="8">Cuzco</option>
 											<option value="9">Huancavelica</option>
-											<option value="10">Huánuco</option>
+											<option value="10">Huï¿½nuco</option>
 											<option value="11">Ica</option>
-											<option value="12">Junín</option>
+											<option value="12">Junï¿½n</option>
 											<option value="13">La Libertad</option>
 											<option value="14">Lambayeque</option>
 											<option value="15">Lima</option>
@@ -794,7 +793,7 @@
 											<option value="19">Pasco</option>
 											<option value="20">Piura</option>
 											<option value="21">Puno</option>
-											<option value="22">San Martín</option>
+											<option value="22">San Martï¿½n</option>
 											<option value="23">Tacna</option>
 											<option value="24">Tumbes</option>
 											<option value="25">Ucayali</option>
@@ -804,7 +803,7 @@
 									  
 									  </div>
 									
-									  <div class="step" style="margin-top: 5px; font-size: 10px; font-weight: 700; ">Asegúrate de ser el titular de la cuenta y que los datos de tu cuenta de La Tinka sean iguales a los de tu cuenta bancaria. Caso contrario, tu retiro será rechazado.</div>
+									  <div class="step" style="margin-top: 5px; font-size: 10px; font-weight: 700; ">Asegï¿½rate de ser el titular de la cuenta y que los datos de tu cuenta de La Tinka sean iguales a los de tu cuenta bancaria. Caso contrario, tu retiro serï¿½ rechazado.</div>
 									
 									<button class="btn btn-solicitar">Solicitar</button>
                       			</form>
@@ -834,8 +833,8 @@
                       <div class="record__head">Historial de retiros</div>
                       <div class="back"><a href="#" toggle-modal="#modal-premios">Volver a Retirar premios</a></div>
                       <div class="record__content nofound">
-                        <div class="nofound__title">Aún no has hecho <br>ningún retiro</div><img class="nofound__img" src="layer-view-image/client/no-retiros.svg" alt="Sin retiros">
-                        <div class="nofound__alert">¡Sigue jugando!</div>
+                        <div class="nofound__title">Aï¿½n no has hecho <br>ningï¿½n retiro</div><img class="nofound__img" src="layer-view-image/client/no-retiros.svg" alt="Sin retiros">
+                        <div class="nofound__alert">ï¿½Sigue jugando!</div>
                         <div class="nofound__links"><a class="no-underline" href="game_kinelo_show_home.html"><span>Jugar Kinelo</span></a><a class="no-underline" href="#" onclick="toJuegosVirtuales('virtuales')"><span>Jugar Deportes Virtuales</span></a></div>
                       </div>
                     </div>
@@ -881,9 +880,9 @@
                                     <div class="opt-control"></div>
                                     <select class="bydate" name="name" id="typeFilterHisPayment">
                                       <option value="1">Ver todos</option>
-                                      <option value="2">La última semana</option>
-                                      <option value="3">El último mes</option>
-                                      <option value="4">Rango específico</option>
+                                      <option value="2">La ï¿½ltima semana</option>
+                                      <option value="3">El ï¿½ltimo mes</option>
+                                      <option value="4">Rango especï¿½fico</option>
                                     </select>
                                   </div>
                                 </div>
@@ -1004,7 +1003,7 @@
                 <button class="btn btn-sendemail" style="position: inherit; border-radius: 5px;">Enviar por email</button>
               </div>
             </form>
-            <p>Cóbralo en un punto de venta cercano presentando tu DNI.</p>
+            <p>Cï¿½bralo en un punto de venta cercano presentando tu DNI.</p>
           </div>
         </div>
       </div>	
@@ -1091,7 +1090,7 @@
                 <button class="btn btn-sendemail" style="position: inherit; border-radius: 5px;">Enviar por email</button>
               </div>
             </form>
-            <p>Cóbralo en un punto de venta cercano presentando tu DNI.</p>
+            <p>Cï¿½bralo en un punto de venta cercano presentando tu DNI.</p>
           </div>
         </div>
       </div>	
