@@ -2919,7 +2919,7 @@ height: 30px;
   box-sizing: border-box;
   text-align: left;
   display: grid !important;
-  overflow: hidden; IMPORTANTE
+  overflow: hidden !important;
   grid-template-columns: 1fr 32px !important;     /* columna flexible + columna botón */
   grid-template-rows: auto auto !important;       /* fila 1 (titulo/x) + fila 2 (saldos) */
   grid-template-areas:
@@ -2938,13 +2938,44 @@ height: 30px;
 .ipremio__head::after {
   content: "";
   position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 100px;
+  /* Curva blanca inferior (fallback sin clip-path para mejor compatibilidad en WebViews) */
+  left: 50%;
+  /* Elipse más ancha = curva más suave (como en la referencia) */
+  bottom: -210px;
+  width: 240%;
+  height: 260px;
   background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-  clip-path: ellipse(50% 20% at 50% 100%);
+@media only screen and (max-width: 420px) {
+  .ipremio__head::after {
+    bottom: -235px;
+    width: 280%;
+    height: 290px;
+  }
+}
+
+/* Mantener contenido de la cabecera por encima de la curva */
+.ipremio__head > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Mejora progresiva: si el navegador soporta clip-path, usar la elipse original */
+@supports (clip-path: ellipse(50% 20% at 50% 100%)) {
+  .ipremio__head::after {
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 100px;
+    border-radius: 0;
+    transform: none;
+    clip-path: ellipse(50% 20% at 50% 100%);
+  }
 }
 
 /* Asignación de áreas (no importa el orden del HTML) */
@@ -2962,6 +2993,249 @@ height: 30px;
   margin: 0;
   text-align: center;
 }
+
+.ipremio__head .ipremio__title-link{
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+}
+
+.ipremio__head .ipremio__title-icon{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.ipremio__head .ipremio__title-text{
+  display: block;
+  text-align: center;
+}
+
+/* ===== Modal retiro efectivo / PDV (UI como maqueta) ===== */
+#modal-retiro-efectivo-pdv .ipremio__head--retiro-pdv{
+  display: block !important;
+  grid-template-areas: none !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  row-gap: 0 !important;
+  padding: 16px 16px 42px 16px !important;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__headbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#modal-retiro-efectivo-pdv .ipremio__title{
+  grid-column: auto;
+  text-align: left;
+}
+
+#modal-retiro-efectivo-pdv .ipremio__title-link{
+  padding-left: 22px;
+}
+
+#modal-retiro-efectivo-pdv .ipremio__title-text{
+  text-align: left;
+  display: inline;
+}
+
+#modal-retiro-efectivo-pdv .ipremio__title-icon{
+  font-size: 24px;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__headline{
+  margin-top: 18px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__iconbox{
+  width: 120px;
+  height: 88px;
+  margin: 18px auto -44px;
+  background: #fff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__icon{
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: auto;
+  align-self: center;
+}
+
+#modal-retiro-efectivo-pdv .ipremio__body{
+  padding-top: 54px;
+}
+
+#modal-retiro-efectivo-pdv .title-method{
+  text-align: center;
+}
+
+/* ===== Modal retiro tarjeta / PDV (UI como maqueta) ===== */
+#modal-retiro-tarjeta .ipremio__head--retiro-pdv{
+  display: block !important;
+  grid-template-areas: none !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  row-gap: 0 !important;
+  padding: 16px 16px 42px 16px !important;
+}
+
+#modal-retiro-tarjeta .retiro-pdv__headbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#modal-retiro-tarjeta .ipremio__title{
+  grid-column: auto;
+  text-align: left;
+}
+
+#modal-retiro-tarjeta .ipremio__title-link{
+  padding-left: 22px;
+}
+
+#modal-retiro-tarjeta .ipremio__title-text{
+  text-align: left;
+  display: inline;
+}
+
+#modal-retiro-tarjeta .ipremio__title-icon{
+  font-size: 24px;
+}
+
+#modal-retiro-tarjeta .retiro-pdv__headline{
+  margin-top: 18px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#modal-retiro-tarjeta .retiro-pdv__iconbox{
+  width: 120px;
+  height: 88px;
+  margin: 18px auto -44px;
+  background: #fff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+}
+
+#modal-retiro-tarjeta .retiro-pdv__icon{
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: auto;
+  align-self: center;
+}
+
+#modal-retiro-tarjeta .ipremio__body{
+  padding-top: 54px;
+}
+
+#modal-retiro-tarjeta .title-method{
+  text-align: center;
+}
+
+/* ===== Modal retiro transferencia / PDV (UI como maqueta) ===== */
+#mmodal-retiro-transferencia .ipremio__head--retiro-pdv{
+  display: block !important;
+  grid-template-areas: none !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  row-gap: 0 !important;
+  padding: 16px 16px 42px 16px !important;
+}
+
+#modal-retiro-transferencia .retiro-pdv__headbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#modal-retiro-transferencia .ipremio__title{
+  grid-column: auto;
+  text-align: left;
+}
+
+#modal-retiro-transferencia .ipremio__title-link{
+  padding-left: 22px;
+}
+
+#modal-retiro-transferencia .ipremio__title-text{
+  text-align: left;
+  display: inline;
+}
+
+#modal-retiro-transferencia .ipremio__title-icon{
+  font-size: 24px;
+}
+
+#modal-retiro-transferencia .retiro-pdv__headline{
+  margin-top: 18px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#modal-retiro-transferencia .retiro-pdv__iconbox{
+  width: 120px;
+  height: 88px;
+  margin: 18px auto -44px;
+  background: #fff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+}
+
+#modal-retiro-transferencia .retiro-pdv__icon{
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: auto;
+  align-self: center;
+}
+
+#modal-retiro-transferencia .ipremio__body{
+  padding-top: 54px;
+}
+
+#modal-retiro-transferencia .title-method{
+  text-align: center;
+}
+
 
 /* --- Botón X A LA DERECHA --- */
 .ipremio__head .modal__close{
@@ -3148,9 +3422,6 @@ height: 30px;
     text-align: left; /* puedes usar center si lo prefieres en mobile */
   }
 }
-``
-.ipremio__head .top-saldo .saldo-add p{ text-align: right; }
-
 
 /* Contenedor general: dos tarjetas separadas al estilo de la imagen */
 
@@ -3255,7 +3526,7 @@ height: 30px;
 }
 
 
-* ====== CONTENEDOR GENERAL (dos bloques en fila) ====== */
+/* ====== CONTENEDOR GENERAL (dos bloques en fila) ====== */
 .ipremio__head .saldo-add{
   display: flex;
   justify-content: center;       /* centra los dos bloques en el header */
@@ -3402,25 +3673,40 @@ html, body {
   display: flex;
   position: relative;
   border-bottom: 2px solid #e5e5e5; /* línea gris general */
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .tab-btn {
   flex: 1;
-  padding: 14px 10px;
+  padding: 18px 16px 20px;
   background: transparent;
   border: none;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 300;
   color: #b5b5b5; /* gris claro */
   cursor: pointer;
   position: relative;
   transition: color 0.3s ease;
+  text-align: center;
+  line-height: 1.1;
 }
 
 /* Texto activo */
 .tab-btn.active {
-  color: #f57c00; /* naranja */
+  color: #FF6A00; /* naranja */
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Mobile: tabs más grandes (versión móvil) */
+@media (max-width: 500px) {
+  .tab-btn {
+    font-size: 14px;
+  }
+
+  .tab-btn.active {
+    font-size: 16px;
+  }
 }
 
 /* Línea naranja SOLO debajo del activo */
@@ -3428,15 +3714,16 @@ html, body {
   content: "";
   position: absolute;
   bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 3px;
+  left: 15%;
+  width: 70%;
+  height: 6px;
+  border-radius: 8px;
   background: transparent;
   transition: background 0.3s ease;
 }
 
 .tab-btn.active::after {
-  background: #f57c00;
+  background: #FF6A00;
 }
 .tab-content {
   display: none;
@@ -3444,4 +3731,92 @@ html, body {
 
 .tab-content.active {
   display: block;
+}
+
+/* ===== Quick method cards (sin afectar el acordeón) ===== */
+.ipremio .method-cards {
+  margin: 8px 0 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.ipremio .method-card {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  min-height: 60px;
+  background: #fff;
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+
+.ipremio .method-card:active {
+  background: #f7f7f7;
+}
+
+.ipremio .method-card__icon {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex: 0 0 52px;
+}
+
+.ipremio .method-card__text {
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+.ipremio .method-card__title {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #77736f;
+  line-height: 1.2;
+}
+
+.ipremio .method-card__subtitle {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8a8a8a;
+  line-height: 1.2;
+}
+
+.ipremio .method-card__chev {
+  flex: 0 0 auto;
+  width: 22px;
+  text-align: right;
+  font-size: 26px;
+  line-height: 1;
+  color: transparent; /* el JSP tiene '|' como placeholder */
+  position: relative;
+}
+
+.ipremio .method-card__chev::before {
+  content: "\203A"; /* › */
+  color: #8a8a8a;
+  font-size: 30px;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 481px) {
+  .ipremio .method-card { padding: 16px 18px; }
+  .ipremio .method-card__title { font-size: 20px; }
+  .ipremio .method-card__subtitle { font-size: 15px; }
 }

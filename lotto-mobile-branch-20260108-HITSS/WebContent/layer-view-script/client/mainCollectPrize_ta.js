@@ -2756,8 +2756,8 @@ function getDataCollectPrizes(){
 		}
 		ingresarMetadatos(data.cid);
 			
-	    	$("#saldoLiquidable").text(floatFormat(data.saldoLiquidableCompleto));
-	    	$("#balanceAmount").text(floatFormat(data.balanceAmount));
+	    	$("#saldoLiquidable").text(data.saldoLiquidableCompleto);
+	    	$("#balanceAmount").text(data.balanceAmount);
 	    	$('#items-hispayment').attr("data-show-items", data.itemXPageHRMobile);
 	    	
 	    	$("#minAmountVisa").html(amountMinRequestVisaFormateado);
@@ -2766,21 +2766,21 @@ function getDataCollectPrizes(){
 	    	$("#maxAmountPerWeekVisa").html(maxAmountPerWeekVisaFormateado);
 	    	
 	    	$("#msgErrorRangoMontosVisa").text("Ingrese un monto entre S/"+amountMinRequestVisaFormateado+" y S/"+amountMaxRequestVisaFormateado+" soles");
-	    	$("#rangoMontosVisa").html("Monto entre <br>S/"+amountMinRequestVisaFormateado+" - S/"+amountMaxRequestVisaFormateado);
-	    	$("#rangoMontosVisa-356").html("Monto entre <br>S/"+amountMinRequestVisaFormateado+" - S/"+amountMaxRequestVisaFormateado);
+	    	$("#rangoMontosVisa").html("Min S/ "+amountMinRequestVisaFormateado+" - Máx S/ "+amountMaxRequestVisaFormateado);
+	    	$("#rangoMontosVisa-356").html("Monto entre d<br>S/"+amountMinRequestVisaFormateado+" - S/"+amountMaxRequestVisaFormateado);
 	    	$('#amountVisa').attr("data-min", data.amountMinRequestVisa);
 	    	$('#amountVisa').attr("data-max", data.amountMaxRequestVisa);
 	    	$("#pesoImgDni").html(data.maxMbPerImageVisa);
 	    	
 	    	$("#msgErrorRangoMontosEfectivo").text("Ingrese un monto entre S/"+amountMinRequestCashFormateado+" y S/"+amountMaxRequestCashFormateado+" soles");
-	    	$("#rangoMontosEfectivo").html("Monto entre <br>S/"+amountMinRequestCashFormateado+" - S/"+amountMaxRequestCashFormateado);
-	    	$("#rangoMontosEfectivo-356").html("Monto entre <br>S/"+amountMinRequestCashFormateado+" - S/"+amountMaxRequestCashFormateado);
+	    	$("#rangoMontosEfectivo").html("Min S/ "+amountMinRequestCashFormateado+" - Máx S/ "+amountMaxRequestCashFormateado);
+	    	$("#rangoMontosEfectivo-356").html("Monto entre s<br>S/"+amountMinRequestCashFormateado+" - S/"+amountMaxRequestCashFormateado);
 	    	$('#amountEfectivo').attr("data-min", data.amountMinRequestCash);
 	    	$('#amountEfectivo').attr("data-max", data.amountMaxRequestCash);
 	    	$("#pesoImgDniEfectivo").html(data.maxMbPerImageVisa);
 	    	
 	    	$("#msgErrorRangoMontosAgora").text("Ingrese un monto entre S/"+amountMinRequestAgrFormateado+" y S/"+amountMaxRequestAgrFormateado+" soles");
-	    	$("#rangoMontosAgora").html("Monto entre <br>S/"+amountMinRequestAgrFormateado+" - S/"+amountMaxRequestAgrFormateado);
+	    	$("#rangoMontosAgora").html("Monto entre d<br>S/"+amountMinRequestAgrFormateado+" - S/"+amountMaxRequestAgrFormateado);
 	    	$('#amountAgora').attr("data-min", data.amountMinRequestAgr);
 	    	$('#amountAgora').attr("data-max", data.amountMaxRequestAgr);
 	    	$("#pesoImgDniAgora").html(data.maxMbPerImageVisa);
@@ -4131,7 +4131,7 @@ function showRequestSuccessModal(data){
 		$("#montoSolicitado").html("¡Tu retiro de S/"+floatFormat(data.amount).replace(".00","")+" <br>está aprobado!");
 	}
 	//$("#message-modal-success").html(data.messageSuccess);
-	$("#saldoLiquidable").text(floatFormat(data.saldoLiquidable));
+	$("#saldoLiquidable").text(data.saldoLiquidable);
 	cleanPaymentPrize();
 	simpleModal.onToggleModalMsg("#modal-success");
 } 
@@ -4974,7 +4974,7 @@ function prepararPantallaTransferencia(data){
 			}
 		}else{
 			if(stateRequestTraRan2=='ACTIVO'){
-				$("#rangoMontosTransferencia").html("Monto entre <br>S/"+amountMinRequestTraFormateado+" - S/"+amountMaxRquTraRan2Formateado);
+				$("#rangoMontosTransferencia").html("Min S/ "+amountMinRequestTraFormateado+" - Máx S/ "+amountMaxRquTraRan2Formateado);
 				
 				$("#divTransRangos").css('margin-bottom','172px');
 				$("#divTransRangos").html(
