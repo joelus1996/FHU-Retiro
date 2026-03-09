@@ -1962,13 +1962,14 @@ $(document).ready(function () {
   addEventsKyc();
   getResultKycV2("READ");
   
-  $("#amountVisa").on('change keyup', onChangeAmountVisa);
-  $("#amountEfectivo").on('change keyup', onChangeAmountEfectivo);
+	$("#amountVisa").on('change keyup input', onChangeAmountVisa);
+	$("#amountEfectivo").on('change keyup input', onChangeAmountEfectivo);
   //$("#amountAgora").on('change keyup', onChangeAmountAgora);
-  $("#amountTransferencia").on('change keyup', onChangeAmountTransferencia);
+	$("#amountTransferencia").on('change keyup input', onChangeAmountTransferencia);
   
   $('input[name="iamount"]').numeric({allowThouSep: false, allowDecSep: true, allowMinus: false, maxDecimalPlaces : 2});
   $('#amountEfectivo').numeric({allowThouSep: false, allowDecSep: false, allowMinus: false});
+	updateRangeErrorAmountEfectivo();
   
     
   if ( window.addEventListener ) {
@@ -2474,9 +2475,49 @@ function deleteVerificationKyc(){
 	
 }
 
+function updateRangeErrorAmountEfectivo(){
+	var $input = $('#amountEfectivo');
+	var $wrapper = $('#divMontoEfectivo');
+	var $btn = $('#formefectivo').find('.btn-solicitar');
+	if(!$input.length || !$wrapper.length){
+		return;
+	}
+
+	var valueRaw = ($input.val() || '').toString().trim();
+	var minRaw = ($input.attr('data-min') || '').toString().trim();
+	var maxRaw = ($input.attr('data-max') || '').toString().trim();
+	var min = parseInt(minRaw, 10);
+	var max = parseInt(maxRaw, 10);
+
+	// If range isn't loaded yet or input is empty, keep normal state.
+	if(!valueRaw || isNaN(min) || isNaN(max) || max <= 0){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var value = parseInt(valueRaw, 10);
+	if(isNaN(value)){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var isOutOfRange = (value < min || value > max);
+	$wrapper.toggleClass('is-error', isOutOfRange);
+	if($btn.length){
+		$btn.prop('disabled', isOutOfRange);
+	}
+}
+
 function onChangeAmountEfectivo(){
 	
 	datalayerCobrarPremioInput($("#amountEfectivo"),'Efectivo / Punto de venta','Ingresar monto');
+	updateRangeErrorAmountEfectivo();
 	
 	var amountEfectivo = parseInt($("#amountEfectivo").val(), 10);
 
@@ -2766,17 +2807,33 @@ function getDataCollectPrizes(){
 	    	$("#maxAmountPerWeekVisa").html(maxAmountPerWeekVisaFormateado);
 	    	
 	    	$("#msgErrorRangoMontosVisa").text("Ingrese un monto entre S/"+amountMinRequestVisaFormateado+" y S/"+amountMaxRequestVisaFormateado+" soles");
-	    	$("#rangoMontosVisa").html("Min S/ "+amountMinRequestVisaFormateado+" - Máx S/ "+amountMaxRequestVisaFormateado);
-	    	$("#rangoMontosVisa-356").html("Monto entre d<br>S/"+amountMinRequestVisaFormateado+" - S/"+amountMaxRequestVisaFormateado);
+
+	    	function setRangeMinMax($el, minValue, maxValue, options){
+	    		if(!$el || !$el.length) return;
+	    		var minLabel = $el.attr('data-min-label') || 'Min';
+	    		var maxLabel = $el.attr('data-max-label') || 'Máx';
+	    		$el.attr('data-min-value', minValue);
+	    		$el.attr('data-max-value', maxValue);
+	    		var useBreak = !!(options && options.useBreak);
+	    		if(useBreak){
+	    			$el.html(minLabel + ' ' + minValue + '<br>' + maxLabel + ' ' + maxValue);
+	    			return;
+	    		}
+	    		$el.text(minLabel + ' ' + minValue + ' - ' + maxLabel + ' ' + maxValue);
+	    	}
+
+	    	setRangeMinMax($("#rangoMontosVisa"), amountMinRequestVisaFormateado, amountMaxRequestVisaFormateado);
+	    	setRangeMinMax($("#rangoMontosVisa-356"), amountMinRequestVisaFormateado, amountMaxRequestVisaFormateado, {useBreak: true});
 	    	$('#amountVisa').attr("data-min", data.amountMinRequestVisa);
 	    	$('#amountVisa').attr("data-max", data.amountMaxRequestVisa);
 	    	$("#pesoImgDni").html(data.maxMbPerImageVisa);
 	    	
 	    	$("#msgErrorRangoMontosEfectivo").text("Ingrese un monto entre S/"+amountMinRequestCashFormateado+" y S/"+amountMaxRequestCashFormateado+" soles");
-	    	$("#rangoMontosEfectivo").html("Min S/ "+amountMinRequestCashFormateado+" - Máx S/ "+amountMaxRequestCashFormateado);
-	    	$("#rangoMontosEfectivo-356").html("Monto entre s<br>S/"+amountMinRequestCashFormateado+" - S/"+amountMaxRequestCashFormateado);
+	    	setRangeMinMax($("#rangoMontosEfectivo"), amountMinRequestCashFormateado, amountMaxRequestCashFormateado);
+	    	setRangeMinMax($("#rangoMontosEfectivo-356"), amountMinRequestCashFormateado, amountMaxRequestCashFormateado, {useBreak: true});
 	    	$('#amountEfectivo').attr("data-min", data.amountMinRequestCash);
 	    	$('#amountEfectivo').attr("data-max", data.amountMaxRequestCash);
+	    	updateRangeErrorAmountEfectivo();
 	    	$("#pesoImgDniEfectivo").html(data.maxMbPerImageVisa);
 	    	
 	    	$("#msgErrorRangoMontosAgora").text("Ingrese un monto entre S/"+amountMinRequestAgrFormateado+" y S/"+amountMaxRequestAgrFormateado+" soles");
@@ -4544,8 +4601,9 @@ function irVisa(){
 	$("#amountVisa").val($("#amountEfectivo").val());
 	$("#amountVisa").keyup();
 	cleanPaymentPrizeCash();
-	$("#accordion_visa").addClass('opened');
-	$("#accordion_visa").find('.accordion__body').css('display','block');
+	if (typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
+		simpleModal.onToggleModalMsg('#modal-retiro-tarjeta');
+	}
 	setTimeout(function() { $("#amountVisa").focus(); }, 0);
 	$('#modal-confirmar-retiro-efectivo').fadeOut(250);
 }
@@ -4974,7 +5032,12 @@ function prepararPantallaTransferencia(data){
 			}
 		}else{
 			if(stateRequestTraRan2=='ACTIVO'){
-				$("#rangoMontosTransferencia").html("Min S/ "+amountMinRequestTraFormateado+" - Máx S/ "+amountMaxRquTraRan2Formateado);
+				var $rangoTra = $("#rangoMontosTransferencia");
+				var minLabelTra = $rangoTra.attr('data-min-label') || 'Min';
+				var maxLabelTra = $rangoTra.attr('data-max-label') || 'Máx';
+				$rangoTra.attr('data-min-value', amountMinRequestTraFormateado);
+				$rangoTra.attr('data-max-value', amountMaxRquTraRan2Formateado);
+				$rangoTra.text(minLabelTra + ' ' + amountMinRequestTraFormateado + ' - ' + maxLabelTra + ' ' + amountMaxRquTraRan2Formateado);
 				
 				$("#divTransRangos").css('margin-bottom','172px');
 				$("#divTransRangos").html(
@@ -5230,8 +5293,12 @@ function irTransferencia(){
 	$("#amountTransferencia").val($("#amountEfectivo").val());
 	$("#amountTransferencia").keyup();
 	cleanPaymentPrizeCash();
-	$("#accordion_transferencia").addClass('opened');
-	$("#accordion_transferencia").find('.accordion__body').css('display','block');
+	if ($('#modal-retiro-transferencia').length && typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
+		simpleModal.onToggleModalMsg('#modal-retiro-transferencia');
+	} else {
+		$("#accordion_transferencia").addClass('opened');
+		$("#accordion_transferencia").find('.accordion__body').css('display','block');
+	}
 	setTimeout(function() { $("#amountTransferencia").focus(); }, 0);
 	$('#modal-confirmar-retiro-efectivo').fadeOut(250);
 }
