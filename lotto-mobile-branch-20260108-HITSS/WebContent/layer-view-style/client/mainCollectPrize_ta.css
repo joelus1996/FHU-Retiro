@@ -3733,6 +3733,415 @@ html, body {
   display: block;
 }
 
+/* 1.1 Inicio Jhon Conopuma - 2026-03-06 - Estilos base de la pantalla Historial de Retiros (tabs, filtros, lista) */
+/* ===== TA Historial (estructura nueva en tab) ===== */
+/* 1.2 Inicio Jhon Conopuma - 2026-03-06 - Layout general del contenedor Historial */
+.ta-historial {
+  padding: 4px 0 18px;
+}
+/* 1.2 Fin Jhon Conopuma */
+
+/* 1.17 Inicio Jhon Conopuma - 2026-03-06 - Cabecera Historial: "Estado de solicitud" + "Mostrar filas" */
+.ta-historial__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0 12px;
+}
+
+.ta-historial__heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #393737;
+  line-height: 1.1;
+}
+
+.ta-rows--header {
+  margin-left: auto;
+}
+
+.ta-rows--header select {
+  height: 28px;
+  border-radius: 8px;
+  padding: 0 8px;
+}
+/* 1.17 Fin Jhon Conopuma */
+
+/* 1.3 Inicio Jhon Conopuma - 2026-03-06 - Fila de filtros (chips + selector filas) */
+.ta-historial__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 10px;
+}
+/* 1.3 Fin Jhon Conopuma */
+
+/* 1.4 Inicio Jhon Conopuma - 2026-03-06 - Estilos de chips (última semana / búsqueda) */
+.ta-chip {
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  color: #5A5A5A;
+  font-size: 12px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.ta-chip--active {
+  background: #4C2FBE;
+  border-color: #4C2FBE;
+  color: #fff;
+  font-weight: 700;
+}
+
+.ta-chip--search {
+  flex: 1 1 160px;
+  min-width: 160px;
+  height: 34px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 14px;
+  color: #A5A5A5;
+  font-weight: 400;
+  text-align: left;
+}
+
+.ta-chip--search.ta-chip--active {
+  color: #fff;
+}
+/* 1.4 Fin Jhon Conopuma */
+
+/* 1.5 Inicio Jhon Conopuma - 2026-03-06 - Selector "Mostrar filas" */
+.ta-rows {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #5A5A5A;
+}
+
+.ta-rows__label {
+  white-space: nowrap;
+}
+
+.ta-rows select {
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  color: #5A5A5A;
+  padding: 0 8px;
+}
+/* 1.5 Fin Jhon Conopuma */
+
+/* 1.6 Inicio Jhon Conopuma - 2026-03-06 - Panel avanzado (mostrar/ocultar + hint) */
+.ta-advanced {
+  display: none;
+  margin: 8px 0 10px;
+}
+
+.ta-advanced.is-open {
+  display: block;
+}
+
+.ta-advanced__hint {
+  font-size: 12px;
+  color: #b5b5b5;
+  line-height: 1.35;
+  margin: 6px 0 12px;
+}
+/* 1.6 Fin Jhon Conopuma */
+
+/* 1.7 Inicio Jhon Conopuma - 2026-03-06 - Ajusta el grid de fechas (ancho tipo maqueta) */
+.ta-advanced__dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 334px));
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+/* 1.7 Fin Jhon Conopuma */
+
+.ta-advanced .form-item {
+  margin: 0;
+}
+
+/* 1.8 Inicio Jhon Conopuma - 2026-03-06 - Label de fecha fuera de la caja (Desde/Hasta arriba) */
+.ta-dateLabel {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #5A5A5A;
+  margin: 0 0 6px;
+  padding-left: 4px;
+}
+/* 1.8 Fin Jhon Conopuma */
+
+/* 1.9 Inicio Jhon Conopuma - 2026-03-06 - Tamaño/alto de inputs de fecha + padding del ícono calendario */
+.ta-advanced .input {
+  border: 1px solid #E2E2E2;
+  border-radius: 12px;
+  padding: 0;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.ta-advanced .input input {
+  height: 35px;
+  border: 0;
+  padding: 0 42px 0 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* 1.9 Fin Jhon Conopuma */
+
+/* 1.10 Inicio Jhon Conopuma - 2026-03-06 - Métodos de retiro en una fila con wrap (multi-selección) */
+.ta-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin: 6px 0 4px;
+}
+/* 1.10 Fin Jhon Conopuma */
+
+/* 1.11 Inicio Jhon Conopuma - 2026-03-06 - Alineación/compactación de cada método (evita saltos raros) */
+.ta-method {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #5A5A5A;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  flex: 0 1 auto;
+}
+/* 1.11 Fin Jhon Conopuma */
+
+.ta-method input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ta-method__box {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #b5b5b5;
+  border-radius: 3px;
+  background: #fff;
+  box-sizing: border-box;
+  flex: 0 0 16px;
+}
+
+.ta-method input:checked ~ .ta-method__box {
+  border-color: #4C2FBE;
+  background: #4C2FBE;
+}
+
+.ta-method input:checked ~ .ta-method__text {
+  color: #5A5A5A;
+  font-weight: 700;
+}
+
+@media (max-width: 420px) {
+  /* 1.12 Inicio Jhon Conopuma - 2026-03-06 - Responsivo: apila fechas y ajusta espacios */
+  .ta-advanced__dates {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+
+  .ta-methods {
+    gap: 10px;
+  }
+  /* 1.12 Fin Jhon Conopuma */
+}
+
+/* 1.13 Inicio Jhon Conopuma - 2026-03-06 - Forza z-index/ancho del datepicker en Historial */
+.ta-hist-advanced-open .datepicker-container {
+  z-index: 9999 !important;
+  width: 334px;
+  max-width: calc(100vw - 32px);
+}
+/* 1.13 Fin Jhon Conopuma */
+
+/* 1.14 Inicio Jhon Conopuma - 2026-03-06 - Botón "Estados de retiro" */
+.ta-states {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 0;
+  background: #F2F2F2;
+  color: #5A5A5A;
+  cursor: pointer;
+  margin: 6px 0 12px;
+}
+
+.ta-states__icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #4C2FBE;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 22px;
+}
+
+.ta-states__icon::before {
+  font-family: 'ilot' !important;
+  content: "\e90f";
+  font-size: 18px;
+  line-height: 1;
+  color: #393737;
+}
+
+.ta-states__text {
+  flex: 1;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ta-states__chev::before {
+  font-family: 'ilot' !important;
+  content: "\e904";
+  font-size: 18px;
+  line-height: 1;
+  color: #b5b5b5;
+}
+/* 1.14 Fin Jhon Conopuma */
+
+/* 1.15 Inicio Jhon Conopuma - 2026-03-06 - Lista de retiros (items/badges/empty state) */
+.ta-historial__list {
+  margin-top: 6px;
+}
+
+#ta-items-hispayment {
+  display: block;
+}
+
+.ta-hist-item {
+  width: 100%;
+  display: block;
+  border: 0;
+  border-bottom: 1px solid #E2E2E2;
+  padding: 16px 0;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.ta-hist-item:last-child {
+  border-bottom: 0;
+}
+
+.ta-hist-item:focus {
+  outline: none;
+}
+
+.ta-hist-item:focus-visible {
+  outline: 2px solid #4C2FBE;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.ta-hist-item__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ta-hist-item__left {
+  min-width: 0;
+}
+
+.ta-hist-item__title {
+  font-size: 14px;
+  font-weight: 900;
+  color: #5A5A5A;
+  margin-bottom: 6px;
+}
+
+.ta-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.ta-badge--pending {
+  border: 0;
+  background: #FFD400;
+  color: #000000;
+}
+
+.ta-badge--paid {
+  background: #40B638;
+  color: #000000;
+}
+
+.ta-hist-item__right {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.ta-hist-item__amount {
+  font-size: 14px;
+  font-weight: 900;
+  color: #5A5A5A;
+  white-space: nowrap;
+}
+
+.ta-hist-item__chev::before {
+  font-family: 'ilot' !important;
+  content: "\e901";
+  font-size: 18px;
+  line-height: 1;
+  color: #b5b5b5;
+}
+
+.ta-hist-item__meta {
+  font-size: 12px;
+  color: #b5b5b5;
+  margin-top: 10px;
+  display: flex;
+  gap: 26px;
+}
+
+.ta-historial__empty {
+  margin-top: 14px;
+  text-align: center;
+  color: #b5b5b5;
+  font-size: 13px;
+}
+/* 1.15 Fin Jhon Conopuma */
+
+/* 1.1 Fin Jhon Conopuma */
+
+/* 1.16 Inicio Jhon Conopuma - 2026-03-06 - Tarjetas rápidas de método (no afectan acordeón) */
 /* ===== Quick method cards (sin afectar el acordeón) ===== */
 .ipremio .method-cards {
   margin: 8px 0 16px;
@@ -3820,3 +4229,4 @@ html, body {
   .ipremio .method-card__title { font-size: 20px; }
   .ipremio .method-card__subtitle { font-size: 15px; }
 }
+/* 1.16 Fin Jhon Conopuma */

@@ -295,7 +295,8 @@
 							<p id="message-modal-success"></p>
 							<div class="modal__links" style="padding-top: 0px;">
 								<div><a class="no-underline" style="color: #e30613;" href="#" id="historialRetiros"
-										toggle-modal="#modal-listado"><span>Historial de retiros</span></a></div>
+										toggle-modal="#modal-premios"
+										onclick="var t=document.querySelector('.tabs-retiro .tab-btn[data-tab=\'tab-historial\']'); if(t) t.click();"><span>Historial de retiros</span></a></div>
 							</div>
 							<hr>
 							<div class="modal__links">
@@ -413,7 +414,7 @@
 															src="<c:url value='/layer-view-image/v2/icono-visa.png'/>"
 															alt="" aria-hidden="true" />
 														<span class="method-card__text">
-															<span class="method-card__title">Tarjeta de crédito / débito</span>
+															<span class="method-card__title">Tarjeta de crï¿½dito / dï¿½bito</span>
 															<span class="method-card__subtitle"
 																data-range-source="rangoMontosVisa"></span>
 														</span>
@@ -1087,20 +1088,116 @@
 												</ul>
 
 											</div>
-											<div id="tab-historial" class="tab-content">
-												<div class="footlinks">
-													<div>Historial</div><a class="linkbox" href="#"
-														toggle-modal="#modal-listado"
-														style="margin-left: 0px;">Retiros</a>
-												</div>
+												<!-- 1.1 Inicio Jhon Conopuma - 2026-03-06 - Tab Historial: filtros, lista, paginaciÃ³n y vacÃ­o -->
+												<div id="tab-historial" class="tab-content">
+												<div class="ta-historial">
+														<!-- 1.6 Inicio Jhon Conopuma - 2026-03-06 - Cabecera fija de Historial: tÃ­tulo "Estado de solicitud" + control "Mostrar filas" -->
+														<div class="ta-historial__header" aria-label="Cabecera de historial de retiros">
+															<div class="ta-historial__heading">Estado de solicitud</div>
+															<label class="ta-rows ta-rows--header">
+																<span class="ta-rows__label">Mostrar filas</span>
+																<select id="taHistRows">
+																	<option value="15" selected>15</option>
+																</select>
+															</label>
+														</div>
+														<!-- 1.6 Fin Jhon Conopuma -->
 
-												<div id="sin-retiros" style="display:none;">
-													Aï¿½n no has hecho ningï¿½n retiro
-												</div>
+													<div class="ta-historial__filters" aria-label="Filtros de historial de retiros">
+															<button type="button" class="ta-chip ta-chip--active" data-ta-chip="lastWeek" aria-pressed="true">&Uacute;ltima semana</button>
+															<button type="button" class="ta-chip ta-chip--search" id="taHistSearchBtn" data-ta-chip="search" aria-pressed="false">Fecha y/o Tipo de b&uacute;squeda</button>
+													</div>
 
-												<div id="con-retiros" style="display:none;">
-													<!-- aquï¿½ va tu tabla -->
+														<!-- 1.2 Inicio Jhon Conopuma - 2026-03-06 - Panel avanzado: filtros por fecha y tipo de retiro (multi-selecciÃ³n) -->
+														<div class="ta-advanced" id="taAdvancedFilters" aria-hidden="true">
+															<!-- 1.7 Inicio Jhon Conopuma - 2026-03-06 - Texto guÃ­a con Ã©nfasis en "30 dÃ­as" -->
+															<div class="ta-advanced__hint">Filtra tu b&uacute;squeda en un rango de <strong>30 d&iacute;as</strong> como m&aacute;ximo, hasta con 2 a&ntilde;os de antig&uuml;edad.</div>
+															<!-- 1.7 Fin Jhon Conopuma -->
+															<div class="ta-advanced__dates">
+																<div class="form-item">
+																	<div class="ta-dateLabel">Desde:</div>
+																	<div class="input is-calendar">
+																		<input type="text" id="taStartDate" name="taStartDate" autocomplete="off" inputmode="numeric" maxlength="10" placeholder="dd/mm/aaaa">
+																	</div>
+																</div>
+																<div class="form-item">
+																	<div class="ta-dateLabel">Hasta:</div>
+																	<div class="input is-calendar">
+																		<input type="text" id="taEndDate" name="taEndDate" autocomplete="off" inputmode="numeric" maxlength="10" placeholder="dd/mm/aaaa">
+																	</div>
+																</div>
+															</div>
+
+															<div class="ta-methods" role="group" aria-label="Tipo de retiro">
+																<label class="ta-method">
+																	<input type="checkbox" name="taMethod" value="cash">
+																	<span class="ta-method__box" aria-hidden="true"></span>
+																	<span class="ta-method__text">Efectivo</span>
+																</label>
+																<label class="ta-method">
+																	<input type="checkbox" name="taMethod" value="transfer">
+																	<span class="ta-method__box" aria-hidden="true"></span>
+																	<span class="ta-method__text">Transferencia</span>
+																</label>
+																<label class="ta-method">
+																	<input type="checkbox" name="taMethod" value="visa">
+																	<span class="ta-method__box" aria-hidden="true"></span>
+																	<span class="ta-method__text">Visa</span>
+																</label>
+															</div>
+														</div>
+														<!-- 1.2 Fin Jhon Conopuma -->
+
+													<button type="button" class="ta-states" aria-label="Estados de retiro">
+														<span class="ta-states__icon" aria-hidden="true"></span>
+														<span class="ta-states__text">Estados de retiro</span>
+														<span class="ta-states__chev" aria-hidden="true"></span>
+													</button>
+
+													<div class="ta-historial__list">
+														<div class="items" id="ta-items-hispayment" data-show-items="15">
+															<!-- Mock estructural (se reemplaza por JS en el 2do paso) -->
+																	<button type="button" class="ta-hist-item" aria-label="Detalle de retiro">
+																<div class="ta-hist-item__top">
+																	<div class="ta-hist-item__left">
+																		<div class="ta-hist-item__title">Efectivo / Punto de Venta</div>
+																		<span class="ta-badge ta-badge--pending">Pendiente</span>
+																	</div>
+																	<div class="ta-hist-item__right">
+																		<div class="ta-hist-item__amount">S/ 100</div>
+																		<span class="ta-hist-item__chev" aria-hidden="true"></span>
+																	</div>
+																</div>
+																	<div class="ta-hist-item__meta"><span>Solicitud N&deg; 5623567</span><span>20 Octubre</span></div>
+																</button>
+																<button type="button" class="ta-hist-item" aria-label="Detalle de retiro">
+																<div class="ta-hist-item__top">
+																	<div class="ta-hist-item__left">
+																		<div class="ta-hist-item__title">Transferencia Bancaria</div>
+																		<span class="ta-badge ta-badge--paid">Abonado</span>
+																	</div>
+																	<div class="ta-hist-item__right">
+																		<div class="ta-hist-item__amount">S/ 100</div>
+																		<span class="ta-hist-item__chev" aria-hidden="true"></span>
+																	</div>
+																</div>
+																	<div class="ta-hist-item__meta"><span>Solicitud N&deg; 5623567</span><span>16 Octubre</span></div>
+																</button>
+														</div>
+
+														<div class="pagination" id="ta-pagination-items-hispayment">
+															<div class="pages"></div>
+															<a class="prev is-disabled" href=""><i class="icon-regresar"></i></a>
+															<a class="next" href=""><i class="icon-siguiente"></i></a>
+														</div>
+
+														<div id="ta-sin-retiros" class="ta-historial__empty" style="display:none;">
+															A&uacute;n no has hecho ning&uacute;n retiro
+														</div>
+													</div>
 												</div>
+												<!-- 1.1 Fin Jhon Conopuma -->
+											</div>
 											</div>
 										</div>
 									</li>
@@ -1175,7 +1272,7 @@
 							</div>
 
 							<div class="ipremio__body">
-								<div class="title-method">Tarjeta de crédito / débito</div>
+								<div class="title-method">Tarjeta de crï¿½dito / dï¿½bito</div>
 								<button class="btn btn-solicitar" type="button" disabled>Solicitar retiro</button>
 							</div>
 						</div>
@@ -1211,7 +1308,7 @@
 							</div>
 
 							<div class="ipremio__body">
-								<div class="title-method">Tarjeta de crédito / débito</div>
+								<div class="title-method">Tarjeta de crï¿½dito / dï¿½bito</div>
 								<button class="btn btn-solicitar" type="button" disabled>Solicitar retiro</button>
 							</div>
 						</div>
@@ -1886,6 +1983,86 @@
 							.classList.add("active");
 					});
 				});
+
+				/* 1.3 Inicio Jhon Conopuma - 2026-03-06 - Comportamiento de chips del Historial (toggle panel avanzado) */
+				(function () {
+					function setupTaHistChips() {
+						var scope = document.getElementById('tab-historial');
+						if (!scope) return;
+						var chips = scope.querySelectorAll('.ta-chip[data-ta-chip]');
+						if (!chips || !chips.length) return;
+							var advanced = scope.querySelector('#taAdvancedFilters');
+
+						/* 1.4 Inicio Jhon Conopuma - 2026-03-06 - Reinicializa datepicker al abrir panel (mejor posiciÃ³n + auto-oculta al elegir) */
+						function initAdvancedDatepickers() {
+							if (!advanced) return;
+							if (!window.jQuery || !jQuery.fn || typeof jQuery.fn.datepicker !== 'function') return;
+							var $inputs = jQuery(advanced).find('#taStartDate, #taEndDate');
+							if (!$inputs.length) return;
+
+							$inputs.each(function () {
+								var $input = jQuery(this);
+								try {
+									$input.datepicker('destroy');
+								} catch (e) { }
+
+								$input.datepicker({
+									language: 'es-ES',
+									autoHide: true,
+									format: 'dd/mm/yyyy',
+									zIndex: 9999
+								});
+
+								$input.off('pick.datepicker.ta').on('pick.datepicker.ta', function () {
+									try { $input.datepicker('hide'); } catch (e) { }
+								});
+							});
+						}
+						/* 1.4 Fin Jhon Conopuma */
+
+						function setActive(activeChip) {
+								var activeKey = activeChip ? activeChip.getAttribute('data-ta-chip') : null;
+							chips.forEach(function (chip) {
+								var isActive = chip === activeChip;
+								chip.classList.toggle('ta-chip--active', isActive);
+								chip.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+							});
+
+								if (advanced) {
+									var showAdvanced = activeKey === 'search';
+									advanced.classList.toggle('is-open', showAdvanced);
+									advanced.setAttribute('aria-hidden', showAdvanced ? 'false' : 'true');
+									/* 1.5 Inicio Jhon Conopuma - 2026-03-06 - Clase global para controlar z-index/ancho del datepicker */
+									document.documentElement.classList.toggle('ta-hist-advanced-open', !!showAdvanced);
+									/* 1.5 Fin Jhon Conopuma */
+									if (showAdvanced) {
+										initAdvancedDatepickers();
+									}
+
+									if (!showAdvanced && window.jQuery && jQuery.fn && typeof jQuery.fn.datepicker === 'function') {
+										jQuery(advanced).find('.is-calendar input').datepicker('hide');
+									}
+								}
+						}
+
+							chips.forEach(function (chip) {
+							chip.addEventListener('click', function () {
+								setActive(chip);
+							});
+						});
+
+							// Estado inicial
+							var initial = scope.querySelector('.ta-chip.ta-chip--active[data-ta-chip]') || chips[0];
+							if (initial) setActive(initial);
+					}
+
+					if (document.readyState === 'loading') {
+						document.addEventListener('DOMContentLoaded', setupTaHistChips);
+					} else {
+						setupTaHistChips();
+					}
+				})();
+				/* 1.3 Fin Jhon Conopuma */
 
 				(function () {
 					function syncMethodCards() {
