@@ -2976,6 +2976,20 @@ height: 30px;
     transform: none;
     clip-path: ellipse(50% 20% at 50% 100%);
   }
+
+  /* En transferencia, NO usar clip-path (mantener arco tipo elipse visible fuera de la cabecera) */
+  #modal-retiro-transferencia .ipremio__head--retiro-pdv::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -260px;
+    width: 170%;
+    height: 260px;
+    background: #ffffff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    clip-path: none;
+  }
 }
 
 /* Asignación de áreas (no importa el orden del HTML) */
@@ -3018,13 +3032,49 @@ height: 30px;
 }
 
 /* ===== Modal retiro efectivo / PDV (UI como maqueta) ===== */
+#modal-retiro-efectivo-pdv{
+  --retiro-pdv-card-max: 270px;
+  --retiro-pdv-btn-max: 420px;
+  --retiro-pdv-amount-line-width: 75%;
+  --retiro-pdv-currency-font-size: 24px;
+  --retiro-pdv-amount-font-size: 40px;
+  --retiro-pdv-placeholder-font-size: 16px;
+  --retiro-disponible-to-amount-gap: 50px;
+  --retiro-amount-to-info-gap: 100px;
+}
+
+@media (min-width: 481px){
+  #modal-retiro-efectivo-pdv{
+    --retiro-pdv-btn-max: 520px;
+  }
+}
+
 #modal-retiro-efectivo-pdv .ipremio__head--retiro-pdv{
   display: block !important;
   grid-template-areas: none !important;
   grid-template-columns: none !important;
   grid-template-rows: none !important;
   row-gap: 0 !important;
-  padding: 16px 16px 42px 16px !important;
+  padding: 30px 16px 56px 16px !important;
+  overflow: visible !important; /* permite que el arco se vea fuera de la cabecera */
+  position: relative !important;
+  z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
+}
+
+/* En efectivo, el arco va en la cabecera (divide negro/ blanco) */
+#modal-retiro-efectivo-pdv .ipremio__head--retiro-pdv::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -240px;
+  width: 200%;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  clip-path: none !important;
 }
 
 #modal-retiro-efectivo-pdv .retiro-pdv__headbar{
@@ -3063,7 +3113,8 @@ height: 30px;
 #modal-retiro-efectivo-pdv .retiro-pdv__iconbox{
   width: 120px;
   height: 88px;
-  margin: 18px auto -44px;
+  /* Deja ~1/3 del cuadro sobre fondo negro (88px alto -> 29px) */
+  margin: 18px auto -59px;
   background: #fff;
   border-radius: 22px;
   display: flex;
@@ -3071,7 +3122,7 @@ height: 30px;
   justify-content: center;
   line-height: 0;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 #modal-retiro-efectivo-pdv .retiro-pdv__icon{
@@ -3083,11 +3134,294 @@ height: 30px;
 }
 
 #modal-retiro-efectivo-pdv .ipremio__body{
-  padding-top: 54px;
+  /* Compensa el solape del cuadro del icono hacia el body */
+  padding-top: 10px;
+  position: relative;
+  z-index: 0;
 }
 
 #modal-retiro-efectivo-pdv .title-method{
   text-align: center;
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  color: #7a7a7a;
+}
+
+/* Espacio entre “Disponible para retirar” y el input de monto */
+#modal-retiro-efectivo-pdv .retiro-disponible{
+  margin-bottom: var(--retiro-disponible-to-amount-gap);
+}
+
+/* Alinear anchos (Disponible + Monto + Info) */
+#modal-retiro-efectivo-pdv #divMontoEfectivo{
+  width: calc(100% - 32px);
+  max-width: var(--retiro-pdv-card-max, 270px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__amount-title{
+  font-size: 12px;
+  line-height: 1.2;
+  color: #7a7a7a;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__amount-input{
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 0 0px;
+  border-bottom: 1px solid #CFCFCF;
+  width: var(--retiro-pdv-amount-line-width, 75%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error .retiro-pdv__amount-input{
+	border-bottom-color: #FF0000;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__amount-currency{
+  flex: 0 0 auto;
+  font-size: var(--retiro-pdv-currency-font-size, 20px);
+  line-height: 1;
+  font-weight: 700;
+  color: #7a7a7a;
+  padding-bottom: 0px;
+}
+
+#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error .retiro-pdv__amount-currency{
+	color: #FF0000;
+}
+
+#modal-retiro-efectivo-pdv #amountEfectivo{
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0 !important;
+  background: transparent !important;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: var(--retiro-pdv-amount-font-size, 38px);
+  line-height: 1;
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+}
+
+#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error #amountEfectivo{
+	color: #FF0000;
+}
+
+#modal-retiro-efectivo-pdv #amountEfectivo::placeholder{
+  color: #b9b9b9;
+  font-size: var(--retiro-pdv-placeholder-font-size, 16px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__amount-range{
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #7a7a7a;
+  text-align: center;
+}
+
+#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error .retiro-pdv__amount-range{
+	color: #FF0000;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info{
+  margin: var(--retiro-amount-to-info-gap) auto 14px;
+  background: #F2F2F2;
+  border: 1px solid #D9D9D9;
+  border-radius: 22px;
+  padding: 26px 16px 18px;
+  position: relative;
+  width: calc(100% - 32px);
+  max-width: var(--retiro-pdv-card-max, 270px);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-icon{
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-icon img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: #77736f;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item span{
+  flex: 1 1 auto;
+  min-width: 0;
+  word-break: break-word;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: block;
+  margin-top: 1px;
+  object-fit: contain;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item strong{
+  font-weight: 700;
+  color: inherit;
+}
+
+@media (max-width: 420px){
+  #modal-retiro-efectivo-pdv #divMontoEfectivo{
+    width: calc(100% - 24px);
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__amount-title{
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  #modal-retiro-efectivo-pdv #amountEfectivo{
+    font-size: 40px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info{
+    border-radius: 18px;
+    padding: 20px 12px 14px;
+    width: calc(100% - 24px);
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-icon{
+    width: 26px;
+    height: 26px;
+    top: -13px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-list{
+    gap: 10px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item{
+    font-size: 12px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
+    width: calc(100% - 24px);
+  }
+}
+
+@media (max-width: 360px){
+  #modal-retiro-efectivo-pdv #divMontoEfectivo{
+    width: calc(100% - 20px);
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info{
+    border-radius: 16px;
+    padding: 18px 10px 12px;
+    width: calc(100% - 20px);
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-list{
+    gap: 10px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item{
+    font-size: 12px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+
+  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
+    width: calc(100% - 20px);
+  }
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__footer{
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 12px 0 calc(16px + env(safe-area-inset-bottom));
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 32px);
+  /* más ancho que la tarjeta informativa (que está en 270px) */
+  max-width: var(--retiro-pdv-btn-max, 420px);
+  margin: 0 auto;
+
+  /* Botón como maqueta (morado, pill, full-width) */
+  background: #4b33d6;
+  color: #fff;
+  border: 0;
+  border-radius: 18px;
+  height: 56px;
+  line-height: 56px;
+  padding: 0 18px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+@media (max-width: 360px){
+  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
+    height: 52px;
+    line-height: 52px;
+    font-size: 15px;
+  }
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar:disabled,
+#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar[disabled]{
+  background: #d9d9d9;
+  color: #7a7a7a;
+  cursor: not-allowed;
 }
 
 /* ===== Modal retiro tarjeta / PDV (UI como maqueta) ===== */
@@ -3097,7 +3431,26 @@ height: 30px;
   grid-template-columns: none !important;
   grid-template-rows: none !important;
   row-gap: 0 !important;
-  padding: 16px 16px 42px 16px !important;
+  padding: 30px 16px 56px 16px !important;
+  overflow: visible !important; /* permite que el arco se vea fuera de la cabecera */
+  position: relative !important;
+  z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
+}
+
+/* En tarjeta, el arco va en la cabecera (divide negro/ blanco) */
+#modal-retiro-tarjeta .ipremio__head--retiro-pdv::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -240px;
+  width: 200%;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  clip-path: none !important;
 }
 
 #modal-retiro-tarjeta .retiro-pdv__headbar{
@@ -3136,7 +3489,8 @@ height: 30px;
 #modal-retiro-tarjeta .retiro-pdv__iconbox{
   width: 120px;
   height: 88px;
-  margin: 18px auto -44px;
+  /* Deja ~1/3 del cuadro sobre fondo negro (88px alto -> 29px) */
+  margin: 18px auto -59px;
   background: #fff;
   border-radius: 22px;
   display: flex;
@@ -3144,7 +3498,7 @@ height: 30px;
   justify-content: center;
   line-height: 0;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 #modal-retiro-tarjeta .retiro-pdv__icon{
@@ -3156,21 +3510,46 @@ height: 30px;
 }
 
 #modal-retiro-tarjeta .ipremio__body{
-  padding-top: 54px;
+  /* Compensa el solape del cuadro del icono hacia el body */
+  padding-top: 10px;
+  position: relative;
+  z-index: 0;
 }
 
 #modal-retiro-tarjeta .title-method{
   text-align: center;
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  color: #7a7a7a;
 }
 
 /* ===== Modal retiro transferencia / PDV (UI como maqueta) ===== */
-#mmodal-retiro-transferencia .ipremio__head--retiro-pdv{
+#modal-retiro-transferencia .ipremio__head--retiro-pdv{
   display: block !important;
   grid-template-areas: none !important;
   grid-template-columns: none !important;
   grid-template-rows: none !important;
   row-gap: 0 !important;
-  padding: 16px 16px 42px 16px !important;
+  padding: 30px 16px 56px 16px !important;
+  overflow: visible !important; /* permite que el arco se vea fuera de la cabecera */
+  position: relative !important;
+  z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
+}
+
+/* En transferencia, el arco va en la cabecera (divide negro/ blanco) */
+#modal-retiro-transferencia .ipremio__head--retiro-pdv::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -240px;
+  width: 200%;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  clip-path: none !important;
 }
 
 #modal-retiro-transferencia .retiro-pdv__headbar{
@@ -3209,7 +3588,8 @@ height: 30px;
 #modal-retiro-transferencia .retiro-pdv__iconbox{
   width: 120px;
   height: 88px;
-  margin: 18px auto -44px;
+  /* Deja ~1/3 del cuadro sobre fondo negro (88px alto -> 29px) */
+  margin: 18px auto -59px;
   background: #fff;
   border-radius: 22px;
   display: flex;
@@ -3217,11 +3597,11 @@ height: 30px;
   justify-content: center;
   line-height: 0;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 #modal-retiro-transferencia .retiro-pdv__icon{
-  width: 100px;
+  width: 72px;
   height: auto;
   display: block;
   margin: auto;
@@ -3229,11 +3609,120 @@ height: 30px;
 }
 
 #modal-retiro-transferencia .ipremio__body{
-  padding-top: 54px;
+  /* Compensa el solape del cuadro del icono hacia el body */
+  padding-top: 10px;
+  position: relative;
+  z-index: 0;
+}
+
+/* (Desactivado) arco en body: se usa el de la cabecera */
+#modal-retiro-transferencia .ipremio__body::before{
+  content: none !important;
+}
+
+#modal-retiro-transferencia .ipremio__body > *{
+  position: relative;
+  z-index: 1;
 }
 
 #modal-retiro-transferencia .title-method{
   text-align: center;
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  color: #7a7a7a;
+}
+
+
+.retiro-disponible{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 22px;
+  margin: 0 auto 18px;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #F2F2F2;
+  border: 0;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.retiro-disponible__icon{
+  width: 30px !important;
+  height: 30px !important;
+  display: block;
+  flex: 0 0 30px;
+}
+
+.retiro-disponible__label{
+  font-size: 18px;
+  color: #000000;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.retiro-disponible__amount{
+  font-size: 20px;
+  color: #000000;
+  line-height: 1.1;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 420px){
+  .retiro-disponible{
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    padding: 10px 14px;
+    gap: 10px;
+    justify-content: center;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  .retiro-disponible__icon{
+    width: 22px !important;
+    height: 22px !important;
+    flex-basis: 22px;
+  }
+
+  .retiro-disponible__label{
+    font-size: 14px;
+  }
+
+  .retiro-disponible__amount{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px){
+  .retiro-disponible{
+    max-width: calc(100% - 20px);
+    padding: 9px 12px;
+    gap: 8px;
+  }
+
+  .retiro-disponible__icon{
+    width: 20px !important;
+    height: 20px !important;
+    flex-basis: 20px;
+  }
+
+  .retiro-disponible__label{
+    font-size: 13px;
+  }
+
+  .retiro-disponible__amount{
+    font-size: 15px;
+  }
+}
+
+/* Asegurar que el botón de cerrar (X) quede siempre visible */
+#modal-retiro-transferencia .modal__close{
+  position: relative;
+  z-index: 5;
 }
 
 
@@ -3390,6 +3879,7 @@ height: 30px;
   display: flex;
   gap: 10px;                 /* espacio entre las dos columnas */
   align-items: flex-start;
+  flex-wrap: nowrap;
 }
 
 /* Cada bloque (etiqueta+valor) ocupa 50% */
@@ -3412,14 +3902,22 @@ height: 30px;
   margin-top: 2px;
 }
 
-/* Responsive: en pantallas angostas apila en 2 filas */
+/* Responsive: en pantallas angostas NO apilar (siempre en fila) */
 @media (max-width: 440px){
   .ipremio__head .top-saldo .saldo-add{
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: 8px;
   }
-  .ipremio__head .top-saldo .saldo-add p{
-    text-align: left; /* puedes usar center si lo prefieres en mobile */
+  .ipremio__head .top-saldo .saldo-item{
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .ipremio__head .top-saldo .saldo-item .saldo-label{
+    font-size: 12px;
+  }
+  .ipremio__head .top-saldo .saldo-item .saldo-amount{
+    font-size: 16px;
   }
 }
 
@@ -3533,6 +4031,7 @@ height: 30px;
   align-items: flex-start;
   gap: 20px;                     /* << distancia entre los dos bloques (ajústalo) */
   padding-top: 6px;
+  flex-wrap: nowrap;
 }
 
 /* ====== CADA BLOQUE (icono a la izquierda, textos a la derecha) ====== */
@@ -3540,7 +4039,8 @@ height: 30px;
   display: flex;
   align-items: flex-start;
   gap: 10px;                     /* espacio entre icono y textos */
-  min-width: 180px;              /* evita que se apriete demasiado */
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 /* ICONO */
@@ -3596,6 +4096,7 @@ height: 30px;
    /*  flex-direction: column;    */   /* apila los dos bloques uno debajo del otro en móviles muy pequeños */
     gap: 10px;
     align-items: center;
+    flex-wrap: nowrap;
   }
   .ipremio__head .saldo-item{ min-width: 0; }
 }
@@ -3797,11 +4298,14 @@ html, body {
 .ipremio .method-card__chev {
   flex: 0 0 auto;
   width: 22px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   text-align: right;
-  font-size: 26px;
-  line-height: 1;
+  font-size: 0;
+  line-height: 0;
   color: transparent; /* el JSP tiene '|' como placeholder */
-  position: relative;
 }
 
 .ipremio .method-card__chev::before {
@@ -3809,10 +4313,8 @@ html, body {
   color: #8a8a8a;
   font-size: 30px;
   line-height: 1;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
+  transform: none;
 }
 
 @media (min-width: 481px) {

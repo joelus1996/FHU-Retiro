@@ -17,21 +17,15 @@
 			<script src="https://web-button.metamap.com/button.js"></script>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-			<title>Retirar Premio - La Tinka</title>
-
+			<title>Retirar Premio</title>
 			<link rel="stylesheet" href="layer-view-style/v2/styles.css?v=<%=Constantes.styles_css%>" type="text/css" />
-			<link rel="stylesheet" href="layer-view-style/common/popModal.css?v=<%=Constantes.popModal_css%>"
-				type="text/css" />
-			<link media="screen" rel="stylesheet" type="text/css"
-				href="layer-view-style/client/mainCollectPrize_ta.css?v=47">
-			<meta http-equiv="Permissions-Policy"
-				content="geolocation=(https://signup.metamap.com) camera=(self 'https://signup.metamap.com') microphone=(https://signup.metamap.com)">
+			<link rel="stylesheet" href="layer-view-style/common/popModal.css?v=<%=Constantes.popModal_css%>" type="text/css" />
+			<link media="screen" rel="stylesheet" type="text/css" href="layer-view-style/client/mainCollectPrize_ta.css?v=32">
+			<meta http-equiv="Permissions-Policy" content="geolocation=(https://signup.metamap.com) camera=(self 'https://signup.metamap.com') microphone=(https://signup.metamap.com)">
 		</head>
-
 		<body class="no-scroll">
 			<!-- Google Tag Manager (noscript) -->
-			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58FNN4L" height="0" width="0"
-					style="display:none;visibility:hidden"></iframe></noscript>
+			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58FNN4L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<!-- End Google Tag Manager (noscript) -->
 			<input type="hidden" id="prizetoken" value="${prizetoken}" />
 			<input type="hidden" id="operatorId" value="${operatorId}" />
@@ -41,10 +35,7 @@
 				<input type="hidden" id="cid" value="${cid}">
 
 				<div style="display: none;">
-					<mati-button clientid="63c5aafb54916c001c517b3d" flowId=<%=Constantes.KYC_FLOWID%>
-						metadata=''
-						id="metamap-button"
-						/>
+					<mati-button clientid="63c5aafb54916c001c517b3d" flowId=<%=Constantes.KYC_FLOWID%> metadata='' id="metamap-button" />
 				</div>
 
 				<div class="ioverlay modal-msg" id="modal-confirmar-eliminar-cuenta-transferencia">
@@ -55,14 +46,10 @@
 									<span style='font-size: 16px; font-weight: 700;'>Eliminar</span>
 								</p>
 								<br>
-								<p id="textoEliminarCuentaTransferencia" style='text-align: center; line-height: 20px;'>
-								</p>
+								<p id="textoEliminarCuentaTransferencia" style='text-align: center; line-height: 20px;'></p>
 							</div>
-							<button class="btn" style="background: #07663a; margin: 20px auto 0;"
-								onclick="eliminarCuentaTransferencia()">ACEPTAR</button>
-							<button class="btn"
-								style="margin-top: 12px; background: #ffffff; border: 2px solid #07663a; color: #77736f;"
-								onclick="cancelarEliminarCuentaTransferencia()">CANCELAR</button>
+							<button class="btn" style="background: #07663a; margin: 20px auto 0;" onclick="eliminarCuentaTransferencia()">ACEPTAR</button>
+							<button class="btn" style="margin-top: 12px; background: #ffffff; border: 2px solid #07663a; color: #77736f;" onclick="cancelarEliminarCuentaTransferencia()">CANCELAR</button>
 						</div>
 					</div>
 				</div>
@@ -74,72 +61,25 @@
 								<p style='text-align: center; margin-bottom: 0px;'>
 									<span style='font-size: 16px; font-weight: 700;'>Confirma tus datos</span> <br><br>
 								</p>
-
 								<table style="font-size: 13px; line-height: 13px;">
 									<tbody>
-										<tr>
-											<td>Monto de retiro</td>
-											<td>: S/ <span id="confirmaMontoTransferencia"></span></td>
-										</tr>
-										<tr>
-											<td>Banco</td>
-											<td>: <span id="confirmaBancoTransferencia"></span></td>
-										</tr>
-										<tr>
-											<td>Cuenta destino</td>
-											<td>: Ahorro soles</td>
-										</tr>
-										<tr>
-											<td> </td>
-											<td>&nbsp;&nbsp;<span id="confirmaNumCuentaTransferencia"></span></td>
-										</tr>
-										<tr id="filaJugadaGratisCD">
-											<td>Jugadas gratis</td>
-											<td><span id="lblJugadaGratisCD"></span></td>
-										</tr>
-										<tr>
-											<td>Datos</td>
-											<td>: <span id="confirmaNombresTransferencia"></span></td>
-										</tr>
-										<tr>
-											<td> </td>
-											<td>&nbsp;&nbsp;<span id="confirmaDocumentoTransferencia"></span></td>
-										</tr>
-										<tr>
-											<td>Departamento</td>
-											<td>: <span id="confirmaDepartamentoTransferencia"></span></td>
-										</tr>
+										<tr><td>Monto de retiro</td><td>: S/ <span id="confirmaMontoTransferencia"></span></td></tr>
+										<tr><td>Banco</td><td>: <span id="confirmaBancoTransferencia"></span></td></tr>
+										<tr><td>Cuenta destino</td><td>: Ahorro soles</td></tr>
+										<tr><td> </td><td>&nbsp;&nbsp;<span id="confirmaNumCuentaTransferencia"></span></td></tr>
+										<tr id="filaJugadaGratisCD"><td>Jugadas gratis</td><td><span id="lblJugadaGratisCD"></span></td></tr>
+										<tr><td>Datos</td><td>: <span id="confirmaNombresTransferencia"></span></td></tr>
+										<tr><td> </td><td>&nbsp;&nbsp;<span id="confirmaDocumentoTransferencia"></span></td></tr>
+										<tr><td>Departamento</td><td>: <span id="confirmaDepartamentoTransferencia"></span></td></tr>
 									</tbody>
 								</table>
-
 								<p style='text-align: left; line-height: 12px;'>
-									<br><span style="font-size: 10px;">Para que tu retiro sea aprobado, tï¿½ debes ser el
-										titular de la cuenta y los datos de tu cuenta de La Tinka deben ser iguales a
-										los de tu cuenta bancaria. Caso contrario, tu retiro serï¿½ rechazado.</span><br>
+									<br><span style="font-size: 10px;">Para que tu retiro sea aprobado, tï¿½ debes ser el titular de la cuenta y los datos de tu cuenta de La Tinka deben ser iguales a los de tu cuenta bancaria. Caso contrario, tu retiro serï¿½ rechazado.</span><br>
 								</p>
-								<div id="divRecurrencia">
-									<hr>
-									<div class="form__check">
-										<input type="checkbox" name="recurrenteTra" id="recurrenteTra" value="Y"
-											style="position: absolute; opacity: 0;">
-										<label for="recurrenteTra" style="color: #086c46;font-size: 11px;">Guardar
-											nï¿½mero de cuenta como recurrente</label>
-									</div>
-									<hr>
-								</div>
 							</div>
-							<button class="btn" id="aceptar-confirmar-retiro-transferencia"
-								onclick="continuarRetiroTransferenciaPin()"
-								style="background: #07663a; margin: 20px auto 0;">Confirmar retiro</button>
-							<button class="btn"
-								style="margin-top: 12px; background: #ffffff; border: 2px solid #07663a; color: #77736f;"
-								id="regresar-transferencia" onclick="regresarRetiroTransferencia()">REGRESAR</button>
-							<p style="margin-top: 20px; margin-bottom: 0px; font-size: 11px; text-align: justify;">
-								Algunos bancos cobran una comisiï¿½n interplaza del 0.05% del monto retirado, o un mï¿½nimo
-								de S/7.50. Si quieres actualizar tu nombre, apellidos o DNI,
-								<a href="derechos-arco.html" target="_blank"
-									style="text-decoration: underline; color: #e30613;">solicï¿½talo aquï¿½</a>
-							</p>
+							<button class="btn" style="background: #07663a; margin: 20px auto 0;" onclick="continuarRetiroTransferencia()">Confirmar retiro</button>
+							<button class="btn" style="margin-top: 12px; background: #ffffff; border: 2px solid #07663a; color: #77736f;" onclick="regresarRetiroTransferencia()">REGRESAR</button>
+							<p style="margin-top: 20px; margin-bottom: 0px; font-size: 11px; text-align: justify;">Algunos bancos cobran una comisiï¿½n interplaza del 0.05% del monto retirado, o un mï¿½nimo de S/7.50. Si quieres actualizar tu nombre, apellidos o DNI, <a href="derechos-arco.html" target="_blank" style="text-decoration: underline; color: #e30613;">solicï¿½talo aquï¿½</a></p>
 						</div>
 					</div>
 				</div>
@@ -206,6 +146,7 @@
 							</p>
 						</div>
 					</div>
+				</div>
 				</div>
 
 				<div class="ioverlay modal-msg" id="modal-confirmar-retiro-efectivo">
@@ -413,7 +354,7 @@
 															src="<c:url value='/layer-view-image/v2/icono-visa.png'/>"
 															alt="" aria-hidden="true" />
 														<span class="method-card__text">
-															<span class="method-card__title">Tarjeta de crédito / débito</span>
+															<span class="method-card__title">Tarjeta de crï¿½dito / dï¿½bito</span>
 															<span class="method-card__subtitle"
 																data-range-source="rangoMontosVisa"></span>
 														</span>
@@ -440,127 +381,14 @@
 														style="display: none;">
 														<h2 class="accordion__title major-356"><span
 																class="icon-efectivo"></span>Efectivo / Punto de venta
-															<span class="info" id="rangoMontosEfectivo"></span></h2>
+															<span class="info" id="rangoMontosEfectivo" data-min-label="Min" data-max-label="MÃ¡x"></span></h2>
 														<h2 class="accordion__title minor-356"
 															style="height: 21px !important;"><span
 																class="icon-efectivo"></span>Efectivo / <br>Punto de
 															venta <span class="info"
-																id="rangoMontosEfectivo-356"></span></h2>
+																id="rangoMontosEfectivo-356" data-min-label="Min" data-max-label="MÃ¡x"></span></h2>
 														<div class="accordion__body">
-															<div class="inner">
-																<form class="metodo-efectivo steps" autocomplete="off"
-																	id="formefectivo">
-																	<div id="step" class="step"><i
-																			id="stepUnoEfectivo">1</i>
-																		<div class="form-item" id="divMontoEfectivo">
-																			<div class="input__title">Ingresa el monto
-																				que deseas retirar</div>
-																			<div class="input">
-																				<label>Monto en S/</label>
-																				<input class="is-numeric" type="text"
-																					name="iamount" maxlength="10"
-																					id="amountEfectivo" data-min="0"
-																					data-max="0" data-valid="amount">
-																			</div>
-																			<div class="input__error"
-																				id="msgErrorRangoMontosEfectivo"></div>
-																		</div>
-																	</div>
-
-																	<!-- Pedir DNI Efectivo -->
-																	<div id="divStepDNIEfectivo" class="step hidden">
-																		<i>2</i>
-																		<div class="fileup-image"
-																			id="divImgDniEfectivo">
-																			<span id="stateDniPENEfectivo"
-																				style="display: none;">Registra tu DNI,
-																				por ï¿½nica vez, adjuntando el lado que
-																				muestra tu foto. (max <span
-																					id="pesoImgDniEfectivo"></span>MB)</span>
-																			<label id="stateDniPENLabelEfectivo"
-																				class="btn is-secondary img-simple"
-																				style="margin-top: 16px; display: none;"><span
-																					class="text">Subir imagen</span>
-																				<input class="upimage is-simple"
-																					type="file" name="iimage_1"
-																					id="imgDNIEfectivo"
-																					accept="image/jpeg, image/png"
-																					data-valid="required">
-																				<canvas id="canvasDNIEfectivo"
-																					style="display: none;"></canvas>
-																			</label>
-																			<span id="stateDniACTEfectivo"
-																				style="display: none; line-height: 16px; margin-bottom: 10px;">
-																				<img src="layer-view-image/client/icon-valid.svg"
-																					width="20" height="20">
-																				<span style="vertical-align: top;">Tu
-																					DNI estï¿½ registrado</span>
-																			</span>
-																			<span id="stateDniACTLabelEfectivo"
-																				style="display: none;">
-																				<span>ï¿½Quieres actualizarlo?</span>
-																				<a id="updateDNIEfectivo"
-																					style="text-decoration: underline; color: #e30613;">
-																					hazlo aquï¿½
-																				</a>
-																			</span>
-																			<div class="filenames empty"
-																				id="filenamesDniEfectivo"><span
-																					class="filename-empty">No se adjuntï¿½
-																					ninguna imagen</span>
-																				<div class="filename-simple"></div>
-																			</div>
-																		</div>
-
-																	</div>
-
-																	<div class="step hidden" id="stepKYCEfectivo"><i
-																			id="stepCardSDKVisa">2</i>Verifica tus datos
-																		por ï¿½nica vez cada 36 meses, si tus datos son
-																		correctos.
-																		<div class="form_visa" id="divEfectivoKYC">
-																			<img class="form_visa_logo"
-																				src="layer-view-image/client/icon_dni.png?v=3"
-																				style="margin-left: 5px; margin-top: -10px; margin-right: 32px;">
-																			<label class="form_visa_card_button"
-																				id="efectivoSDKCardButton"
-																				style="padding: 0px 12px !important; font-size: 10px !important;"
-																				onclick="showSDK()">VERIFICA TU
-																				IDENTIDAD
-																				<input type="hidden"
-																					id="txtEfectivoSDKVerificado"
-																					data-valid="required">
-																			</label>
-
-																			<span class="form_visa_card_mask hidden"
-																				id="sdkEfectivoCardText">
-																				<img id="iconKycE"
-																					src="layer-view-image/client/icon-valid.svg"
-																					width="16" height="16">
-																				<span class="span_mensaje_verificado"
-																					id="efectivoSDKVerificado"></span>
-																				<span id="efectivoSDKBtn"
-																					style="cursor: pointer;"
-																					class="verificarKYC"><u>Clic aquï¿½
-																						para actualizar</u></span>
-																			</span>
-																			<!-- 	                                	<button type="button" id="consultResultKyc4" class = "btn-verificar" >Verificar</button> -->
-																		</div>
-																		<div
-																			style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">
-																			Deberï¿½s permitir el acceso a tu cï¿½mara para
-																			realizar la verificaciï¿½n.</div>
-
-																	</div>
-																	<div class="step"
-																		style="margin-top: 5px; font-size: 11px; ">
-																		Podrï¿½s cobrar tu retiro ï¿½nicamente en efectivo,
-																		en nuestros Puntos de Venta</div>
-
-																	<button class="btn btn-solicitar">Solicitar
-																		Retiro</button>
-																</form>
-															</div>
+															<div class="inner"></div>
 														</div>
 													</li>
 
@@ -568,164 +396,13 @@
 														style="display: none;">
 														<h2 class="accordion__title major-356"><span
 																class="icon-tarjeta"></span>Visa <span class="info"
-																id="rangoMontosVisa"></span></h2>
+																id="rangoMontosVisa" data-min-label="Min" data-max-label="MÃ¡x"></span></h2>
 														<h2 class="accordion__title minor-356"
 															style="height: 21px !important;"><span
 																class="icon-tarjeta"></span>Visa <span class="info"
-																id="rangoMontosVisa-356"></span></h2>
+																id="rangoMontosVisa-356" data-min-label="Min" data-max-label="MÃ¡x"></span></h2>
 														<div class="accordion__body">
-															<div class="inner" style="padding-top: 0px;">
-																<form class="metodo-visa steps" autocomplete="off"
-																	id="formvisa">
-																	<!--                               <div class="steps-title">Pasos a seguir:</div> -->
-																	<div>
-																		<p style="font-size: 12px;">Retira entre S/
-																			<span id="minAmountVisa"></span> y S/ <span
-																				id="maxAmountVisa"></span> hasta en
-																			<span id="maxRequestPerDayVisa"></span>
-																			transacciones diarias.<br>Retiro mï¿½ximo
-																			semanal S/ <span
-																				id="maxAmountPerWeekVisa"></span>.</p>
-																	</div>
-																	<div class="step"><i>1</i>Ingresa el monto a retirar
-																		<div class="form-item ispad15"
-																			id="divMontoVisa">
-																			<div class="input">
-																				<label>Monto en S/</label>
-																				<input class="is-numeric" type="text"
-																					name="iamount" maxlength="10"
-																					id="amountVisa" data-min="0"
-																					data-max="0" data-valid="amount">
-																			</div>
-																			<div class="input__error"
-																				id="msgErrorRangoMontosVisa"></div>
-																		</div>
-																	</div>
-
-																	<!--  Pedir DNI VSA -->
-																	<div id="divStepDNI" class="step hidden"><i>2</i>
-																		<div class="fileup-image" id="divImgDni">
-																			<span id="stateDniPEN"
-																				style="display: none;">Registra tu DNI,
-																				por ï¿½nica vez, adjuntando el lado que
-																				muestra tu foto. (max <span
-																					id="pesoImgDni"></span>MB)</span>
-																			<label id="stateDniPENLabel"
-																				class="btn is-secondary img-simple"
-																				style="margin-top: 16px; display: none;"><span
-																					class="text">Subir imagen</span>
-																				<input class="upimage is-simple"
-																					type="file" name="iimage_1"
-																					id="imgDNI"
-																					accept="image/jpeg, image/png"
-																					data-valid="required">
-																				<canvas id="canvasDNI"
-																					style="display: none;"></canvas>
-																			</label>
-																			<span id="stateDniACT"
-																				style="display: none; line-height: 16px; margin-bottom: 10px;">
-																				<img src="layer-view-image/client/icon-valid.svg"
-																					width="20" height="20">
-																				<span style="vertical-align: top;">Tu
-																					DNI estï¿½ registrado</span>
-																			</span>
-																			<span id="stateDniACTLabel"
-																				style="display: none;">
-																				<span>ï¿½Quieres actualizarlo?</span>
-																				<a id="updateDNI"
-																					style="text-decoration: underline; color: #e30613;">
-																					hazlo aquï¿½
-																				</a>
-																			</span>
-																			<div class="filenames empty"
-																				id="filenamesDniVisa"><span
-																					class="filename-empty">No se adjuntï¿½
-																					ninguna imagen</span>
-																				<div class="filename-simple"></div>
-																			</div>
-																		</div>
-
-																	</div>
-																	<div class="step"><i id="stepCard">2</i>Selecciona o
-																		aï¿½ade tu tarjeta
-																		<div class="form_visa" id="divVisa">
-																			<img class="form_visa_logo"
-																				src="layer-view-image/client/icon_visa.png">
-																			<label class="form_visa_card_button"
-																				id="visaCardButton"
-																				onclick="showTokenization()"
-																				style="padding: 0px 30px;">Seleccionar
-																				<input type="hidden"
-																					id="txtTarjetaTokenizada"
-																					data-valid="required">
-																			</label>
-																			<span class="form_visa_card_mask hidden"
-																				id="visaCardText">
-																				<img src="layer-view-image/client/icon-valid.svg"
-																					width="16" height="16">
-																				<span id="tarjetaTokenizada"></span>
-																			</span>
-																		</div>
-
-																		<div class="subcontent-comision hidden">
-																			<p class="subcontent-text-comision"
-																				id="comision_visanet"><span
-																					class="monto-comision-visanet"
-																					id="monto_comision_visanet"></span>
-																			</p>
-																		</div>
-																	</div>
-
-																	<div class="step hidden" id="stepKYCVisa"><i
-																			id="stepCardSDKVisa">3</i>Verifica tus datos
-																		por ï¿½nica vez cada 36 meses, si tus datos son
-																		correctos.
-																		<div class="form_visa" id="divVisaKYC">
-																			<img class="form_visa_logo"
-																				src="layer-view-image/client/icon_dni.png?v=3"
-																				style="margin-left: 5px; margin-top: -10px; margin-right:32px;">
-																			<label class="form_visa_card_button"
-																				id="visaSDKCardButton"
-																				style="padding: 0px 12px !important; font-size: 10px !important;"
-																				onclick="showSDK()">VERIFICA TU
-																				IDENTIDAD
-																				<input type="hidden"
-																					id="txtVisaSDKVerificado"
-																					data-valid="required">
-																			</label>
-
-																			<span class="form_visa_card_mask hidden"
-																				id="visaSDKCardText">
-																				<img id="iconKyc"
-																					src="layer-view-image/client/icon-valid.svg"
-																					width="16" height="16">
-																				<span class="span_mensaje_verificado"
-																					id="visaSDKVerificado"></span>
-																				<span id="visaSDKBtn"
-																					style="cursor: pointer;"
-																					class="verificarKYC"><u>Clic aquï¿½
-																						para actualizar</u></span>
-																			</span>
-																			<!--                                 	<button type="button" id="consultResultKyc1" class = "btn-verificar" >Verificar</button> -->
-																		</div>
-																		<div
-																			style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">
-																			Deberï¿½s permitir el acceso a tu cï¿½mara para
-																			realizar la verificaciï¿½n.</div>
-
-																	</div>
-
-																	<div class="step"
-																		style="margin-top: 5px;font-size: 14px;">Una vez
-																		confirmado tu retiro se harï¿½ el abono a tu
-																		tarjeta en menos de 30 minutos. Si tienes
-																		tarjeta de crï¿½dito, esto puede tomar 2 dï¿½as
-																		adicionales.</div>
-
-																	<button class="btn btn-solicitar">Solicitar
-																		Retiro</button>
-																</form>
-															</div>
+															<div class="inner"></div>
 														</div>
 													</li>
 
@@ -847,14 +524,339 @@
 														</div>
 													</li>
 
-													<li class="accordion__item" id="accordion_transferencia"
-														style="display: none;">
-														<h2 class="accordion__title"><span
-																class="icon-transferencia"></span>Transferencia
-															<br>Bancaria <span class="info"
-																id="rangoMontosTransferencia"></span></h2>
-														<div class="accordion__body">
-															<div class="inner"
+																										<li class="accordion__item" id="accordion_transferencia" style="display: none;">
+																											<h2 class="accordion__title"><span class="icon-transferencia"></span>Transferencia
+																													<br>Bancaria <span class="info" id="rangoMontosTransferencia" data-min-label="Min" data-max-label="MÃ¡x"></span></h2>
+																											<div class="accordion__body">
+																												<div class="inner"></div>
+																											</div>
+																										</li>
+
+												</ul>
+
+											</div>
+											<div id="tab-historial" class="tab-content">
+												<div class="footlinks">
+													<div>Historial</div><a class="linkbox" href="#"
+														toggle-modal="#modal-listado"
+														style="margin-left: 0px;">Retiros</a>
+												</div>
+
+												<div id="sin-retiros" style="display:none;">
+													Aï¿½n no has hecho ningï¿½n retiro
+												</div>
+
+												<div id="con-retiros" style="display:none;">
+													<!-- aquï¿½ va tu tabla -->
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Nuevo modal para retiro efectivo -->
+
+				<div class="ioverlay" id="modal-retiro-efectivo-pdv" style="display:none;">
+					<div class="modal is-iframe full">
+						<div class="ipremio in-iframe">
+							<div class="ipremio__head ipremio__head--retiro-pdv">
+								<div class="retiro-pdv__headbar">
+									<span class="ipremio__title">
+										<a class="ipremio__title-link" href="#"
+											onclick="if (typeof simpleModal !== 'undefined') simpleModal.onToggleModalMsg('#modal-premios'); return false;"
+											aria-label="Volver">
+											<span class="ipremio__title-icon" aria-hidden="true">&lt;</span>
+											<span class="ipremio__title-text">Solicitar retiro</span>
+										</a>
+									</span>
+									<div class="modal__close iclose" aria-label="Cerrar">
+										<span class="icon-cerrar" aria-hidden="true"></span>
+									</div>
+								</div>
+
+								<div class="retiro-pdv__headline">Monto a retirar</div>
+
+								<div class="retiro-pdv__iconbox" aria-hidden="true">
+									<img class="retiro-pdv__icon"
+									src="<c:url value='/layer-view-image/v2/icono-efectivo.png'/>" alt="" />
+								</div>
+							</div>
+
+							<div class="ipremio__body">
+								<div class="title-method">Efectivo / Puntos de Venta</div>
+								<div class="retiro-disponible" aria-label="Disponible para retirar">
+									<img class="retiro-disponible__icon" width="20" height="20"
+										src="<c:url value='/layer-view-image/v2/disponible-retirar-2.svg'/>" alt=""
+										aria-hidden="true" />
+									<span class="retiro-disponible__label">Disponible para retirar:</span>
+									<strong class="retiro-disponible__amount" data-saldo-liquidable-mirror>0</strong>
+								</div>
+								<div class="inner">
+									<form class="metodo-efectivo steps" autocomplete="off" id="formefectivo">
+										
+											<div class="form-item" id="divMontoEfectivo">
+												<div class="retiro-pdv__amount" aria-label="Ingresa el monto a retirar">
+													
+													<div class="retiro-pdv__amount-input">
+														<span class="retiro-pdv__amount-currency" aria-hidden="true">S/</span>
+														<input class="is-numeric" type="text" name="iamount" maxlength="10" id="amountEfectivo"
+															data-min="0" data-max="0" data-valid="amount" placeholder="Ingresa el monto aqui">
+													</div>
+														<div class="retiro-pdv__amount-range" data-range-mirror="rangoMontosEfectivo" data-values-only="true" data-min-label="Minimo S/ " data-max-label="Maximo S/ "></div>
+												</div>
+											<!-- 	<div class="input__error" id="msgErrorRangoMontosEfectivo"></div> -->
+											</div>
+										
+
+										<!-- Pedir DNI Efectivo -->
+										<div id="divStepDNIEfectivo" class="step hidden">
+											<i>2</i>
+											<div class="fileup-image" id="divImgDniEfectivo">
+												<span id="stateDniPENEfectivo" style="display: none;">Registra tu DNI, por ï¿½nica vez, adjuntando el lado que muestra tu foto. (max <span id="pesoImgDniEfectivo"></span>MB)</span>
+												<label id="stateDniPENLabelEfectivo" class="btn is-secondary img-simple" style="margin-top: 16px; display: none;"><span class="text">Subir imagen</span>
+													<input class="upimage is-simple" type="file" name="iimage_1" id="imgDNIEfectivo" accept="image/jpeg, image/png" data-valid="required">
+													<canvas id="canvasDNIEfectivo" style="display: none;"></canvas>
+												</label>
+												<span id="stateDniACTEfectivo" style="display: none; line-height: 16px; margin-bottom: 10px;">
+													<img src="layer-view-image/client/icon-valid.svg" width="20" height="20">
+													<span style="vertical-align: top;">Tu DNI estï¿½ registrado</span>
+												</span>
+												<span id="stateDniACTLabelEfectivo" style="display: none;">
+													<span>ï¿½Quieres actualizarlo?</span>
+													<a id="updateDNIEfectivo" style="text-decoration: underline; color: #e30613;">hazlo aquï¿½</a>
+												</span>
+												<div class="filenames empty" id="filenamesDniEfectivo"><span class="filename-empty">No se adjuntï¿½ ninguna imagen</span>
+													<div class="filename-simple"></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="step hidden" id="stepKYCEfectivo"><i id="stepCardSDKVisa">2</i>Verifica tus datos por ï¿½nica vez cada 36 meses, si tus datos son correctos.
+											<div class="form_visa" id="divEfectivoKYC">
+												<img class="form_visa_logo" src="layer-view-image/client/icon_dni.png?v=3" style="margin-left: 5px; margin-top: -10px; margin-right: 32px;">
+												<label class="form_visa_card_button" id="efectivoSDKCardButton" style="padding: 0px 12px !important; font-size: 10px !important;" onclick="showSDK()">VERIFICA TU IDENTIDAD
+													<input type="hidden" id="txtEfectivoSDKVerificado" data-valid="required">
+												</label>
+												<span class="form_visa_card_mask hidden" id="sdkEfectivoCardText">
+													<img id="iconKycE" src="layer-view-image/client/icon-valid.svg" width="16" height="16">
+													<span class="span_mensaje_verificado" id="efectivoSDKVerificado"></span>
+													<span id="efectivoSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquï¿½ para actualizar</u></span>
+												</span>
+												<!-- 	                                	<button type="button" id="consultResultKyc4" class = "btn-verificar" >Verificar</button> -->
+											</div>
+											<div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">Deberï¿½s permitir el acceso a tu cï¿½mara para realizar la verificaciï¿½n.</div>
+										</div>
+										<div class="retiro-pdv__info" aria-label="Informacion del retiro en efectivo">
+											<div class="retiro-pdv__info-icon" aria-hidden="true">
+												<img src="<c:url value='/layer-view-image/v2/icono-informacion-modal.svg'/>" alt="" />
+											</div>
+											<ul class="retiro-pdv__info-list">
+												<li class="retiro-pdv__info-item">
+													<img class="retiro-pdv__info-item-icon" src="<c:url value='/layer-view-image/v2/icono-recargar-modal.svg'/>" alt="" aria-hidden="true" />
+													<span>Solicitudes confirmadas en menos de <strong>30 minutos.</strong></span>
+												</li>
+												<li class="retiro-pdv__info-item">
+													<img class="retiro-pdv__info-item-icon" src="<c:url value='/layer-view-image/v2/icono-calendario-modal.svg'/>" alt="" aria-hidden="true" />
+													<span>De haber un problema con tu confirmaci&oacute;n, podr&iacute;a demorar <strong>hasta 72 horas.</strong></span>
+												</li>
+												<li class="retiro-pdv__info-item">
+													<img class="retiro-pdv__info-item-icon" src="<c:url value='/layer-view-image/v2/icono-dinero-modal.svg'/>" alt="" aria-hidden="true" />
+													<span>Este tipo de retiro se realiza &uacute;nicamente <strong>en efectivo.</strong></span>
+												</li>
+												<li class="retiro-pdv__info-item">
+													<img class="retiro-pdv__info-item-icon" src="<c:url value='/layer-view-image/v2/icono-tienda-modal.svg'/>" alt="" aria-hidden="true" />
+													<span>Debes acercarte a cualquiera de nuestros <strong>puntos de venta.</strong></span>
+												</li>
+											</ul>
+										</div>
+
+										<div class="retiro-pdv__footer">
+											<button class="btn btn-solicitar" type="submit" disabled>Solicitar retiro</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- fin del nuevo Modal -->
+
+				<!-- Nuevo modal para retiro tarjeta -->
+				<div class="ioverlay" id="modal-retiro-tarjeta" style="display:none;">
+				<div class="modal is-iframe full">
+						<div class="ipremio in-iframe">
+							<div class="ipremio__head ipremio__head--retiro-pdv">
+								<div class="retiro-pdv__headbar">
+									<span class="ipremio__title">
+										<a class="ipremio__title-link" href="#"
+											onclick="if (typeof simpleModal !== 'undefined') simpleModal.onToggleModalMsg('#modal-premios'); return false;"
+											aria-label="Volver">
+											<span class="ipremio__title-icon" aria-hidden="true">&lt;</span>
+											<span class="ipremio__title-text">Solicitar retiro</span>
+										</a>
+									</span>
+									<div class="modal__close iclose" aria-label="Cerrar">
+										<span class="icon-cerrar" aria-hidden="true"></span>
+									</div>
+								</div>
+
+								<div class="retiro-pdv__headline">Monto a retirar</div>
+
+								<div class="retiro-pdv__iconbox" aria-hidden="true">
+									<img class="retiro-pdv__icon"
+										src="<c:url value='/layer-view-image/v2/icono-visa.png'/>" alt="" />
+								</div>
+							</div>
+
+							<div class="ipremio__body">
+								<div class="title-method">Tarjeta de crï¿½dito / dï¿½bito</div>
+								<div class="retiro-disponible" aria-label="Disponible para retirar">
+									<img class="retiro-disponible__icon" width="20" height="20"
+										src="<c:url value='/layer-view-image/v2/disponible-retirar-2.svg'/>" alt=""
+										aria-hidden="true" />
+									<span class="retiro-disponible__label">Disponible para retirar:</span>
+									<strong class="retiro-disponible__amount" data-saldo-liquidable-mirror>0</strong>
+								</div>
+								<div class="inner" style="padding-top: 0px;">
+									<form class="metodo-visa steps" autocomplete="off" id="formvisa">
+										<div>
+											<p style="font-size: 12px;">Retira entre S/
+												<span id="minAmountVisa"></span> y S/ <span id="maxAmountVisa"></span> hasta en
+												<span id="maxRequestPerDayVisa"></span>
+												transacciones diarias.<br>Retiro mï¿½ximo
+												semanal S/ <span id="maxAmountPerWeekVisa"></span>.</p>
+										</div>
+										<div class="step"><i>1</i>Ingresa el monto a retirar
+											<div class="form-item ispad15" id="divMontoVisa">
+												<div class="input">
+													<label>Monto en S/</label>
+													<input class="is-numeric" type="text" name="iamount" maxlength="10" id="amountVisa" data-min="0" data-max="0" data-valid="amount">
+												</div>
+												<div class="input__error" id="msgErrorRangoMontosVisa"></div>
+											</div>
+										</div>
+
+										<!--  Pedir DNI VSA -->
+										<div id="divStepDNI" class="step hidden"><i>2</i>
+											<div class="fileup-image" id="divImgDni">
+												<span id="stateDniPEN" style="display: none;">Registra tu DNI,
+													por ï¿½nica vez, adjuntando el lado que
+													muestra tu foto. (max <span id="pesoImgDni"></span>MB)</span>
+												<label id="stateDniPENLabel" class="btn is-secondary img-simple" style="margin-top: 16px; display: none;"><span class="text">Subir imagen</span>
+													<input class="upimage is-simple" type="file" name="iimage_1" id="imgDNI" accept="image/jpeg, image/png" data-valid="required">
+													<canvas id="canvasDNI" style="display: none;"></canvas>
+												</label>
+												<span id="stateDniACT" style="display: none; line-height: 16px; margin-bottom: 10px;">
+													<img src="layer-view-image/client/icon-valid.svg" width="20" height="20">
+													<span style="vertical-align: top;">Tu DNI estï¿½ registrado</span>
+												</span>
+												<span id="stateDniACTLabel" style="display: none;">
+													<span>ï¿½Quieres actualizarlo?</span>
+													<a id="updateDNI" style="text-decoration: underline; color: #e30613;">hazlo aquï¿½</a>
+												</span>
+												<div class="filenames empty" id="filenamesDniVisa"><span class="filename-empty">No se adjuntï¿½ ninguna imagen</span>
+													<div class="filename-simple"></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="step"><i id="stepCard">2</i>Selecciona o aï¿½ade tu tarjeta
+											<div class="form_visa" id="divVisa">
+												<img class="form_visa_logo" src="layer-view-image/client/icon_visa.png">
+												<label class="form_visa_card_button" id="visaCardButton" onclick="showTokenization()" style="padding: 0px 30px;">Seleccionar
+													<input type="hidden" id="txtTarjetaTokenizada" data-valid="required">
+												</label>
+												<span class="form_visa_card_mask hidden" id="visaCardText">
+													<img src="layer-view-image/client/icon-valid.svg" width="16" height="16">
+													<span id="tarjetaTokenizada"></span>
+												</span>
+											</div>
+
+											<div class="subcontent-comision hidden">
+												<p class="subcontent-text-comision" id="comision_visanet"><span class="monto-comision-visanet" id="monto_comision_visanet"></span></p>
+											</div>
+										</div>
+
+										<div class="step hidden" id="stepKYCVisa"><i id="stepCardSDKVisa">3</i>Verifica tus datos
+											por ï¿½nica vez cada 36 meses, si tus datos son
+											correctos.
+											<div class="form_visa" id="divVisaKYC">
+												<img class="form_visa_logo" src="layer-view-image/client/icon_dni.png?v=3" style="margin-left: 5px; margin-top: -10px; margin-right:32px;">
+												<label class="form_visa_card_button" id="visaSDKCardButton" style="padding: 0px 12px !important; font-size: 10px !important;" onclick="showSDK()">VERIFICA TU
+													IDENTIDAD
+													<input type="hidden" id="txtVisaSDKVerificado" data-valid="required">
+												</label>
+
+												<span class="form_visa_card_mask hidden" id="visaSDKCardText">
+													<img id="iconKyc" src="layer-view-image/client/icon-valid.svg" width="16" height="16">
+													<span class="span_mensaje_verificado" id="visaSDKVerificado"></span>
+													<span id="visaSDKBtn" style="cursor: pointer;" class="verificarKYC"><u>Clic aquï¿½
+														para actualizar</u></span>
+												</span>
+												<!-- 	<button type="button" id="consultResultKyc1" class = "btn-verificar" >Verificar</button> -->
+											</div>
+											<div style="margin-top: 10px; font-size: 10px; font-weight: 700; text-align: justify;">
+												Deberï¿½s permitir el acceso a tu cï¿½mara para
+												realizar la verificaciï¿½n.</div>
+										</div>
+
+										<div class="step" style="margin-top: 5px;font-size: 14px;">Una vez
+											confirmado tu retiro se harï¿½ el abono a tu
+											tarjeta en menos de 30 minutos. Si tienes
+											tarjeta de crï¿½dito, esto puede tomar 2 dï¿½as
+											adicionales.</div>
+
+										<button class="btn btn-solicitar">Solicitar
+											Retiro</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- fin del nuevo Modal -->
+
+				<!-- Nuevo modal para retiro transferencia -->
+				<div class="ioverlay" id="modal-retiro-transferencia" style="display:none;">
+					<div class="modal is-iframe full">
+						<div class="ipremio in-iframe">
+							<div class="ipremio__head ipremio__head--retiro-pdv">
+								<div class="retiro-pdv__headbar">
+									<span class="ipremio__title">
+										<a class="ipremio__title-link" href="#"
+											onclick="if (typeof simpleModal !== 'undefined') simpleModal.onToggleModalMsg('#modal-premios'); return false;"
+											aria-label="Volver">
+											<span class="ipremio__title-icon" aria-hidden="true">&lt;</span>
+											<span class="ipremio__title-text">Solicitar retiro</span>
+										</a>
+									</span>
+									<div class="modal__close iclose" aria-label="Cerrar">
+										<span class="icon-cerrar" aria-hidden="true"></span>
+									</div>
+								</div>
+
+								<div class="retiro-pdv__headline">Monto a retirar</div>
+
+								<div class="retiro-pdv__iconbox" aria-hidden="true">
+									<img class="retiro-pdv__icon"
+										src="<c:url value='/layer-view-image/v2/icono-transferencia.png'/>" alt="" />
+								</div>
+							</div>
+
+							<div class="ipremio__body">
+								<div class="title-method">Transferencia Bancaria </div>
+								<div class="retiro-disponible" aria-label="Disponible para retirar">
+									<img class="retiro-disponible__icon" width="20" height="20"
+										src="<c:url value='/layer-view-image/v2/disponible-retirar-2.svg'/>" alt=""
+										aria-hidden="true" />
+									<span class="retiro-disponible__label">Disponible para retirar:</span>
+									<strong class="retiro-disponible__amount" data-saldo-liquidable-mirror>0</strong>
+								</div>
+<div class="inner"
 																style="padding-top: 3px; padding-right: 0px; padding-left: 0px; width: 100%;">
 																<div id="divTransRangos" style="margin-top: 0px;">
 
@@ -868,8 +870,6 @@
 																			id="divMontoTransferencia">
 																			<div class="input">
 																				<label>Ingresa monto en S/</label>
-																				<!-- 										  <input class="is-numeric" type="tel" name="iamount" maxlength="10" id="amountTransferencia"  data-min="0" data-max="0" data-valid="amount"/> -->
-
 																				<input class="is-numeric" type="text"
 																					name="iamount" maxlength="10"
 																					id="amountTransferencia"
@@ -1081,138 +1081,6 @@
 																		Retiro</button>
 																</form>
 															</div>
-														</div>
-													</li>
-
-												</ul>
-
-											</div>
-											<div id="tab-historial" class="tab-content">
-												<div class="footlinks">
-													<div>Historial</div><a class="linkbox" href="#"
-														toggle-modal="#modal-listado"
-														style="margin-left: 0px;">Retiros</a>
-												</div>
-
-												<div id="sin-retiros" style="display:none;">
-													Aï¿½n no has hecho ningï¿½n retiro
-												</div>
-
-												<div id="con-retiros" style="display:none;">
-													<!-- aquï¿½ va tu tabla -->
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Nuevo modal para retiro efectivo -->
-
-				<div class="ioverlay" id="modal-retiro-efectivo-pdv" style="display:none;">
-					<div class="modal is-iframe full">
-						<div class="ipremio in-iframe">
-							<div class="ipremio__head ipremio__head--retiro-pdv">
-								<div class="retiro-pdv__headbar">
-									<span class="ipremio__title">
-										<a class="ipremio__title-link" href="#"
-											onclick="if (typeof simpleModal !== 'undefined') simpleModal.onToggleModalMsg('#modal-premios'); return false;"
-											aria-label="Volver">
-											<span class="ipremio__title-icon" aria-hidden="true">&lt;</span>
-											<span class="ipremio__title-text">Solicitar retiro</span>
-										</a>
-									</span>
-									<div class="modal__close iclose" aria-label="Cerrar">
-										<span class="icon-cerrar" aria-hidden="true"></span>
-									</div>
-								</div>
-
-								<div class="retiro-pdv__headline">Monto a retirar</div>
-
-								<div class="retiro-pdv__iconbox" aria-hidden="true">
-									<img class="retiro-pdv__icon"
-										src="<c:url value='/layer-view-image/v2/icono-efectivo.png'/>" alt="" />
-								</div>
-							</div>
-
-							<div class="ipremio__body">
-								<div class="title-method">Efectivo / Puntos de Venta</div>
-								<button class="btn btn-solicitar" type="button" disabled>Solicitar retiro</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- fin del nuevo Modal -->
-
-				<!-- Nuevo modal para retiro tarjeta -->
-				<div class="ioverlay" id="modal-retiro-tarjeta" style="display:none;">
-				<div class="modal is-iframe full">
-						<div class="ipremio in-iframe">
-							<div class="ipremio__head ipremio__head--retiro-pdv">
-								<div class="retiro-pdv__headbar">
-									<span class="ipremio__title">
-										<a class="ipremio__title-link" href="#"
-											onclick="if (typeof simpleModal !== 'undefined') simpleModal.onToggleModalMsg('#modal-premios'); return false;"
-											aria-label="Volver">
-											<span class="ipremio__title-icon" aria-hidden="true">&lt;</span>
-											<span class="ipremio__title-text">Solicitar retiro</span>
-										</a>
-									</span>
-									<div class="modal__close iclose" aria-label="Cerrar">
-										<span class="icon-cerrar" aria-hidden="true"></span>
-									</div>
-								</div>
-
-								<div class="retiro-pdv__headline">Monto a retirar</div>
-
-								<div class="retiro-pdv__iconbox" aria-hidden="true">
-									<img class="retiro-pdv__icon"
-										src="<c:url value='/layer-view-image/v2/icono-visa.png'/>" alt="" />
-								</div>
-							</div>
-
-							<div class="ipremio__body">
-								<div class="title-method">Tarjeta de crédito / débito</div>
-								<button class="btn btn-solicitar" type="button" disabled>Solicitar retiro</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- fin del nuevo Modal -->
-
-				<!-- Nuevo modal para retiro transferencia -->
-				<div class="ioverlay" id="modal-retiro-transferencia" style="display:none;">
-					<div class="modal is-iframe full">
-						<div class="ipremio in-iframe">
-							<div class="ipremio__head ipremio__head--retiro-pdv">
-								<div class="retiro-pdv__headbar">
-									<span class="ipremio__title">
-										<a class="ipremio__title-link" href="#"
-											onclick="if (typeof simpleModal !== 'undefined') simpleModal.onToggleModalMsg('#modal-premios'); return false;"
-											aria-label="Volver">
-											<span class="ipremio__title-icon" aria-hidden="true">&lt;</span>
-											<span class="ipremio__title-text">Solicitar retiro</span>
-										</a>
-									</span>
-									<div class="modal__close iclose" aria-label="Cerrar">
-										<span class="icon-cerrar" aria-hidden="true"></span>
-									</div>
-								</div>
-
-								<div class="retiro-pdv__headline">Monto a retirar</div>
-
-								<div class="retiro-pdv__iconbox" aria-hidden="true">
-									<img class="retiro-pdv__icon"
-										src="<c:url value='/layer-view-image/v2/icono-transferencia.png'/>" alt="" />
-								</div>
-							</div>
-
-							<div class="ipremio__body">
-								<div class="title-method">Tarjeta de crédito / débito</div>
-								<button class="btn btn-solicitar" type="button" disabled>Solicitar retiro</button>
 							</div>
 						</div>
 					</div>
@@ -1839,7 +1707,7 @@
 			<script type="text/javascript" src="layer-view-script/plugins.js?v=<%=Constantes.plugins_js%>"></script>
 			<script type="text/javascript" src="layer-view-script/popModal.js?v=1"></script>
 			<script type="text/javascript" src="layer-view-script/client/libsCollectPrize.js?v=3"></script>
-			<script type="text/javascript" src="layer-view-script/client/mainCollectPrize_ta.js?v=124"
+			<script type="text/javascript" src="layer-view-script/client/mainCollectPrize_ta.js?v=125"
 				charset="UTF-8"></script>
 			<script type="text/javascript" src="layer-view-script/client/analytics.js?v=6" charset="UTF-8"></script>
 			<script type="text/javascript" src="layer-view-script/common/popupGenerate.js?v=11"></script>
@@ -1888,8 +1756,96 @@
 				});
 
 				(function () {
-					function syncMethodCards() {
-						document.querySelectorAll('.method-card').forEach(function (card) {
+function syncRangeMirrors() {
+document.querySelectorAll('[data-range-mirror]').forEach(function (el) {
+var sourceId = el.getAttribute('data-range-mirror');
+var source = sourceId ? document.getElementById(sourceId) : null;
+if (!source) return;
+
+var valuesOnly = (el.getAttribute('data-values-only') || '').toLowerCase() === 'true';
+var sourceText = (source.textContent || '').trim();
+
+var minLabel = (el.getAttribute('data-min-label') || '').trim();
+var maxLabel = (el.getAttribute('data-max-label') || '').trim();
+if (!minLabel) minLabel = (source.getAttribute('data-min-label') || '').trim();
+if (!maxLabel) maxLabel = (source.getAttribute('data-max-label') || '').trim();
+var hasCustomLabels = !!(minLabel || maxLabel);
+
+function renderRange(minValue, maxValue) {
+	var min = minValue != null ? String(minValue).trim() : '';
+	var max = maxValue != null ? String(maxValue).trim() : '';
+	if (min && max) {
+		if (minLabel && maxLabel) return (minLabel + ' ' + min + ' - ' + maxLabel + ' ' + max).trim();
+		if (minLabel && !maxLabel) return (minLabel + ' ' + min + ' - ' + max).trim();
+		if (!minLabel && maxLabel) return (min + ' - ' + maxLabel + ' ' + max).trim();
+		return (min + ' - ' + max).trim();
+	}
+	if (min && !max) {
+		return (minLabel ? (minLabel + ' ' + min) : min).trim();
+	}
+	if (!min && max) {
+		return (maxLabel ? (maxLabel + ' ' + max) : max).trim();
+	}
+	return '';
+}
+
+function extractMinMax(text) {
+	// Extract the first two numeric-like tokens (supports 1, 1.00, 1,000.50)
+	var matches = String(text || '').match(/\d+(?:[\.,]\d+)*(?:[\.,]\d+)?/g);
+	if (!matches || !matches.length) return { min: null, max: null };
+	return { min: matches[0] || null, max: matches[1] || null };
+}
+
+var minValue = source.getAttribute('data-min-value');
+var maxValue = source.getAttribute('data-max-value');
+if ((minValue == null || maxValue == null) && sourceText) {
+	var parsed = extractMinMax(sourceText);
+	if (minValue == null) minValue = parsed.min;
+	if (maxValue == null) maxValue = parsed.max;
+}
+
+if (valuesOnly) {
+	var rendered = '';
+	if (minValue != null || maxValue != null) {
+		// If custom labels were provided, show them; otherwise keep the old "values-only" format.
+		rendered = hasCustomLabels
+			? renderRange(minValue, maxValue)
+			: renderRange(minValue, maxValue);
+		if (!hasCustomLabels) {
+			// renderRange() without labels already returns "min - max".
+		}
+	}
+	if (rendered) {
+		el.textContent = rendered;
+		return;
+	}
+	// Fallback: if we can't resolve values yet, copy the source text (or empty).
+}
+
+// If the element wants custom labels but is not valuesOnly, prefer rebuilding the text from min/max.
+if (!valuesOnly && hasCustomLabels && (minValue != null || maxValue != null)) {
+	var labeled = renderRange(minValue, maxValue);
+	if (labeled) {
+		el.textContent = labeled;
+		return;
+	}
+}
+
+// Default behavior: copy source text (keeps compatibility)
+el.textContent = sourceText;
+});
+}
+
+function syncSaldoDisponible() {
+var source = document.getElementById('saldoLiquidable');
+var value = source ? (source.textContent || '').trim() : '';
+document.querySelectorAll('[data-saldo-liquidable-mirror]').forEach(function (el) {
+el.textContent = value;
+});
+}
+
+function syncMethodCards() {
+document.querySelectorAll('.method-card').forEach(function (card) {
 							var accordionSelector = card.getAttribute('data-accordion');
 							var accordionItem = accordionSelector ? document.querySelector(accordionSelector) : null;
 							if (accordionItem) {
@@ -1906,18 +1862,24 @@
 								}
 							}
 						});
+						syncRangeMirrors();
+						syncSaldoDisponible();
 					}
 
 					document.querySelectorAll('.method-card').forEach(function (card) {
 						card.addEventListener('click', function () {
 							var accordionSelector = card.getAttribute('data-accordion');
 							if (accordionSelector === '#accordion_efectivo') {
+								syncRangeMirrors();
+								syncSaldoDisponible();
 								if (typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
 									simpleModal.onToggleModalMsg('#modal-retiro-efectivo-pdv');
 								}
 								return;
 							}
 							if (accordionSelector === '#accordion_visa') {
+								syncRangeMirrors();
+								syncSaldoDisponible();
 								if (typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
 									simpleModal.onToggleModalMsg('#modal-retiro-tarjeta');
 								}
@@ -1925,6 +1887,8 @@
 							}
 							if (accordionSelector === '#accordion_transferencia') {
 								if (typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
+										syncRangeMirrors();
+										syncSaldoDisponible();
 									simpleModal.onToggleModalMsg('#modal-retiro-transferencia');
 								}
 								return;
@@ -1969,6 +1933,14 @@
 						var obs = new MutationObserver(syncMethodCards);
 						obs.observe(el, { childList: true, subtree: true, characterData: true });
 					});
+
+					// Observe saldoLiquidable updates (so it "travels" to the other modals)
+					var saldoEl = document.getElementById('saldoLiquidable');
+					if (saldoEl && typeof MutationObserver !== 'undefined') {
+						var saldoObs = new MutationObserver(syncSaldoDisponible);
+						saldoObs.observe(saldoEl, { childList: true, subtree: true, characterData: true });
+					}
+					syncSaldoDisponible();
 				})();
 			</script>
 
