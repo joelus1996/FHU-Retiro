@@ -7,6 +7,76 @@
 <!-- 	<script src="https://static-content-qas.vnforapps.com/vToken/js/checkout.js"></script> -->
 <!-- 	<script src="https://static-content-nlb.vnforapps.com/vToken/js/checkout.js?static=true"></script> -->
 	<script>
+		function isVisibleEl(el) {
+			try {
+				if (!el) return false;
+				var style = window.getComputedStyle ? window.getComputedStyle(el) : null;
+				if (!style) return true;
+				return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+			} catch (e) {
+				return true;
+			}
+		}
+
+		function hasSavedCardOptions(root) {
+			try {
+				if (!root) return false;
+				var radios = root.querySelectorAll('input[type="radio"]');
+				if (radios && radios.length) {
+					for (var i = 0; i < radios.length; i++) {
+						var r = radios[i];
+						if (!r || r.disabled) continue;
+						if (!isVisibleEl(r)) continue;
+						return true;
+					}
+				}
+				var nodes = root.querySelectorAll('div, span, li, label, button, a');
+				for (var j = 0; j < nodes.length; j++) {
+					var n = nodes[j];
+					if (!n) continue;
+					var txt = (n.textContent || '').replace(/\s+/g, ' ').trim();
+					if (!txt) continue;
+					if (txt.indexOf('****') >= 0 && isVisibleEl(n)) return true;
+				}
+				return false;
+			} catch (e) {
+				return false;
+			}
+		}
+
+		function isNewCardFormView(root) {
+			try {
+				if (!root) return false;
+				var inputs = root.querySelectorAll('input');
+				for (var i = 0; i < inputs.length; i++) {
+					var inp = inputs[i];
+					var ph = (inp.getAttribute('placeholder') || '').toLowerCase();
+					var aria = (inp.getAttribute('aria-label') || '').toLowerCase();
+					var name = (inp.getAttribute('name') || '').toLowerCase();
+					var id = (inp.getAttribute('id') || '').toLowerCase();
+					var combo = (ph + ' ' + aria + ' ' + name + ' ' + id);
+					if (combo.indexOf('nÃºmero') >= 0 || combo.indexOf('numero') >= 0 || combo.indexOf('card') >= 0 || combo.indexOf('pan') >= 0) {
+						if (isVisibleEl(inp)) return true;
+					}
+				}
+				return false;
+			} catch (e) {
+				return false;
+			}
+		}
+
+		function getTokenizationCompletionModeAgora() {
+			try {
+				var root = document.getElementById('visaNetJS');
+				if (!root) return 'unknown';
+				if (hasSavedCardOptions(root)) return 'saved';
+				if (isNewCardFormView(root)) return 'new';
+				return 'unknown';
+			} catch (e) {
+				return 'unknown';
+			}
+		}
+
 		function openNiubiz(data) {
 			VisanetCheckout.configure({
 				sessiontoken : JSON.parse(data.json).sessionKey,
@@ -41,6 +111,10 @@
 				},
 				complete: function (params) {
 					console.log("Complete VisanetCheckout");
+					try {
+						var mode = getTokenizationCompletionModeAgora();
+						window.parent.postMessage('tokenizationCompletedAgora|' + mode,'*');
+					} catch (e) { }
 				}
 			});
 			VisanetCheckout.open();
@@ -69,7 +143,7 @@
 				if(jqXHR.status==403){
 		    		window.location.href = 'home.html';
 		    	}else{
-		    		window.parent.postMessage('errorLoadingTokenizationAgora|Por favor, inténtalo de nuevo en unos minutos','*');
+		    		window.parent.postMessage('errorLoadingTokenizationAgora|Por favor, intï¿½ntalo de nuevo en unos minutos','*');
 		    	}			
 			});		
 		}

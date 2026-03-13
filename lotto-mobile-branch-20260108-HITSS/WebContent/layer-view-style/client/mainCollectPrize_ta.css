@@ -1248,6 +1248,440 @@ height: 30px;
   margin: 25px auto 0;
 }
 
+/* --- TA: Nuevo diseño del modal de exito (solo #modal-success) --- */
+#modal-success .modal.is-success {
+  max-width: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+#modal-success .modal.is-success .modal__head {
+  display: none;
+}
+
+#modal-success .modal.is-success .modal__boby {
+  background: #ffffff;
+  padding: 28px 22px 24px;
+  color: #111111;
+}
+
+#modal-success .modal.is-success .modal__close {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  width: 32px;
+  height: 32px;
+  color: #111111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+#modal-success .ta-success__logo img {
+  display: block;
+  margin: 0 auto 22px;
+  max-width: 220px;
+  height: auto;
+}
+
+#modal-success .ta-success__check {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+#modal-success .ta-success__check-circle {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  border: 10px solid #9BEF53;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+#modal-success .ta-success__check-circle img {
+  width: 48px;
+  height: 48px;
+}
+
+#modal-success .ta-success__title {
+  margin: 0;
+  text-align: center;
+  font-family: "Avenir", sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20px;
+  color: #111111;
+}
+
+#modal-success .ta-success__message {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5A5A5A;
+}
+
+#modal-success .ta-success__meta {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 14px;
+  color: #5A5A5A;
+}
+
+#modal-success .ta-success__meta-row {
+  margin-top: 4px;
+}
+
+#modal-success .ta-success__actions {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#modal-success .ta-success__btn {
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+#modal-success .ta-success__btn--outline {
+  border: 2px solid #4B2FBF;
+  color: #4B2FBF;
+  background: transparent;
+}
+
+#modal-success .ta-success__btn--primary {
+  border: 0;
+  color: #ffffff;
+  background: #4B2FBF;
+}
+
+/* ===== KYC Gate (antes de PIN) ===== */
+#stepKYCEfectivo,
+#stepKYCVisa,
+#stepKYCTrans,
+#divStepSDKPML {
+  display: none !important;
+}
+
+#modal-kyc-gate,
+#modal-kyc-gate * {
+  box-sizing: border-box;
+}
+
+#modal-kyc-gate {
+  z-index: 220;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+#modal-kyc-gate .kyc-gate {
+  width: calc(100% - 32px);
+  max-width: 420px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 20px 18px;
+  font-family: "Roboto", sans-serif;
+  color: #1f1f1f;
+  position: relative;
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#modal-kyc-gate .kyc-gate__close {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: #5A5A5A;
+  font-size: 28px;
+  line-height: 34px;
+}
+
+#modal-kyc-gate .kyc-gate__header {
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: #5A5A5A;
+}
+
+/* El header con candado SOLO aparece en el paso de "Verificaci\u00f3n de identidad" (inicio). */
+#modal-kyc-gate .kyc-gate.is-start .kyc-gate__header {
+  display: flex;
+}
+
+/* En validaci\u00f3n/resultado, nunca mostrar el header aunque exista HTML viejo en cach\u00e9. */
+#modal-kyc-gate .kyc-gate.is-processing .kyc-gate__header,
+#modal-kyc-gate .kyc-gate.is-received .kyc-gate__header {
+  display: none !important;
+}
+
+/* Confirmado (imagen de referencia): titulo + X, texto centrado, sin fila de estado */
+#modal-kyc-gate .kyc-gate.is-confirmed .kyc-gate__header {
+  display: flex;
+}
+
+#modal-kyc-gate .kyc-gate.is-confirmed .kyc-gate__lock {
+  display: none;
+}
+
+#modal-kyc-gate .kyc-gate.is-confirmed .kyc-gate__close {
+  display: block;
+}
+
+#modal-kyc-gate .kyc-gate.is-confirmed .kyc-gate__body {
+  margin-top: 14px;
+}
+
+#modal-kyc-gate .kyc-gate.is-confirmed #kycGateLine2 {
+  display: none;
+}
+
+#modal-kyc-gate .kyc-gate.is-confirmed .kyc-gate__status {
+  display: none !important;
+}
+
+#modal-kyc-gate .kyc-gate.is-confirmed .kyc-gate__actions {
+  margin-top: 18px;
+}
+
+#modal-kyc-gate .kyc-gate__lock {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+#modal-kyc-gate .kyc-gate__title {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 18px;
+  color: #5A5A5A;
+}
+
+#modal-kyc-gate .kyc-gate__body {
+  margin-top: 14px;
+}
+
+#modal-kyc-gate .kyc-gate__text {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 18px;
+  color: #5A5A5A;
+}
+
+#modal-kyc-gate .kyc-gate__text + .kyc-gate__text {
+  margin-top: 8px;
+}
+
+#modal-kyc-gate .kyc-gate__status {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#modal-kyc-gate .kyc-gate__status-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #542987;
+}
+
+#modal-kyc-gate .kyc-gate__status-icon.is-processing {
+  border-radius: 0;
+  background: transparent;
+  background-image: url('../../layer-view-image/v2/icono-recargar.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
+}
+
+#modal-kyc-gate .kyc-gate__status-icon.is-processing::before {
+  content: '';
+}
+
+#modal-kyc-gate .kyc-gate__status-icon.is-success {
+  background: rgba(84, 41, 135, 0.10);
+}
+
+#modal-kyc-gate .kyc-gate__status-icon.is-success::before {
+  content: "\2713";
+  font-weight: 900;
+  font-size: 16px;
+}
+
+/* Recibido satisfactoriamente (check verde + texto, como screenshot) */
+#modal-kyc-gate .kyc-gate__status-icon.is-received {
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  background: transparent;
+  background-image: url('../../layer-view-image/v2/icono-satisfactoriamente.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+}
+
+#modal-kyc-gate .kyc-gate__status-icon.is-received::before {
+  content: '';
+}
+
+#modal-kyc-gate .kyc-gate__status-text {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: #5A5A5A;
+}
+
+#modal-kyc-gate .kyc-gate__actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+#modal-kyc-gate .kyc-gate__btn {
+  width: 100%;
+  max-width: 300px;
+  height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: #4B2FBF;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: none;
+}
+
+/* Bot\u00f3n del primer modal (imagen 2): m\u00e1s peque\u00f1o y centrado */
+#modal-kyc-gate .kyc-gate.is-start .kyc-gate__btn {
+  max-width: 180px;
+}
+
+/* Processing view (como screenshot): titulo + subtitulo + linea estado simple */
+#modal-kyc-gate .kyc-gate.is-processing .kyc-gate__header {
+  display: none;
+}
+
+#modal-kyc-gate .kyc-gate.is-processing {
+  padding-top: 26px;
+  padding-bottom: 24px;
+}
+
+/* "Recibido" usa el mismo layout que el diseo (imagen 2):
+   ttulo + subttulo y una fila centrada con check + texto. */
+#modal-kyc-gate .kyc-gate.is-received {
+  padding-top: 26px;
+  padding-bottom: 24px;
+}
+
+#modal-kyc-gate .kyc-gate.is-processing #kycGateLine1 {
+  text-align: left;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 800;
+  color: #5A5A5A;
+}
+
+#modal-kyc-gate .kyc-gate.is-received #kycGateLine1 {
+  text-align: left;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 800;
+  color: #5A5A5A;
+}
+
+#modal-kyc-gate .kyc-gate.is-processing #kycGateLine2 {
+  text-align: left;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #5A5A5A;
+  margin-top: 10px;
+}
+
+#modal-kyc-gate .kyc-gate.is-received #kycGateLine2 {
+  text-align: left;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #5A5A5A;
+  margin-top: 10px;
+}
+
+/* Separacin superior ms cercana al diseo cuando no hay header */
+#modal-kyc-gate .kyc-gate.is-processing .kyc-gate__body,
+#modal-kyc-gate .kyc-gate.is-received .kyc-gate__body {
+  margin-top: 0;
+}
+
+#modal-kyc-gate .kyc-gate.is-processing .kyc-gate__status {
+  border: 0;
+  padding: 0;
+  margin-top: 22px;
+  justify-content: flex-start;
+}
+
+#modal-kyc-gate .kyc-gate.is-received .kyc-gate__status {
+  border: 0;
+  padding: 0;
+  margin-top: 28px;
+  justify-content: center;
+}
+
+#modal-kyc-gate .kyc-gate.is-received .kyc-gate__status-text {
+  font-weight: 400;
+}
+
+#modal-kyc-gate .kyc-gate.is-processing .kyc-gate__status-icon {
+  width: 22px;
+  height: 22px;
+}
+
+#modal-kyc-gate .kyc-gate.is-processing .kyc-gate__status-text {
+  font-weight: 400;
+}
+
 
 /* Contenedor del modal iframe: más alto y con límites razonables */
 .ipremio .modal.is-iframe{
@@ -1257,6 +1691,907 @@ height: 30px;
   min-height: 80vh;              /* << más alto (70% de la altura de la ventana) */
   max-height: calc(100vh - 32px);/* evita que se salga de la pantalla */
   overflow: hidden;              /* que el iframe gestione su scroll si aplica */
+}
+
+/* ===== Retiro: OTP modal v2 (solo diseño) ===== */
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2,
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2 * {
+  box-sizing: border-box;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal.modal-otp-v2 {
+  width: 100%;
+  max-width: 460px;
+  height: 100vh;
+  top: 0;
+  left: 50%;
+  margin-bottom: 0;
+  transform: translate(-50%, 0);
+  background: #000;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__topbar {
+  padding: 10px 16px 14px;
+  color: #fff;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 28px;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-title {
+  flex: 1;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-back {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-back::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-close {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-close::before,
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: #fff;
+  transform-origin: center;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__nav-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__amount {
+  margin-top: 14px;
+  text-align: center;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__amount-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__amount-icon {
+  width: 92px;
+  height: 60px;
+  margin: 14px auto 8px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__amount-channel {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal__boby.modal-otp-v2__body {
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 26px 20px 24px;
+  min-height: calc(100vh - 140px);
+  text-align: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__hero {
+  width: 88px;
+  height: 88px;
+  margin: 2px auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__hero-img {
+  max-width: 88px;
+  max-height: 88px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__title {
+  margin: 6px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1b1b1b;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__message {
+  margin: 0 auto 18px;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5A5A5A;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__otp .activate .form__code {
+  margin: 6px 0 10px;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__otp .form__code-item {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border: 1px solid #E2E2E2 !important;
+  background: #F2F2F2 !important;
+  border-radius: 10px;
+  margin: 0 6px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__otp .form__code-item:focus-within {
+  border-color: #542987 !important;
+  background: #ffffff !important;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__otp .form__code input {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-weight: 800;
+  color: #542987;
+  font-family: "Roboto", sans-serif;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__submit,
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__sms {
+  width: 100% !important;
+  max-width: none !important;
+  border-radius: 14px;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__submit {
+  margin: 14px 0 0 !important;
+  background: #542987 !important;
+  color: #fff !important;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__submit[disabled] {
+  opacity: 0.55;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__sms {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  padding: 12px 14px;
+  font-weight: 800;
+  text-transform: none;
+  background: #542987;
+  color: #fff;
+  margin: 0 !important;
+  margin-top: auto !important;
+  margin-bottom: 8px !important;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__resend {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #5A5A5A;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__resend-link {
+  margin-left: 6px;
+  color: #f59c00;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+#modal-confirmar-retiro-transferencia-pin .modal-otp-v2__otp .activate .form__alert {
+  margin: 10px 0 0;
+}
+
+/* ===== Retiro: OTP modal v2 EFECTIVO (solo diseño) ===== */
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2,
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2 * {
+  box-sizing: border-box;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal.modal-otp-v2 {
+  width: 100%;
+  max-width: 460px;
+  height: 100vh;
+  top: 0;
+  left: 50%;
+  margin-bottom: 0;
+  transform: translate(-50%, 0);
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__topbar {
+  padding: 10px 16px 14px;
+  color: #fff;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 28px;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-title {
+  flex: 1;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-back {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-back::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-close {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-close::before,
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: #fff;
+  transform-origin: center;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__nav-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__amount {
+  margin-top: 14px;
+  text-align: center;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__amount-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Tarjeta blanca debajo de 'Monto a retirar' (como la imagen) */
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__amount-card {
+  width: 100%;
+  max-width: 240px;
+  margin: 14px auto 0;
+  padding: 14px 16px 12px;
+  background: #fff;
+  border-radius: 26px;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__amount-icon {
+  width: 92px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 18px;
+  background: #fff;
+  background-image: url('../../layer-view-image/v2/icono-dinero-modal.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 44px 44px;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__amount-channel {
+  font-size: 12px;
+  color: #5A5A5A;
+  margin-top: 10px;
+}
+
+    #modal-confirmar-retiro-efectivo-pin .modal__boby.modal-otp-v2__body {
+  background: #fff;
+  border-radius: 0;
+      padding: 26px 20px 30px;
+  min-height: 0;
+  text-align: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+  z-index: 1;
+}
+
+    #modal-confirmar-retiro-efectivo-pin .title-method{
+      margin: 0 0 22px;
+    }
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__hero {
+  width: 120px;
+  height: 120px;
+  margin: 6px auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__title {
+  margin: 6px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1b1b1b;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__message {
+  margin: 0 auto 18px;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5A5A5A;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__otp .activate .form__code {
+  margin: 6px 0 10px;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__otp .form__code-item {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border: 1px solid #E2E2E2 !important;
+  background: #F2F2F2 !important;
+  border-radius: 10px;
+  margin: 0 6px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__otp .form__code-item:focus-within {
+  border-color: #542987 !important;
+  background: #ffffff !important;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__otp .form__code input {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-weight: 800;
+  color: #542987;
+  font-family: "Roboto", sans-serif;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__submit,
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__sms {
+  width: 100% !important;
+  max-width: none !important;
+  border-radius: 14px;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__submit {
+  margin: 14px 0 0 !important;
+  background: #542987 !important;
+  color: #fff !important;
+}
+
+/* En el diseño final (imagen 2) no se muestra el botón ENVIAR */
+#modal-confirmar-retiro-efectivo-pin #btactivatepin_cash {
+  display: none !important;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__submit[disabled] {
+  opacity: 0.55;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__sms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  text-align: center;
+  padding: 12px 14px;
+  font-weight: 800;
+  text-transform: none;
+  background: #542987;
+  color: #fff;
+  margin: 18px auto 0 !important;
+  max-width: 280px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__sms::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background-image: url('../../layer-view-image/v2/autorizacion_sms.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__resend {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #5A5A5A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__resend-link {
+  margin-left: 0;
+  color: #f59c00;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#modal-confirmar-retiro-efectivo-pin .modal-otp-v2__otp .activate .form__alert {
+  margin: 10px 0 0;
+}
+
+/* ===== Retiro: OTP modal v2 VISA (mismo dise\u00f1o que efectivo) ===== */
+#modal-confirmar-retiro-tarjeta-pin {
+  --retiro-pdv-card-max: 270px;
+  --retiro-pdv-btn-max: 420px;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2,
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2 * {
+  box-sizing: border-box;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal.modal-otp-v2 {
+  width: 100%;
+  max-width: 460px;
+  height: 100vh;
+  top: 0;
+  left: 50%;
+  margin-bottom: 0;
+  transform: translate(-50%, 0);
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .ipremio__head--retiro-pdv {
+  display: block !important;
+  grid-template-areas: none !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  row-gap: 0 !important;
+  padding: 30px 16px 56px 16px !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: auto !important;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .ipremio__head--retiro-pdv::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -240px;
+  width: 200%;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  clip-path: none !important;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .retiro-pdv__headbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .ipremio__title {
+  grid-column: auto;
+  text-align: left;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .ipremio__title-link {
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .ipremio__title-text {
+  text-align: left;
+  display: block;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .ipremio__title-icon {
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  height: 16px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal__close .icon-cerrar {
+  color: #fff;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .retiro-pdv__headline {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .retiro-pdv__iconbox {
+  width: 120px;
+  height: 88px;
+  margin: 18px auto -59px;
+  background: #fff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  z-index: 3;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .retiro-pdv__icon {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: auto;
+  align-self: center;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal__boby.modal-otp-v2__body {
+  background: #fff;
+  border-radius: 0;
+  padding: 26px 20px 30px;
+  min-height: 0;
+  text-align: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+  z-index: 1;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .title-method {
+  text-align: center;
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  color: #7a7a7a;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__hero {
+  width: 120px;
+  height: 120px;
+  margin: 6px auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__title {
+  margin: 6px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1b1b1b;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__message {
+  margin: 0 auto 18px;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5A5A5A;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__otp .activate .form__code {
+  margin: 6px 0 10px;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__otp .form__code-item {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border: 1px solid #E2E2E2 !important;
+  background: #F2F2F2 !important;
+  border-radius: 10px;
+  margin: 0 6px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__otp .form__code-item:focus-within {
+  border-color: #542987 !important;
+  background: #ffffff !important;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__otp .form__code input {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-weight: 800;
+  color: #542987;
+  font-family: "Roboto", sans-serif;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__submit,
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__sms {
+  width: 100% !important;
+  max-width: none !important;
+  border-radius: 14px;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__submit {
+  margin: 14px 0 0 !important;
+  background: #542987 !important;
+  color: #fff !important;
+}
+
+/* En el dise\u00f1o objetivo no se muestra ENVIAR, solo CTA por SMS */
+#modal-confirmar-retiro-tarjeta-pin #btactivatepin_visa {
+  display: none !important;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__submit[disabled] {
+  opacity: 0.55;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__sms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  text-align: center;
+  padding: 12px 14px;
+  font-weight: 800;
+  text-transform: none;
+  background: #542987;
+  color: #fff;
+  margin: 18px auto 0 !important;
+  max-width: 280px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__sms::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background-image: url('../../layer-view-image/v2/autorizacion_sms.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__resend {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #5A5A5A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__resend-link {
+  margin-left: 0;
+  color: #f59c00;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#modal-confirmar-retiro-tarjeta-pin .modal-otp-v2__otp .activate .form__alert {
+  margin: 10px 0 0;
+}
+
+/* ===== Modal existente: Autorización EFECTIVO (debe verse como imagen 2) ===== */
+#modal-autorizacion-efectivo .modal-otp-v2__body {
+  background: #fff;
+  padding: 28px 20px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 60vh;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__hero {
+  width: 96px;
+  height: 96px;
+  margin: 6px auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+#modal-autorizacion-efectivo .modal-otp-v2__title {
+  margin: 6px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1b1b1b;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__message {
+  margin: 0 auto 18px;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5A5A5A;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__otp .activate .form__code {
+  margin: 6px 0 10px;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__otp .form__code-item {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border: 1px solid #E2E2E2 !important;
+  background: #F2F2F2 !important;
+  border-radius: 10px;
+  margin: 0 6px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__otp .form__code-item:focus-within {
+  border-color: #542987 !important;
+  background: #ffffff !important;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__otp .form__code input {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-weight: 800;
+  color: #542987;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__resend {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #5A5A5A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__resend-link {
+  margin-left: 0;
+  color: #f59c00;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__sms {
+  width: 100% !important;
+  max-width: none !important;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  text-align: center;
+  padding: 12px 14px;
+  font-weight: 800;
+  text-transform: none;
+  background: #542987;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 0 !important;
+  margin-top: auto !important;
+  margin-bottom: 8px !important;
+  max-width: 280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#modal-autorizacion-efectivo .modal-otp-v2__sms::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background-image: url('../../layer-view-image/v2/autorizacion_sms.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 /* El iframe ocupa todo el alto del modal */
@@ -2409,6 +3744,267 @@ height: 30px;
   cursor: pointer;
 }
 
+/* === Transferencia: Cuentas guardadas (UI tipo tarjetas) === */
+#modal-retiro-transferencia #listaCuentaAhorros.group-radio,
+#modal-retiro-transferencia #listaCuentaAhorrosPML.group-radio {
+  padding-top: 12px;
+  padding-bottom: 0;
+}
+
+#modal-retiro-transferencia #listaCuentaAhorros.group-radio .item-radio,
+#modal-retiro-transferencia #listaCuentaAhorrosPML.group-radio .item-radio {
+  margin: 0 !important;
+}
+
+#modal-retiro-transferencia .cuenta-guardada,
+#modal-retiro-tarjeta .cuenta-guardada {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  padding: 12px 12px;
+  border: 1px solid #E2E2E2;
+  border-radius: 12px;
+  background: #fff;
+}
+
+#modal-retiro-transferencia .cuenta-guardada + .cuenta-guardada,
+#modal-retiro-tarjeta .cuenta-guardada + .cuenta-guardada {
+  margin-top: 12px;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__label {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  padding-left: 0;
+  margin: 0;
+  min-height: 44px;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__label .check {
+  position: relative;
+  top: 0;
+  left: 0;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__avatar,
+#modal-retiro-tarjeta .cuenta-guardada__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #E2E2E2;
+  color: #5A5A5A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__content,
+#modal-retiro-tarjeta .cuenta-guardada__content {
+  display: block;
+  min-width: 0;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__title,
+#modal-retiro-tarjeta .cuenta-guardada__title {
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #464646;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__subtitle,
+#modal-retiro-tarjeta .cuenta-guardada__subtitle {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #A5A5A5;
+  word-break: break-all;
+}
+
+/* Tarjeta (Visa): estado "Tarjeta añadida" como la imagen (2 filas) */
+#modal-retiro-tarjeta .visa-added-card{
+  margin: 14px auto 0;
+  width: calc(100% - 32px);
+  max-width: var(--retiro-pdv-card-max, 270px);
+  border: 2px solid #E2E2E2;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+}
+
+#modal-retiro-tarjeta .visa-added-card__top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #fff;
+}
+
+#modal-retiro-tarjeta .visa-added-card__left{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+#modal-retiro-tarjeta .visa-added-card__icon{
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+#modal-retiro-tarjeta .visa-added-card__title{
+  font-family: "Avenir", sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
+  color: #111111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#modal-retiro-tarjeta .visa-added-card__check{
+  width: 30px;
+  height: 30px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+#modal-retiro-tarjeta .visa-added-card__bottom{
+  padding: 12px 16px;
+  background: #F2F2F2;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #5A5A5A;
+  text-align: center;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__delete {
+  float: none;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+#modal-retiro-transferencia .cuenta-guardada__delete img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* En el tab "Cuentas guardadas" no debe mostrarse el enlace rojo ni el selector de tipo de cuenta */
+#modal-retiro-transferencia #stepRecurrentesTransferencia:not(.hidden) + .addcard {
+  display: none !important;
+}
+
+/* Transferencia: Guardar datos de cuenta (switch SVG) */
+#modal-retiro-transferencia .transferencia-save-wrap{
+  width: calc(100% - 32px);
+  max-width: var(--retiro-pdv-card-max, 270px);
+  margin: 14px auto 0;
+}
+
+#modal-retiro-transferencia .transferencia-save-wrap .retiro-pdv__info{
+  margin-top: 0;
+}
+
+#modal-retiro-transferencia #stepRecurrentesTransferencia:not(.hidden) ~ .transferencia-save-wrap{
+  display: none !important;
+}
+
+#modal-retiro-transferencia .transferencia-save-header{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+#modal-retiro-transferencia .transferencia-save-title{
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #464646;
+}
+
+#modal-retiro-transferencia .transferencia-save-toggle{
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+#modal-retiro-transferencia .transferencia-save-input{
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+#modal-retiro-transferencia .transferencia-save-label{
+  display: inline-flex;
+  cursor: pointer;
+}
+
+#modal-retiro-transferencia .transferencia-save-input:checked + .transferencia-save-label .switch-svg--off{
+  display: none;
+}
+
+#modal-retiro-transferencia .transferencia-save-input:not(:checked) + .transferencia-save-label .switch-svg--on{
+  display: none;
+}
+
+#modal-retiro-transferencia .transferencia-save-label .switch-svg{
+  display: block;
+}
+
+#modal-retiro-transferencia #stepRecurrentesTransferenciaPML:not(.hidden) .addcard {
+  display: none !important;
+}
+
+#modal-retiro-transferencia #stepRecurrentesTransferencia .cuentas-guardadas-header,
+#modal-retiro-transferencia #stepRecurrentesTransferenciaPML .cuentas-guardadas-header {
+  display: none !important;
+}
+
+#modal-retiro-transferencia #stepBancoTransferencia.hidden ~ #stepTipoCuentaTransferencia {
+  display: none !important;
+}
+
 .ipremio .metodo-visa .btn-solicitar {
   width: 100%;
   margin: 16px auto 0;
@@ -2588,8 +4184,8 @@ height: 30px;
     border: solid 2px #07663a;
     background-color: transparent;
     color: #07663a;
-    height: 36px;
-    line-height: 32px;
+    height: 20px;
+    line-height: 25px;
     font-size: 12px;
     padding: 0 16px;
     background: #fff;
@@ -2599,11 +4195,67 @@ height: 30px;
     cursor: pointer;
     display: inline-block;
     position: relative;
-    font-weight: 700;
+    font-weight: 300;
     font-family: "Roboto", sans-serif;
     border-radius: 30px;
     box-sizing: border-box;
 	transition: background 0.3s;
+}
+
+/* VISA tokenization button: match the "Añadir Tarjeta" outlined design without changing ids or JS logic */
+.metodo-visa #divVisa {
+  margin-top: 40px;
+}
+
+.metodo-visa #visaCardButton.form_visa_card_button {
+  /* Cambia este valor para modificar qué tan redondeadas son las esquinas */
+  --visaCardButtonRadius: 12px;
+  /* Ajusta estos valores para el tamaño (responsive) */
+  --visaCardButtonMaxWidth: clamp(100px, 70vw, 200px);
+  --visaCardButtonPaddingY: clamp(8px, 2.6vw, 12px);
+  --visaCardButtonPaddingX: clamp(10px, 3.5vw, 16px);
+  --visaCardButtonSvgWidth: clamp(100px, 30vw, 150px);
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  width: 100%;
+  max-width: var(--visaCardButtonMaxWidth);
+  margin: 0 auto;
+	padding: var(--visaCardButtonPaddingY) var(--visaCardButtonPaddingX);
+  height: auto;
+  line-height: normal;
+  box-sizing: border-box;
+
+  border-radius: var(--visaCardButtonRadius);
+  background: transparent;
+  border: 2px solid #4C2FBE;
+}
+
+.metodo-visa #visaCardButton.form_visa_card_button:hover {
+  background: transparent;
+}
+
+.metodo-visa #visaCardButton.form_visa_card_button img {
+  display: block;
+	width: var(--visaCardButtonSvgWidth);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+@media (min-width: 360px) {
+  .metodo-visa #divVisa {
+    margin-top: 48px;
+  }
 }
 
 .form_visa_card_mask{
@@ -3043,6 +4695,18 @@ height: 30px;
   --retiro-amount-to-info-gap: 100px;
 }
 
+/* Header OTP EFECTIVO: debe verse igual al modal-retiro-efectivo-pdv */
+#modal-autorizacion-efectivo{
+  --retiro-pdv-card-max: 270px;
+  --retiro-pdv-btn-max: 420px;
+}
+
+/* Header OTP overlay EFECTIVO: debe verse igual al modal-retiro-efectivo-pdv */
+#modal-confirmar-retiro-efectivo-pin{
+  --retiro-pdv-card-max: 270px;
+  --retiro-pdv-btn-max: 420px;
+}
+
 @media (min-width: 481px){
   #modal-retiro-efectivo-pdv{
     --retiro-pdv-btn-max: 520px;
@@ -3061,8 +4725,62 @@ height: 30px;
   z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
 }
 
+#modal-autorizacion-efectivo .ipremio__head--retiro-pdv{
+  display: block !important;
+  grid-template-areas: none !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  row-gap: 0 !important;
+  padding: 30px 16px 56px 16px !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: auto !important;
+}
+
+#modal-confirmar-retiro-efectivo-pin .ipremio__head--retiro-pdv{
+  display: block !important;
+  grid-template-areas: none !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  row-gap: 0 !important;
+  padding: 30px 16px 56px 16px !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: auto !important;
+}
+
 /* En efectivo, el arco va en la cabecera (divide negro/ blanco) */
 #modal-retiro-efectivo-pdv .ipremio__head--retiro-pdv::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -240px;
+  width: 200%;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  clip-path: none !important;
+}
+
+#modal-autorizacion-efectivo .ipremio__head--retiro-pdv::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -240px;
+  width: 200%;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  clip-path: none !important;
+}
+
+#modal-confirmar-retiro-efectivo-pin .ipremio__head--retiro-pdv::after{
   content: "";
   position: absolute;
   left: 50%;
@@ -3084,25 +4802,121 @@ height: 30px;
   gap: 12px;
 }
 
+#modal-autorizacion-efectivo .retiro-pdv__headbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#modal-confirmar-retiro-efectivo-pin .retiro-pdv__headbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 #modal-retiro-efectivo-pdv .ipremio__title{
   grid-column: auto;
   text-align: left;
 }
 
+#modal-autorizacion-efectivo .ipremio__title{
+  grid-column: auto;
+  text-align: left;
+}
+
+#modal-confirmar-retiro-efectivo-pin .ipremio__title{
+  grid-column: auto;
+  text-align: left;
+}
+
 #modal-retiro-efectivo-pdv .ipremio__title-link{
-  padding-left: 22px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#modal-autorizacion-efectivo .ipremio__title-link{
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#modal-confirmar-retiro-efectivo-pin .ipremio__title-link{
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #modal-retiro-efectivo-pdv .ipremio__title-text{
   text-align: left;
-  display: inline;
+  display: block;
+}
+
+#modal-autorizacion-efectivo .ipremio__title-text{
+  text-align: left;
+  display: block;
+}
+
+#modal-confirmar-retiro-efectivo-pin .ipremio__title-text{
+  text-align: left;
+  display: block;
 }
 
 #modal-retiro-efectivo-pdv .ipremio__title-icon{
-  font-size: 24px;
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  height: 16px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
+}
+
+#modal-autorizacion-efectivo .ipremio__title-icon{
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  height: 16px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
+}
+
+#modal-confirmar-retiro-efectivo-pin .ipremio__title-icon{
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  height: 16px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
 }
 
 #modal-retiro-efectivo-pdv .retiro-pdv__headline{
+  margin-top: 18px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#modal-autorizacion-efectivo .retiro-pdv__headline{
+  margin-top: 18px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#modal-confirmar-retiro-efectivo-pin .retiro-pdv__headline{
   margin-top: 18px;
   text-align: center;
   font-size: 16px;
@@ -3125,7 +4939,51 @@ height: 30px;
   z-index: 3;
 }
 
+#modal-autorizacion-efectivo .retiro-pdv__iconbox{
+  width: 120px;
+  height: 88px;
+  margin: 18px auto -59px;
+  background: #fff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  z-index: 3;
+}
+
+#modal-confirmar-retiro-efectivo-pin .retiro-pdv__iconbox{
+  width: 120px;
+  height: 88px;
+  margin: 18px auto -59px;
+  background: #fff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  z-index: 3;
+}
+
 #modal-retiro-efectivo-pdv .retiro-pdv__icon{
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: auto;
+  align-self: center;
+}
+
+#modal-autorizacion-efectivo .retiro-pdv__icon{
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: auto;
+  align-self: center;
+}
+
+#modal-confirmar-retiro-efectivo-pin .retiro-pdv__icon{
   width: 100px;
   height: auto;
   display: block;
@@ -3140,7 +4998,33 @@ height: 30px;
   z-index: 0;
 }
 
+#modal-autorizacion-efectivo .ipremio__body{
+  padding-top: 10px;
+  position: relative;
+  z-index: 0;
+}
+
+#modal-confirmar-retiro-efectivo-pin .ipremio__body{
+  padding-top: 10px;
+  position: relative;
+  z-index: 0;
+}
+
 #modal-retiro-efectivo-pdv .title-method{
+  text-align: center;
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  color: #7a7a7a;
+}
+
+#modal-autorizacion-efectivo .title-method{
+  text-align: center;
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  color: #7a7a7a;
+}
+
+#modal-confirmar-retiro-efectivo-pin .title-method{
   text-align: center;
   margin: 0 0 16px;
   padding-bottom: 0;
@@ -3149,7 +5033,7 @@ height: 30px;
 
 /* Espacio entre “Disponible para retirar” y el input de monto */
 #modal-retiro-efectivo-pdv .retiro-disponible{
-  margin-bottom: var(--retiro-disponible-to-amount-gap);
+  margin-bottom: var(--retiro-disponible-to-amount-gap, 50px);
 }
 
 /* Alinear anchos (Disponible + Monto + Info) */
@@ -3235,7 +5119,9 @@ height: 30px;
 	color: #FF0000;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info{
+#modal-retiro-efectivo-pdv .retiro-pdv__info,
+#modal-retiro-tarjeta .retiro-pdv__info,
+#modal-retiro-transferencia .retiro-pdv__info{
   margin: var(--retiro-amount-to-info-gap) auto 14px;
   background: #F2F2F2;
   border: 1px solid #D9D9D9;
@@ -3248,7 +5134,14 @@ height: 30px;
           box-sizing: border-box;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info-icon{
+/* En tarjeta: el recuadro informativo va debajo de “Añadir Tarjeta” */
+#modal-retiro-tarjeta .retiro-pdv__info{
+  margin: var(--visa-card-to-info-gap, 28px) auto 14px;
+}
+
+#modal-retiro-efectivo-pdv .retiro-pdv__info-icon,
+#modal-retiro-tarjeta .retiro-pdv__info-icon,
+#modal-retiro-transferencia .retiro-pdv__info-icon{
   position: absolute;
   left: 50%;
   top: -14px;
@@ -3257,13 +5150,17 @@ height: 30px;
   height: 28px;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info-icon img{
+#modal-retiro-efectivo-pdv .retiro-pdv__info-icon img,
+#modal-retiro-tarjeta .retiro-pdv__info-icon img,
+#modal-retiro-transferencia .retiro-pdv__info-icon img{
   width: 100%;
   height: auto;
   display: block;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info-list{
+#modal-retiro-efectivo-pdv .retiro-pdv__info-list,
+#modal-retiro-tarjeta .retiro-pdv__info-list,
+#modal-retiro-transferencia .retiro-pdv__info-list{
   list-style: none;
   margin: 0;
   padding: 0;
@@ -3272,7 +5169,9 @@ height: 30px;
   gap: 16px;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item{
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item,
+#modal-retiro-tarjeta .retiro-pdv__info-item,
+#modal-retiro-transferencia .retiro-pdv__info-item{
   display: flex;
   gap: 12px;
   align-items: flex-start;
@@ -3281,13 +5180,17 @@ height: 30px;
   line-height: 1.25;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item span{
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item span,
+#modal-retiro-tarjeta .retiro-pdv__info-item span,
+#modal-retiro-transferencia .retiro-pdv__info-item span{
   flex: 1 1 auto;
   min-width: 0;
   word-break: break-word;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon,
+#modal-retiro-tarjeta .retiro-pdv__info-item-icon,
+#modal-retiro-transferencia .retiro-pdv__info-item-icon{
   width: 22px;
   height: 22px;
   flex: 0 0 22px;
@@ -3296,7 +5199,9 @@ height: 30px;
   object-fit: contain;
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item strong{
+#modal-retiro-efectivo-pdv .retiro-pdv__info-item strong,
+#modal-retiro-tarjeta .retiro-pdv__info-item strong,
+#modal-retiro-transferencia .retiro-pdv__info-item strong{
   font-weight: 700;
   color: inherit;
 }
@@ -3315,27 +5220,37 @@ height: 30px;
     font-size: 40px;
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info,
+  #modal-retiro-tarjeta .retiro-pdv__info,
+  #modal-retiro-transferencia .retiro-pdv__info{
     border-radius: 18px;
     padding: 20px 12px 14px;
     width: calc(100% - 24px);
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-icon{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-icon,
+  #modal-retiro-tarjeta .retiro-pdv__info-icon,
+  #modal-retiro-transferencia .retiro-pdv__info-icon{
     width: 26px;
     height: 26px;
     top: -13px;
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-list{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-list,
+  #modal-retiro-tarjeta .retiro-pdv__info-list,
+  #modal-retiro-transferencia .retiro-pdv__info-list{
     gap: 10px;
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item,
+  #modal-retiro-tarjeta .retiro-pdv__info-item,
+  #modal-retiro-transferencia .retiro-pdv__info-item{
     font-size: 12px;
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon,
+  #modal-retiro-tarjeta .retiro-pdv__info-item-icon,
+  #modal-retiro-transferencia .retiro-pdv__info-item-icon{
     width: 20px;
     height: 20px;
     flex-basis: 20px;
@@ -3351,39 +5266,53 @@ height: 30px;
     width: calc(100% - 20px);
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info,
+  #modal-retiro-tarjeta .retiro-pdv__info,
+  #modal-retiro-transferencia .retiro-pdv__info{
     border-radius: 16px;
     padding: 18px 10px 12px;
     width: calc(100% - 20px);
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-list{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-list,
+  #modal-retiro-tarjeta .retiro-pdv__info-list,
+  #modal-retiro-transferencia .retiro-pdv__info-list{
     gap: 10px;
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item,
+  #modal-retiro-tarjeta .retiro-pdv__info-item,
+  #modal-retiro-transferencia .retiro-pdv__info-item{
     font-size: 12px;
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
+  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon,
+  #modal-retiro-tarjeta .retiro-pdv__info-item-icon,
+  #modal-retiro-transferencia .retiro-pdv__info-item-icon{
     width: 20px;
     height: 20px;
     flex-basis: 20px;
   }
 
-  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
+  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar,
+  #modal-retiro-tarjeta .retiro-pdv__footer .btn-solicitar,
+  #modal-retiro-transferencia .retiro-pdv__footer .btn-solicitar{
     width: calc(100% - 20px);
   }
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__footer{
+#modal-retiro-efectivo-pdv .retiro-pdv__footer,
+#modal-retiro-tarjeta .retiro-pdv__footer,
+#modal-retiro-transferencia .retiro-pdv__footer{
   position: sticky;
   bottom: 0;
   background: #fff;
   padding: 12px 0 calc(16px + env(safe-area-inset-bottom));
 }
 
-#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
+#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar,
+#modal-retiro-tarjeta .retiro-pdv__footer .btn-solicitar,
+#modal-retiro-transferencia .retiro-pdv__footer .btn-solicitar{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3396,7 +5325,7 @@ height: 30px;
   background: #4b33d6;
   color: #fff;
   border: 0;
-  border-radius: 18px;
+  border-radius: 14px;
   height: 56px;
   line-height: 56px;
   padding: 0 18px;
@@ -3410,21 +5339,47 @@ height: 30px;
 }
 
 @media (max-width: 360px){
-  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
+  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar,
+  #modal-retiro-tarjeta .retiro-pdv__footer .btn-solicitar,
+  #modal-retiro-transferencia .retiro-pdv__footer .btn-solicitar{
     height: 52px;
     line-height: 52px;
     font-size: 15px;
   }
+
+  #modal-retiro-efectivo-pdv .ipremio__title-link,
+  #modal-retiro-tarjeta .ipremio__title-link,
+  #modal-retiro-transferencia .ipremio__title-link{
+    gap: 6px;
+  }
+
+  #modal-retiro-efectivo-pdv .ipremio__title-icon,
+  #modal-retiro-tarjeta .ipremio__title-icon,
+  #modal-retiro-transferencia .ipremio__title-icon{
+    height: 14px;
+  }
 }
 
 #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar:disabled,
-#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar[disabled]{
+#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar[disabled],
+#modal-retiro-tarjeta .retiro-pdv__footer .btn-solicitar:disabled,
+#modal-retiro-tarjeta .retiro-pdv__footer .btn-solicitar[disabled],
+#modal-retiro-transferencia .retiro-pdv__footer .btn-solicitar:disabled,
+#modal-retiro-transferencia .retiro-pdv__footer .btn-solicitar[disabled]{
   background: #d9d9d9;
   color: #7a7a7a;
   cursor: not-allowed;
 }
 
 /* ===== Modal retiro tarjeta / PDV (UI como maqueta) ===== */
+#modal-retiro-tarjeta{
+  /* Mantener configurables los espacios igual que en el modal de efectivo */
+  --retiro-disponible-to-amount-gap: 50px;
+  --retiro-amount-to-info-gap: 16px;
+  /* Espacio entre el botón “Añadir Tarjeta” y el recuadro informativo */
+  --visa-card-to-info-gap: 50px;
+}
+
 #modal-retiro-tarjeta .ipremio__head--retiro-pdv{
   display: block !important;
   grid-template-areas: none !important;
@@ -3466,16 +5421,26 @@ height: 30px;
 }
 
 #modal-retiro-tarjeta .ipremio__title-link{
-  padding-left: 22px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #modal-retiro-tarjeta .ipremio__title-text{
   text-align: left;
-  display: inline;
+  display: block;
 }
 
 #modal-retiro-tarjeta .ipremio__title-icon{
-  font-size: 24px;
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  height: 16px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
 }
 
 #modal-retiro-tarjeta .retiro-pdv__headline{
@@ -3523,7 +5488,105 @@ height: 30px;
   color: #7a7a7a;
 }
 
+/* Espacio entre “Disponible para retirar” y el input de monto */
+#modal-retiro-tarjeta .retiro-disponible{
+  margin-bottom: var(--retiro-disponible-to-amount-gap, 50px);
+}
+
+/* Alinear anchos (Disponible + Monto) */
+#modal-retiro-tarjeta #divMontoVisa{
+  width: calc(100% - 32px);
+  max-width: var(--retiro-pdv-card-max, 270px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-retiro-tarjeta .retiro-pdv__amount-input{
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 0 0px;
+  border-bottom: 1px solid #CFCFCF;
+  width: var(--retiro-pdv-amount-line-width, 75%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-retiro-tarjeta #divMontoVisa.is-error .retiro-pdv__amount-input{
+	border-bottom-color: #FF0000;
+}
+
+#modal-retiro-tarjeta .retiro-pdv__amount-currency{
+  flex: 0 0 auto;
+  font-size: var(--retiro-pdv-currency-font-size, 20px);
+  line-height: 1;
+  font-weight: 700;
+  color: #7a7a7a;
+  padding-bottom: 0px;
+}
+
+#modal-retiro-tarjeta #divMontoVisa.is-error .retiro-pdv__amount-currency{
+	color: #FF0000;
+}
+
+#modal-retiro-tarjeta #amountVisa{
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0 !important;
+  background: transparent !important;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: var(--retiro-pdv-amount-font-size, 38px);
+  line-height: 1;
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+}
+
+#modal-retiro-tarjeta #divMontoVisa.is-error #amountVisa{
+	color: #FF0000;
+}
+
+#modal-retiro-tarjeta #amountVisa::placeholder{
+  color: #b9b9b9;
+  font-size: var(--retiro-pdv-placeholder-font-size, 16px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+#modal-retiro-tarjeta .retiro-pdv__amount-range{
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #7a7a7a;
+  text-align: center;
+}
+
+#modal-retiro-tarjeta #divMontoVisa.is-error .retiro-pdv__amount-range{
+	color: #FF0000;
+}
+
 /* ===== Modal retiro transferencia / PDV (UI como maqueta) ===== */
+#modal-retiro-transferencia{
+  --retiro-pdv-card-max: 350px;
+  --retiro-pdv-btn-max: 300px;
+  --retiro-pdv-amount-line-width: 75%;
+  --retiro-pdv-currency-font-size: 24px;
+  --retiro-pdv-amount-font-size: 40px;
+  --retiro-pdv-placeholder-font-size: 16px;
+  --retiro-disponible-to-amount-gap: 1px;
+  --retiro-amount-to-tabs-gap: 10px;
+}
+
+@media (min-width: 481px){
+  #modal-retiro-transferencia{
+    /* Mantener el mismo ancho máximo en pantallas grandes
+       para que el formulario se vea igual que en mobile */
+    --retiro-pdv-btn-max: 420px;
+  }
+}
+
 #modal-retiro-transferencia .ipremio__head--retiro-pdv{
   display: block !important;
   grid-template-areas: none !important;
@@ -3534,6 +5597,21 @@ height: 30px;
   overflow: visible !important; /* permite que el arco se vea fuera de la cabecera */
   position: relative !important;
   z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
+}
+
+#modal-retiro-transferencia .tabs-retiro{
+  width: calc(100% - 32px);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: var(--retiro-amount-to-tabs-gap, 12px);
+}
+
+#modal-retiro-transferencia .tab-btn::after{
+  left: 15%;
+  width: 70%;
+  height: 6px;
+  border-radius: 8px;
 }
 
 /* En transferencia, el arco va en la cabecera (divide negro/ blanco) */
@@ -3565,16 +5643,26 @@ height: 30px;
 }
 
 #modal-retiro-transferencia .ipremio__title-link{
-  padding-left: 22px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #modal-retiro-transferencia .ipremio__title-text{
   text-align: left;
-  display: inline;
+  display: block;
 }
 
 #modal-retiro-transferencia .ipremio__title-icon{
-  font-size: 24px;
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  height: 16px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
 }
 
 #modal-retiro-transferencia .retiro-pdv__headline{
@@ -3630,6 +5718,174 @@ height: 30px;
   margin: 0 0 16px;
   padding-bottom: 0;
   color: #7a7a7a;
+}
+
+/* Espacio entre “Disponible para retirar” y el input de monto */
+#modal-retiro-transferencia .retiro-disponible{
+  margin-bottom: var(--retiro-disponible-to-amount-gap, 50px);
+}
+
+/* Alinear anchos (Disponible + Monto) */
+#modal-retiro-transferencia #divMontoTransferencia{
+  width: calc(100% - 32px);
+  max-width: var(--retiro-pdv-card-max, 270px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-retiro-transferencia .retiro-pdv__amount-input{
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 0 0px;
+  border-bottom: 1px solid #CFCFCF;
+  width: var(--retiro-pdv-amount-line-width, 75%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-retiro-transferencia #divMontoTransferencia.is-error .retiro-pdv__amount-input{
+	border-bottom-color: #FF0000;
+}
+
+#modal-retiro-transferencia .retiro-pdv__amount-currency{
+  flex: 0 0 auto;
+  font-size: var(--retiro-pdv-currency-font-size, 20px);
+  line-height: 1;
+  font-weight: 700;
+  color: #7a7a7a;
+  padding-bottom: 0px;
+}
+
+#modal-retiro-transferencia #divMontoTransferencia.is-error .retiro-pdv__amount-currency{
+	color: #FF0000;
+}
+
+#modal-retiro-transferencia #amountTransferencia{
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0 !important;
+  background: transparent !important;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: var(--retiro-pdv-amount-font-size, 38px);
+  line-height: 1;
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+}
+
+#modal-retiro-transferencia #divMontoTransferencia.is-error #amountTransferencia{
+	color: #FF0000;
+}
+
+#modal-retiro-transferencia #amountTransferencia::placeholder{
+  color: #b9b9b9;
+  font-size: var(--retiro-pdv-placeholder-font-size, 16px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+#modal-retiro-transferencia .retiro-pdv__amount-range{
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #7a7a7a;
+  text-align: center;
+}
+
+#modal-retiro-transferencia #divMontoTransferencia.is-error .retiro-pdv__amount-range{
+	color: #FF0000;
+}
+
+/* ===== Transferencia: formulario (Nueva cuenta) ===== */
+/* Centra el bloque de campos bajo las tabs, como en la maqueta */
+#modal-retiro-transferencia #stepBancoTransferencia,
+#modal-retiro-transferencia #stepTipoCuentaTransferencia,
+#modal-retiro-transferencia #stepCuentaTransferencia,
+#modal-retiro-transferencia #divStepDeparmentTransferencia,
+#modal-retiro-transferencia #divStepDNITransferencia,
+#modal-retiro-transferencia #stepKYCTrans,
+#modal-retiro-transferencia .retiro-pdv__footer{
+  width: calc(100% - 32px);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-retiro-transferencia #stepBancoTransferencia{ margin-top: 10px; }
+
+#modal-retiro-transferencia #stepBancoTransferencia,
+#modal-retiro-transferencia #stepTipoCuentaTransferencia,
+#modal-retiro-transferencia #stepCuentaTransferencia,
+#modal-retiro-transferencia #divStepDeparmentTransferencia{
+  margin-bottom: 14px;
+}
+
+/* “Usa otra cuenta de ahorros” solo debe verse en la vista de cuentas guardadas */
+#modal-retiro-transferencia #stepRecurrentesTransferencia.hidden + .addcard{
+  display: none;
+}
+
+/* Campos (select/input) con radios y altura como el nuevo diseño */
+#modal-retiro-transferencia #stepBancoTransferencia .select,
+#modal-retiro-transferencia #stepTipoCuentaTransferencia .select,
+#modal-retiro-transferencia #divStepDeparmentTransferencia .select,
+#modal-retiro-transferencia #stepCuentaTransferencia .input{
+  min-height: 64px;
+  height: 64px;
+  border-radius: 18px;
+  border-color: #E2E2E2;
+  background: #fff;
+}
+
+#modal-retiro-transferencia #stepBancoTransferencia .select::before,
+#modal-retiro-transferencia #stepTipoCuentaTransferencia .select::before,
+#modal-retiro-transferencia #divStepDeparmentTransferencia .select::before{
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #7a7a7a;
+}
+
+#modal-retiro-transferencia #stepBancoTransferencia .select .opt-control,
+#modal-retiro-transferencia #stepTipoCuentaTransferencia .select .opt-control,
+#modal-retiro-transferencia #divStepDeparmentTransferencia .select .opt-control{
+  height: 64px;
+  padding: 0 44px 0 16px;
+  display: flex;
+  align-items: center;
+  color: #7a7a7a;
+  font-size: 15px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#modal-retiro-transferencia #stepBancoTransferencia .is-active .opt-control,
+#modal-retiro-transferencia #stepTipoCuentaTransferencia .is-active .opt-control,
+#modal-retiro-transferencia #divStepDeparmentTransferencia .is-active .opt-control{
+  color: #5A5A5A;
+}
+
+/* En transferencia, usamos placeholder en vez de label flotante */
+#modal-retiro-transferencia #stepCuentaTransferencia .input label{
+  display: none;
+}
+
+#modal-retiro-transferencia #stepCuentaTransferencia .input input{
+  line-height: 64px;
+  padding: 0 16px;
+  font-size: 15px;
+}
+
+#modal-retiro-transferencia #stepCuentaTransferencia .input input::placeholder{
+  color: #7a7a7a;
+  font-size: 13px;
+  line-height: 1.2;
 }
 
 
@@ -4179,7 +6435,7 @@ html, body {
 
 .tab-btn {
   flex: 1;
-  padding: 18px 16px 20px;
+  padding: 18px 10px 20px;
   background: transparent;
   border: none;
   font-size: 14px;
@@ -4190,23 +6446,24 @@ html, body {
   transition: color 0.3s ease;
   text-align: center;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 /* Texto activo */
 .tab-btn.active {
   color: #FF6A00; /* naranja */
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Mobile: tabs más grandes (versión móvil) */
 @media (max-width: 500px) {
   .tab-btn {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .tab-btn.active {
-    font-size: 16px;
+    font-size: 13px;
   }
 }
 
@@ -4234,416 +6491,31 @@ html, body {
   display: block;
 }
 
-/* 1.1 Inicio Jhon Conopuma - 2026-03-06 - Estilos base de la pantalla Historial de Retiros (tabs, filtros, lista) */
-/* ===== TA Historial (estructura nueva en tab) ===== */
-/* 1.2 Inicio Jhon Conopuma - 2026-03-06 - Layout general del contenedor Historial */
-.ta-historial {
-  padding: 4px 0 18px;
-}
-/* 1.2 Fin Jhon Conopuma */
-
-/* 1.17 Inicio Jhon Conopuma - 2026-03-06 - Cabecera Historial: "Estado de solicitud" + "Mostrar filas" */
-.ta-historial__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 0 12px;
-}
-
-.ta-historial__heading {
-  font-size: 16px;
-  font-weight: 700;
-  color: #393737;
-  line-height: 1.1;
-}
-
-.ta-rows--header {
-  margin-left: auto;
-}
-
-.ta-rows--header select {
-  height: 28px;
-  border-radius: 8px;
-  padding: 0 8px;
-}
-/* 1.17 Fin Jhon Conopuma */
-
-/* 1.3 Inicio Jhon Conopuma - 2026-03-06 - Fila de filtros (chips + selector filas) */
-.ta-historial__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  margin: 0 0 10px;
-}
-/* 1.3 Fin Jhon Conopuma */
-
-/* 1.4 Inicio Jhon Conopuma - 2026-03-06 - Estilos de chips (última semana / búsqueda) */
-.ta-chip {
-  border: 1px solid #e5e5e5;
-  background: #fff;
-  color: #5A5A5A;
-  font-size: 12px;
-  padding: 9px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.ta-chip--active {
-  background: #4C2FBE;
-  border-color: #4C2FBE;
-  color: #fff;
-  font-weight: 700;
-}
-
-.ta-chip--search {
-  flex: 1 1 160px;
-  min-width: 160px;
-  height: 34px;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 14px;
-  color: #A5A5A5;
-  font-weight: 400;
-  text-align: left;
-}
-
-.ta-chip--search.ta-chip--active {
-  color: #fff;
-}
-/* 1.4 Fin Jhon Conopuma */
-
-/* 1.5 Inicio Jhon Conopuma - 2026-03-06 - Selector "Mostrar filas" */
-.ta-rows {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #5A5A5A;
-}
-
-.ta-rows__label {
-  white-space: nowrap;
-}
-
-.ta-rows select {
-  height: 34px;
-  border-radius: 10px;
-  border: 1px solid #e5e5e5;
-  background: #fff;
-  color: #5A5A5A;
-  padding: 0 8px;
-}
-/* 1.5 Fin Jhon Conopuma */
-
-/* 1.6 Inicio Jhon Conopuma - 2026-03-06 - Panel avanzado (mostrar/ocultar + hint) */
-.ta-advanced {
-  display: none;
-  margin: 8px 0 10px;
-}
-
-.ta-advanced.is-open {
-  display: block;
-}
-
-.ta-advanced__hint {
-  font-size: 12px;
-  color: #b5b5b5;
-  line-height: 1.35;
-  margin: 6px 0 12px;
-}
-/* 1.6 Fin Jhon Conopuma */
-
-/* 1.7 Inicio Jhon Conopuma - 2026-03-06 - Ajusta el grid de fechas (ancho tipo maqueta) */
-.ta-advanced__dates {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 334px));
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-/* 1.7 Fin Jhon Conopuma */
-
-.ta-advanced .form-item {
-  margin: 0;
-}
-
-/* 1.8 Inicio Jhon Conopuma - 2026-03-06 - Label de fecha fuera de la caja (Desde/Hasta arriba) */
-.ta-dateLabel {
-  font-size: 12px;
-  line-height: 1.2;
-  color: #5A5A5A;
-  margin: 0 0 6px;
-  padding-left: 4px;
-}
-/* 1.8 Fin Jhon Conopuma */
-
-/* 1.9 Inicio Jhon Conopuma - 2026-03-06 - Tamaño/alto de inputs de fecha + padding del ícono calendario */
-.ta-advanced .input {
-  border: 1px solid #E2E2E2;
-  border-radius: 12px;
-  padding: 0;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.ta-advanced .input input {
-  height: 35px;
-  border: 0;
-  padding: 0 42px 0 12px;
-  width: 100%;
-  box-sizing: border-box;
-}
-/* 1.9 Fin Jhon Conopuma */
-
-/* 1.10 Inicio Jhon Conopuma - 2026-03-06 - Métodos de retiro en una fila con wrap (multi-selección) */
-.ta-methods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-  margin: 6px 0 4px;
-}
-/* 1.10 Fin Jhon Conopuma */
-
-/* 1.11 Inicio Jhon Conopuma - 2026-03-06 - Alineación/compactación de cada método (evita saltos raros) */
-.ta-method {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: #5A5A5A;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  flex: 0 1 auto;
-}
-/* 1.11 Fin Jhon Conopuma */
-
-.ta-method input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.ta-method__box {
-  width: 16px;
-  height: 16px;
-  border: 2px solid #b5b5b5;
-  border-radius: 3px;
-  background: #fff;
-  box-sizing: border-box;
-  flex: 0 0 16px;
-}
-
-.ta-method input:checked ~ .ta-method__box {
-  border-color: #4C2FBE;
-  background: #4C2FBE;
-}
-
-.ta-method input:checked ~ .ta-method__text {
-  color: #5A5A5A;
-  font-weight: 700;
-}
-
-@media (max-width: 420px) {
-  /* 1.12 Inicio Jhon Conopuma - 2026-03-06 - Responsivo: apila fechas y ajusta espacios */
-  .ta-advanced__dates {
-    grid-template-columns: 1fr;
-    justify-content: stretch;
-  }
-
-  .ta-methods {
-    gap: 10px;
-  }
-  /* 1.12 Fin Jhon Conopuma */
-}
-
-/* 1.13 Inicio Jhon Conopuma - 2026-03-06 - Forza z-index/ancho del datepicker en Historial */
-.ta-hist-advanced-open .datepicker-container {
-  z-index: 9999 !important;
-  width: 334px;
-  max-width: calc(100vw - 32px);
-}
-/* 1.13 Fin Jhon Conopuma */
-
-/* 1.14 Inicio Jhon Conopuma - 2026-03-06 - Botón "Estados de retiro" */
-.ta-states {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  border: 0;
-  background: #F2F2F2;
-  color: #5A5A5A;
-  cursor: pointer;
-  margin: 6px 0 12px;
-}
-
-.ta-states__icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1px solid #4C2FBE;
-  background: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 22px;
-}
-
-.ta-states__icon::before {
-  font-family: 'ilot' !important;
-  content: "\e90f";
-  font-size: 18px;
-  line-height: 1;
-  color: #393737;
-}
-
-.ta-states__text {
-  flex: 1;
-  text-align: left;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.ta-states__chev::before {
-  font-family: 'ilot' !important;
-  content: "\e904";
-  font-size: 18px;
-  line-height: 1;
-  color: #b5b5b5;
-}
-/* 1.14 Fin Jhon Conopuma */
-
-/* 1.15 Inicio Jhon Conopuma - 2026-03-06 - Lista de retiros (items/badges/empty state) */
-.ta-historial__list {
-  margin-top: 6px;
-}
-
-#ta-items-hispayment {
-  display: block;
-}
-
-.ta-hist-item {
-  width: 100%;
-  display: block;
-  border: 0;
-  border-bottom: 1px solid #E2E2E2;
-  padding: 16px 0;
-  background: #fff;
-  text-align: left;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.ta-hist-item:last-child {
-  border-bottom: 0;
-}
-
-.ta-hist-item:focus {
-  outline: none;
-}
-
-.ta-hist-item:focus-visible {
-  outline: 2px solid #4C2FBE;
-  outline-offset: 2px;
-  border-radius: 10px;
-}
-
-.ta-hist-item__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.ta-hist-item__left {
-  min-width: 0;
-}
-
-.ta-hist-item__title {
-  font-size: 14px;
-  font-weight: 900;
-  color: #5A5A5A;
-  margin-bottom: 6px;
-}
-
-.ta-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  padding: 5px 8px;
-  border-radius: 4px;
-  line-height: 1;
-  font-weight: 700;
-}
-
-.ta-badge--pending {
-  border: 0;
-  background: #FFD400;
-  color: #000000;
-}
-
-.ta-badge--paid {
-  background: #40B638;
-  color: #000000;
-}
-
-.ta-hist-item__right {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  flex: 0 0 auto;
-}
-
-.ta-hist-item__amount {
-  font-size: 14px;
-  font-weight: 900;
-  color: #5A5A5A;
-  white-space: nowrap;
-}
-
-.ta-hist-item__chev::before {
-  font-family: 'ilot' !important;
-  content: "\e901";
-  font-size: 18px;
-  line-height: 1;
-  color: #b5b5b5;
-}
-
-.ta-hist-item__meta {
-  font-size: 12px;
-  color: #b5b5b5;
-  margin-top: 10px;
-  display: flex;
-  gap: 26px;
-}
-
-.ta-historial__empty {
-  margin-top: 14px;
+/* ===== Empty state: Cuentas guardadas (Transferencia) ===== */
+.cuentas-guardadas-empty {
+  padding: 52px 0 28px;
   text-align: center;
-  color: #b5b5b5;
-  font-size: 13px;
 }
-/* 1.15 Fin Jhon Conopuma */
 
-/* 1.1 Fin Jhon Conopuma */
+.cuentas-guardadas-empty img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+}
 
-/* 1.16 Inicio Jhon Conopuma - 2026-03-06 - Tarjetas rápidas de método (no afectan acordeón) */
+.cuentas-guardadas-empty__text {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #77736f;
+}
+
 /* ===== Quick method cards (sin afectar el acordeón) ===== */
+.ipremio #tab-retiro .listaMetodosRetiro {
+  display: none !important;
+}
+
 .ipremio .method-cards {
   margin: 8px 0 16px;
   display: grid;
@@ -4731,4 +6603,10 @@ html, body {
   .ipremio .method-card__title { font-size: 20px; }
   .ipremio .method-card__subtitle { font-size: 15px; }
 }
-/* 1.16 Fin Jhon Conopuma */
+
+/* INFO: Texto informativo de Transferencia (horarios/límites) se arma en JS y se muestra en estos contenedores.
+   Se deja oculto por requerimiento. */
+#transHorario,
+#transLimites {
+  display: none !important;
+}

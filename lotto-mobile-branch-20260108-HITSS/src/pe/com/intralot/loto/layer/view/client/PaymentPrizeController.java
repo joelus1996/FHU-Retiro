@@ -1361,7 +1361,7 @@ public class PaymentPrizeController {
 			out.print(o);
 		} catch (Exception e) {			
 			int transactionId = Constantes.generateTransactionId();
-			String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+			String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 			o.addProperty("message", mensaje);
 			o.addProperty("status", "ERROR");
 			out.print(o);
@@ -1396,6 +1396,7 @@ public class PaymentPrizeController {
 			if (requestByNumber != null) {
 				o.addProperty("requestNumber", requestByNumber.getRequestNumber());
 				o.addProperty("requestDateHour", requestByNumber.getRequestDateHour());
+				LoggerApi.Log.info("--------------requestDateHour ="+requestByNumber.getRequestDateHour());
 				o.addProperty("docNumber", requestByNumber.getDocNumber());
 				o.addProperty("requestAmount", requestByNumber.getRequestAmount());
 				o.addProperty("clientIdQR", requestByNumber.getClientId());
@@ -1551,6 +1552,11 @@ public class PaymentPrizeController {
 	    public String tokenizationCardAgora(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	        return "client/interface-tokenization-card-agora";
 	    }
+	    
+	    @RequestMapping(value = "/tokenizationCardTa")
+	    public String tokenizationCardTa(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	        return "client/interface-tokenization-card-ta";
+	    }
 	 
 	    @RequestMapping(value = "/createSessionTokenizationCard")
 	    public void createSessionTokenizationCard(HttpServletRequest request, HttpServletResponse response) throws Exception {    	
@@ -1598,7 +1604,7 @@ public class PaymentPrizeController {
 				}else {
 					LoggerApi.Log.info("API Security HTTP CODE uuid="+uuid.toString()+": "+responseCodeSecurity+ " clientId:"+idClient);
 					int transactionId = Constantes.generateTransactionId();
-					String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: V"+transactionId+"<br>"+sdfFront.format(new Date());
+					String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
 					o.addProperty("message", mensaje);
 					registrarErrorVisa(new BigInteger(idClient+""), new BigInteger(transactionId+""), Constantes.PROCESS_SECURITY_API, Constantes.VACIO, Constantes.VACIO, 
 							"API Security (createSessionTokenizationCard) HTTP CODE "+responseCodeSecurity, 
@@ -1640,7 +1646,7 @@ public class PaymentPrizeController {
 	            	}else {
 	            		LoggerApi.Log.info("API Session HTTP CODE uuid="+uuid.toString()+": "+responseCodeSession+ " clientId:"+idClient);
 						int transactionId = Constantes.generateTransactionId();
-						String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: V"+transactionId+"<br>"+sdfFront.format(new Date());
+						String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
 						o.addProperty("message", mensaje);
 						registrarErrorVisa(new BigInteger(idClient+""), new BigInteger(transactionId+""), Constantes.PROCESS_SESSION_API, Constantes.VACIO, 
 								Constantes.VACIO, "API Session (createSessionTokenizationCard) HTTP CODE "+responseCodeSession, 
@@ -1669,8 +1675,8 @@ public class PaymentPrizeController {
 			    		o.addProperty("purchasenumber", paymentPrizeBo.generateTokenPurchaseNumber());	    		
 			    		o.addProperty("formbuttontext", "Confirmar");
 			    		o.addProperty("merchantlogo", baseUri + "/layer-view-image/v2/landing/img/logo-tinka.png?v=1");
-			    		o.addProperty("cardholdername", getDataCollectPrizes.getNombre().toLowerCase().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("à", "a").replace("è", "e").replace("ì", "i").replace("ò", "o").replace("ù", "u").replace("ä", "a").replace("ë", "e").replace("ï", "i").replace("ö", "o").replace("ü", "u").replace("ñ", "n").replace("'", ""));
-			    		o.addProperty("cardholderlastname", (getDataCollectPrizes.getApellidoPaterno() + ((getDataCollectPrizes.getApellidoMaterno() != null) ? " " + getDataCollectPrizes.getApellidoMaterno() : "")).toLowerCase().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("à", "a").replace("è", "e").replace("ì", "i").replace("ò", "o").replace("ù", "u").replace("ä", "a").replace("ë", "e").replace("ï", "i").replace("ö", "o").replace("ü", "u").replace("ñ", "n").replace("'", ""));
+			    		o.addProperty("cardholdername", getDataCollectPrizes.getNombre().toLowerCase().replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "n").replace("'", ""));
+			    		o.addProperty("cardholderlastname", (getDataCollectPrizes.getApellidoPaterno() + ((getDataCollectPrizes.getApellidoMaterno() != null) ? " " + getDataCollectPrizes.getApellidoMaterno() : "")).toLowerCase().replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "n").replace("'", ""));
 			    		o.addProperty("cardholderemail", "CID" + idClient + "@intralot.com.pe");
 			    		o.addProperty("userToken", "CID" + idClient + "@intralot.com.pe" );			    		
 			    		o.addProperty("timeouturl", baseUri + "/client_price_show_information.html");
@@ -1687,13 +1693,157 @@ public class PaymentPrizeController {
 	        	out.print(o);
 			}catch (Exception e) {
 				int transactionId = Constantes.generateTransactionId();
-				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 				o.addProperty("message", mensaje);
 				o.addProperty("status", "ERROR");
 				out.print(o);
 				LoggerApi.severe(e,uuid.toString() + " mensaje: "+mensaje);
 			}
 			LoggerApi.Log.info("-------------- END createSessionTokenizationCard uuid="+uuid.toString());
+	    }
+
+	    @RequestMapping(value = "/createSessionTokenizationCardTa")
+	    public void createSessionTokenizationCardTa(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    	UUID uuid = UUID.randomUUID();
+			LoggerApi.Log.info("-------------- START createSessionTokenizationCardTa uuid="+uuid.toString());
+			response.setCharacterEncoding(Constantes.CHARSET_UTF8);
+			PrintWriter out = response.getWriter();
+			JsonObject o = new JsonObject();
+			String prizetoken=request.getHeader("prizetoken");
+			String ipToken=SecurityUtils.getClientIp(request);	
+			try {
+				Integer idClient = null;
+				ClientProcedureTokenValidation tokenValidation= new ClientProcedureTokenValidation();
+				tokenValidation = beanSecurityLoginBo.getTokenValidation(prizetoken, ipToken);
+				if (tokenValidation.getStatus().equals("OK") && (tokenValidation.getMessage().equals("Validated") || tokenValidation.getMessage().equals("Show"))) {
+					idClient = Integer.parseInt(tokenValidation.getClientId());
+					o.addProperty("prizetoken", tokenValidation.getRechargeToken());
+					LoggerApi.Log.info("-------------- createSessionTokenizationCardTa token idClient="+idClient);
+				}
+
+				try {
+					paymentPrizeBo.transactionRequestIp("MOBILE","createSessionTokenizationCardTa", ""+idClient, SecurityUtils.getClientIp(request), uuid.toString(), "VISA", "" );
+			    } catch (Exception ex) {
+			    	try { LoggerApi.severe(ex, "cid="+idClient+" ip="+SecurityUtils.getClientIp(request)); } catch (Exception e) {;}
+			    }
+				
+				String userAPITokenizationCard = ConnectionFactory.operationProperty("user_api_tokenization_card", Constantes.contextSale);
+				String passAPITokenizationCard = ConnectionFactory.operationProperty("pass_api_tokenization_card", Constantes.contextSale);
+				String securityAPITokenizationCard = ConnectionFactory.operationProperty("security_api_tokenization_card", Constantes.contextSale);
+				String sessionAPITokenizationCard = ConnectionFactory.operationProperty("session_api_tokenization_card", Constantes.contextSale);
+				String merchantIdAPITokenizationCard = ConnectionFactory.operationProperty("merchant_id_api_tokenization_card", Constantes.contextSale);
+							
+				String credenciales = userAPITokenizationCard+":"+passAPITokenizationCard;
+		    	credenciales = new BASE64Encoder().encode(credenciales.getBytes(Constantes.CHARSET_UTF8));
+		    	URL urlSecurity = new URL(securityAPITokenizationCard);
+		    	HttpsURLConnection  cnSecurity = (HttpsURLConnection )urlSecurity.openConnection();
+		    	cnSecurity.setRequestMethod("GET");
+		    	cnSecurity.setRequestProperty("Authorization", "Basic "+credenciales);
+		    	cnSecurity.setSSLSocketFactory(new TSLSocketConnectionFactory());
+		    	
+		    	BufferedReader brSecurity = null;
+		    	int responseCodeSecurity = cnSecurity.getResponseCode();
+				if(responseCodeSecurity < HttpServletResponse.SC_BAD_REQUEST) {
+					brSecurity = new BufferedReader(new InputStreamReader((cnSecurity.getInputStream()),Constantes.CHARSET_UTF8));
+				}else {
+					LoggerApi.Log.info("API Security HTTP CODE uuid="+uuid.toString()+": "+responseCodeSecurity+ " clientId:"+idClient);
+					int transactionId = Constantes.generateTransactionId();
+					String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
+					o.addProperty("message", mensaje);
+					registrarErrorVisa(new BigInteger(idClient+""), new BigInteger(transactionId+""), Constantes.PROCESS_SECURITY_API, Constantes.VACIO, Constantes.VACIO, 
+							"API Security (createSessionTokenizationCardTa) HTTP CODE "+responseCodeSecurity, 
+									Constantes.VACIO, Constantes.VACIO, Constantes.VACIO, Constantes.VACIO);
+					brSecurity = new BufferedReader(new InputStreamReader((cnSecurity.getErrorStream()),Constantes.CHARSET_UTF8));
+				}
+						    		
+		    	StringBuilder sbSecurity = new StringBuilder();
+		    	char[] bufferSecurity = new char[1000];
+	            int leidoSecurity;
+	            while ((leidoSecurity = brSecurity.read(bufferSecurity)) > 0) {
+	            	sbSecurity.append(new String(bufferSecurity, 0, leidoSecurity));
+	            }
+		    	brSecurity.close();
+		    	
+		    	String token = sbSecurity.toString();
+		    	if(responseCodeSecurity < HttpServletResponse.SC_BAD_REQUEST) {
+		    		URL urlSession = new URL(sessionAPITokenizationCard+merchantIdAPITokenizationCard);
+		    		HttpsURLConnection  cnSession = (HttpsURLConnection )urlSession.openConnection();
+		    		cnSession.setRequestMethod("POST");
+		    		cnSession.setRequestProperty("Content-Type", Constantes.APPLICATION_JSON);
+		    		cnSession.setRequestProperty("Accept", Constantes.APPLICATION_JSON);
+		    		cnSession.setRequestProperty("Authorization", token);
+		    		cnSession.setDoOutput(true);
+		    		cnSession.setSSLSocketFactory(new TSLSocketConnectionFactory());
+		    					    		
+	        		Gson gson = new Gson();
+	            	String jsonInputString = gson.toJson(new BodySessionKey("CID" + idClient + "@intralot.com.pe"));
+	        		byte[] input = jsonInputString.getBytes(Constantes.CHARSET_UTF8);
+	        		OutputStream os = cnSession.getOutputStream();
+	        		os.write(input, 0, input.length); 
+	        		os.flush();
+	        		os.close();
+	        		
+	        		BufferedReader brSession = null;
+	        		int responseCodeSession = cnSession.getResponseCode();
+	        		if(responseCodeSession < HttpServletResponse.SC_BAD_REQUEST) {
+	            		brSession = new BufferedReader(new InputStreamReader((cnSession.getInputStream()),Constantes.CHARSET_UTF8));
+	            	}else {
+	            		LoggerApi.Log.info("API Session HTTP CODE uuid="+uuid.toString()+": "+responseCodeSession+ " clientId:"+idClient);
+						int transactionId = Constantes.generateTransactionId();
+						String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
+						o.addProperty("message", mensaje);
+						registrarErrorVisa(new BigInteger(idClient+""), new BigInteger(transactionId+""), Constantes.PROCESS_SESSION_API, Constantes.VACIO, 
+								Constantes.VACIO, "API Session (createSessionTokenizationCardTa) HTTP CODE "+responseCodeSession, 
+										Constantes.VACIO, Constantes.VACIO, Constantes.VACIO, Constantes.VACIO);
+	            		brSession = new BufferedReader(new InputStreamReader((cnSession.getErrorStream()),Constantes.CHARSET_UTF8));
+	            	}	        		
+	        		
+		    		StringBuilder sbSession = new StringBuilder();
+		    		char[] bufferSession = new char[1000];
+	            	int leidoSession;
+	            	while ((leidoSession = brSession.read(bufferSession)) > 0) {
+	            		sbSession.append(new String(bufferSession, 0, leidoSession));
+	            	}
+		    		brSession.close();
+		    		
+		    		String jsonSessionKey = sbSession.toString();
+		    		if(responseCodeSession < HttpServletResponse.SC_BAD_REQUEST) {
+		    			PaymentPrizeProcedureGetDataCollectPrizes getDataCollectPrizes = paymentPrizeBo.getDataCollectPrizes(idClient);
+		    			
+		    			request.getSession().setAttribute("token", StringLib.encodeLabel(token));	 
+		    			
+				    		String baseUri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+				    		
+				    		o.addProperty("json", jsonSessionKey);
+				    		o.addProperty("merchantid", merchantIdAPITokenizationCard);
+				    		o.addProperty("purchasenumber", paymentPrizeBo.generateTokenPurchaseNumber());	    		
+				    		o.addProperty("formbuttontext", "Confirmar");
+				    		o.addProperty("merchantlogo", baseUri + "/layer-view-image/v2/TE_APUESTO_Logotipo_RGB_visa.png?v=1");
+				    		o.addProperty("cardholdername", getDataCollectPrizes.getNombre().toLowerCase().replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "n").replace("'", ""));
+				    		o.addProperty("cardholderlastname", (getDataCollectPrizes.getApellidoPaterno() + ((getDataCollectPrizes.getApellidoMaterno() != null) ? " " + getDataCollectPrizes.getApellidoMaterno() : "")).toLowerCase().replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "n").replace("'", ""));
+				    		o.addProperty("cardholderemail", "CID" + idClient + "@intralot.com.pe");
+				    		o.addProperty("userToken", "CID" + idClient + "@intralot.com.pe" );	    				
+				    		o.addProperty("timeouturl", baseUri + "/client_price_show_information.html");
+		        		o.addProperty("status", Constantes.RESULT_OK);
+		    		}else {
+	        			LoggerApi.Log.info("API Session RESPONSE uuid="+uuid.toString()+": "+jsonSessionKey + " clientId:"+idClient);
+	        			o.addProperty("status", "ERROR");
+		    		}
+	    		}else {
+	    			LoggerApi.Log.info("API Security RESPONSE uuid="+uuid.toString()+": "+token + " clientId:"+idClient);
+	    			o.addProperty("status", "ERROR");
+	    		}
+				
+	        	out.print(o);
+			}catch (Exception e) {
+				int transactionId = Constantes.generateTransactionId();
+				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
+				o.addProperty("message", mensaje);
+				o.addProperty("status", "ERROR");
+				out.print(o);
+				LoggerApi.severe(e,uuid.toString() + " mensaje: "+mensaje);
+			}
+			LoggerApi.Log.info("-------------- END createSessionTokenizationCardTa uuid="+uuid.toString());
 	    }
 	    
 	    @RequestMapping(value = "/tokenizeCard")
@@ -1896,7 +2046,7 @@ public class PaymentPrizeController {
     					actionDescription = order.getActionDescription()!=null?order.getActionDescription().trim():Constantes.VACIO;
     				}
 					int transactionId = Constantes.generateTransactionId();
-					String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: V"+transactionId+"<br>"+sdfFront.format(new Date());
+					String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
 					o.addProperty("message", mensaje);
 					o.addProperty("status", "ERROR");
 					registrarErrorVisa(new BigInteger(idClient+""), new BigInteger(transactionId+""), Constantes.PROCESS_TOKEN_API, 
@@ -1952,7 +2102,7 @@ public class PaymentPrizeController {
 				}
 			} catch (Exception e) {
 				int transactionId = Constantes.generateTransactionId();
-				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 				o.addProperty("message", mensaje);
 				o.addProperty("status", "ERROR");
 				LoggerApi.severe(e,uuid.toString()+ " mensaje: "+mensaje);
@@ -2007,7 +2157,7 @@ public class PaymentPrizeController {
     					actionDescription = order.getActionDescription()!=null?order.getActionDescription().trim():Constantes.VACIO;
     				}
 					int transactionId = Constantes.generateTransactionId();
-					String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: V"+transactionId+"<br>"+sdfFront.format(new Date());
+					String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
 					o.addProperty("message", mensaje);
 					o.addProperty("status", "ERROR");
 					registrarErrorVisa(new BigInteger(idClient+""), new BigInteger(transactionId+""), Constantes.PROCESS_TOKEN_API, 
@@ -2016,7 +2166,7 @@ public class PaymentPrizeController {
 				}
 			} catch (Exception e) {
 				int transactionId = Constantes.generateTransactionId();
-				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 				o.addProperty("message", mensaje);
 				o.addProperty("status", "ERROR");
 				LoggerApi.severe(e,uuid.toString()+ " mensaje: "+mensaje);
@@ -2325,7 +2475,7 @@ public class PaymentPrizeController {
 												o.addProperty("titulo", "Tu retiro por tu tarjeta Visa ha sido denegado");
 												
 												int transactionId = Constantes.generateTransactionId();
-												mensaje += "<br><br>Nº de operación: V"+transactionId+"<br>"+sdfFront.format(new Date());
+												mensaje += "<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
 												registrarErrorVisa(new BigInteger(idClient.toString()), new BigInteger(transactionId+""),
 																Constantes.PROCESS_FD_API, result.getRequestNumber().toString(), 
 																purchaseNumberFD, objFD.getJson() + "| HTTP CODE: "+ objFD.getHttpCode(), 
@@ -2369,7 +2519,7 @@ public class PaymentPrizeController {
 				out.print(o);
 			} catch (Exception e) {
 				int transactionId = Constantes.generateTransactionId();
-				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 				o.addProperty("message", mensaje);
 				o.addProperty("status", "ERROR");
 				out.print(o);
@@ -2625,7 +2775,7 @@ public class PaymentPrizeController {
 												o.addProperty("titulo", "Tu retiro por tu tarjeta Agora ha sido denegado");
 												
 												int transactionId = Constantes.generateTransactionId();
-												mensaje += "<br><br>Nº de operación: V"+transactionId+"<br>"+sdfFront.format(new Date());
+												mensaje += "<br><br>Nï¿½ de operaciï¿½n: V"+transactionId+"<br>"+sdfFront.format(new Date());
 												registrarErrorVisa(new BigInteger(idClient.toString()), new BigInteger(transactionId+""),
 																Constantes.PROCESS_FD_API, result.getRequestNumber().toString(), 
 																purchaseNumberFD, objFD.getJson() + "| HTTP CODE: "+ objFD.getHttpCode(), 
@@ -2665,7 +2815,7 @@ public class PaymentPrizeController {
 				out.print(o);
 			} catch (Exception e) {
 				int transactionId = Constantes.generateTransactionId();
-				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 				o.addProperty("message", mensaje);
 				o.addProperty("status", "ERROR");
 				out.print(o);
@@ -3263,8 +3413,8 @@ public class PaymentPrizeController {
 															payrollDetail.setCciNumber("");
 														}
 														payrollDetail.setDepartment(departamento);
-														String nombres = paymentPrizeProcedureGetDataCollectPrizes.getNombre().toLowerCase().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("à", "a").replace("è", "e").replace("ì", "i").replace("ò", "o").replace("ù", "u").replace("ä", "a").replace("ë", "e").replace("ï", "i").replace("ö", "o").replace("ü", "u").replace("ñ", "n").replace("'", "");
-														String apellidos = (paymentPrizeProcedureGetDataCollectPrizes.getApellidoPaterno() + ((paymentPrizeProcedureGetDataCollectPrizes.getApellidoMaterno() != null) ? " " + paymentPrizeProcedureGetDataCollectPrizes.getApellidoMaterno() : "")).toLowerCase().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("à", "a").replace("è", "e").replace("ì", "i").replace("ò", "o").replace("ù", "u").replace("ä", "a").replace("ë", "e").replace("ï", "i").replace("ö", "o").replace("ü", "u").replace("ñ", "n").replace("'", "");
+														String nombres = paymentPrizeProcedureGetDataCollectPrizes.getNombre().toLowerCase().replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "n").replace("'", "");
+														String apellidos = (paymentPrizeProcedureGetDataCollectPrizes.getApellidoPaterno() + ((paymentPrizeProcedureGetDataCollectPrizes.getApellidoMaterno() != null) ? " " + paymentPrizeProcedureGetDataCollectPrizes.getApellidoMaterno() : "")).toLowerCase().replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "a").replace("ï¿½", "e").replace("ï¿½", "i").replace("ï¿½", "o").replace("ï¿½", "u").replace("ï¿½", "n").replace("'", "");
 														payrollDetail.setCustomerName(nombres.trim()+" "+apellidos.trim());
 														if(paymentPrizeProcedureGetDataCollectPrizes.getDocType().trim().equals("DNI")) {
 															payrollDetail.setCustomerIdType(Constantes.FD_MONNET_DETAIL_ID_TYPE_DNI);
@@ -3315,11 +3465,11 @@ public class PaymentPrizeController {
 															//denegacion automatica
 															//mensaje = paymentPrizeProcedureGetDataCollectPrizes.getMsgAutomaticTraDen();//mensaje de error al intentar call api monnet
 															if(payrollResponse!=null && payrollResponse.getTypeError()!=null && payrollResponse.getTypeError().trim().equals("1")) {
-																mensaje = "Antes de poder solicitar una transferencia, debes actualizar y completar tus datos en tu cuenta de La Tinka. Tu dinero está disponible para retiro.<br><br><a href=\"https://m.latinka.com.pe/derechos-arco.html\" target=\"_blank\" style=\"text-decoration: underline; color: #e30613;\">Actualiza tus datos aquí</a> e intenta nuevamente, o solicita tu retiro usando otro método.";
+																mensaje = "Antes de poder solicitar una transferencia, debes actualizar y completar tus datos en tu cuenta de La Tinka. Tu dinero estï¿½ disponible para retiro.<br><br><a href=\"https://m.latinka.com.pe/derechos-arco.html\" target=\"_blank\" style=\"text-decoration: underline; color: #e30613;\">Actualiza tus datos aquï¿½</a> e intenta nuevamente, o solicita tu retiro usando otro mï¿½todo.";
 																o.addProperty("titulo", "No es posible procesar tu transferencia");
 															}else {
 																int transactionId = Constantes.generateTransactionId();
-																mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+																mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 																o.addProperty("titulo", "No fue posible confirmar tu transferencia");
 															}
 															Object[] values = new Object[2];
@@ -3364,25 +3514,25 @@ public class PaymentPrizeController {
 							}else {
 								o.addProperty("status", "ERROR_MONTO");
 								//o.addProperty("message", Constantes.MSG_AMOUNT_OUT_RANGE.replace("MIN", intralotUtils.formatCurrency3(paymentPrizeProcedureGetDataCollectPrizes.getAmountMinRequestTra().intValue())).replace("MAX", intralotUtils.formatCurrency3(paymentPrizeProcedureGetDataCollectPrizes.getAmountMaxRequestTra().intValue())) );
-								o.addProperty("message", "Montos no válidos" );
+								o.addProperty("message", "Montos no vï¿½lidos" );
 							}      
 						}else {
 							o.addProperty("status", "ERROR_PARAMETERS");
-							o.addProperty("message", "Los valores son inválidos");
+							o.addProperty("message", "Los valores son invï¿½lidos");
 						}
 					}else {
 						o.addProperty("status", "ERROR_PARAMETERS");
-						o.addProperty("message", "El monto, banco, número de cuenta y departamento son obligatorios");
+						o.addProperty("message", "El monto, banco, nï¿½mero de cuenta y departamento son obligatorios");
 					}
 				}else {
 					o.addProperty("status", "ERROR_DATA");
 					o.addProperty("titulo", "No es posible procesar tu transferencia");
-					o.addProperty("message", "Antes de poder solicitar una transferencia, debes actualizar y completar tus datos en tu cuenta de La Tinka. Tu dinero está disponible para retiro.<br><br><a href=\"https://m.latinka.com.pe/derechos-arco.html\" target=\"_blank\" style=\"text-decoration: underline; color: #e30613;\">Actualiza tus datos aquí</a> e intenta nuevamente, o solicita tu retiro usando otro método.");
+					o.addProperty("message", "Antes de poder solicitar una transferencia, debes actualizar y completar tus datos en tu cuenta de La Tinka. Tu dinero estï¿½ disponible para retiro.<br><br><a href=\"https://m.latinka.com.pe/derechos-arco.html\" target=\"_blank\" style=\"text-decoration: underline; color: #e30613;\">Actualiza tus datos aquï¿½</a> e intenta nuevamente, o solicita tu retiro usando otro mï¿½todo.");
 				}
 				out.print(o);
 			} catch (Exception e) {			
 				int transactionId = Constantes.generateTransactionId();
-				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nº de operación: I"+transactionId+"<br>"+sdfFront.format(new Date());
+				String mensaje = Constantes.MSG_EXCEPTION+"<br><br>Nï¿½ de operaciï¿½n: I"+transactionId+"<br>"+sdfFront.format(new Date());
 				o.addProperty("message", mensaje);
 				o.addProperty("status", "ERROR");
 				out.print(o);
@@ -3613,15 +3763,15 @@ public class PaymentPrizeController {
 					"		<td colspan='3' bgcolor='#ffffff' width='470' height='44' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:22px;'><strong>Hola "+fullName+"</strong></td>" + 
 					"	</tr>" + 
 					"	<tr>" + 
-					"		<td colspan='3' bgcolor='#ffffff' width='470' height='40' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:13px;'>Acércate a una tienda o punto de venta de La Tinka y presenta tu recibo adjunto con tu DNI para realizar el cobro.</td>" + 
+					"		<td colspan='3' bgcolor='#ffffff' width='470' height='40' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:13px;'>Acï¿½rcate a una tienda o punto de venta de La Tinka y presenta tu recibo adjunto con tu DNI para realizar el cobro.</td>" + 
 					"	</tr>" + 
 					"	" + 
 					"	<tr>" + 
-					"		<td colspan='3' bgcolor='#ffffff' width='470' height='40' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:13px;'>¡Protege tu recibo! Recuerda que el cobro es personal.</td>" + 
+					"		<td colspan='3' bgcolor='#ffffff' width='470' height='40' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:13px;'>ï¿½Protege tu recibo! Recuerda que el cobro es personal.</td>" + 
 					"	</tr>" + 
 					"	" + 
 					"	<tr>" + 
-					"		<td colspan='3' bgcolor='#ffffff' width='470' height='40' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:13px;'>También puedes volver a visualizar tu recibo en el Historial de retiros, ingresando a <strong> Mis premios</strong> desde tu cuenta de <a href='https://www.latinka.com.pe/p/' target='_blank' style='color:#5a5a5a; font-family:Arial, Helvetica, sans-serif; font-size:13px; text-decoration:underline;'><strong>La Tinka.</strong></a></td>" + 
+					"		<td colspan='3' bgcolor='#ffffff' width='470' height='40' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:13px;'>Tambiï¿½n puedes volver a visualizar tu recibo en el Historial de retiros, ingresando a <strong> Mis premios</strong> desde tu cuenta de <a href='https://www.latinka.com.pe/p/' target='_blank' style='color:#5a5a5a; font-family:Arial, Helvetica, sans-serif; font-size:13px; text-decoration:underline;'><strong>La Tinka.</strong></a></td>" + 
 					"	</tr>" + 
 					"	" + 
 					"	<tr>" + 
@@ -3717,7 +3867,7 @@ public class PaymentPrizeController {
 		    	if ( createPin.getStatus().equals("OK") ) {
 		    		
 		    		String result = paymentSendPinMail(createPin.getMail(), createPin.getNombre(), pin, createPin.getMinutos() );
-
+		    		LoggerApi.Log.info("-------------- PIN:  "+ pin);
 		    		if (result.equals("OK")) {
 		    			
 			    		o.addProperty("status", createPin.getStatus());
@@ -3748,7 +3898,7 @@ public class PaymentPrizeController {
 		    		
 			    		paymentSession.setPinEnc(pinEnc);
 		    		} else {
-		    			// El envío del SMS falló
+		    			// El envï¿½o del SMS fallï¿½
 		    			LoggerApi.Log.info("Error: " + "No se puede establecer conexion con el servicio de sms " + "Code: " + result.getCode() +" status: " +result.getStatus());
 		    			o.addProperty("status", "ERROR");
 			    		o.addProperty("titulo", "No se ha logrado enviar el c&oacute;digo de autorizaci&oacute;n");
@@ -3790,7 +3940,7 @@ public class PaymentPrizeController {
 
 	        StringBuffer mailBodyPass = new StringBuffer();
 	        String mailSender = email;
-	        String mailSubject = "Código de autorización de retiro";
+	        String mailSubject = "Cï¿½digo de autorizaciï¿½n de retiro";
 	        String mailBody = "";
 	        String result = "";
 	        
@@ -3818,7 +3968,7 @@ public class PaymentPrizeController {
 	    				   "		<td rowspan='7' bgcolor='#dedede'  width='65' height='283' alt=''></td>            "+
 	    				   "	</tr>            "+
 	    				   "	<tr>            "+
-	    				   "		<td colspan='3' bgcolor='#ffffff' width='470' height='63' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:22px;'><strong>¡Hola "+name+"!</strong></td>            "+
+	    				   "		<td colspan='3' bgcolor='#ffffff' width='470' height='63' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:22px;'><strong>ï¿½Hola "+name+"!</strong></td>            "+
 	    				   "	</tr>            "+
 	    				   "	<tr>            "+
 	    				   "		<td width='24' height='33'></td>            "+
@@ -3831,7 +3981,7 @@ public class PaymentPrizeController {
 	    				   "	</tr>            "+
 	    				   "	<tr>            "+
 	    				   "		<td width='24' height='33'></td>            "+
-	    				   "		<td bgcolor='#ffffff' width='422' height='33' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:12px;'>¿No solicitaste ningún retiro de tus premios? Para mantener tu cuenta segura, te recomendamos <a href='https://www.latinka.com.pe/p/restablecer.html' style='color:#07663a;'><u>cambiar tu contraseña aquí</u></style>            "+
+	    				   "		<td bgcolor='#ffffff' width='422' height='33' alt='' style='color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:12px;'>ï¿½No solicitaste ningï¿½n retiro de tus premios? Para mantener tu cuenta segura, te recomendamos <a href='https://www.latinka.com.pe/p/restablecer.html' style='color:#07663a;'><u>cambiar tu contraseï¿½a aquï¿½</u></style>            "+
 	    				   "		<td width='24' height='33'></td>            "+
 	    				   "</td>            "+
 	    				   "	</tr>            "+
@@ -3908,7 +4058,7 @@ public class PaymentPrizeController {
 //			    	if  ( !paymentSession.getPinEnc().equals(inputPinEnc) ) {
 //
 //			    		o.addProperty("status", "CODEERROR");
-//			    		o.addProperty("mensajeerror", "Código incorrecto. Verifique si escribió correctamente.");
+//			    		o.addProperty("mensajeerror", "Cï¿½digo incorrecto. Verifique si escribiï¿½ correctamente.");
 //			    		result = "Pin de session no corresponde al Pin de ingreso"; 
 //			    				
 //			    	} else {
