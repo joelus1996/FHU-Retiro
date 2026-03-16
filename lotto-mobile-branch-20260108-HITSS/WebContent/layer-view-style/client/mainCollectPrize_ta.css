@@ -2976,20 +2976,6 @@ height: 30px;
     transform: none;
     clip-path: ellipse(50% 20% at 50% 100%);
   }
-
-  /* En transferencia, NO usar clip-path (mantener arco tipo elipse visible fuera de la cabecera) */
-  #modal-retiro-transferencia .ipremio__head--retiro-pdv::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -260px;
-    width: 170%;
-    height: 260px;
-    background: #ffffff;
-    border-radius: 50%;
-    transform: translateX(-50%);
-    clip-path: none;
-  }
 }
 
 /* Asignación de áreas (no importa el orden del HTML) */
@@ -3032,49 +3018,13 @@ height: 30px;
 }
 
 /* ===== Modal retiro efectivo / PDV (UI como maqueta) ===== */
-#modal-retiro-efectivo-pdv{
-  --retiro-pdv-card-max: 270px;
-  --retiro-pdv-btn-max: 420px;
-  --retiro-pdv-amount-line-width: 75%;
-  --retiro-pdv-currency-font-size: 24px;
-  --retiro-pdv-amount-font-size: 40px;
-  --retiro-pdv-placeholder-font-size: 16px;
-  --retiro-disponible-to-amount-gap: 50px;
-  --retiro-amount-to-info-gap: 100px;
-}
-
-@media (min-width: 481px){
-  #modal-retiro-efectivo-pdv{
-    --retiro-pdv-btn-max: 520px;
-  }
-}
-
 #modal-retiro-efectivo-pdv .ipremio__head--retiro-pdv{
   display: block !important;
   grid-template-areas: none !important;
   grid-template-columns: none !important;
   grid-template-rows: none !important;
   row-gap: 0 !important;
-  padding: 30px 16px 56px 16px !important;
-  overflow: visible !important; /* permite que el arco se vea fuera de la cabecera */
-  position: relative !important;
-  z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
-}
-
-/* En efectivo, el arco va en la cabecera (divide negro/ blanco) */
-#modal-retiro-efectivo-pdv .ipremio__head--retiro-pdv::after{
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -240px;
-  width: 200%;
-  height: 260px;
-  background: #ffffff;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  z-index: 0;
-  clip-path: none !important;
+  padding: 16px 16px 42px 16px !important;
 }
 
 #modal-retiro-efectivo-pdv .retiro-pdv__headbar{
@@ -3113,8 +3063,7 @@ height: 30px;
 #modal-retiro-efectivo-pdv .retiro-pdv__iconbox{
   width: 120px;
   height: 88px;
-  /* Deja ~1/3 del cuadro sobre fondo negro (88px alto -> 29px) */
-  margin: 18px auto -59px;
+  margin: 18px auto -44px;
   background: #fff;
   border-radius: 22px;
   display: flex;
@@ -3122,7 +3071,7 @@ height: 30px;
   justify-content: center;
   line-height: 0;
   position: relative;
-  z-index: 3;
+  z-index: 2;
 }
 
 #modal-retiro-efectivo-pdv .retiro-pdv__icon{
@@ -3134,294 +3083,11 @@ height: 30px;
 }
 
 #modal-retiro-efectivo-pdv .ipremio__body{
-  /* Compensa el solape del cuadro del icono hacia el body */
-  padding-top: 10px;
-  position: relative;
-  z-index: 0;
+  padding-top: 54px;
 }
 
 #modal-retiro-efectivo-pdv .title-method{
   text-align: center;
-  margin: 0 0 16px;
-  padding-bottom: 0;
-  color: #7a7a7a;
-}
-
-/* Espacio entre “Disponible para retirar” y el input de monto */
-#modal-retiro-efectivo-pdv .retiro-disponible{
-  margin-bottom: var(--retiro-disponible-to-amount-gap);
-}
-
-/* Alinear anchos (Disponible + Monto + Info) */
-#modal-retiro-efectivo-pdv #divMontoEfectivo{
-  width: calc(100% - 32px);
-  max-width: var(--retiro-pdv-card-max, 270px);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__amount-title{
-  font-size: 12px;
-  line-height: 1.2;
-  color: #7a7a7a;
-  font-weight: 700;
-  text-align: center;
-  margin: 0 0 10px;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__amount-input{
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  padding: 10px 0 0px;
-  border-bottom: 1px solid #CFCFCF;
-  width: var(--retiro-pdv-amount-line-width, 75%);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error .retiro-pdv__amount-input{
-	border-bottom-color: #FF0000;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__amount-currency{
-  flex: 0 0 auto;
-  font-size: var(--retiro-pdv-currency-font-size, 20px);
-  line-height: 1;
-  font-weight: 700;
-  color: #7a7a7a;
-  padding-bottom: 0px;
-}
-
-#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error .retiro-pdv__amount-currency{
-	color: #FF0000;
-}
-
-#modal-retiro-efectivo-pdv #amountEfectivo{
-  flex: 1 1 auto;
-  min-width: 0;
-  border: 0 !important;
-  background: transparent !important;
-  outline: none;
-  box-shadow: none;
-  padding: 0;
-  font-size: var(--retiro-pdv-amount-font-size, 38px);
-  line-height: 1;
-  font-weight: 800;
-  color: #000;
-  text-align: center;
-}
-
-#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error #amountEfectivo{
-	color: #FF0000;
-}
-
-#modal-retiro-efectivo-pdv #amountEfectivo::placeholder{
-  color: #b9b9b9;
-  font-size: var(--retiro-pdv-placeholder-font-size, 16px);
-  font-weight: 400;
-  line-height: 1;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__amount-range{
-  margin-top: 6px;
-  font-size: 10px;
-  line-height: 1.2;
-  color: #7a7a7a;
-  text-align: center;
-}
-
-#modal-retiro-efectivo-pdv #divMontoEfectivo.is-error .retiro-pdv__amount-range{
-	color: #FF0000;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info{
-  margin: var(--retiro-amount-to-info-gap) auto 14px;
-  background: #F2F2F2;
-  border: 1px solid #D9D9D9;
-  border-radius: 22px;
-  padding: 26px 16px 18px;
-  position: relative;
-  width: calc(100% - 32px);
-  max-width: var(--retiro-pdv-card-max, 270px);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info-icon{
-  position: absolute;
-  left: 50%;
-  top: -14px;
-  transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info-icon img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info-list{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item{
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  color: #77736f;
-  font-size: 14px;
-  line-height: 1.25;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item span{
-  flex: 1 1 auto;
-  min-width: 0;
-  word-break: break-word;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
-  width: 22px;
-  height: 22px;
-  flex: 0 0 22px;
-  display: block;
-  margin-top: 1px;
-  object-fit: contain;
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__info-item strong{
-  font-weight: 700;
-  color: inherit;
-}
-
-@media (max-width: 420px){
-  #modal-retiro-efectivo-pdv #divMontoEfectivo{
-    width: calc(100% - 24px);
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__amount-title{
-    font-size: 12px;
-    margin-bottom: 8px;
-  }
-
-  #modal-retiro-efectivo-pdv #amountEfectivo{
-    font-size: 40px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info{
-    border-radius: 18px;
-    padding: 20px 12px 14px;
-    width: calc(100% - 24px);
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-icon{
-    width: 26px;
-    height: 26px;
-    top: -13px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-list{
-    gap: 10px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item{
-    font-size: 12px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
-    width: 20px;
-    height: 20px;
-    flex-basis: 20px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
-    width: calc(100% - 24px);
-  }
-}
-
-@media (max-width: 360px){
-  #modal-retiro-efectivo-pdv #divMontoEfectivo{
-    width: calc(100% - 20px);
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info{
-    border-radius: 16px;
-    padding: 18px 10px 12px;
-    width: calc(100% - 20px);
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-list{
-    gap: 10px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item{
-    font-size: 12px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__info-item-icon{
-    width: 20px;
-    height: 20px;
-    flex-basis: 20px;
-  }
-
-  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
-    width: calc(100% - 20px);
-  }
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__footer{
-  position: sticky;
-  bottom: 0;
-  background: #fff;
-  padding: 12px 0 calc(16px + env(safe-area-inset-bottom));
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(100% - 32px);
-  /* más ancho que la tarjeta informativa (que está en 270px) */
-  max-width: var(--retiro-pdv-btn-max, 420px);
-  margin: 0 auto;
-
-  /* Botón como maqueta (morado, pill, full-width) */
-  background: #4b33d6;
-  color: #fff;
-  border: 0;
-  border-radius: 18px;
-  height: 56px;
-  line-height: 56px;
-  padding: 0 18px;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0;
-  text-transform: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-          appearance: none;
-}
-
-@media (max-width: 360px){
-  #modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar{
-    height: 52px;
-    line-height: 52px;
-    font-size: 15px;
-  }
-}
-
-#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar:disabled,
-#modal-retiro-efectivo-pdv .retiro-pdv__footer .btn-solicitar[disabled]{
-  background: #d9d9d9;
-  color: #7a7a7a;
-  cursor: not-allowed;
 }
 
 /* ===== Modal retiro tarjeta / PDV (UI como maqueta) ===== */
@@ -3431,26 +3097,7 @@ height: 30px;
   grid-template-columns: none !important;
   grid-template-rows: none !important;
   row-gap: 0 !important;
-  padding: 30px 16px 56px 16px !important;
-  overflow: visible !important; /* permite que el arco se vea fuera de la cabecera */
-  position: relative !important;
-  z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
-}
-
-/* En tarjeta, el arco va en la cabecera (divide negro/ blanco) */
-#modal-retiro-tarjeta .ipremio__head--retiro-pdv::after{
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -240px;
-  width: 200%;
-  height: 260px;
-  background: #ffffff;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  z-index: 0;
-  clip-path: none !important;
+  padding: 16px 16px 42px 16px !important;
 }
 
 #modal-retiro-tarjeta .retiro-pdv__headbar{
@@ -3489,8 +3136,7 @@ height: 30px;
 #modal-retiro-tarjeta .retiro-pdv__iconbox{
   width: 120px;
   height: 88px;
-  /* Deja ~1/3 del cuadro sobre fondo negro (88px alto -> 29px) */
-  margin: 18px auto -59px;
+  margin: 18px auto -44px;
   background: #fff;
   border-radius: 22px;
   display: flex;
@@ -3498,7 +3144,7 @@ height: 30px;
   justify-content: center;
   line-height: 0;
   position: relative;
-  z-index: 3;
+  z-index: 2;
 }
 
 #modal-retiro-tarjeta .retiro-pdv__icon{
@@ -3510,46 +3156,21 @@ height: 30px;
 }
 
 #modal-retiro-tarjeta .ipremio__body{
-  /* Compensa el solape del cuadro del icono hacia el body */
-  padding-top: 10px;
-  position: relative;
-  z-index: 0;
+  padding-top: 54px;
 }
 
 #modal-retiro-tarjeta .title-method{
   text-align: center;
-  margin: 0 0 16px;
-  padding-bottom: 0;
-  color: #7a7a7a;
 }
 
 /* ===== Modal retiro transferencia / PDV (UI como maqueta) ===== */
-#modal-retiro-transferencia .ipremio__head--retiro-pdv{
+#mmodal-retiro-transferencia .ipremio__head--retiro-pdv{
   display: block !important;
   grid-template-areas: none !important;
   grid-template-columns: none !important;
   grid-template-rows: none !important;
   row-gap: 0 !important;
-  padding: 30px 16px 56px 16px !important;
-  overflow: visible !important; /* permite que el arco se vea fuera de la cabecera */
-  position: relative !important;
-  z-index: auto !important; /* sin stacking-context: deja al iconbox por encima del body */
-}
-
-/* En transferencia, el arco va en la cabecera (divide negro/ blanco) */
-#modal-retiro-transferencia .ipremio__head--retiro-pdv::after{
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -240px;
-  width: 200%;
-  height: 260px;
-  background: #ffffff;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  z-index: 0;
-  clip-path: none !important;
+  padding: 16px 16px 42px 16px !important;
 }
 
 #modal-retiro-transferencia .retiro-pdv__headbar{
@@ -3588,8 +3209,7 @@ height: 30px;
 #modal-retiro-transferencia .retiro-pdv__iconbox{
   width: 120px;
   height: 88px;
-  /* Deja ~1/3 del cuadro sobre fondo negro (88px alto -> 29px) */
-  margin: 18px auto -59px;
+  margin: 18px auto -44px;
   background: #fff;
   border-radius: 22px;
   display: flex;
@@ -3597,11 +3217,11 @@ height: 30px;
   justify-content: center;
   line-height: 0;
   position: relative;
-  z-index: 3;
+  z-index: 2;
 }
 
 #modal-retiro-transferencia .retiro-pdv__icon{
-  width: 72px;
+  width: 100px;
   height: auto;
   display: block;
   margin: auto;
@@ -3609,120 +3229,11 @@ height: 30px;
 }
 
 #modal-retiro-transferencia .ipremio__body{
-  /* Compensa el solape del cuadro del icono hacia el body */
-  padding-top: 10px;
-  position: relative;
-  z-index: 0;
-}
-
-/* (Desactivado) arco en body: se usa el de la cabecera */
-#modal-retiro-transferencia .ipremio__body::before{
-  content: none !important;
-}
-
-#modal-retiro-transferencia .ipremio__body > *{
-  position: relative;
-  z-index: 1;
+  padding-top: 54px;
 }
 
 #modal-retiro-transferencia .title-method{
   text-align: center;
-  margin: 0 0 16px;
-  padding-bottom: 0;
-  color: #7a7a7a;
-}
-
-
-.retiro-disponible{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 14px 22px;
-  margin: 0 auto 18px;
-  width: fit-content;
-  max-width: 100%;
-  box-sizing: border-box;
-  background: #F2F2F2;
-  border: 0;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.retiro-disponible__icon{
-  width: 30px !important;
-  height: 30px !important;
-  display: block;
-  flex: 0 0 30px;
-}
-
-.retiro-disponible__label{
-  font-size: 18px;
-  color: #000000;
-  line-height: 1.1;
-  font-weight: 400;
-}
-
-.retiro-disponible__amount{
-  font-size: 20px;
-  color: #000000;
-  line-height: 1.1;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-@media (max-width: 420px){
-  .retiro-disponible{
-    width: fit-content;
-    max-width: calc(100% - 24px);
-    padding: 10px 14px;
-    gap: 10px;
-    justify-content: center;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-  }
-
-  .retiro-disponible__icon{
-    width: 22px !important;
-    height: 22px !important;
-    flex-basis: 22px;
-  }
-
-  .retiro-disponible__label{
-    font-size: 14px;
-  }
-
-  .retiro-disponible__amount{
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 360px){
-  .retiro-disponible{
-    max-width: calc(100% - 20px);
-    padding: 9px 12px;
-    gap: 8px;
-  }
-
-  .retiro-disponible__icon{
-    width: 20px !important;
-    height: 20px !important;
-    flex-basis: 20px;
-  }
-
-  .retiro-disponible__label{
-    font-size: 13px;
-  }
-
-  .retiro-disponible__amount{
-    font-size: 15px;
-  }
-}
-
-/* Asegurar que el botón de cerrar (X) quede siempre visible */
-#modal-retiro-transferencia .modal__close{
-  position: relative;
-  z-index: 5;
 }
 
 
@@ -3879,7 +3390,6 @@ height: 30px;
   display: flex;
   gap: 10px;                 /* espacio entre las dos columnas */
   align-items: flex-start;
-  flex-wrap: nowrap;
 }
 
 /* Cada bloque (etiqueta+valor) ocupa 50% */
@@ -3902,22 +3412,14 @@ height: 30px;
   margin-top: 2px;
 }
 
-/* Responsive: en pantallas angostas NO apilar (siempre en fila) */
+/* Responsive: en pantallas angostas apila en 2 filas */
 @media (max-width: 440px){
   .ipremio__head .top-saldo .saldo-add{
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction: column;
     gap: 8px;
   }
-  .ipremio__head .top-saldo .saldo-item{
-    flex: 1 1 0;
-    min-width: 0;
-  }
-  .ipremio__head .top-saldo .saldo-item .saldo-label{
-    font-size: 12px;
-  }
-  .ipremio__head .top-saldo .saldo-item .saldo-amount{
-    font-size: 16px;
+  .ipremio__head .top-saldo .saldo-add p{
+    text-align: left; /* puedes usar center si lo prefieres en mobile */
   }
 }
 
@@ -4031,7 +3533,6 @@ height: 30px;
   align-items: flex-start;
   gap: 20px;                     /* << distancia entre los dos bloques (ajústalo) */
   padding-top: 6px;
-  flex-wrap: nowrap;
 }
 
 /* ====== CADA BLOQUE (icono a la izquierda, textos a la derecha) ====== */
@@ -4039,8 +3540,7 @@ height: 30px;
   display: flex;
   align-items: flex-start;
   gap: 10px;                     /* espacio entre icono y textos */
-  flex: 1 1 0;
-  min-width: 0;
+  min-width: 180px;              /* evita que se apriete demasiado */
 }
 
 /* ICONO */
@@ -4096,7 +3596,6 @@ height: 30px;
    /*  flex-direction: column;    */   /* apila los dos bloques uno debajo del otro en móviles muy pequeños */
     gap: 10px;
     align-items: center;
-    flex-wrap: nowrap;
   }
   .ipremio__head .saldo-item{ min-width: 0; }
 }
@@ -4242,53 +3741,166 @@ html, body {
 }
 /* 1.2 Fin Jhon Conopuma */
 
-/* 1.17 Inicio Jhon Conopuma - 2026-03-06 - Cabecera Historial: "Estado de solicitud" + "Mostrar filas" */
-.ta-historial__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 0 12px;
+
+/* 1.34 Inicio Jhon Conopuma - 2026-03-13 - Mostrar filas (nice-select): control + dropdown según maqueta (seleccionado en #4C2FBE) */
+/* 1.38 Inicio Jhon Conopuma - 2026-03-13 - Tamaño caja "Mostrar filas" (select): 23px alto, radio 15px, borde 0.5px #717171 */
+/* 1.44 Inicio Jhon Conopuma - 2026-03-13 - Deshacer ajuste anterior del control cerrado (revertir 1.43) */
+.ta-historial .ta-rows .nice-select {
+  height: 23px;
+  line-height: 23px;
+  min-height: 23px;
+  padding: 0 26px 0 10px;
+  border-radius: 15px;
+  border: 0.5px solid #717171;
+  background: #ffffff;
+  font-family: Inter, Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+  width: 80px;
+  cursor: pointer;
+}
+/* 1.44 Fin Jhon Conopuma */
+
+/* 1.41 Inicio Jhon Conopuma - 2026-03-13 - Mostrar filas: lista desplegada mismo tamaño que control + superposición (maqueta) */
+.ta-historial .ta-rows .nice-select.open {
+  z-index: 10000;
+}
+/* 1.41 Fin Jhon Conopuma */
+
+.ta-historial .ta-rows .nice-select:after {
+  /* 1.47 Inicio Jhon Conopuma - 2026-03-13 - Flecha visible del combo box (nice-select) */
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  pointer-events: none;
+  right: 10px;
+  width: 7px;
+  height: 7px;
+  border-bottom: 2px solid #5A5A5A;
+  border-right: 2px solid #5A5A5A;
+  /* 1.47 Fin Jhon Conopuma */
 }
 
-.ta-historial__heading {
-  font-size: 16px;
-  font-weight: 700;
-  color: #393737;
-  line-height: 1.1;
+.ta-historial .ta-rows .nice-select .current {
+  display: inline-block;
+  line-height: 23px;
 }
 
-.ta-rows--header {
-  margin-left: auto;
+.ta-historial .ta-rows .nice-select .list {
+  /* 1.46 Inicio Jhon Conopuma - 2026-03-13 - Combo box: dropdown oculto al inicio y visible solo al abrir (evita que quede "despegado") */
+  position: absolute;
+  top: 100%;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 0.5px solid #717171;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  list-style: none;
+  padding-left: 0;
+  z-index: 9999;
+  width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+  left: auto;
+  right: 0;
+  /* 1.42 Inicio Jhon Conopuma - 2026-03-13 - Dropdown "Mostrar filas": fondo blanco (no transparente) según maqueta */
+  background: #ffffff;
+  /* 1.42 Fin Jhon Conopuma */
+
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px) scale(0.98);
+  transform-origin: top right;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  /* 1.46 Fin Jhon Conopuma */
 }
 
-.ta-rows--header select {
-  height: 28px;
-  border-radius: 8px;
-  padding: 0 8px;
+/* 1.46 Inicio Jhon Conopuma - 2026-03-13 - Combo box: mostrar dropdown solo cuando está abierto */
+.ta-historial .ta-rows .nice-select.open .list {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
 }
+/* 1.46 Fin Jhon Conopuma */
+
+.ta-historial .ta-rows .nice-select .list li {
+  list-style: none;
+}
+
+.ta-historial .ta-rows .nice-select .option {
+  min-height: 23px;
+  line-height: 23px;
+  padding: 0 10px;
+  font-family: Inter, Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  background: #ffffff;
+}
+
+.ta-historial .ta-rows .nice-select .option.selected,
+.ta-historial .ta-rows .nice-select .option.focus {
+  background: #4C2FBE;
+  color: #ffffff;
+}
+
+.ta-historial .ta-rows .nice-select .option:hover {
+  background: #F2F2F2;
+}
+
+.ta-historial .ta-rows .nice-select .option.selected:hover,
+.ta-historial .ta-rows .nice-select .option.focus:hover {
+  background: #4C2FBE;
+  color: #ffffff;
+}
+/* 1.38 Fin Jhon Conopuma */
+/* 1.34 Fin Jhon Conopuma */
 /* 1.17 Fin Jhon Conopuma */
 
 /* 1.3 Inicio Jhon Conopuma - 2026-03-06 - Fila de filtros (chips + selector filas) */
 .ta-historial__filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 8px;
   align-items: center;
   margin: 0 0 10px;
 }
+
+/* 1.36 Inicio Jhon Conopuma - 2026-03-13 - Mostrar filas en filtros: alineación a la derecha (maqueta) */
+.ta-rows--filters {
+  margin-left: auto;
+}
+/* 1.36 Fin Jhon Conopuma */
+
+/* 1.40 Inicio Jhon Conopuma - 2026-03-13 - "Mostrar filas" en una sola línea: no wrap + alineación (maqueta) */
+.ta-rows--filters {
+  white-space: nowrap;
+  height: 23px;
+  font-size: 14px;
+}
+/* 1.40 Fin Jhon Conopuma */
 /* 1.3 Fin Jhon Conopuma */
 
 /* 1.4 Inicio Jhon Conopuma - 2026-03-06 - Estilos de chips (última semana / búsqueda) */
+/* 1.37 Inicio Jhon Conopuma - 2026-03-13 - Chips en una sola fila: medidas/estilos según maqueta (23px alto, radio 15px) */
 .ta-chip {
-  border: 1px solid #e5e5e5;
+  border: 0.5px solid #717171;
   background: #fff;
-  color: #5A5A5A;
-  font-size: 12px;
-  padding: 9px 12px;
-  border-radius: 999px;
+  color: #717171;
+  font-size: 14px;
+  height: 23px;
+  line-height: 23px;
+  padding: 0 14px;
+  border-radius: 15px;
   cursor: pointer;
-  line-height: 1;
+  white-space: nowrap;
 }
 
 .ta-chip--active {
@@ -4299,22 +3911,25 @@ html, body {
 }
 
 .ta-chip--search {
-  flex: 1 1 160px;
-  min-width: 160px;
-  height: 34px;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 23px;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0 14px;
-  color: #A5A5A5;
+  color: #717171;
   font-weight: 400;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ta-chip--search.ta-chip--active {
   color: #fff;
 }
+/* 1.37 Fin Jhon Conopuma */
 /* 1.4 Fin Jhon Conopuma */
 
 /* 1.5 Inicio Jhon Conopuma - 2026-03-06 - Selector "Mostrar filas" */
@@ -4325,6 +3940,13 @@ html, body {
   font-size: 12px;
   color: #5A5A5A;
 }
+
+/* 1.39 Inicio Jhon Conopuma - 2026-03-13 - "Mostrar filas": label en negrita y color negro (maqueta) */
+.ta-rows--filters .ta-rows__label {
+  font-weight: 700;
+  color: #000000;
+}
+/* 1.39 Fin Jhon Conopuma */
 
 .ta-rows__label {
   white-space: nowrap;
@@ -4493,7 +4115,9 @@ html, body {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1px solid #4C2FBE;
+  /* 1.22 Inicio Jhon Conopuma - 2026-03-13 - Ajuste visual: el borde del círculo usa el mismo color oscuro del ícono "i" */
+  border: 1px solid #393737;
+  /* 1.22 Fin Jhon Conopuma */
   background: #fff;
   display: inline-flex;
   align-items: center;
@@ -4534,6 +4158,121 @@ html, body {
   display: block;
 }
 
+/* 1.27 Inicio Jhon Conopuma - 2026-03-13 - Paginación Historial TA: layout + estilos (flechas, páginas, activo, ellipsis de 3 puntos) */
+#ta-pagination-items-hispayment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 27px;
+  background: #ffffff;
+  margin-top: 12px;
+}
+
+#ta-pagination-items-hispayment .pages {
+  padding-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+#ta-pagination-items-hispayment .prev {
+  order: 0;
+}
+
+#ta-pagination-items-hispayment .pages {
+  order: 1;
+}
+
+#ta-pagination-items-hispayment .next {
+  order: 2;
+}
+
+#ta-pagination-items-hispayment .pages a,
+#ta-pagination-items-hispayment .pages span {
+  width: auto;
+  min-width: 23px;
+  height: 23px;
+  display: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  background: #ffffff;
+  color: #7A7A7A;
+  text-decoration: none;
+  font-family: Inter, Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#ta-pagination-items-hispayment .pages a.avaible,
+#ta-pagination-items-hispayment .pages span.avaible {
+  display: inline-flex;
+}
+
+#ta-pagination-items-hispayment .pages a.is-this {
+  pointer-events: none;
+  border-color: #4C2FBE;
+  color: #4C2FBE;
+  background: #ffffff;
+}
+
+/* Ellipsis como 3 puntos (sin texto) */
+#ta-pagination-items-hispayment .pages span.is-ellipsis {
+  width: 20px;
+  min-width: 20px;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0;
+  line-height: 0;
+  display: none;
+}
+
+#ta-pagination-items-hispayment .pages span.is-ellipsis.avaible {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#ta-pagination-items-hispayment .pages span.is-ellipsis::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #7A7A7A;
+  box-shadow: 8px 0 0 #7A7A7A, 16px 0 0 #7A7A7A;
+}
+
+#ta-pagination-items-hispayment .prev,
+#ta-pagination-items-hispayment .next {
+  position: static;
+  width: 23px;
+  height: 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  background: #ffffff;
+  color: #7A7A7A;
+  text-decoration: none;
+}
+
+#ta-pagination-items-hispayment .prev.is-disabled,
+#ta-pagination-items-hispayment .next.is-disabled {
+  color: #D9D9D9;
+  border-color: #E2E2E2;
+  pointer-events: none;
+}
+/* 1.27 Fin Jhon Conopuma */
+
 .ta-hist-item {
   width: 100%;
   display: block;
@@ -4548,9 +4287,19 @@ html, body {
   -moz-appearance: none;
 }
 
-.ta-hist-item:last-child {
+/* 1.19 Inicio Jhon Conopuma - 2026-03-13 - Soporte de paginación: permite ocultar/mostrar items por página usando wrappers `.item/.shown` */
+.ta-historial__list .item {
+  display: none;
+}
+
+.ta-historial__list .item.shown {
+  display: block;
+}
+
+.ta-historial__list .item:last-child .ta-hist-item {
   border-bottom: 0;
 }
+/* 1.19 Fin Jhon Conopuma */
 
 .ta-hist-item:focus {
   outline: none;
@@ -4570,37 +4319,76 @@ html, body {
 }
 
 .ta-hist-item__left {
+  /* 1.24 Inicio Jhon Conopuma - 2026-03-13 - Layout: título + estado en la misma línea (evita que el badge baje a la siguiente línea) */
   min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  /* 1.24 Fin Jhon Conopuma */
 }
 
 .ta-hist-item__title {
   font-size: 14px;
   font-weight: 900;
   color: #5A5A5A;
-  margin-bottom: 6px;
+  /* 1.24 Inicio Jhon Conopuma - 2026-03-13 - Permite mantener el badge en la misma línea (sin salto por margen) */
+  margin-bottom: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* 1.24 Fin Jhon Conopuma */
 }
 
 .ta-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  padding: 5px 8px;
-  border-radius: 4px;
+  /* 1.25 Inicio Jhon Conopuma - 2026-03-13 - Badges (todos los estados): mismo formato pill (alto estable, bordes ovalados, tipografía); solo cambia el color por estado */
+  border: 0;
+  border-radius: 999px;
+  height: 15px;
+  padding: 0 10px;
+  /* 1.29 Inicio Jhon Conopuma - 2026-03-13 - Tipografía estados: más delgada (Inter Regular 7px, line-height 100%) */
+  font-family: Inter, Roboto, sans-serif;
+  font-size: 7px;
+  font-weight: 400;
   line-height: 1;
-  font-weight: 700;
+  /* 1.29 Fin Jhon Conopuma */
+  color: #000000;
+  white-space: nowrap;
+  /* 1.25 Fin Jhon Conopuma */
 }
 
 .ta-badge--pending {
-  border: 0;
-  background: #FFD400;
-  color: #000000;
+  /* 1.25 Inicio Jhon Conopuma - 2026-03-13 - Estado: Pendiente (Hex #FFCE00) */
+  background: #FFCE00;
+  /* 1.25 Fin Jhon Conopuma */
 }
 
 .ta-badge--paid {
-  background: #40B638;
-  color: #000000;
+  /* 1.25 Inicio Jhon Conopuma - 2026-03-13 - Estado: Cobrado/Abonado (Hex #97F45B) */
+  background: #97F45B;
+  /* 1.25 Fin Jhon Conopuma */
 }
+
+.ta-badge--review {
+  /* 1.25 Inicio Jhon Conopuma - 2026-03-13 - Estado: En evaluación (Hex #4C2FBE) */
+  background: #4C2FBE;
+  color: #ffffff;
+  /* 1.25 Fin Jhon Conopuma */
+}
+
+.ta-badge--denied {
+  /* 1.25 Inicio Jhon Conopuma - 2026-03-13 - Estado: Denegado (Hex #C10000) */
+  background: #C10000;
+  color: #ffffff;
+  /* 1.25 Fin Jhon Conopuma */
+}
+
+/* 1.30 Inicio Jhon Conopuma - 2026-03-13 - Limpieza: se elimina sobre-escritura duplicada de `.ta-badge--paid` (mantener el color definido en 1.25) */
+/* 1.30 Fin Jhon Conopuma */
 
 .ta-hist-item__right {
   display: inline-flex;
@@ -4707,14 +4495,11 @@ html, body {
 .ipremio .method-card__chev {
   flex: 0 0 auto;
   width: 22px;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
   text-align: right;
-  font-size: 0;
-  line-height: 0;
+  font-size: 26px;
+  line-height: 1;
   color: transparent; /* el JSP tiene '|' como placeholder */
+  position: relative;
 }
 
 .ipremio .method-card__chev::before {
@@ -4722,8 +4507,10 @@ html, body {
   color: #8a8a8a;
   font-size: 30px;
   line-height: 1;
-  position: static;
-  transform: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @media (min-width: 481px) {

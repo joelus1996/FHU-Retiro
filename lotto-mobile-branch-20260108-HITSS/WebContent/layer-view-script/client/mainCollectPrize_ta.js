@@ -1805,6 +1805,17 @@ const populateFilteredData = function (content, data) {
       let currentPager = 1;
       let limit = 7;
 
+	  /* 1.28 Inicio Jhon Conopuma - 2026-03-13 - Estado de flechas: deshabilita prev/next según página actual */
+	  const refreshArrows = function () {
+		  let pages = ($items.length / toShow) + (($items.length % toShow) === 0 ? 0 : 1);
+		  pages = Math.max(1, Math.floor(pages));
+		  const $prev = $list.find('.pagination .prev');
+		  const $next = $list.find('.pagination .next');
+		  $prev.toggleClass('is-disabled', currentPager <= 1);
+		  $next.toggleClass('is-disabled', currentPager >= pages);
+	  };
+	  /* 1.28 Fin Jhon Conopuma */
+
       const updatePager = function (event) {
         if (event) event.preventDefault();
         currentPager = parseInt($(event.currentTarget).attr('href')) || currentPager || 1;
@@ -1818,6 +1829,7 @@ const populateFilteredData = function (content, data) {
 
         showItems(currentPager);
         refreshNumber(currentPager);
+		refreshArrows();
       };
 
       const buildPager = function () {
@@ -1849,6 +1861,7 @@ const populateFilteredData = function (content, data) {
         currentPager = 1;
         showItems(1);
         refreshNumber(1);
+		refreshArrows();
       }
 
       const refreshNumber = function (current) {
@@ -1962,14 +1975,13 @@ $(document).ready(function () {
   addEventsKyc();
   getResultKycV2("READ");
   
-	$("#amountVisa").on('change keyup input', onChangeAmountVisa);
-	$("#amountEfectivo").on('change keyup input', onChangeAmountEfectivo);
+  $("#amountVisa").on('change keyup', onChangeAmountVisa);
+  $("#amountEfectivo").on('change keyup', onChangeAmountEfectivo);
   //$("#amountAgora").on('change keyup', onChangeAmountAgora);
-	$("#amountTransferencia").on('change keyup input', onChangeAmountTransferencia);
+  $("#amountTransferencia").on('change keyup', onChangeAmountTransferencia);
   
   $('input[name="iamount"]').numeric({allowThouSep: false, allowDecSep: true, allowMinus: false, maxDecimalPlaces : 2});
   $('#amountEfectivo').numeric({allowThouSep: false, allowDecSep: false, allowMinus: false});
-	updateRangeErrorAmountEfectivo();
   
     
   if ( window.addEventListener ) {
@@ -2475,49 +2487,9 @@ function deleteVerificationKyc(){
 	
 }
 
-function updateRangeErrorAmountEfectivo(){
-	var $input = $('#amountEfectivo');
-	var $wrapper = $('#divMontoEfectivo');
-	var $btn = $('#formefectivo').find('.btn-solicitar');
-	if(!$input.length || !$wrapper.length){
-		return;
-	}
-
-	var valueRaw = ($input.val() || '').toString().trim();
-	var minRaw = ($input.attr('data-min') || '').toString().trim();
-	var maxRaw = ($input.attr('data-max') || '').toString().trim();
-	var min = parseInt(minRaw, 10);
-	var max = parseInt(maxRaw, 10);
-
-	// If range isn't loaded yet or input is empty, keep normal state.
-	if(!valueRaw || isNaN(min) || isNaN(max) || max <= 0){
-		$wrapper.removeClass('is-error');
-		if($btn.length){
-			$btn.prop('disabled', true);
-		}
-		return;
-	}
-
-	var value = parseInt(valueRaw, 10);
-	if(isNaN(value)){
-		$wrapper.removeClass('is-error');
-		if($btn.length){
-			$btn.prop('disabled', true);
-		}
-		return;
-	}
-
-	var isOutOfRange = (value < min || value > max);
-	$wrapper.toggleClass('is-error', isOutOfRange);
-	if($btn.length){
-		$btn.prop('disabled', isOutOfRange);
-	}
-}
-
 function onChangeAmountEfectivo(){
 	
 	datalayerCobrarPremioInput($("#amountEfectivo"),'Efectivo / Punto de venta','Ingresar monto');
-	updateRangeErrorAmountEfectivo();
 	
 	var amountEfectivo = parseInt($("#amountEfectivo").val(), 10);
 
@@ -2807,33 +2779,17 @@ function getDataCollectPrizes(){
 	    	$("#maxAmountPerWeekVisa").html(maxAmountPerWeekVisaFormateado);
 	    	
 	    	$("#msgErrorRangoMontosVisa").text("Ingrese un monto entre S/"+amountMinRequestVisaFormateado+" y S/"+amountMaxRequestVisaFormateado+" soles");
-
-	    	function setRangeMinMax($el, minValue, maxValue, options){
-	    		if(!$el || !$el.length) return;
-	    		var minLabel = $el.attr('data-min-label') || 'Min';
-	    		var maxLabel = $el.attr('data-max-label') || 'Máx';
-	    		$el.attr('data-min-value', minValue);
-	    		$el.attr('data-max-value', maxValue);
-	    		var useBreak = !!(options && options.useBreak);
-	    		if(useBreak){
-	    			$el.html(minLabel + ' ' + minValue + '<br>' + maxLabel + ' ' + maxValue);
-	    			return;
-	    		}
-	    		$el.text(minLabel + ' ' + minValue + ' - ' + maxLabel + ' ' + maxValue);
-	    	}
-
-	    	setRangeMinMax($("#rangoMontosVisa"), amountMinRequestVisaFormateado, amountMaxRequestVisaFormateado);
-	    	setRangeMinMax($("#rangoMontosVisa-356"), amountMinRequestVisaFormateado, amountMaxRequestVisaFormateado, {useBreak: true});
+	    	$("#rangoMontosVisa").html("Min S/ "+amountMinRequestVisaFormateado+" - Máx S/ "+amountMaxRequestVisaFormateado);
+	    	$("#rangoMontosVisa-356").html("Monto entre d<br>S/"+amountMinRequestVisaFormateado+" - S/"+amountMaxRequestVisaFormateado);
 	    	$('#amountVisa').attr("data-min", data.amountMinRequestVisa);
 	    	$('#amountVisa').attr("data-max", data.amountMaxRequestVisa);
 	    	$("#pesoImgDni").html(data.maxMbPerImageVisa);
 	    	
 	    	$("#msgErrorRangoMontosEfectivo").text("Ingrese un monto entre S/"+amountMinRequestCashFormateado+" y S/"+amountMaxRequestCashFormateado+" soles");
-	    	setRangeMinMax($("#rangoMontosEfectivo"), amountMinRequestCashFormateado, amountMaxRequestCashFormateado);
-	    	setRangeMinMax($("#rangoMontosEfectivo-356"), amountMinRequestCashFormateado, amountMaxRequestCashFormateado, {useBreak: true});
+	    	$("#rangoMontosEfectivo").html("Min S/ "+amountMinRequestCashFormateado+" - Máx S/ "+amountMaxRequestCashFormateado);
+	    	$("#rangoMontosEfectivo-356").html("Monto entre s<br>S/"+amountMinRequestCashFormateado+" - S/"+amountMaxRequestCashFormateado);
 	    	$('#amountEfectivo').attr("data-min", data.amountMinRequestCash);
 	    	$('#amountEfectivo').attr("data-max", data.amountMaxRequestCash);
-	    	updateRangeErrorAmountEfectivo();
 	    	$("#pesoImgDniEfectivo").html(data.maxMbPerImageVisa);
 	    	
 	    	$("#msgErrorRangoMontosAgora").text("Ingrese un monto entre S/"+amountMinRequestAgrFormateado+" y S/"+amountMaxRequestAgrFormateado+" soles");
@@ -3679,6 +3635,291 @@ function getHisPayment(){
     });
 	return size;
 }
+
+/* 1.20 Inicio Jhon Conopuma - 2026-03-13 - Historial TA dinámico: consume getHisPayment.html y renderiza el listado (incluye fecha + hora en el meta) */
+const taHistorial = (function () {
+	'use strict';
+	let cache = null;
+	let loadedOnce = false;
+
+	function escapeHtml(value) {
+		var v = (value === undefined || value === null) ? '' : value;
+		return String(v)
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#39;');
+	}
+
+	function getTitle(paymentType) {
+		const type = String(paymentType || '');
+		if (type === 'Efectivo' || type === 'EfectivoRetail' || type === 'EfectivoDebitIdQR') return 'Efectivo / Punto de Venta';
+		if (type === 'Transferencia' || type === 'Premio_Mayor') return 'Transferencia Bancaria';
+		if (type === 'Visa') return 'Visa';
+		if (type === 'Agora') return 'Agora';
+		return type || 'Retiro';
+	}
+
+	function getDateTime(item) {
+		return (
+			item.requestDateHour ||
+			item.requestDateHourFormat ||
+			item.requestDateHourStr ||
+			item.requestDate ||
+			''
+		);
+	}
+
+	/* 1.21 Inicio Jhon Conopuma - 2026-03-13 - Formato meta: oculta "Solicitud N°" y muestra "D Mes" + "HH:mm" (mes en texto, sin año y sin guion) */
+	function monthNameEs(monthNumber) {
+		var month = parseInt(monthNumber, 10);
+		var months = {
+			1: 'Enero',
+			2: 'Febrero',
+			3: 'Marzo',
+			4: 'Abril',
+			5: 'Mayo',
+			6: 'Junio',
+			7: 'Julio',
+			8: 'Agosto',
+			9: 'Setiembre',
+			10: 'Octubre',
+			11: 'Noviembre',
+			12: 'Diciembre'
+		};
+		return months[month] || '';
+	}
+
+	function normalizeMonthText(value) {
+		var text = String(value || '').trim();
+		if (!text) return '';
+		return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+	}
+
+	function parseDateTimeMeta(raw) {
+		var input = String(raw || '').trim();
+		if (!input) return { dateText: '', timeText: '' };
+
+		// Caso esperado: dd/mm/yyyy - HH:mm (o sin guion)
+		var m1 = input.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s*(?:-|–)?\s*(\d{1,2}:\d{2})/);
+		if (m1) {
+			var day1 = String(parseInt(m1[1], 10));
+			var monthText1 = monthNameEs(m1[2]);
+			return { dateText: (day1 + (monthText1 ? ' ' + monthText1 : '')), timeText: m1[4] };
+		}
+
+		// Caso: "20 Octubre 10:54" (o similar)
+		var m2 = input.match(/^(\d{1,2})\s+([A-Za-zÁÉÍÓÚÑáéíóúñ]+)\s+(\d{1,2}:\d{2})$/);
+		if (m2) {
+			var day2 = String(parseInt(m2[1], 10));
+			var monthText2 = normalizeMonthText(m2[2]);
+			return { dateText: (day2 + (monthText2 ? ' ' + monthText2 : '')), timeText: m2[3] };
+		}
+
+		// Fallback: intenta separar por espacios y extraer hora HH:mm al final
+		var m3 = input.match(/(\d{1,2}:\d{2})$/);
+		var timeText = m3 ? m3[1] : '';
+		return { dateText: timeText ? input.replace(/\s*(?:-|–)?\s*\d{1,2}:\d{2}\s*$/, '').trim() : input, timeText: timeText };
+	}
+	/* 1.21 Fin Jhon Conopuma */
+
+	function getBadge(group) {
+		const state = String(group.base.requestState || '').toUpperCase();
+		const anyPendingCash = (group.items || []).some(function (it) {
+			return String(it.status || '').toUpperCase() === 'PENDIENTE';
+		});
+
+		/* 1.26 Inicio Jhon Conopuma - 2026-03-13 - Badges por estado: asigna clase (colores) según el requestState; mantiene el formato pill en CSS */
+		if (state === 'APROBADO' && !anyPendingCash) {
+			return { cls: 'ta-badge--paid', text: 'Cobrado' };
+		}
+		if (state === 'RECIBIDO' || state === 'SUB') {
+			return { cls: 'ta-badge--review', text: 'En evaluación' };
+		}
+		if (state === 'DENEGADO') {
+			return { cls: 'ta-badge--denied', text: 'Denegado' };
+		}
+		return { cls: 'ta-badge--pending', text: 'Pendiente' };
+		/* 1.26 Fin Jhon Conopuma */
+	}
+
+	function getAmount(item) {
+		const raw = item.requestAmount;
+		if (typeof floatFormat === 'function') {
+			return floatFormat(raw);
+		}
+		return String((raw === undefined || raw === null) ? '' : raw);
+	}
+
+	function groupItems(objArray) {
+		const map = new Map();
+		(objArray || []).forEach(function (it) {
+			const requestNumber = (it.requestNumber !== undefined && it.requestNumber !== null)
+				? it.requestNumber
+				: ((it.requestNumberFormat !== undefined && it.requestNumberFormat !== null) ? it.requestNumberFormat : '');
+			const key = String(requestNumber) + '|' + String(it.paymentType || '');
+			if (!map.has(key)) {
+				map.set(key, { base: it, items: [it] });
+			} else {
+				map.get(key).items.push(it);
+			}
+		});
+		return Array.from(map.values());
+	}
+
+	function render(objArray) {
+		const $list = $('#ta-items-hispayment');
+		const $pagerWrap = $('#ta-pagination-items-hispayment');
+		const $empty = $('#ta-sin-retiros');
+		if ($list.length === 0) return;
+
+		$list.html('');
+		$empty.hide();
+		$pagerWrap.show();
+
+		const groups = groupItems(objArray);
+		if (!groups.length) {
+			$pagerWrap.hide();
+			$empty.show();
+			return;
+		}
+
+		let html = '';
+		groups.forEach(function (group) {
+			const base = group.base;
+			const badge = getBadge(group);
+			const requestNumber = (base.requestNumber !== undefined && base.requestNumber !== null)
+				? base.requestNumber
+				: ((base.requestNumberFormat !== undefined && base.requestNumberFormat !== null) ? base.requestNumberFormat : '');
+			const dateTime = getDateTime(base);
+			const meta = parseDateTimeMeta(dateTime);
+			const title = getTitle(base.paymentType);
+			const amount = getAmount(base);
+
+			html += '<div class="item">'
+				+ '<button type="button" class="ta-hist-item" aria-label="Detalle de retiro" data-request-number="' + escapeHtml(requestNumber) + '">'
+				+ '<div class="ta-hist-item__top">'
+				+ '<div class="ta-hist-item__left">'
+				+ '<div class="ta-hist-item__title">' + escapeHtml(title) + '</div>'
+				+ '<span class="ta-badge ' + badge.cls + '">' + escapeHtml(badge.text) + '</span>'
+				+ '</div>'
+				+ '<div class="ta-hist-item__right">'
+				+ '<div class="ta-hist-item__amount">S/ ' + escapeHtml(amount) + '</div>'
+				+ '<span class="ta-hist-item__chev" aria-hidden="true"></span>'
+				+ '</div>'
+				+ '</div>'
+				+ '<div class="ta-hist-item__meta">'
+				+ '<span>' + escapeHtml(meta.dateText) + '</span>'
+				+ (meta.timeText ? '<span>' + escapeHtml(meta.timeText) + '</span>' : '')
+				+ '</div>'
+				+ '</button>'
+				+ '</div>';
+		});
+
+		$list.html(html);
+		try {
+			const $wrap = $('#tab-historial .ta-historial__list');
+			if ($wrap.length && typeof pagerDelegate !== 'undefined' && pagerDelegate.init) {
+				pagerDelegate.init($wrap);
+			}
+		} catch (e) { }
+	}
+
+	function loadAndRender(force) {
+		const $list = $('#ta-items-hispayment');
+		if (!$list.length) return;
+		if (!force && loadedOnce && cache) {
+			render(cache);
+			return;
+		}
+
+		const vheaders = { prizetoken: $('#prizetoken').val() };
+		$.ajax({
+			type: 'POST',
+			url: 'getHisPayment.html',
+			dataType: 'json',
+			headers: vheaders,
+			async: true,
+		})
+			.done(function (data) {
+				if (data && data.status === 'OK') {
+					cache = JSON.parse(data.hisPayment || '[]');
+					loadedOnce = true;
+					render(cache);
+				} else {
+					showMessageError(title_error_general, msg_error_general);
+				}
+			})
+			.fail(function (jqXHR) {
+				if (jqXHR && jqXHR.status === 403) {
+					window.location.href = 'home.html';
+				}
+			});
+	}
+
+	function bind() {
+		/* 1.33 Inicio Jhon Conopuma - 2026-03-13 - Mostrar filas: inicializa select custom (niceSelect) y permite seleccionar 15/20/25/50/100 */
+		try {
+			if (window.jQuery && jQuery.fn && typeof jQuery.fn.niceSelect === 'function') {
+				var $rows = jQuery('#taHistRows');
+				if ($rows.length) {
+					if ($rows.next('.nice-select').length) {
+						$rows.niceSelect('update');
+					} else {
+						$rows.niceSelect();
+					}
+				}
+			}
+		} catch (e) { }
+		/* 1.33 Fin Jhon Conopuma */
+
+		// Al abrir el tab historial, cargar listado
+		$(document).on('click', '.tabs-retiro .tab-btn[data-tab="tab-historial"]', function () {
+			loadAndRender(false);
+		});
+
+		// Cambio de filas
+		$(document).on('change', '#taHistRows', function () {
+			const value = $(this).val() || '15';
+			$('#ta-items-hispayment').attr('data-show-items', value);
+			/* 1.33 Inicio Jhon Conopuma - 2026-03-13 - Sincroniza el select custom con el valor seleccionado */
+			try {
+				if (window.jQuery && jQuery.fn && typeof jQuery.fn.niceSelect === 'function') {
+					var $rows = jQuery('#taHistRows');
+					if ($rows.length && $rows.next('.nice-select').length) {
+						$rows.niceSelect('update');
+					}
+				}
+			} catch (e) { }
+			/* 1.33 Fin Jhon Conopuma */
+			try {
+				const $wrap = $('#tab-historial .ta-historial__list');
+				if ($wrap.length && typeof pagerDelegate !== 'undefined' && pagerDelegate.init) {
+					pagerDelegate.init($wrap);
+				}
+			} catch (e) { }
+		});
+	}
+
+	function init() {
+		bind();
+		// Si por alguna razón el tab historial ya está activo al cargar
+		if ($('#tab-historial').hasClass('active')) {
+			loadAndRender(false);
+		}
+	}
+
+	return { init: init, reload: function () { loadAndRender(true); } };
+}());
+
+// Init tardío (este bloque está después de la definición de `taHistorial`)
+try {
+	jQuery(function () {
+		taHistorial.init();
+	});
+} catch (e) { }
+/* 1.20 Fin Jhon Conopuma */
 
 function showMessageInfo(title,message) {
     $('#title-message-info').html(title);
@@ -4601,9 +4842,8 @@ function irVisa(){
 	$("#amountVisa").val($("#amountEfectivo").val());
 	$("#amountVisa").keyup();
 	cleanPaymentPrizeCash();
-	if (typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
-		simpleModal.onToggleModalMsg('#modal-retiro-tarjeta');
-	}
+	$("#accordion_visa").addClass('opened');
+	$("#accordion_visa").find('.accordion__body').css('display','block');
 	setTimeout(function() { $("#amountVisa").focus(); }, 0);
 	$('#modal-confirmar-retiro-efectivo').fadeOut(250);
 }
@@ -5032,12 +5272,7 @@ function prepararPantallaTransferencia(data){
 			}
 		}else{
 			if(stateRequestTraRan2=='ACTIVO'){
-				var $rangoTra = $("#rangoMontosTransferencia");
-				var minLabelTra = $rangoTra.attr('data-min-label') || 'Min';
-				var maxLabelTra = $rangoTra.attr('data-max-label') || 'Máx';
-				$rangoTra.attr('data-min-value', amountMinRequestTraFormateado);
-				$rangoTra.attr('data-max-value', amountMaxRquTraRan2Formateado);
-				$rangoTra.text(minLabelTra + ' ' + amountMinRequestTraFormateado + ' - ' + maxLabelTra + ' ' + amountMaxRquTraRan2Formateado);
+				$("#rangoMontosTransferencia").html("Min S/ "+amountMinRequestTraFormateado+" - Máx S/ "+amountMaxRquTraRan2Formateado);
 				
 				$("#divTransRangos").css('margin-bottom','172px');
 				$("#divTransRangos").html(
@@ -5293,12 +5528,8 @@ function irTransferencia(){
 	$("#amountTransferencia").val($("#amountEfectivo").val());
 	$("#amountTransferencia").keyup();
 	cleanPaymentPrizeCash();
-	if ($('#modal-retiro-transferencia').length && typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
-		simpleModal.onToggleModalMsg('#modal-retiro-transferencia');
-	} else {
-		$("#accordion_transferencia").addClass('opened');
-		$("#accordion_transferencia").find('.accordion__body').css('display','block');
-	}
+	$("#accordion_transferencia").addClass('opened');
+	$("#accordion_transferencia").find('.accordion__body').css('display','block');
 	setTimeout(function() { $("#amountTransferencia").focus(); }, 0);
 	$('#modal-confirmar-retiro-efectivo').fadeOut(250);
 }
