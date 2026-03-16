@@ -3,6 +3,16 @@ var msg_error_general = "Por favor, inténtalo de nuevo en unos minutos";
 var bdate = new Date();
 var intervalVisanet = 0;	
 var intervalAgora = 0;	
+// Tokenization lightbox heuristics:
+// - Some Niubiz screens don't render #visaNetJS immediately.
+// - We only treat "#visaNetJS disappeared" as completion after it was seen at least once,
+//   OR when the iframe explicitly notifies completion via postMessage.
+var visanetWidgetSeen = false;
+var agoraWidgetSeen = false;
+var visanetCompletedSignal = false;
+var agoraCompletedSignal = false;
+var visanetCompletionMode = null; // 'saved' | 'new' | null
+var agoraCompletionMode = null; // 'saved' | 'new' | null
 var maxMb=10;
 var imgBase64P1 = "";
 var imgBase64P2 = "";
@@ -47,10 +57,13 @@ var transRangoActivo="";
 var objListAccount;
 var daysElapsedDni=0;
 var pantallaListaRecurrente=false;
+var pantallaCuentasGuardadasVaciaTransferencia=false;
 var pantallaListaRecurrentePML=false;
 var htmlPantallaRecurrenteRango1="";
 var htmlPantallaRecurrenteRango2_3="";
 var htmlPantallaRecurrentePML="";
+// Tabs Transferencia: control de selección automática vs. selección del usuario.
+var transferenciaTabUserSelected=false;
 var htmlBancosDisponiblesRango1='<option value="">Selecciona un banco</option><option value="1">Interbank</option><option value="2">BCP. Banco de Crédito del Perú</option><option value="3">BBVA. Banco Continental</option><option value="4">Scotiabank</option><option value="5">Otro banco - usa tu CCI (código interbancario)</option>';
 var htmlBancosDisponiblesRango2_3='<option value="">Selecciona un banco</option><option value="1">Interbank</option><option value="2">BCP. Banco de Crédito del Perú</option><option value="3">BBVA. Banco Continental</option><option value="5">Otro banco - usa tu CCI (código interbancario)</option>';
 var hmPremiosMayoresLoterias = new Map();
@@ -1028,7 +1041,9 @@ const simpleModal = (function () {
 
     onClickClose = function () {
       const box = $(this).closest('.ioverlay');
-      datalayerCerrarModal();
+			if (typeof datalayerCerrarModal === 'function') {
+				datalayerCerrarModal();
+			}
       box.fadeOut(250, function () {
       });
     try {
@@ -1259,19 +1274,52 @@ const formVisa = (function () {
 
     send = function (e) {
       e.preventDefault();
-      const valid = form.formValidate();
-        console.log("Entro a form visa keyla");
-        console.log("formVisa:" + valid);
-      if (valid) {
+      // If card was already tokenized, ensure hidden validator field is populated.
+      // In some mobile paths the visual card badge is shown but hidden value can be blank.
+      try {
+      	var token = $.trim($('#txtTarjetaTokenizada').val() || '');
+      	var hasCardVisual = !$('#visaCardText').hasClass('hidden');
+      	if (!token && hasCardVisual) {
+      		var visibleCardText = $.trim($('#tarjetaTokenizada').text() || '');
+      		$('#txtTarjetaTokenizada').val(visibleCardText || 'TOKEN_OK');
+      	}
+      } catch (e0) {
+      	// noop
+      }
+
+			var amountRaw = $.trim($('#amountVisa').val() || '');
+			var minVisa = parseFloat($('#amountVisa').attr('data-min'));
+			var maxVisa = parseFloat($('#amountVisa').attr('data-max'));
+			var amountNum = parseFloat(amountRaw);
+			var amountOk = (!isNaN(amountNum) && !isNaN(minVisa) && !isNaN(maxVisa) && amountNum >= minVisa && amountNum <= maxVisa);
+			var tokenNow = $.trim($('#txtTarjetaTokenizada').val() || '');
+			var tokenOk = (tokenNow !== '');
+
+			// Keep legacy validation for UI error classes, but don't let hidden fields block Visa flow.
+			var valid = form.formValidate();
+
+			if (!amountOk) {
+				$('#divMontoVisa').addClass('is-error');
+				return;
+			}
+
+			if (!tokenOk) {
+				$('#divVisa').addClass('is-error');
+				showMessageInfo('Tarjeta', 'Debes agregar una tarjeta para continuar con el retiro.');
+				return;
+			}
+
+			// If core requirements are met (monto + tarjeta), continue even if formValidate
+			// reports hidden non-visible fields.
+			if (valid || (amountOk && tokenOk)) {
       	  if( stateReqKycVisa ==='ACTIVO' || stateReqKycVisa =='ACTIVO'){
     	  	imgBase64P1 = "";
       	  }
     	  //  ACT2024 antes era asi:
     	  //  createRequest(e,"createRequestVisa.html","amountVisa="+$('#amountVisa').val()+"&imgDNI="+imgBase64P1+"&kycResult="+kycResult);
-    	  $('#btnReenvioCodeEmail').show();
-    	  $('#btnReenvioCodeEmail').css('display','block');
-    	  $('#btnReenvioCodeSMS').show();
-    	  $('#btnReenvioCodeSMS').css('display','block');
+	  	  var cfgVisa = getPinModalConfig('VISA');
+	  	  $(cfgVisa.btnEmail).show().css('display','block');
+	  	  $(cfgVisa.btnSms).show().css('display','block');
     	  confirmarRetiroTransferenciaPin(e,"type=VISA&amount="+$('#amountVisa').val());
 
       }
@@ -1288,7 +1336,13 @@ const formVisa = (function () {
     },
 
     init = function () {
-      btnSend.on('click', send);
+			// Handle submit at form-level to keep behavior consistent on mobile keyboards
+			// and prevent native submit from skipping the KYC/PIN flow.
+			form.on('submit', send);
+			btnSend.on('click', function (e) {
+				e.preventDefault();
+				form.trigger('submit');
+			});
       delcard.on('click', openModalDelCard);
       $('#modal-delcard .confirmdel').on('click', delCard);
       form.blurValidate();
@@ -1352,10 +1406,9 @@ const formEfectivo = (function () {
         console.log("formEfectivo"  + valid);
       if (valid) {
     	  formularioEfectivo = e;
-    	  $('#btnReenvioCodeEmail').show();
-    	  $('#btnReenvioCodeEmail').css('display','block');
-    	  $('#btnReenvioCodeSMS').show();
-    	  $('#btnReenvioCodeSMS').css('display','block');
+	  	  var cfgCash = getPinModalConfig('EFECTIVO');
+	  	  $(cfgCash.btnEmail).show().css('display','block');
+	  	  $(cfgCash.btnSms).show().css('display','block');
     	  var montoEfectivo = $('#amountEfectivo').val();
     	  if (montoEfectivo>=100){
     		  confirmarRetiroEfectivo();
@@ -1394,10 +1447,9 @@ const formTransferencia = (function () {
         
     	$('#aceptar-confirmar-retiro-transferencia').removeAttr("disabled");
     	$('#regresar-transferencia').removeAttr("disabled");
-	  	$('#btnReenvioCodeEmail').show();
-		$('#btnReenvioCodeEmail').css('display','block');
-		$('#btnReenvioCodeSMS').show();
-		$('#btnReenvioCodeSMS').css('display','block');
+		var cfgTrans = getPinModalConfig('TRANSFERENCIA');
+		$(cfgTrans.btnEmail).show().css('display','block');
+		$(cfgTrans.btnSms).show().css('display','block');
     	
         if(pantallaListaRecurrente){
         	if (valid && $('input[name=card]:checked', '#formtransferencia').val()!=undefined) {
@@ -1472,10 +1524,9 @@ const formTransferenciaPML = (function () {
 	        
 	    	$('#aceptar-confirmar-retiro-transferencia').removeAttr("disabled");
 	    	$('#regresar-transferencia').removeAttr("disabled");
-	    	$('#btnReenvioCodeEmail').show();
-	    	$('#btnReenvioCodeEmail').css('display','block');
-	    	$('#btnReenvioCodeSMS').show();
-	    	$('#btnReenvioCodeSMS').css('display','block');
+	    	var cfgTransPml = getPinModalConfig('TRANSFERENCIA');
+	    	$(cfgTransPml.btnEmail).show().css('display','block');
+	    	$(cfgTransPml.btnSms).show().css('display','block');
 	        if(pantallaListaRecurrentePML){
 	        	if (valid && $('input[name=card]:checked', '#formtransferenciapml').val()!=undefined) {
 	        		formularioTransferenciaPML = e;
@@ -1974,14 +2025,18 @@ $(document).ready(function () {
   getDataCollectPrizes();
   addEventsKyc();
   getResultKycV2("READ");
-  
-  $("#amountVisa").on('change keyup', onChangeAmountVisa);
-  $("#amountEfectivo").on('change keyup', onChangeAmountEfectivo);
+  	initTabsTransferenciaCuentaAhorros();
+	initAutoSelectTabTransferenciaCuentaAhorros();
+	$("#amountVisa").on('change keyup input', onChangeAmountVisa);
+	$("#amountEfectivo").on('change keyup input', onChangeAmountEfectivo);
   //$("#amountAgora").on('change keyup', onChangeAmountAgora);
-  $("#amountTransferencia").on('change keyup', onChangeAmountTransferencia);
+	$("#amountTransferencia").on('change keyup input', onChangeAmountTransferencia);
   
   $('input[name="iamount"]').numeric({allowThouSep: false, allowDecSep: true, allowMinus: false, maxDecimalPlaces : 2});
   $('#amountEfectivo').numeric({allowThouSep: false, allowDecSep: false, allowMinus: false});
+	updateRangeErrorAmountEfectivo();
+	updateRangeErrorAmountVisa();
+	updateRangeErrorAmountTransferencia();
   
     
   if ( window.addEventListener ) {
@@ -1994,7 +2049,48 @@ $(document).ready(function () {
   if(redirige=="historial"){
 	$("#historialRetiros").trigger("click");
   }
+
+	// Keep add-card button and banner mutually exclusive.
+	syncCardAddedBanners();
+	setTimeout(syncCardAddedBanners, 300);
+	setTimeout(syncCardAddedBanners, 1200);
 });
+
+function initAutoSelectTabTransferenciaCuentaAhorros(){
+	// Cuando el usuario entra al modal de Transferencia desde la grilla de métodos,
+	// debe iniciar en "Cuentas guardadas" si existen; caso contrario en "Nueva cuenta".
+	$(document).on('click', '.method-card[data-accordion="#accordion_transferencia"]', function () {
+		resetPreferenciaTabTransferenciaCuentaAhorros();
+		setTimeout(autoSelectTabTransferenciaCuentaAhorrosOnEntry, 0);
+	});
+}
+
+function resetPreferenciaTabTransferenciaCuentaAhorros(){
+	transferenciaTabUserSelected = false;
+}
+
+function autoSelectTabTransferenciaCuentaAhorrosOnEntry(){
+	// No sobre-escribir una elección manual.
+	if (transferenciaTabUserSelected === true) return;
+	// Si no hay tabs en el DOM, no hay nada que seleccionar.
+	if ($('#tabsTransferencia').length === 0) return;
+
+	if (hasCuentasGuardadasTransferencia()) {
+		// Asegura que la lista esté renderizada antes de mostrar la pantalla recurrente.
+		if (htmlPantallaRecurrenteRango1 !== "") {
+			$("#listaCuentaAhorros").html(htmlPantallaRecurrenteRango1);
+		} else if (htmlPantallaRecurrenteRango2_3 !== "") {
+			$("#listaCuentaAhorros").html(htmlPantallaRecurrenteRango2_3);
+		}
+		$('#emptyCuentasGuardadasTransferencia').hide();
+		activarPantallaRecurrenteTransferencia();
+	} else {
+		// Si no hay cuentas, entrar directo a "Nueva cuenta" (sin empty-state por defecto).
+		pantallaCuentasGuardadasVaciaTransferencia = false;
+		$('#emptyCuentasGuardadasTransferencia').hide();
+		desactivarPantallaRecurrenteTransferencia();
+	}
+}
 
 
 function showSDK(){
@@ -2063,11 +2159,26 @@ function addEventsKyc(){
 	//Iniciado el SDK
 	button.addEventListener("mati:userStartedSdk", ({ detail }) => {
 	  console.log("started payload");
+	  try {
+		  if (typeof __kycGate !== 'undefined' && __kycGate && __kycGate.isOpen) {
+			  __kycGate.hasAttemptedVerification = true;
+			  __kycGate.sdkFinished = false;
+		  }
+	  } catch (e) {
+		  // noop
+	  }
 	});
 
 	//Finalizado el SKD
 	button.addEventListener("mati:userFinishedSdk", ({ detail }) => {
 	  console.log("finished payload");
+	  try {
+		  if (typeof __kycGate !== 'undefined' && __kycGate && __kycGate.isOpen) {
+			  __kycGate.sdkFinished = true;
+		  }
+	  } catch (e) {
+		  // noop
+	  }
 	  
 	  kycInProcess();
 	  
@@ -2106,9 +2217,26 @@ function addEventsKyc(){
 	  // Token --> el Post con token.
 	});
 
-	//Interrupci�n
+	//Interrupcion
 	button.addEventListener("mati:exitedSdk", ({ detail }) => {
 	  console.log("exited payload");
+	  try {
+		  // If the user exits the SDK without completing the flow, show error and close the gate.
+		  if (typeof __kycGate !== 'undefined' && __kycGate && __kycGate.isOpen) {
+			  var attempted = !!__kycGate.hasAttemptedVerification;
+			  var finished = !!__kycGate.sdkFinished;
+			  if (attempted && !finished) {
+				  if (typeof kycGateAbortWithError === 'function') {
+					  kycGateAbortWithError('No se pudo validar tu identidad. Por favor, int&eacute;ntalo de nuevo.');
+				  } else {
+					  try { showMessageError('Verificaci&oacute;n de identidad', 'No se pudo validar tu identidad. Por favor, int&eacute;ntalo de nuevo.'); } catch (e2) {}
+					  try { if (typeof kycGateClose === 'function') kycGateClose(); } catch (e3) {}
+				  }
+			  }
+		  }
+	  } catch (e) {
+		  // noop
+	  }
 	});
 }
 
@@ -2164,7 +2292,12 @@ function getResultKycV2(current){
 					console.log("Es una verificacion nueva");
 					kycResult = data.resultKyc.trim();
 					kycFecha = data.verificationDate;
-					kycVerified(kycResult);
+					// Si la verificacion fue rechazada, no mostramos "Recibido satisfactoriamente".
+					if (kycResult === 'rejected') {
+						deleteVerificationKyc();
+					} else {
+						kycVerified(kycResult);
+					}
 				}else{
 					console.log("Se trajo la verificacion anterior");
 					kycInProcess();
@@ -2410,6 +2543,14 @@ function kycInProcess(){
 		  $('#PMSDKVerificado').text('Verificación en Proceso...');
 		}, 250);
 	});
+
+	try {
+		if (typeof kycGateOnInProcess === 'function') {
+			kycGateOnInProcess();
+		}
+	} catch (e) {
+		// noop
+	}
 	
 	
 	
@@ -2463,6 +2604,19 @@ function kycVerified(result){
 		  
 		}, 250);
 	});
+
+	// Refresh cash submit button state (Efectivo) after KYC becomes satisfied.
+	if (typeof updateRangeErrorAmountEfectivo === 'function') {
+		updateRangeErrorAmountEfectivo();
+	}
+
+	try {
+		if (typeof kycGateOnVerified === 'function') {
+			kycGateOnVerified(result);
+		}
+	} catch (e) {
+		// noop
+	}
 	
 }
 
@@ -2484,26 +2638,606 @@ function deleteVerificationKyc(){
 	$('#sdkPMCardText').addClass('hidden');
 	$('#PMSDKCardButton').fadeIn(1);
 	$('#PMSDKVerificado').text('');
+
+	// Refresh cash submit button state (Efectivo) after resetting KYC.
+	if (typeof updateRangeErrorAmountEfectivo === 'function') {
+		updateRangeErrorAmountEfectivo();
+	}
+
+	try {
+		// If user already tried to validate and it still fails, show error and close the gate.
+		if (typeof __kycGate !== 'undefined' && __kycGate && __kycGate.isOpen && __kycGate.hasAttemptedVerification) {
+			if (typeof kycGateAbortWithError === 'function') {
+				kycGateAbortWithError('No se pudo validar tu identidad. Por favor, int&eacute;ntalo de nuevo.');
+			} else {
+				try { showMessageError('Verificaci&oacute;n de identidad', 'No se pudo validar tu identidad. Por favor, int&eacute;ntalo de nuevo.'); } catch (e1) {}
+				try { if (typeof kycGateClose === 'function') kycGateClose(); } catch (e2) {}
+			}
+			return;
+		}
+
+		if (typeof kycGateOnNeedsVerification === 'function') {
+			kycGateOnNeedsVerification();
+		}
+	} catch (e) {
+		// noop
+	}
 	
+}
+
+/* ===== KYC Gate (antes de PIN) ===== */
+// Configuraci\u00f3n de timeouts del Gate KYC (ms)
+// - KYC_GATE_MIN_PROCESSING_MS: tiempo m\u00ednimo visible de "Validando identidad".
+// - KYC_GATE_TO_CONFIRMED_MS: tiempo desde "Recibido satisfactoriamente" hasta "Identidad confirmada".
+var KYC_GATE_MIN_PROCESSING_MS = 5000;
+var KYC_GATE_TO_CONFIRMED_MS = 1800;
+
+var __kycGate = {
+	isOpen: false,
+	pending: null,
+	pendingPaymentType: null,
+	confirmTimer: null,
+	processingStartedAt: 0,
+	stage: '',
+	hasAttemptedVerification: false,
+	sdkFinished: false
+};
+
+function kycGateAbortWithError(messageHtml) {
+	try {
+		try { showMessageError('Verificaci&oacute;n de identidad', messageHtml || 'No se pudo validar tu identidad.'); } catch (e0) {}
+		try { kycGateClose(); } catch (e1) {}
+	} catch (e) {
+		// noop
+	}
+}
+
+function kycGateRunReadAndRoute(paymentType, onVerified) {
+	try {
+		if (!__kycGate.isOpen) return;
+		getResultKycV2('READ');
+		var v = kycGateGetVerificationValue(paymentType);
+		if (v) {
+			try { onVerified && onVerified(v); } catch (e0) {}
+		} else {
+			kycGateOnNeedsVerification();
+		}
+	} catch (e) {
+		// noop
+	}
+}
+
+function kycGateDeferAfterMinProcessing(fn) {
+	try {
+		var started = __kycGate.processingStartedAt || 0;
+		var elapsed = started ? (Date.now() - started) : 0;
+		var minMs = parseInt(KYC_GATE_MIN_PROCESSING_MS, 10);
+		if (isNaN(minMs) || minMs < 0) minMs = 0;
+		var wait = Math.max(0, minMs - elapsed);
+		setTimeout(function () {
+			try { fn && fn(); } catch (e2) {}
+		}, wait);
+	} catch (e) {
+		try { fn && fn(); } catch (e3) {}
+	}
+}
+
+function kycGateParseData(data) {
+	var params = {};
+	try {
+		if (!data) return params;
+		if (typeof data === 'string') {
+			var s = data;
+			if (s.indexOf('?') >= 0) s = s.split('?')[1];
+			var parts = s.split('&');
+			for (var i = 0; i < parts.length; i++) {
+				var kv = parts[i].split('=');
+				if (!kv[0]) continue;
+				var k = decodeURIComponent(kv[0]);
+				var v = kv.length > 1 ? decodeURIComponent(kv.slice(1).join('=')) : '';
+				params[k] = v;
+			}
+			return params;
+		}
+		if (typeof data === 'object') {
+			for (var key in data) {
+				if (Object.prototype.hasOwnProperty.call(data, key)) params[key] = data[key];
+			}
+		}
+	} catch (e) {
+		// noop
+	}
+	return params;
+}
+
+function kycGateGetPaymentTypeFromPinData(data) {
+	var p = kycGateParseData(data);
+	var raw = (p.type || p.paymentType || p.payment || '').toString();
+	return raw ? raw.toUpperCase() : '';
+}
+
+function kycGateIsRequired(paymentType, pinData) {
+	try {
+		if (!paymentType) return false;
+		var enabled = false;
+		var amountMinEnable = 0;
+		var amountMinRequest = 0;
+		if (paymentType === 'EFECTIVO') {
+			enabled = (stateReqKycEf === 'ACTIVO' || stateReqKycEf == 'ACTIVO');
+			amountMinEnable = parseInt(amountMinEnableKycEf, 10);
+			amountMinRequest = parseInt(amountMinRequestCash, 10);
+		} else if (paymentType === 'VISA') {
+			enabled = (stateReqKycVisa === 'ACTIVO' || stateReqKycVisa == 'ACTIVO');
+			amountMinEnable = parseInt(amountMinEnableKycVisa, 10);
+			amountMinRequest = parseInt(amountMinRequestVisa, 10);
+		} else if (paymentType === 'TRANSFERENCIA') {
+			enabled = (stateReqKycTrans === 'ACTIVO' || stateReqKycTrans == 'ACTIVO');
+			amountMinEnable = parseInt(amountMinEnableKycTrans, 10);
+			amountMinRequest = parseInt(amountMinRequestTrans, 10);
+		} else {
+			return false;
+		}
+		if (!enabled) return false;
+
+		var p = kycGateParseData(pinData);
+		var amountRaw = (p.amount || p.amountEfectivo || p.amountVisa || p.amountTransferencia || '').toString().trim();
+		var amount = parseInt(amountRaw, 10);
+		if (isNaN(amount)) {
+			// If we can't read amount, be conservative and still gate when feature is enabled.
+			return true;
+		}
+		if (isNaN(amountMinEnable) || amountMinEnable <= 0) {
+			// If threshold isn't available, still gate when enabled.
+			return true;
+		}
+		// Gate only when amount triggers KYC.
+		return (amount >= amountMinEnable && (!isNaN(amountMinRequest) ? amount >= amountMinRequest : true));
+	} catch (e) {
+		// noop
+	}
+	return false;
+}
+
+function kycGateGetVerificationValue(paymentType) {
+	try {
+		if (paymentType === 'EFECTIVO') return ($('#txtEfectivoSDKVerificado').val() || '').toString().trim();
+		if (paymentType === 'VISA') return ($('#txtVisaSDKVerificado').val() || '').toString().trim();
+		if (paymentType === 'TRANSFERENCIA') return ($('#txtTransferenciaSDKVerificado').val() || '').toString().trim();
+	} catch (e) {
+		// noop
+	}
+	return '';
+}
+
+function kycGateOpen(paymentType, pendingE, pendingData) {
+	__kycGate.isOpen = true;
+	__kycGate.pending = { e: pendingE || null, data: pendingData };
+	__kycGate.pendingPaymentType = paymentType;
+	__kycGate.hasAttemptedVerification = false;
+	__kycGate.sdkFinished = false;
+	kycGateSetStage('start');
+	try {
+		var $m = $('#modal-kyc-gate');
+		// Set display:flex but preserve jQuery fadeIn behavior.
+		$m.css('display', 'flex').hide().fadeIn(250);
+	} catch (e) {}
+	return false;
+}
+
+// Nuevo flujo: abrir directo en "Validando identidad" y validar estado (READ) antes de permitir retiro.
+function kycGateOpenAutoValidate(paymentType, pendingE, pendingData) {
+	__kycGate.isOpen = true;
+	__kycGate.pending = { e: pendingE || null, data: pendingData };
+	__kycGate.pendingPaymentType = paymentType;
+	__kycGate.hasAttemptedVerification = false;
+	__kycGate.sdkFinished = false;
+	kycGateSetStage('processing');
+	try {
+		var $m = $('#modal-kyc-gate');
+		$m.css('display', 'flex').hide().fadeIn(250);
+	} catch (e) {}
+	setTimeout(function () {
+		try {
+			if (!__kycGate.isOpen) return;
+			// Validar si ya existe KYC (READ). Si está verificado, mostrar flujo del modal
+			// (Recibido -> Identidad confirmada) y continuar al PIN solo cuando el usuario
+			// presione "Aceptar".
+			kycGateRunReadAndRoute(paymentType, function (v) {
+				try { kycGateOnVerified(v); } catch (e0) {}
+			});
+		} catch (e2) {
+			// noop
+		}
+	}, 250);
+	return false;
+}
+
+// Main-screen button "VERIFICA TU IDENTIDAD": route user to identity validation flow.
+function kycGateStartFromKycButton(paymentType) {
+	try {
+		paymentType = (paymentType || '').toString().toUpperCase();
+		// Open modal in validation state to keep consistent UX.
+		__kycGate.isOpen = true;
+		__kycGate.pending = { e: null, data: null };
+		__kycGate.pendingPaymentType = paymentType;
+		__kycGate.hasAttemptedVerification = true;
+		__kycGate.sdkFinished = false;
+		kycGateSetStage('processing');
+		try {
+			var $m = $('#modal-kyc-gate');
+			$m.css('display', 'flex').hide().fadeIn(250);
+		} catch (e0) {}
+		// Launch SDK (MetaMap). If user is already verified, existing READ/verified flow will resolve it.
+		setTimeout(function () {
+			try { if (__kycGate.isOpen) { showSDK(); } } catch (e1) {}
+		}, 250);
+	} catch (e) {
+		// noop
+	}
+	return false;
+}
+
+function kycGateClose() {
+	try {
+		if (__kycGate.confirmTimer) {
+			clearTimeout(__kycGate.confirmTimer);
+			__kycGate.confirmTimer = null;
+		}
+	} catch (e0) {}
+	__kycGate.isOpen = false;
+	__kycGate.pending = null;
+	__kycGate.pendingPaymentType = null;
+	__kycGate.processingStartedAt = 0;
+	__kycGate.stage = '';
+	__kycGate.hasAttemptedVerification = false;
+	__kycGate.sdkFinished = false;
+	try { $('#modal-kyc-gate').fadeOut(200); } catch (e) {}
+	return false;
+}
+
+function kycGateSetStage(stage) {
+	try {
+		__kycGate.stage = stage;
+		var $root = $('#modal-kyc-gate .kyc-gate');
+		var $status = $('#kycGateStatus');
+		var $icon = $('#kycGateStatusIcon');
+		var $text = $('#kycGateStatusText');
+		var $l1 = $('#kycGateLine1');
+		var $l2 = $('#kycGateLine2');
+		var $title = $('#kycGateTitle');
+		var $header = $('#kycGateHeader');
+		var $lock = $('#modal-kyc-gate .kyc-gate__lock');
+		var $close = $('#modal-kyc-gate .kyc-gate__close');
+		var $btn = $('#kycGatePrimaryBtn');
+
+		if ($root && $root.length) {
+			$root.removeClass('is-start is-processing is-needsVerification is-received is-confirmed');
+			$root.addClass('is-' + stage);
+		}
+		if ($status && $status.length) {
+			$status.removeClass('is-start is-processing is-needsVerification is-received is-confirmed');
+			$status.addClass('is-' + stage);
+		}
+
+		$icon.removeClass('is-processing is-success is-received');
+		try { $l2.show(); } catch (e0) {}
+		try { $close.hide(); } catch (e1) {}
+		// Default: hide header (it should only show on start and confirmed).
+		try { $header.hide(); } catch (e1h) {}
+		try { $lock.show(); } catch (e1l) {}
+		$btn.prop('disabled', false).show();
+
+		if (stage === 'start') {
+			try { $header.show(); } catch (eStart0) {}
+			try { $lock.show(); } catch (eStart1) {}
+			try { $close.show(); } catch (eStartClose) {}
+			try { $title.text('Verificaci\u00f3n de identidad'); } catch (e2) {}
+			$l1.html('Necesitamos confirmar tu identidad para <strong>continuar con el retiro.</strong>');
+			$l2.text('Toma s\u00f3lo unos minutos.');
+			$status.hide();
+			$btn.text('Iniciar').attr('data-kyc-gate-action', 'start');
+			return;
+		}
+
+		if (stage === 'processing') {
+			__kycGate.processingStartedAt = Date.now();
+			$l1.text('Validando identidad');
+			$l2.text('Tus datos est\u00e1n siendo confirmados.');
+			$status.show();
+			$icon.addClass('is-processing');
+			$text.text('Verificaci\u00f3n en Proceso....');
+			$btn.prop('disabled', true).hide();
+			return;
+		}
+
+		if (stage === 'needsVerification') {
+			$l1.text('Para continuar con el retiro, necesitamos validar tu informaci\u00f3n.');
+			$l2.text('Presiona el bot\u00f3n para iniciar.');
+			$status.hide();
+			try { $close.show(); } catch (eCloseNv) {}
+			$btn.text('Validar informaci\u00f3n').attr('data-kyc-gate-action', 'verify');
+			return;
+		}
+
+		if (stage === 'received') {
+			// Mantener el mismo header que "Validando identidad" y solo cambiar la l\u00ednea de estado.
+			$l1.text('Validando identidad');
+			$l2.text('Tus datos est\u00e1n siendo confirmados.');
+			$status.show();
+			$icon.addClass('is-received');
+			$text.text('Recibido satisfactoriamente');
+			$btn.prop('disabled', true).hide();
+			return;
+		}
+
+		if (stage === 'confirmed') {
+			try { $header.show(); } catch (eConf0) {}
+			try { $lock.hide(); } catch (eConf1) {}
+			try { $title.text('Identidad confirmada'); } catch (e3) {}
+			$l1.text('Tus datos han sido confirmados.');
+			try { $l2.hide(); } catch (e4) {}
+			$status.hide();
+			try { $close.show(); } catch (e5) {}
+			$btn.text('Aceptar').attr('data-kyc-gate-action', 'accept');
+			return;
+		}
+	} catch (e) {
+		// noop
+	}
+}
+
+function kycGateOnInProcess() {
+	try {
+		if (!__kycGate.isOpen) return;
+		kycGateSetStage('processing');
+	} catch (e) {
+		// noop
+	}
+}
+
+function kycGateOnNeedsVerification() {
+	try {
+		if (!__kycGate.isOpen) return;
+		kycGateDeferAfterMinProcessing(function () {
+			if (!__kycGate.isOpen) return;
+			kycGateSetStage('needsVerification');
+		});
+	} catch (e) {
+		// noop
+	}
+}
+
+function kycGateOnVerified(result) {
+	try {
+		if (!__kycGate.isOpen) return;
+		__kycGate.hasAttemptedVerification = false;
+		__kycGate.sdkFinished = false;
+
+		// Ensure we have a processing start time (and UI) before enforcing min processing.
+		// This avoids showing "Identidad confirmada" before "Validando identidad".
+		if (!__kycGate.processingStartedAt) {
+			try { kycGateSetStage('processing'); } catch (e0) {}
+			if (!__kycGate.processingStartedAt) {
+				__kycGate.processingStartedAt = Date.now();
+			}
+		}
+
+		if (__kycGate.confirmTimer) {
+			clearTimeout(__kycGate.confirmTimer);
+			__kycGate.confirmTimer = null;
+		}
+
+		var toConfirmed = parseInt(KYC_GATE_TO_CONFIRMED_MS, 10);
+		if (isNaN(toConfirmed) || toConfirmed < 0) toConfirmed = 0;
+
+		// IMPORTANT: Keep the order always:
+		// processing (min) -> received -> confirmed
+		kycGateDeferAfterMinProcessing(function () {
+			if (!__kycGate.isOpen) return;
+			kycGateSetStage('received');
+			__kycGate.confirmTimer = setTimeout(function () {
+				if (!__kycGate.isOpen) return;
+				kycGateSetStage('confirmed');
+			}, toConfirmed);
+		});
+	} catch (e) {
+		// noop
+	}
+}
+
+function kycGateHandlePrimaryAction() {
+	try {
+		var action = ($('#kycGatePrimaryBtn').attr('data-kyc-gate-action') || '').toString();
+		var paymentType = __kycGate.pendingPaymentType;
+
+		if (action === 'start') {
+			kycGateSetStage('processing');
+			// IMPORTANT: getResultKycV2('READ') is synchronous (async:false).
+			// If we call it immediately, the browser may not paint the "procesando" UI,
+			// and the user jumps straight to the next stage.
+			setTimeout(function () {
+				try {
+					if (!__kycGate.isOpen) return;
+					getResultKycV2('READ');
+					var v = kycGateGetVerificationValue(paymentType);
+					if (v) {
+						kycGateOnVerified(v);
+					} else {
+						kycGateOnNeedsVerification();
+					}
+				} catch (e2) {
+					// noop
+				}
+			}, 250);
+			return false;
+		}
+
+		if (action === 'verify') {
+			__kycGate.hasAttemptedVerification = true;
+			__kycGate.sdkFinished = false;
+			kycGateSetStage('processing');
+			showSDK();
+			return false;
+		}
+
+		if (action === 'accept') {
+			var pending = __kycGate.pending;
+			kycGateClose();
+			if (pending && pending.data) {
+				return confirmarRetiroTransferenciaPinInternal(pending.e, pending.data);
+			}
+			return false;
+		}
+	} catch (e) {
+		// noop
+	}
+	return false;
+}
+
+$(document).ready(function () {
+	$(document).on('click', '#kycGatePrimaryBtn', function (ev) {
+		try { if (ev && ev.preventDefault) ev.preventDefault(); } catch (e) {}
+		return kycGateHandlePrimaryAction();
+	});
+	$(document).on('click', '#modal-kyc-gate .kyc-gate__close', function (ev) {
+		try { if (ev && ev.preventDefault) ev.preventDefault(); } catch (e0) {}
+		return kycGateClose();
+	});
+});
+
+function updateRangeErrorAmountEfectivo(){
+	var $input = $('#amountEfectivo');
+	var $wrapper = $('#divMontoEfectivo');
+	var $btn = $('#formefectivo').find('.btn-solicitar');
+	var $kycInput = $('#txtEfectivoSDKVerificado');
+	if(!$input.length || !$wrapper.length){
+		return;
+	}
+
+	var valueRaw = ($input.val() || '').toString().trim();
+	var minRaw = ($input.attr('data-min') || '').toString().trim();
+	var maxRaw = ($input.attr('data-max') || '').toString().trim();
+	var min = parseInt(minRaw, 10);
+	var max = parseInt(maxRaw, 10);
+
+	// If range isn't loaded yet or input is empty, keep normal state.
+	if(!valueRaw || isNaN(min) || isNaN(max) || max <= 0){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var value = parseInt(valueRaw, 10);
+	if(isNaN(value)){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var isOutOfRange = (value < min || value > max);
+	$wrapper.toggleClass('is-error', isOutOfRange);
+	if($btn.length){
+		// Enable when amount is valid; KYC gating happens when user taps "Solicitar retiro".
+		$btn.prop('disabled', isOutOfRange);
+	}
+}
+
+function updateRangeErrorAmountVisa(){
+	var $input = $('#amountVisa');
+	var $wrapper = $('#divMontoVisa');
+	var $btn = $('#formvisa').find('.btn-solicitar');
+	if(!$input.length || !$wrapper.length){
+		return;
+	}
+
+	var valueRaw = ($input.val() || '').toString().trim();
+	var minRaw = ($input.attr('data-min') || '').toString().trim();
+	var maxRaw = ($input.attr('data-max') || '').toString().trim();
+	var min = parseInt(minRaw, 10);
+	var max = parseInt(maxRaw, 10);
+
+	if(!valueRaw || isNaN(min) || isNaN(max) || max <= 0){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var value = parseInt(valueRaw, 10);
+	if(isNaN(value)){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var isOutOfRange = (value < min || value > max);
+	$wrapper.toggleClass('is-error', isOutOfRange);
+	if($btn.length){
+		$btn.prop('disabled', isOutOfRange);
+	}
+}
+
+function updateRangeErrorAmountTransferencia(){
+	var $input = $('#amountTransferencia');
+	var $wrapper = $('#divMontoTransferencia');
+	var $btn = $('#formtransferencia').find('.btn-solicitar');
+	if(!$input.length || !$wrapper.length){
+		return;
+	}
+
+	var valueRaw = ($input.val() || '').toString().trim();
+	var minRaw = ($input.attr('data-min') || '').toString().trim();
+	var maxRaw = ($input.attr('data-max') || '').toString().trim();
+	var min = parseInt(minRaw, 10);
+	var max = parseInt(maxRaw, 10);
+
+	if(!valueRaw || isNaN(min) || isNaN(max) || max <= 0){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var value = parseInt(valueRaw, 10);
+	if(isNaN(value)){
+		$wrapper.removeClass('is-error');
+		if($btn.length){
+			$btn.prop('disabled', true);
+		}
+		return;
+	}
+
+	var isOutOfRange = (value < min || value > max);
+	$wrapper.toggleClass('is-error', isOutOfRange);
+	if($btn.length){
+		var forceDisable = (typeof pantallaCuentasGuardadasVaciaTransferencia !== 'undefined' && pantallaCuentasGuardadasVaciaTransferencia === true);
+		$btn.prop('disabled', isOutOfRange || forceDisable);
+	}
 }
 
 function onChangeAmountEfectivo(){
 	
 	datalayerCobrarPremioInput($("#amountEfectivo"),'Efectivo / Punto de venta','Ingresar monto');
+	updateRangeErrorAmountEfectivo();
 	
 	var amountEfectivo = parseInt($("#amountEfectivo").val(), 10);
+	var kycValEf = ($('#txtEfectivoSDKVerificado').length ? ($('#txtEfectivoSDKVerificado').val() || '') : '').toString().trim();
+	var kycSatisfiedEf = !!kycValEf && kycValEf.toLowerCase() !== 'rejected';
 
-	if( stateReqKycEf ==='ACTIVO' || stateReqKycEf =='ACTIVO'){
-		console.log("onChangeAmountEfectivo kyc activo");
-		if( amountEfectivo>=amountMinEnableKycEf && amountEfectivo>=amountMinRequestCash ){
-			$('#stepKYCEfectivo').removeClass('hidden');
-		}else{
-			$('#stepKYCEfectivo').addClass('hidden');
-		}	
-		$("#imgDNIEfectivo").removeAttr("data-valid");	
-	}else{
-		
-		$("#txtEfectivoSDKVerificado").removeAttr("data-valid");
+	// KYC is handled via modal (Gate) when user taps "Solicitar retiro".
+	// Keep in-form KYC block hidden and non-blocking.
+	$('#stepKYCEfectivo').addClass('hidden');
+	$('#txtEfectivoSDKVerificado').removeAttr('data-valid');
+	$("#imgDNIEfectivo").removeAttr("data-valid");
+	if(!(stateReqKycEf ==='ACTIVO' || stateReqKycEf =='ACTIVO')){
 	if( (amountEfectivo>=amountMinEnableDniCash || (accAmtCash+amountEfectivo>=minAccAmtEnblDniCash)) && amountEfectivo>=amountMinRequestCash ){
 		$('#stepUnoEfectivo').removeClass('hiddenStep');
 		//$('#divStepUnoEfectivo').addClass('step');
@@ -2540,17 +3274,14 @@ function onChangeAmountEfectivo(){
 function onChangeAmountVisa(){
 	
 	datalayerCobrarPremioInput($("#amountVisa"),'Visa','Ingresar monto');
+	updateRangeErrorAmountVisa();
 	
 	var amountVisa = parseInt($("#amountVisa").val(), 10);
-	if( stateReqKycVisa ==='ACTIVO' || stateReqKycVisa =='ACTIVO'){
-		console.log("onChangeAmountVisa kyc activo");
-		if( amountVisa>=amountMinEnableKycVisa && amountVisa>=amountMinRequestVisa ){
-			$('#stepKYCVisa').removeClass('hidden');
-		}else{
-			$('#stepKYCVisa').addClass('hidden');
-		}
-		$("#imgDNI").removeAttr("data-valid");	
-	}else{
+	// KYC is handled via modal (Gate) when user taps "Solicitar retiro".
+	// Keep in-form KYC block hidden and non-blocking.
+	$('#stepKYCVisa').addClass('hidden');
+	$('#txtVisaSDKVerificado').removeAttr('data-valid');
+	if(!(stateReqKycVisa ==='ACTIVO' || stateReqKycVisa =='ACTIVO')){
 		console.log("Entra keyla dni visa");
 		$("#txtVisaSDKVerificado").removeAttr("data-valid");
 		if( (amountVisa>=amountMinEnableDni || (accAmtVisa+amountVisa>=minAccAmtEnblDniVisa)) && amountVisa>=amountMinRequestVisa ){
@@ -2615,18 +3346,15 @@ function onChangeAmountAgora(){
 
 function onChangeAmountTransferencia(){
 	datalayerCobrarPremioInput($("#amountTransferencia"),'Transferencia Bancaria','Ingresar monto');
+	updateRangeErrorAmountTransferencia();
 	
 	var amountTransferencia = parseInt($("#amountTransferencia").val(), 10);
 	
-	if( stateReqKycTrans ==='ACTIVO' || stateReqKycTrans =='ACTIVO'){
-		console.log("onChangeAmountTransferencia kyc activo");
-		if( $("#amountTransferencia").val()!="" && amountTransferencia>=amountMinEnableKycTrans  && amountTransferencia>=amountMinRequestTrans ){
-			$('#stepKYCTrans').removeClass('hidden');
-		}else{
-			$('#stepKYCTrans').addClass('hidden');
-		}
-		$("#imgDNITransferencia").removeAttr("data-valid");
-	}else{
+	// KYC is handled via modal (Gate) when user taps "Solicitar retiro".
+	// Keep in-form KYC block hidden and non-blocking.
+	$('#stepKYCTrans').addClass('hidden');
+	$('#txtTransferenciaSDKVerificado').removeAttr('data-valid');
+	if(!(stateReqKycTrans ==='ACTIVO' || stateReqKycTrans =='ACTIVO')){
 		$("#txtTransferenciaSDKVerificado").removeAttr("data-valid");
 	var isDniActive=acondicionaSeccionDniTransferencia();
 	if(isDniActive){
@@ -2783,6 +3511,7 @@ function getDataCollectPrizes(){
 	    	$("#rangoMontosVisa-356").html("Monto entre d<br>S/"+amountMinRequestVisaFormateado+" - S/"+amountMaxRequestVisaFormateado);
 	    	$('#amountVisa').attr("data-min", data.amountMinRequestVisa);
 	    	$('#amountVisa').attr("data-max", data.amountMaxRequestVisa);
+	    	updateRangeErrorAmountVisa();
 	    	$("#pesoImgDni").html(data.maxMbPerImageVisa);
 	    	
 	    	$("#msgErrorRangoMontosEfectivo").text("Ingrese un monto entre S/"+amountMinRequestCashFormateado+" y S/"+amountMaxRequestCashFormateado+" soles");
@@ -3955,7 +4684,7 @@ function closeMessageErrorVisa(){
 	$('#modal-msg-error-visa').fadeOut(250);
 	$('#title-message-error-visa').html("");
 	$('#message-error-visa').html("");
-	showTokenization();
+	showTokenization_ta();
 }
 
 function showMessageErrorAgora(title,message) {
@@ -4037,25 +4766,88 @@ function volverModalRetirosDebitIdQR(){
 function showTokenization(){
 	console.log("showTokenization storage prizetoken="+$('#prizetoken').val());
 	localStorage.setItem("prizetoken", $('#prizetoken').val());
+	visanetWidgetSeen = false;
+	visanetCompletedSignal = false;
+	$('body').find('#loadTokenization').remove();
 	$('body').find('#div-lightbox-tokenization-ilot').remove();	
 	$('body').append('<i id="loadTokenization" class="loadingMobile" style="z-index: 10001 !important;"></i>');
-	$('body').append('<div id="div-lightbox-tokenization-ilot" style="position:fixed; top:0; left:0;z-index: 10002;width:100%; height: 100%; display: block;"><iframe id="frmLightboxTokenization" frameborder="0" src="tokenizationCard.html?prizetoken="'+$('#prizetoken').val()+' style="z-index: 10003; width:100%; height:100%;"></iframe></div>');
+	$('body').append('<div id="div-lightbox-tokenization-ilot" style="position:fixed; top:0; left:0;z-index: 10002;width:100%; height: 100%; display: block;"><iframe id="frmLightboxTokenization" frameborder="0" src="tokenizationCard.html?prizetoken='+encodeURIComponent($('#prizetoken').val())+'" style="z-index: 10003; width:100%; height:100%;"></iframe></div>');
+	setTimeout(function(){
+		if (document.getElementById('div-lightbox-tokenization-ilot')) {
+			$('body').find('#loadTokenization').remove();
+		}
+	}, 12000);
 	datalayerCobrarPremioMetodoCobroSelectTarjeta('Visa');
 }
 
 function showTokenizationAgora(){
 	console.log("showTokenization storage prizetoken="+$('#prizetoken').val());
 	localStorage.setItem("prizetoken", $('#prizetoken').val());
+	agoraWidgetSeen = false;
+	agoraCompletedSignal = false;
+	$('body').find('#loadTokenization').remove();
 	$('body').find('#div-lightbox-tokenization-ilot').remove();	
 	$('body').append('<i id="loadTokenization" class="loadingMobile" style="z-index: 10001 !important;"></i>');
-	$('body').append('<div id="div-lightbox-tokenization-ilot" style="position:fixed; top:0; left:0;z-index: 10002;width:100%; height: 100%; display: block;"><iframe id="frmLightboxTokenization" frameborder="0" src="tokenizationCardAgora.html?prizetoken="'+$('#prizetoken').val()+' style="z-index: 10003; width:100%; height:100%;"></iframe></div>');
+	$('body').append('<div id="div-lightbox-tokenization-ilot" style="position:fixed; top:0; left:0;z-index: 10002;width:100%; height: 100%; display: block;"><iframe id="frmLightboxTokenization" frameborder="0" src="tokenizationCardAgora.html?prizetoken='+encodeURIComponent($('#prizetoken').val())+'" style="z-index: 10003; width:100%; height:100%;"></iframe></div>');
+	setTimeout(function(){
+		if (document.getElementById('div-lightbox-tokenization-ilot')) {
+			$('body').find('#loadTokenization').remove();
+		}
+	}, 12000);
 	datalayerCobrarPremioMetodoCobroSelectTarjeta('Agora');
+}
+
+function showTokenization_ta(){
+	console.log("showTokenization_ta storage prizetoken="+$('#prizetoken').val());
+	localStorage.setItem("prizetoken", $('#prizetoken').val());
+	visanetWidgetSeen = false;
+	visanetCompletedSignal = false;
+	$('body').find('#loadTokenization').remove();
+	$('body').find('#div-lightbox-tokenization-ilot').remove();	
+	$('body').append('<i id="loadTokenization" class="loadingMobile" style="z-index: 10001 !important;"></i>');
+	$('body').append('<div id="div-lightbox-tokenization-ilot" style="position:fixed; top:0; left:0;z-index: 10002;width:100%; height: 100%; display: block;"><iframe id="frmLightboxTokenization" frameborder="0" src="tokenizationCardTa.html?prizetoken='+encodeURIComponent($('#prizetoken').val())+'" style="z-index: 10003; width:100%; height:100%;"></iframe></div>');
+	setTimeout(function(){
+		if (document.getElementById('div-lightbox-tokenization-ilot')) {
+			$('body').find('#loadTokenization').remove();
+		}
+	}, 12000);
+	datalayerCobrarPremioMetodoCobroSelectTarjeta('Visa');
 }
 
 function handleMessage(e) {
 	if(e!=null && e!=undefined && e.data!=null && e.data!=undefined){
-//		var arrayData = e.data.split("|");
-		var operacion = arrayData[0];
+		var data = e.data;
+		var arrayData = [];
+		var operacion = null;
+
+		if (typeof data === 'string') {
+			var text = (data || '').trim();
+			// Some flows send JSON strings; ignore those here.
+			if (text.charAt(0) === '{') {
+				try {
+					var json = JSON.parse(text);
+					// If future tokenization messages become JSON-based, support it.
+					if (json && typeof json.operation === 'string') {
+						operacion = json.operation;
+						arrayData = [operacion];
+						if (json.message) arrayData.push(String(json.message));
+					}
+				} catch (err) {
+					// fall through
+				}
+			}
+			if (!operacion) {
+				arrayData = text.split('|');
+				operacion = arrayData[0];
+			}
+		} else if (data && typeof data === 'object') {
+			// Some iframes may send structured messages.
+			operacion = data.operacion || data.operation || data.action || null;
+			arrayData = [operacion];
+			if (data.mensaje || data.message) arrayData.push(String(data.mensaje || data.message));
+		}
+
+		if (!operacion) return;
 		if(operacion==='hideLoadingTokenization'){
 			$('body').find('#loadTokenization').remove();	
 		}else if(operacion==='hideLightboxTokenization'){
@@ -4069,25 +4861,165 @@ function handleMessage(e) {
 			deleteTokenizedCardAgora();
 			clearInterval(intervalAgora);
 		}else if(operacion==='observerLightboxTokenization'){
+			visanetWidgetSeen = false;
+			visanetCompletedSignal = false;
+			visanetCompletionMode = null;
 			intervalVisanet = setInterval(checkFormVisanet, 1000);
 		}else if(operacion==='observerLightboxTokenizationAgora'){
+			agoraWidgetSeen = false;
+			agoraCompletedSignal = false;
+			agoraCompletionMode = null;
 			intervalAgora = setInterval(checkFormAgora, 1000);
+		}else if(operacion==='tokenizationCompleted'){
+			visanetCompletedSignal = true;
+			try {
+				var modeVisa = (arrayData.length > 1) ? String(arrayData[1] || '').toLowerCase() : '';
+				visanetCompletionMode = (modeVisa === 'saved' || modeVisa === 'new') ? modeVisa : null;
+			} catch (e) {
+				visanetCompletionMode = null;
+			}
+			finalizeTokenizationVisa();
+		}else if(operacion==='tokenizationCompletedAgora'){
+			agoraCompletedSignal = true;
+			try {
+				var modeAgora = (arrayData.length > 1) ? String(arrayData[1] || '').toLowerCase() : '';
+				agoraCompletionMode = (modeAgora === 'saved' || modeAgora === 'new') ? modeAgora : null;
+			} catch (e) {
+				agoraCompletionMode = null;
+			}
+			finalizeTokenizationAgora();
 		}else if(operacion==='errorLoadingTokenization'){
 			$('body').find('#loadTokenization').remove();	
 			$('body').find('#div-lightbox-tokenization-ilot').remove();	
 			deleteTokenizedCard();
 			clearInterval(intervalVisanet);
-			var mensaje = arrayData[1];
+			var mensaje = (arrayData.length > 1) ? arrayData.slice(1).join('|') : msg_error_general;
 			showMessageError(title_error_general,mensaje);
 		}else if(operacion==='errorLoadingTokenizationAgora'){
 			$('body').find('#loadTokenization').remove();	
 			$('body').find('#div-lightbox-tokenization-ilot').remove();	
 			deleteTokenizedCardAgora();
 			clearInterval(intervalAgora);
-			var mensaje = arrayData[1];
+			var mensaje = (arrayData.length > 1) ? arrayData.slice(1).join('|') : msg_error_general;
 			showMessageError(title_error_general,mensaje);
 		}
 	}
+}
+
+function syncCardAddedBanners(){
+	try {
+		var visaToken = $.trim($('#txtTarjetaTokenizada').val() || '');
+		if (visaToken !== '') {
+			$('#visaCardText').removeClass('hidden');
+			$('#visaCardButton').hide();
+		} else {
+			$('#visaCardText').addClass('hidden');
+			$('#visaCardButton').show();
+		}
+
+		var agoraToken = $.trim($('#txtTarjetaTokenizadaAgora').val() || '');
+		if (agoraToken !== '') {
+			$('#visaCardTextAgora').removeClass('hidden');
+			$('#visaCardButtonAgora').hide();
+		} else {
+			$('#visaCardTextAgora').addClass('hidden');
+			$('#visaCardButtonAgora').show();
+		}
+	} catch (e) {
+		// no-op
+	}
+}
+
+function finalizeTokenizationVisa(){
+	// Prevent duplicate runs
+	clearInterval(intervalVisanet);
+	$('body').find('#loadTokenization').remove();
+	$('body').find('#div-lightbox-tokenization-ilot').remove();
+
+	$('body').append('<i id="loadTokenization" class="loadingMobile" style="z-index: 10001 !important;"></i>');
+	var vheaders={"prizetoken":$('#prizetoken').val()};
+	$.ajax({
+		type: "POST",
+		url: "getTokenizedCard.html",
+		headers: vheaders,
+		dataType: "json",
+	})
+	.done(function(data) {
+		if(data.status=="OK"){
+			visanetCompletionMode = null;
+			$('#tarjetaTokenizada').text("Transferencia inmediata");
+			$('#txtTarjetaTokenizada').val(data.cardNumber);
+			$('#divVisa').removeClass('is-error');
+			$('#visaCardButton').hide();
+			$('#visaCardText').removeClass('hidden');
+		}else{
+			if(data.ban!=undefined && data.ban=="OK"){
+				if($("#operatorId").val()==="1"){
+					localStorage.setItem("ban", "OK");
+					window.location.href = 'security-close-session.html';
+				}else if($("#operatorId").val()==="6"){
+					var msgError = '<div style="font-family: \'Roboto\';"><div><img src="layer-view-image/client/alerta.png" style="margin-bottom:20px;"><p style="text-align: center;margin: 0px; line-height: 20px;"><b>Detectamos una irregularidad en tu cuenta</b><br><br>Por tu seguridad y de acuerdo con lo establecido en los T&C tu cuenta está bloqueada temporalmente. Informaremos a tu correo registrado</p></div><br><br>'+
+					'<button class="btn btn-recuperar-password" onclick="closePopupMessage()" type="button">OK</button></div>';
+					$('#msg-session').html(msgError);
+					openModal("#popup-message-session","");
+				}else{
+					var msgError = '<div style="font-family: \'Roboto\';"><div><img src="layer-view-image/client/alerta.png" style="margin-bottom:20px;"><p style="text-align: center;margin: 0px; line-height: 20px;"><b>Detectamos una irregularidad en tu cuenta</b><br><br>Por tu seguridad y de acuerdo con lo establecido en los T&C tu cuenta está bloqueada temporalmente. Informaremos a tu correo registrado</p></div><br><br>'+
+					'<button class="btn btn-recuperar-password" onclick="closePopupMessage()" type="button">OK</button></div>';
+					$('#msg-session').html(msgError);
+					openModal("#popup-message-session","");
+				}
+			}else{
+				deleteTokenizedCard();
+				showMessageErrorVisa(title_error_general,data.message);
+			}
+		}
+		$('body').find('#loadTokenization').remove();
+	})
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		if(jqXHR.status==403){
+			window.location.href = 'home.html';
+		}else{
+			$('body').find('#loadTokenization').remove();
+			showMessageError(title_error_general,msg_error_general);
+		}
+	});
+}
+
+function finalizeTokenizationAgora(){
+	clearInterval(intervalAgora);
+	$('body').find('#loadTokenization').remove();
+	$('body').find('#div-lightbox-tokenization-ilot').remove();
+
+	$('body').append('<i id="loadTokenization" class="loadingMobile" style="z-index: 10001 !important;"></i>');
+	var vheaders={"prizetoken":$('#prizetoken').val()};
+	$.ajax({
+		type: "POST",
+		url: "getTokenizedCardAgora.html",
+		headers: vheaders,
+		dataType: "json",
+	})
+	.done(function(data) {
+		if(data.status=="OK"){
+			agoraCompletionMode = null;
+			$('#tarjetaTokenizadaAgora').text("Transferencia inmediata");
+			$('#txtTarjetaTokenizadaAgora').val(data.cardNumber);
+			$('#divAgora').removeClass('is-error');
+			$('#visaCardButtonAgora').hide();
+			$('#visaCardTextAgora').removeClass('hidden');
+		}else{
+			deleteTokenizedCardAgora();
+			showMessageErrorAgora(title_error_general,data.message);
+		}
+		$('body').find('#loadTokenization').remove();
+	})
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		if(jqXHR.status==403){
+			window.location.href = 'home.html';
+		}else{
+			$('body').find('#loadTokenization').remove();
+			showMessageError(title_error_general,msg_error_general);
+		}
+	});
 }
 
 function checkFormVisanet(){
@@ -4095,62 +5027,14 @@ function checkFormVisanet(){
 		var frameVisa = document.getElementById("frmLightboxTokenization");
 		var iframeDocument = frameVisa.contentDocument;
 		var framePago = iframeDocument.getElementById("visaNetJS");
-		if(framePago==null || framePago==undefined){//si ya tokenizo
-			$('body').find('#loadTokenization').remove();
-			$('body').find('#div-lightbox-tokenization-ilot').remove();	
-			clearInterval(intervalVisanet);
-			
-			$('body').append('<i id="loadTokenization" class="loadingMobile" style="z-index: 10001 !important;"></i>');
-			var vheaders={"prizetoken":$('#prizetoken').val()};
-			$.ajax({
-		        type: "POST",
-		        url: "getTokenizedCard.html",
-		        headers: vheaders,
-		        dataType: "json",
-			})
-			.done(function(data) {
-				if(data.status=="OK"){
-					$('#tarjetaTokenizada').text("Tarjeta: "+data.cardNumber);
-					$('#txtTarjetaTokenizada').val(data.cardNumber);
-					$('#divVisa').removeClass('is-error');
-					
-					$('#visaCardButton').fadeOut(250, function () {
-						setTimeout(function () {
-						  $('#visaCardText').removeClass('hidden');
-						}, 250);
-					});
-				}else{
-					if(data.ban!=undefined && data.ban=="OK"){
-						if($("#operatorId").val()==="1"){
-							localStorage.setItem("ban", "OK");
-							window.location.href = 'security-close-session.html';
-						}else if($("#operatorId").val()==="6"){
-							var msgError = '<div style="font-family: \'Roboto\';"><div><img src="layer-view-image/client/alerta.png" style="margin-bottom:20px;"><p style="text-align: center;margin: 0px; line-height: 20px;"><b>Detectamos una irregularidad en tu cuenta</b><br><br>Por tu seguridad y de acuerdo con lo establecido en los T&C tu cuenta está bloqueada temporalmente. Informaremos a tu correo registrado</p></div><br><br>'+
-							'<button class="btn btn-recuperar-password" onclick="closePopupMessage()" type="button">OK</button></div>'; 
-							$('#msg-session').html(msgError);
-							openModal("#popup-message-session","");
-						}else{
-							var msgError = '<div style="font-family: \'Roboto\';"><div><img src="layer-view-image/client/alerta.png" style="margin-bottom:20px;"><p style="text-align: center;margin: 0px; line-height: 20px;"><b>Detectamos una irregularidad en tu cuenta</b><br><br>Por tu seguridad y de acuerdo con lo establecido en los T&C tu cuenta está bloqueada temporalmente. Informaremos a tu correo registrado</p></div><br><br>'+
-							'<button class="btn btn-recuperar-password" onclick="closePopupMessage()" type="button">OK</button></div>'; 
-							$('#msg-session').html(msgError);
-							openModal("#popup-message-session","");
-						}
-					}else{
-						deleteTokenizedCard();
-						showMessageErrorVisa(title_error_general,data.message);
-					}
-				}
-				$('body').find('#loadTokenization').remove();
-			})
-			.fail(function(jqXHR, textStatus, errorThrown) {
-				if(jqXHR.status==403){
-					window.location.href = 'home.html';
-				}else{
-					$('body').find('#loadTokenization').remove();
-					showMessageError(title_error_general,msg_error_general);
-				}
-			});
-		}else if(framePago.style.display == 'none'){//si cancelo
+		if(framePago!=null && framePago!=undefined){
+			visanetWidgetSeen = true;
+		}
+		if((framePago==null || framePago==undefined) && (visanetCompletedSignal || visanetWidgetSeen)){
+			finalizeTokenizationVisa();
+			return;
+		}
+		if(framePago!=null && framePago!=undefined && framePago.style.display == 'none'){//si cancelo
 			$('body').find('#loadTokenization').remove();
 			$('body').find('#div-lightbox-tokenization-ilot').remove();	
 			deleteTokenizedCard();
@@ -4169,45 +5053,14 @@ function checkFormAgora(){
 		var frameVisa = document.getElementById("frmLightboxTokenization");
 		var iframeDocument = frameVisa.contentDocument;
 		var framePago = iframeDocument.getElementById("visaNetJS");
-		if(framePago==null || framePago==undefined){//si ya tokenizo
-			$('body').find('#loadTokenization').remove();
-			$('body').find('#div-lightbox-tokenization-ilot').remove();	
-			clearInterval(intervalAgora);
-			
-			$('body').append('<i id="loadTokenization" class="loadingMobile" style="z-index: 10001 !important;"></i>');
-			var vheaders={"prizetoken":$('#prizetoken').val()};
-			$.ajax({
-		        type: "POST",
-		        url: "getTokenizedCardAgora.html",
-		        headers: vheaders,
-		        dataType: "json",
-			})
-			.done(function(data) {
-				if(data.status=="OK"){
-					$('#tarjetaTokenizadaAgora').text("Tarjeta: "+data.cardNumber);
-					$('#txtTarjetaTokenizadaAgora').val(data.cardNumber);
-					$('#divAgora').removeClass('is-error');
-					
-					$('#visaCardButtonAgora').fadeOut(250, function () {
-						setTimeout(function () {
-						  $('#visaCardTextAgora').removeClass('hidden');
-						}, 250);
-					});
-				}else{
-					deleteTokenizedCardAgora();
-					showMessageErrorAgora(title_error_general,data.message);
-				}
-				$('body').find('#loadTokenization').remove();
-			})
-			.fail(function(jqXHR, textStatus, errorThrown) {
-				if(jqXHR.status==403){
-					window.location.href = 'home.html';
-				}else{
-					$('body').find('#loadTokenization').remove();
-					showMessageError(title_error_general,msg_error_general);
-				}				
-			});
-		}else if(framePago.style.display == 'none'){//si cancelo
+		if(framePago!=null && framePago!=undefined){
+			agoraWidgetSeen = true;
+		}
+		if((framePago==null || framePago==undefined) && (agoraCompletedSignal || agoraWidgetSeen)){
+			finalizeTokenizationAgora();
+			return;
+		}
+		if(framePago!=null && framePago!=undefined && framePago.style.display == 'none'){//si cancelo
 			$('body').find('#loadTokenization').remove();
 			$('body').find('#div-lightbox-tokenization-ilot').remove();	
 			deleteTokenizedCardAgora();
@@ -4224,6 +5077,8 @@ function checkFormAgora(){
 function deleteTokenizedCard(){
 	$('#tarjetaTokenizada').text("");
 	$('#txtTarjetaTokenizada').val("");
+	visanetWidgetSeen = false;
+	visanetCompletedSignal = false;
 	
 	$('#visaCardText').addClass('hidden');
 	$('#visaCardButton').fadeIn(1);
@@ -4256,6 +5111,8 @@ function deleteTokenizedCard(){
 function deleteTokenizedCardAgora(){
 	$('#tarjetaTokenizadaAgora').text("");
 	$('#txtTarjetaTokenizadaAgora').val("");
+	agoraWidgetSeen = false;
+	agoraCompletedSignal = false;
 	
 	$('#visaCardTextAgora').addClass('hidden');
 	$('#visaCardButtonAgora').fadeIn(1);
@@ -4337,6 +5194,14 @@ function createRequest(e,url,data){
 }
 
 function showRequestSuccessModal(data){
+	var now = new Date();
+	var dd = ("0" + now.getDate()).slice(-2);
+	var mm = ("0" + (now.getMonth() + 1)).slice(-2);
+	var yyyy = now.getFullYear();
+	var hh = ("0" + now.getHours()).slice(-2);
+	var mi = ("0" + now.getMinutes()).slice(-2);
+	var currentDateHour = dd + "/" + mm + "/" + yyyy + " - " + hh + ":" + mi;
+
 	if(data.paymentType==='VISA'){
 		accAmtVisa+=parseInt(data.amount,10);
 		$("#message-modal-success").html(data.messageSuccess);
@@ -4430,6 +5295,41 @@ function showRequestSuccessModal(data){
 	}
 	//$("#message-modal-success").html(data.messageSuccess);
 	$("#saldoLiquidable").text(data.saldoLiquidable);
+	try {
+		if (typeof console !== "undefined" && console && typeof console.log === "function") {
+			console.log("[TA][showRequestSuccessModal] requestNumber:", data.requestNumber, "requestDateHour:", data.requestDateHour);
+			console.log("[TA][showRequestSuccessModal] localStorage requestNumber:", localStorage.getItem("requestNumber"), "localStorage requestDateHour:", localStorage.getItem("requestDateHour"));
+		}
+		var reqNum = (data.requestNumber != undefined && data.requestNumber != null && data.requestNumber !== '')
+			? data.requestNumber
+			: localStorage.getItem("requestNumber");
+
+		//var reqDate = (data.requestDateHour != undefined && data.requestDateHour != null && data.requestDateHour !== '')
+		//	? data.requestDateHour
+		//	: localStorage.getItem("requestDateHour");
+
+		var reqDate = currentDateHour;
+		if (typeof console !== "undefined" && console && typeof console.log === "function") {
+			console.log("[TA][showRequestSuccessModal] resolved meta => reqNum:", reqNum, "reqDate:", reqDate);
+		}
+		if (reqNum) {
+			$("#taSuccessRequestNumber").text(reqNum);
+		} else {
+			$("#taSuccessRequestNumber").text("");
+		}
+		if (reqDate) {
+			$("#taSuccessRequestDateHour").text(reqDate);
+		} else {
+			$("#taSuccessRequestDateHour").text("");
+		}
+		if (!reqNum && !reqDate) {
+			$("#taSuccessMeta").hide();
+		} else {
+			$("#taSuccessMeta").show();
+		}
+	} catch (e) {
+		// no-op
+	}
 	cleanPaymentPrize();
 	simpleModal.onToggleModalMsg("#modal-success");
 } 
@@ -4849,6 +5749,7 @@ function irVisa(){
 }
 
 function confirmarRetiroTransferencia(){
+	try { localStorage.setItem("statusPin", ""); } catch (ePin) {}
 	$('#confirmaMontoTransferencia').html(floatFormat($('#amountTransferencia').val()).replace(".00",""));
 	$("#filaJugadaGratisCD").css("display","none");
 	if(pantallaListaRecurrente){
@@ -4895,11 +5796,16 @@ function confirmarRetiroTransferencia(){
 }
 
 function continuarRetiroTransferencia(){
+	if (localStorage.getItem("statusPin") !== 'OK') {
+		continuarRetiroTransferenciaPin();
+		return;
+	}
+	var cfgTrans = getPinModalConfig('TRANSFERENCIA');
 	
 	$('#ecoPinTitulo').html("");
 	$('#ecoPinMensaje').html("");
-	$('#ecoPinMensajeError').html("");    	
-	$('#modal-confirmar-retiro-transferencia-pin').fadeOut(250);
+	$(cfgTrans.error).html("");    	
+	$(cfgTrans.modal).fadeOut(250);
 
 	$('#aceptar-confirmar-retiro-transferencia').attr("disabled", "disabled");
 	$('#regresar-transferencia').attr("disabled", "disabled");
@@ -4959,6 +5865,10 @@ function pantallaTraRango1(){
 		$("#msgErrorRangoMontosTransferencia").text("Ingrese un monto entre S/"+amountMinRequestTraFormateado+" y S/"+amountMaxRequestTraFormateado+" soles");		    	
     	$('#amountTransferencia').attr("data-min", configLoaded.amountMinRequestTra);
     	$('#amountTransferencia').attr("data-max", configLoaded.amountMaxRequestTra);
+		$("#rangoMontosTransferencia").attr('data-min-value', amountMinRequestTraFormateado);
+		$("#rangoMontosTransferencia").attr('data-max-value', amountMaxRequestTraFormateado);
+		if(typeof window.syncRangeMirrors === 'function') window.syncRangeMirrors();
+		updateRangeErrorAmountTransferencia();
     	
     	//var isDniActive=acondicionaSeccionDniTransferencia();  
     	var isDniActive=false;
@@ -5008,6 +5918,10 @@ function pantallaTraRango2(){
 		$("#msgErrorRangoMontosTransferencia").text("Ingrese un monto entre S/"+amountMinRquTraRan2Formateado+" y S/"+amountMaxRquTraRan2Formateado+" soles");
     	$('#amountTransferencia').attr("data-min", configLoaded.amountMinRquTraRan2);
     	$('#amountTransferencia').attr("data-max", configLoaded.amountMaxRquTraRan2);
+		$("#rangoMontosTransferencia").attr('data-min-value', amountMinRquTraRan2Formateado);
+		$("#rangoMontosTransferencia").attr('data-max-value', amountMaxRquTraRan2Formateado);
+		if(typeof window.syncRangeMirrors === 'function') window.syncRangeMirrors();
+		updateRangeErrorAmountTransferencia();
     	//var isDniActive=acondicionaSeccionDniTransferencia();	
     	var isDniActive=false;
     	if( stateReqKycTrans !=='ACTIVO' ){
@@ -5055,6 +5969,10 @@ function pantallaTraRango3(){
 		$("#msgErrorRangoMontosTransferencia").text("Ingrese un monto a partir de S/"+amountMinRquTraRan3Formateado+" soles");
 		$('#amountTransferencia').attr("data-min", configLoaded.amountMinRquTraRan3);
     	$('#amountTransferencia').attr("data-max", 99999999);
+		$("#rangoMontosTransferencia").attr('data-min-value', amountMinRquTraRan3Formateado);
+		$("#rangoMontosTransferencia").removeAttr('data-max-value');
+		if(typeof window.syncRangeMirrors === 'function') window.syncRangeMirrors();
+		updateRangeErrorAmountTransferencia();
 
     	var isDniActive=false;
     	if( stateReqKycTrans !=='ACTIVO' ){
@@ -5095,7 +6013,15 @@ function prepararPantallaTransferencia(data){
 	objListAccount = JSON.parse(data.getSavingsAccount);
 	if(objListAccount.length>0){
 		prepararPantallaRecurrenteTransferencia(objListAccount);
+	} else {
+		htmlPantallaRecurrenteRango1 = "";
+		htmlPantallaRecurrenteRango2_3 = "";
+		pantallaListaRecurrente = false;
+		pantallaCuentasGuardadasVaciaTransferencia = false;
+		$('#listaCuentaAhorros').html('');
+		$('#emptyCuentasGuardadasTransferencia').hide();
 	}
+	actualizarTabsTransferenciaCuentaAhorros();
 	
 	var amountMinRquTraRan3Formateado = floatFormat(data.amountMinRquTraRan3).replace(".00","");
 	var maxAmtPerWeekTraRan3Formateado = floatFormat(data.maxAmtPerWeekTraRan3).replace(".00","");
@@ -5111,6 +6037,7 @@ function prepararPantallaTransferencia(data){
 		$("#msgErrorRangoMontosTransferencia").text("Ingrese un monto a partir de S/"+amountMinRquTraRan3Formateado+" soles");
 		$('#amountTransferencia').attr("data-min", data.amountMinRquTraRan3);
     	$('#amountTransferencia').attr("data-max", 99999999);
+		updateRangeErrorAmountTransferencia();
 		
 		transHorarios="Por tu seguridad, un representante de La Tinka se contactará contigo para coordinar el proceso de tu pago en un plazo máximo de 90 días"; 
 		if(data.maxRquPerDayTraRan3=="1"){
@@ -5152,6 +6079,7 @@ function prepararPantallaTransferencia(data){
     	$("#msgErrorRangoMontosTransferencia").text("Ingrese un monto entre S/"+amountMinRquTraRan2Formateado+" y S/"+amountMaxRquTraRan2Formateado+" soles");
     	$('#amountTransferencia').attr("data-min", data.amountMinRquTraRan2);
     	$('#amountTransferencia').attr("data-max", data.amountMaxRquTraRan2);
+		updateRangeErrorAmountTransferencia();
     	
 		transHorarios="Por tu seguridad, un representante de La Tinka se contactará contigo para coordinar el proceso de tu pago en un plazo máximo de 30 días";
 		if(data.maxRquPerDayTraRan2=="1"){
@@ -5217,7 +6145,9 @@ function prepararPantallaTransferencia(data){
     	$("#msgErrorRangoMontosTransferencia").text("Ingrese un monto entre S/"+amountMinRequestTraFormateado+" y S/"+amountMaxRequestTraFormateado+" soles");		    	
     	$('#amountTransferencia').attr("data-min", data.amountMinRequestTra);
     	$('#amountTransferencia').attr("data-max", data.amountMaxRequestTra);
+		updateRangeErrorAmountTransferencia();
 		
+		// INFO (oculto): aquí se construye el texto informativo de Transferencia (horarios/límites).
 		transHorarios="Confirmado tu retiro, éste será transferido dentro de los siguientes 60 minutos, de lunes a viernes de 9:00 am a 7:00 pm y sábados de 9:00 am a 2:00 pm.";
 		if(data.maxRequestPerDayTra=="1"){
 			transLimites="Retira 1 transacción diaria."+(data.maxAmountPerWeekTra>0?(" Retiro máximo semanal S/"+maxAmountPerWeekTraFormateado):"");
@@ -5272,24 +6202,28 @@ function prepararPantallaTransferencia(data){
 			}
 		}else{
 			if(stateRequestTraRan2=='ACTIVO'){
-				$("#rangoMontosTransferencia").html("Min S/ "+amountMinRequestTraFormateado+" - Máx S/ "+amountMaxRquTraRan2Formateado);
+				// UX: unificar rangos cuando existen 2 rangos (Ran1+Ran2) y no mostrar tabs de rango.
+				var $rangoTra = $("#rangoMontosTransferencia");
+				var minLabelTra = $rangoTra.attr('data-min-label') || 'Min';
+				var maxLabelTra = $rangoTra.attr('data-max-label') || 'Máx';
+				$rangoTra.attr('data-min-value', amountMinRequestTraFormateado);
+				$rangoTra.attr('data-max-value', amountMaxRquTraRan2Formateado);
+				$rangoTra.text(minLabelTra + ' ' + amountMinRequestTraFormateado + ' - ' + maxLabelTra + ' ' + amountMaxRquTraRan2Formateado);
 				
-				$("#divTransRangos").css('margin-bottom','172px');
+				$("#msgErrorRangoMontosTransferencia").text("Ingrese un monto entre S/"+amountMinRequestTraFormateado+" y S/"+amountMaxRquTraRan2Formateado+" soles");
+				$('#amountTransferencia').attr("data-min", data.amountMinRequestTra);
+				$('#amountTransferencia').attr("data-max", data.amountMaxRquTraRan2);
+				if(typeof window.syncRangeMirrors === 'function') window.syncRangeMirrors();
+				updateRangeErrorAmountTransferencia();
+
+				$("#divTransRangos").css('margin-bottom','120px');
 				$("#divTransRangos").html(
-						'<div>'+
-					        '<div id="transRango1" onclick="pantallaTraRango1()" style="width: 49%;margin: 0px;float: left;font-family: Roboto, sans-serif;font-size: 12px;background-color: #006841;color: white;text-align: center;margin-right: 1%;">'+
-					        	'<p>De S/ '+amountMinRequestTraFormateado+'<br>a S/ '+amountMaxRequestTraFormateado+'</p>'+
-					        '</div>'+
-							'<div id="transRango2" onclick="pantallaTraRango2()" style="width: 49%;margin: 0px;float: left;font-family: Roboto, sans-serif;font-size: 12px;background-color: #e9e5df;color: black;text-align: center;margin-right: 1%;">'+
-					          	'<p>De S/ '+amountMinRquTraRan2Formateado+'<br>a S/ '+amountMaxRquTraRan2Formateado+'</p>'+
-					        '</div>'+
-					    '</div>'+
 						'<div id="transHorario" style="background-color: #c0e4d6;float: left;width: 99%;font-family: Roboto, sans-serif;font-size: 11.5px;text-align: justify;color: #006841;">'+
-				             '<p style="padding-right: 6.66667%;padding-left: 6.66667%;" id="transHorarioText">'+transHorarios+'</p>'+
-				        '</div>'+        
-				        '<div id="transLimites" style="float: left;width: 99%;font-family: Roboto, sans-serif;font-size: 12px;text-align: justify;color: black;">'+
-				        	'<p style="padding-right: 6.66667%;padding-left: 6.66667%;" id="transLimitesText">'+transLimites+'</p>'+
-				        '</div>'
+					             '<p style="padding-right: 6.66667%;padding-left: 6.66667%;" id="transHorarioText">'+transHorarios+'</p>'+
+					        '</div>'+        
+					        '<div id="transLimites" style="float: left;width: 99%;font-family: Roboto, sans-serif;font-size: 12px;text-align: justify;color: black;">'+
+					        	'<p style="padding-right: 6.66667%;padding-left: 6.66667%;" id="transLimitesText">'+transLimites+'</p>'+
+					        '</div>'
 				);
 			}else{
 				$("#rangoMontosTransferencia").html("Monto entre <br>S/"+amountMinRequestTraFormateado+" - S/"+amountMaxRequestTraFormateado);
@@ -5320,119 +6254,225 @@ function prepararPantallaTransferencia(data){
 			}
 		}
 		
-		$("#ibanco").html(htmlBancosDisponiblesRango1);
+		var bancosHtml = htmlBancosDisponiblesRango1;
+		// Si Ran1+Ran2 están activos pero ya no mostramos tabs de rango, mostramos una lista unificada de bancos.
+		if (stateRequestTraRan2 == 'ACTIVO' && stateRequestTraRan3 != 'ACTIVO') {
+			bancosHtml = mergeSelectOptionsHtml(htmlBancosDisponiblesRango1, htmlBancosDisponiblesRango2_3);
+		}
+		$("#ibanco").html(bancosHtml);
 		$("#ibanco").val("").change();
 		$('#divBanco').removeClass('is-error');	
 	}
 	enviarDataLayer = true;
 }
 
+function mergeSelectOptionsHtml(htmlA, htmlB){
+	try {
+		var $sel = $('<select>' + (htmlA || '') + '</select>');
+		var seen = {};
+		$sel.find('option').each(function(){
+			var v = ($(this).attr('value') || '').toString();
+			seen[v] = true;
+		});
+
+		var $selB = $('<select>' + (htmlB || '') + '</select>');
+		$selB.find('option').each(function(){
+			var v = ($(this).attr('value') || '').toString();
+			if (!seen[v]) {
+				$sel.append($(this).clone());
+				seen[v] = true;
+			}
+		});
+		return $sel.html();
+	} catch (e) {
+		return htmlA || htmlB || '';
+	}
+}
+
 function desactivarPantallaRecurrenteTransferencia(){
 	pantallaListaRecurrente=false;
+	pantallaCuentasGuardadasVaciaTransferencia=false;
 	$("#stepBancoTransferencia").removeClass('hidden');
 	$("#stepCuentaTransferencia").removeClass('hidden');
 	$("#divStepDeparmentTransferencia").removeClass('hidden');
 	$("#divRecurrencia").removeClass('hidden');
 	$('#stepRecurrentesTransferencia').addClass('hidden');
+	$('#emptyCuentasGuardadasTransferencia').hide();
 	$("#stepDniTransferencia").html("4");
 	$('#ibanco').attr("data-valid", "required");
 	$('#inumacount').attr("data-valid", "account");
 	$('#ideparment').attr("data-valid", "required");
 	$('#listaCuentaAhorros').removeAttr("data-valid");
 	$("#stepCardSDKTransferencia").html("5");
+	setActiveTabTransferenciaCuentaAhorros('datos');
 	onChangeAmountTransferencia();
+}
+
+function usarOtraCuentaAhorrosTransferencia(){
+	// Acción explícita del usuario: no permitir que el auto-seleccionado vuelva a cambiar el tab.
+	transferenciaTabUserSelected = true;
+	desactivarPantallaRecurrenteTransferencia();
 }
 
 function activarPantallaRecurrenteTransferencia(){
 	pantallaListaRecurrente=true;
+	pantallaCuentasGuardadasVaciaTransferencia=false;
 	$("#stepBancoTransferencia").addClass('hidden');
 	$("#stepCuentaTransferencia").addClass('hidden');
 	$("#divStepDeparmentTransferencia").addClass('hidden');
 	$("#divRecurrencia").addClass('hidden');
 	$('#stepRecurrentesTransferencia').removeClass('hidden');
+	$('#emptyCuentasGuardadasTransferencia').hide();
 	$("#stepDniTransferencia").html("3");
 	$('#ibanco').removeAttr("data-valid");
 	$('#inumacount').removeAttr("data-valid");
 	$('#ideparment').removeAttr("data-valid");
 	$('#listaCuentaAhorros').attr("data-valid", "radio-group");
 	$("#stepCardSDKTransferencia").html("3");
+	setActiveTabTransferenciaCuentaAhorros('cuentas');
+}
+
+function hasCuentasGuardadasTransferencia(){
+	return ((typeof htmlPantallaRecurrenteRango1 !== 'undefined') && htmlPantallaRecurrenteRango1 !== "")
+		|| ((typeof htmlPantallaRecurrenteRango2_3 !== 'undefined') && htmlPantallaRecurrenteRango2_3 !== "");
+}
+
+function activarPantallaSinCuentasGuardadasTransferencia(){
+	// Vista "Cuentas guardadas" sin registros: muestra empty-state y evita enviar solicitud.
+	pantallaListaRecurrente=false;
+	pantallaCuentasGuardadasVaciaTransferencia=true;
+
+	$("#stepBancoTransferencia").addClass('hidden');
+	$("#stepCuentaTransferencia").addClass('hidden');
+	$("#divStepDeparmentTransferencia").addClass('hidden');
+	$("#divRecurrencia").addClass('hidden');
+	$('#stepRecurrentesTransferencia').removeClass('hidden');
+	$('#listaCuentaAhorros').removeAttr('data-valid');
+	$('#listaCuentaAhorros').html('');
+	$('#emptyCuentasGuardadasTransferencia').show();
+	setActiveTabTransferenciaCuentaAhorros('cuentas');
+	updateRangeErrorAmountTransferencia();
+}
+
+function initTabsTransferenciaCuentaAhorros(){
+	// Tabs locales del modal de transferencia (no se mezclan con los tabs globales Retiro/Historial)
+	$(document).on('click', '#tabsTransferencia .tab-btn[data-action]', function (e) {
+		e.preventDefault();
+		transferenciaTabUserSelected = true;
+		var action = $(this).attr('data-action');
+		if (action === 'cuentas') {
+			if (hasCuentasGuardadasTransferencia()) {
+				$('#emptyCuentasGuardadasTransferencia').hide();
+				activarPantallaRecurrenteTransferencia();
+			} else {
+				activarPantallaSinCuentasGuardadasTransferencia();
+				return;
+			}
+		} else {
+			desactivarPantallaRecurrenteTransferencia();
+		}
+		setActiveTabTransferenciaCuentaAhorros(action);
+	});
+}
+
+function setActiveTabTransferenciaCuentaAhorros(action){
+	var $tabs = $('#tabsTransferencia');
+	if ($tabs.length === 0) return;
+	$tabs.find('.tab-btn').removeClass('active');
+	$tabs.find('.tab-btn[data-action="' + action + '"]').addClass('active');
+}
+
+function actualizarTabsTransferenciaCuentaAhorros(){
+	var $tabs = $('#tabsTransferencia');
+	if ($tabs.length === 0) return;
+	var hasRecurrent = hasCuentasGuardadasTransferencia();
+	$tabs.show();
+
+	// Si el usuario no eligió tab aún, al entrar se prefiere "Cuentas guardadas".
+	if (transferenciaTabUserSelected !== true) {
+		autoSelectTabTransferenciaCuentaAhorrosOnEntry();
+		// autoSelectTab... ya ajusta pantalla + tab; no seguir pisando estado.
+		return;
+	}
+
+	if (pantallaCuentasGuardadasVaciaTransferencia === true) {
+		setActiveTabTransferenciaCuentaAhorros('cuentas');
+		$('#emptyCuentasGuardadasTransferencia').toggle(!hasRecurrent);
+		if (hasRecurrent) {
+			// Si el usuario estaba en "Cuentas guardadas" y luego aparecen cuentas,
+			// mantenerlo en ese tab (no regresar a "Nueva cuenta").
+			pantallaCuentasGuardadasVaciaTransferencia = false;
+			$('#emptyCuentasGuardadasTransferencia').hide();
+			activarPantallaRecurrenteTransferencia();
+			setActiveTabTransferenciaCuentaAhorros('cuentas');
+		}
+		return;
+	}
+
+	// Si hay cuentas guardadas y estamos en pantalla recurrente, marca tab "cuentas".
+	if (hasRecurrent && pantallaListaRecurrente === true) {
+		setActiveTabTransferenciaCuentaAhorros('cuentas');
+		$('#emptyCuentasGuardadasTransferencia').hide();
+	} else {
+		setActiveTabTransferenciaCuentaAhorros('datos');
+		$('#emptyCuentasGuardadasTransferencia').hide();
+	}
 }
 
 function prepararPantallaRecurrenteTransferencia(objListAccount){
 	htmlPantallaRecurrenteRango1="";
 	htmlPantallaRecurrenteRango2_3="";
 	var htmlListAccount="";
+	var bankShort = "";
+	var avatar = "";
 	for(var i=0; i<objListAccount.length; i++){						 
+		 var bankName = objListAccount[i].bank;
 		 if("Interbank"==objListAccount[i].bank){
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'">'+
-									'<img class="logo-ibk-pp" style="height: 22px; width: 50px;" src="layer-view-image/client/logo-interbank-pp.png">'+
-									'<span style="float: right; margin-top: 2px; padding-left: 10px;">'+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrenteRango1+=htmlListAccount;
-			 htmlPantallaRecurrenteRango2_3+=htmlListAccount;
+			 bankShort = "Interbank";
+			 avatar = "I";
 		 }else if("Banco de Credito"==objListAccount[i].bank){
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'">'+
-									'<img class="logo-bcp-pp" style="height: 20px; width: 60px;" src="layer-view-image/client/logo-bcp-pp.png">'+
-									'<span style="float: right; margin-top: 2px; padding-left: 10px;">'+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrenteRango1+=htmlListAccount;
-			 htmlPantallaRecurrenteRango2_3+=htmlListAccount;
+			 bankShort = "BCP";
+			 avatar = "B";
 		 }else if("Banco Continental"==objListAccount[i].bank){
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'">'+
-									'<img class="logo-bbva-pp" style="height: 20px; width: 60px;" src="layer-view-image/client/logo-bbva-pp.png">'+
-									'<span style="float: right; margin-top: 2px; padding-left: 10px;">'+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrenteRango1+=htmlListAccount;
-			 htmlPantallaRecurrenteRango2_3+=htmlListAccount;
+			 bankShort = "BBVA";
+			 avatar = "B";
 		 }else if("Scotiabank"==objListAccount[i].bank){
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'">'+
-									'<img class="logo-sck-pp" style="height: 20px; width: 65px;" src="layer-view-image/client/logo-scotiabank-pp.png">'+
-									'<span style="float: right; margin-top: 2px; padding-left: 10px;">'+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrenteRango1+=htmlListAccount;
+			 bankShort = "Scotiabank";
+			 avatar = "S";
 		 }else{
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'"><span style="float: right; margin-top: 2px;">CCI '+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrenteRango1+=htmlListAccount;
-			 htmlPantallaRecurrenteRango2_3+=htmlListAccount;
+			 bankShort = "CCI";
+			 avatar = "C";
+		 }
+
+		 htmlListAccount =
+			 '<div class="item-radio cuenta-guardada">' +
+				 '<label class="lq-radio cuenta-guardada__label">' +
+					 '<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="' + objListAccount[i].accountNumber + '">' +
+					 '<span class="cuenta-guardada__avatar">' + avatar + '</span>' +
+					 '<span class="cuenta-guardada__content">' +
+						 '<span class="cuenta-guardada__title">' + bankShort + '</span>' +
+						 '<span class="cuenta-guardada__subtitle">' + objListAccount[i].accountNumber + '</span>' +
+					 '</span>' +
+					 '<div class="check"></div>' +
+				 '</label>' +
+				 '<div class="delradio cuenta-guardada__delete" onclick="confirmarEliminarCuentaTransferencia(\'' + objListAccount[i].accountNumber + '\',\'' + objListAccount[i].bank + '\')"><img class="icon_eliminar" src="layer-view-image/client/papelera.png" alt="Eliminar"></div>' +
+			 '</div>';
+
+		 // Mantener comportamiento original: Scotiabank solo aplica a rango 1
+		 htmlPantallaRecurrenteRango1 += htmlListAccount;
+		 if (bankName !== 'Scotiabank') {
+			 htmlPantallaRecurrenteRango2_3 += htmlListAccount;
 		 }
 	}	
 	if(htmlPantallaRecurrenteRango1!=""){
-		htmlPantallaRecurrenteRango1="<hr>"+htmlPantallaRecurrenteRango1+'<div class="input__error" id="msgErrorSeleccionarCuentaRecurrente">Selecciona una cuenta de ahorros</div>';
+		htmlPantallaRecurrenteRango1=htmlPantallaRecurrenteRango1+'<div class="input__error" id="msgErrorSeleccionarCuentaRecurrente">Selecciona una cuenta de ahorros</div>';
 	}
 	if(htmlPantallaRecurrenteRango2_3!=""){
-		htmlPantallaRecurrenteRango2_3="<hr>"+htmlPantallaRecurrenteRango2_3+'<div class="input__error" id="msgErrorSeleccionarCuentaRecurrente">Selecciona una cuenta de ahorros</div>';
+		htmlPantallaRecurrenteRango2_3=htmlPantallaRecurrenteRango2_3+'<div class="input__error" id="msgErrorSeleccionarCuentaRecurrente">Selecciona una cuenta de ahorros</div>';
 	}
+	$('#emptyCuentasGuardadasTransferencia').hide();
+	pantallaCuentasGuardadasVaciaTransferencia=false;
+	actualizarTabsTransferenciaCuentaAhorros();
 }
 
 function confirmarEliminarCuentaTransferencia(cuenta,banco){
@@ -5528,10 +6568,36 @@ function irTransferencia(){
 	$("#amountTransferencia").val($("#amountEfectivo").val());
 	$("#amountTransferencia").keyup();
 	cleanPaymentPrizeCash();
-	$("#accordion_transferencia").addClass('opened');
-	$("#accordion_transferencia").find('.accordion__body').css('display','block');
+	resetPreferenciaTabTransferenciaCuentaAhorros();
+	if ($('#modal-retiro-transferencia').length && typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
+		simpleModal.onToggleModalMsg('#modal-retiro-transferencia');
+	} else {
+		$("#accordion_transferencia").addClass('opened');
+		$("#accordion_transferencia").find('.accordion__body').css('display','block');
+	}
+	setTimeout(autoSelectTabTransferenciaCuentaAhorrosOnEntry, 0);
 	setTimeout(function() { $("#amountTransferencia").focus(); }, 0);
 	$('#modal-confirmar-retiro-efectivo').fadeOut(250);
+}
+
+function volverATabSolicitarRetiro(){
+	// Regresa al modal principal y fuerza el tab global "Solicitar Retiro".
+	try {
+		if (typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
+			simpleModal.onToggleModalMsg('#modal-premios');
+		} else {
+			$('#modal-premios').fadeIn(350);
+			$('body').addClass('no-scroll');
+		}
+	} catch (e) {
+		// noop
+	}
+
+	setTimeout(function () {
+		var btn = document.querySelector('#modal-premios .tabs-retiro[data-tab-scope="#bodyPrincipal"] .tab-btn[data-tab="tab-retiro"]');
+		if (btn && typeof btn.click === 'function') btn.click();
+	}, 0);
+	return false;
 }
 
 function acondicionaSeccionDniTransferencia(){
@@ -5922,59 +6988,46 @@ function prepararPantallaTransferenciaPML(data){
 function prepararPantallaRecurrenteTransferenciaPML(objListAccount){
 	htmlPantallaRecurrentePML="";
 	var htmlListAccount="";
+	var bankShort = "";
+	var avatar = "";
 	for(var i=0; i<objListAccount.length; i++){						 
-		 if("Interbank"==objListAccount[i].bank){
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'">'+
-									'<img class="logo-ibk-pp" style="height: 22px; width: 50px;" src="layer-view-image/client/logo-interbank-pp.png">'+
-									'<span style="float: right; margin-top: 2px; padding-left: 10px;">'+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrentePML+=htmlListAccount;
-		 }else if("Banco de Credito"==objListAccount[i].bank){
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'">'+
-									'<img class="logo-bcp-pp" style="height: 20px; width: 60px;" src="layer-view-image/client/logo-bcp-pp.png">'+
-									'<span style="float: right; margin-top: 2px; padding-left: 10px;">'+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrentePML+=htmlListAccount;
-		 }else if("Banco Continental"==objListAccount[i].bank){
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'">'+
-									'<img class="logo-bbva-pp" style="height: 20px; width: 60px;" src="layer-view-image/client/logo-bbva-pp.png">'+
-									'<span style="float: right; margin-top: 2px; padding-left: 10px;">'+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrentePML+=htmlListAccount;
-		 }else if("Scotiabank"==objListAccount[i].bank){
-
-		 }else{
-			 htmlListAccount=  '<div class="item-radio" style="margin-top: 10px;margin-bottom: 10px;">'+
-								  '<label class="lq-radio" style="margin-bottom: 0px;">'+
-									'<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="'+objListAccount[i].accountNumber+'"><span style="float: right; margin-top: 2px;">CCI '+objListAccount[i].accountNumber+'</span>'+
-									'<div class="check"></div>'+
-								  '</label>'+
-								  '<div class="delradio" onclick="confirmarEliminarCuentaTransferencia(\''+objListAccount[i].accountNumber+'\',\''+objListAccount[i].bank+'\')" style="margin-top: 3px;"><img class="icon_eliminar" style="width: 14px;" src="layer-view-image/client/papelera.png"></div>'+
-								'</div>'+
-								'<hr>';
-			 htmlPantallaRecurrentePML+=htmlListAccount;
+		 var bankName = objListAccount[i].bank;
+		 // Mantener comportamiento original: Scotiabank no se lista en PML
+		 if (bankName === 'Scotiabank') {
+			 continue;
 		 }
+		 if("Interbank"==objListAccount[i].bank){
+			 bankShort = "Interbank";
+			 avatar = "I";
+		 }else if("Banco de Credito"==objListAccount[i].bank){
+			 bankShort = "BCP";
+			 avatar = "B";
+		 }else if("Banco Continental"==objListAccount[i].bank){
+			 bankShort = "BBVA";
+			 avatar = "B";
+		 }else{
+			 bankShort = "CCI";
+			 avatar = "C";
+		 }
+
+		 htmlListAccount =
+			 '<div class="item-radio cuenta-guardada">' +
+				 '<label class="lq-radio cuenta-guardada__label">' +
+					 '<input class="lq-radio__input" type="radio" name="card" onchange="handleCuentaSeleccionadaTrans();" value="' + objListAccount[i].accountNumber + '">' +
+					 '<span class="cuenta-guardada__avatar">' + avatar + '</span>' +
+					 '<span class="cuenta-guardada__content">' +
+						 '<span class="cuenta-guardada__title">' + bankShort + '</span>' +
+						 '<span class="cuenta-guardada__subtitle">' + objListAccount[i].accountNumber + '</span>' +
+					 '</span>' +
+					 '<div class="check"></div>' +
+				 '</label>' +
+				 '<div class="delradio cuenta-guardada__delete" onclick="confirmarEliminarCuentaTransferencia(\'' + objListAccount[i].accountNumber + '\',\'' + objListAccount[i].bank + '\')"><img class="icon_eliminar" src="layer-view-image/client/papelera.png" alt="Eliminar"></div>' +
+			 '</div>';
+
+		htmlPantallaRecurrentePML += htmlListAccount;
 	}	
 	if(htmlPantallaRecurrentePML!=""){
-		htmlPantallaRecurrentePML="<hr>"+htmlPantallaRecurrentePML+'<div class="input__error" id="msgErrorSeleccionarCuentaRecurrentePML">Selecciona una cuenta de ahorros</div>';
+		htmlPantallaRecurrentePML=htmlPantallaRecurrentePML+'<div class="input__error" id="msgErrorSeleccionarCuentaRecurrentePML">Selecciona una cuenta de ahorros</div>';
 	}
 }
 
@@ -6015,20 +7068,124 @@ function closeModal(state) {
 
 
 function continuarRetiroTransferenciaPin(){
-	
+	try { localStorage.setItem("statusPin", ""); } catch (e0) {}
 	confirmarRetiroTransferenciaPin(null,"type=TRANSFERENCIA&amount="+$('#amountTransferencia').val());   // confirmaMontoTransferencia 
 }
 
-function confirmarRetiroTransferenciaPin(e,data){   
-	
+function getPinModalConfig(paymentType) {
+	paymentType = (paymentType || '').toString().toUpperCase();
+	if (paymentType === 'EFECTIVO') {
+		return {
+			modal: '#modal-confirmar-retiro-efectivo-pin',
+			form: '#form_activate_cash',
+			channel: '#ecoPinChannelCash',
+			email: '#ecoPinEmailCash',
+			error: '#ecoPinMensajeErrorCash',
+			button: '#btactivatepin_cash',
+			btnEmail: '#btnReenvioCodeEmailCash',
+			btnSms: '#btnReenvioCodeSMSCash'
+		};
+	}
+	if (paymentType === 'VISA' || paymentType === 'AGORA') {
+		return {
+			modal: '#modal-confirmar-retiro-tarjeta-pin',
+			form: '#form_activate_visa',
+			channel: '#ecoPinChannelVisa',
+			email: '#ecoPinEmailVisa',
+			error: '#ecoPinMensajeErrorVisaOtp',
+			button: '#btactivatepin_visa',
+			btnEmail: '#btnReenvioCodeEmailVisa',
+			btnSms: '#btnReenvioCodeSMSVisa'
+		};
+	}
+	if (paymentType === 'TRANSFERENCIA') {
+		return {
+			modal: '#modal-confirmar-retiro-transferencia-pin',
+			form: '#form_activate_trans',
+			channel: '#ecoPinChannelTrans',
+			email: '#ecoPinEmailTrans',
+			error: '#ecoPinMensajeErrorTrans',
+			button: '#btactivatepin_trans',
+			btnEmail: '#btnReenvioCodeEmailTrans',
+			btnSms: '#btnReenvioCodeSMSTrans'
+		};
+	}
+	return {
+		modal: '#modal-confirmar-retiro-transferencia-pin',
+		form: '#form_activate_trans',
+		channel: '#ecoPinChannelTrans',
+		email: '#ecoPinEmailTrans',
+		error: '#ecoPinMensajeErrorTrans',
+		button: '#btactivatepin_trans',
+		btnEmail: '#btnReenvioCodeEmailTrans',
+		btnSms: '#btnReenvioCodeSMSTrans'
+	};
+}
+
+function resetPinModalUI(cfg) {
+	try {
+		if (!cfg) return;
+		var $form = $(cfg.form);
+		if ($form && $form.length) {
+			$form.data('submitting', false);
+			$form.removeClass('error-activate');
+			$form.find('.form__code input').val('');
+		}
+		if (cfg.error) $(cfg.error).html('');
+		if (cfg.button) $(cfg.button).attr('disabled', true);
+		if (cfg.btnEmail) { try { $(cfg.btnEmail).show().css('display','block'); } catch(e3){} }
+		if (cfg.btnSms) { try { $(cfg.btnSms).show().css('display','block'); } catch(e4){} }
+	} catch (e) {
+		// noop
+	}
+}
+
+function setPinModalHeader(cfg, paymentType, data) {
+	try {
+		var channelText = 'Efectivo / Puntos de Venta';
+		if (paymentType === 'TRANSFERENCIA') channelText = 'Transferencia Bancaria';
+		else if (paymentType === 'VISA') channelText = 'Tarjeta de cr&eacute;dito / d&eacute;bito';
+		else if (paymentType === 'AGORA') channelText = 'Agora';
+		$(cfg.channel).html(channelText);
+
+		var rawMsg = (data && data.mensaje) ? String(data.mensaje) : '';
+		var emailMatch = rawMsg.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+		$(cfg.email).text(emailMatch ? emailMatch[0] : '');
+	} catch (e) {
+		// noop
+	}
+}
+
+function openPinModal(cfg) {
+	try {
+		$(cfg.modal).fadeIn(350);
+	} catch (e) {
+		// noop
+	}
+}
+
+function confirmarRetiroTransferenciaPin(e,data){
+	try {
+		var paymentType = kycGateGetPaymentTypeFromPinData(data);
+		if (paymentType === 'EFECTIVO' || paymentType === 'VISA' || paymentType === 'TRANSFERENCIA') {
+			if (kycGateIsRequired(paymentType, data)) {
+				// Siempre mostrar el modal en etapa inicial (boton "Iniciar") al solicitar retiro,
+				// incluso si el KYC ya está verificado. Al presionar "Iniciar" pasa a "Validando identidad".
+				return kycGateOpen(paymentType, e, data);
+			}
+		}
+	} catch (e0) {
+		// noop
+	}
+	return confirmarRetiroTransferenciaPinInternal(e, data);
+}
+
+function confirmarRetiroTransferenciaPinInternal(e,data){   
 	//let $wrapper = $(e.currentTarget).closest('.content_loading');
-		
-	$('#ecoPinMensajeError').html("");
-    $("#code-01").val("");
-    $("#code-02").val("");
-    $("#code-03").val("");
-    $("#code-04").val("");
-    $("#code-05").val("");
+	// Reset UI de modales PIN (evita valores anteriores)
+	resetPinModalUI(getPinModalConfig('TRANSFERENCIA'));
+	resetPinModalUI(getPinModalConfig('VISA'));
+	resetPinModalUI(getPinModalConfig('EFECTIVO'));
     var vheaders={"prizetoken":$('#prizetoken').val()};
 	$.ajax({
         type: "POST",
@@ -6039,32 +7196,32 @@ function confirmarRetiroTransferenciaPin(e,data){
         data: data,
     })    
     .done(function(data) {
-    	if ( data.status === 'OK' ||  data.status === 'ERROR_RECREATEPIN' ) {
-    		localStorage.setItem("pinUuid", data.pinUuid);
-    		localStorage.setItem("paymentType", data.paymentType);
-        	localStorage.setItem("amount", data.amount);
-    	    $('#modal-confirmar-retiro-transferencia-pin').fadeIn(350);
+		if ( data.status === 'OK' ||  data.status === 'ERROR_RECREATEPIN' ) {
+			localStorage.setItem("pinUuid", data.pinUuid);
+			localStorage.setItem("paymentType", data.paymentType);
+	        localStorage.setItem("amount", data.amount);
 
-    		$('#ecoPinTitulo').html(data.titulo);
-    		$('#ecoPinMensaje').html(data.mensaje);
-    		$('#ecoPinMensajeError').html("");    	
-			$('#form_activate').removeClass('error-activate');	
-    		    	    
+			var paymentType = (data && data.paymentType) ? data.paymentType : localStorage.getItem('paymentType');
+			var cfg = getPinModalConfig(paymentType);
+			resetPinModalUI(cfg);
+			setPinModalHeader(cfg, paymentType, data);
+			openPinModal(cfg);
+		    	    
         } else {
-        	if(data.status === 'ERROR'){
-		      	  if(data.titulo!=undefined && data.titulo!=''){
-		      		$("#title-modal-error").html(data.titulo);
-		      	  }else{
-		      		$("#title-modal-error").html("No pudimos procesar tu solicitud");
-		      	  }
-		      	  
-		      	  $("#mensajeErrorSolicitud").html(data.mensaje);
-		      	  simpleModal.onToggleModalMsg("#modal-error");
-        	}else{
-        		console.log("status indefinido");
-        	}
+			if(data.status === 'ERROR'){
+				  if(data.titulo!=undefined && data.titulo!=''){
+					$("#title-modal-error").html(data.titulo);
+				  }else{
+					$("#title-modal-error").html("No pudimos procesar tu solicitud");
+				  }
+				  
+				  $("#mensajeErrorSolicitud").html(data.mensaje);
+				  simpleModal.onToggleModalMsg("#modal-error");
+			}else{
+				console.log("status indefinido");
+			}
         }
-    	// $wrapper.removeClass('loading');
+		// $wrapper.removeClass('loading');
 	})
 	.fail(function(jqXHR, textStatus, errorThrown) {
 
@@ -6075,27 +7232,37 @@ function confirmarRetiroTransferenciaPin(e,data){
 			window.location.href = 'inicio.html';
 		}else{
 			// $wrapper.removeClass('loading');
-			showMessageError("Tuviste una interrupción al solicitar tu retiro", "Realiza esta solicitud en unos minutos.");
+			showMessageError("Tuviste una interrupci\u00f3n al solicitar tu retiro", "Realiza esta solicitud en unos minutos.");
 		}
 	});
-	
 }
 
 function regresarRetiroTransferenciaPin(){
-	$('#ecoPinTitulo').html("");
-	$('#ecoPinMensaje').html("");
-	$('#ecoPinMensajeError').html("");    	
-	$('#modal-confirmar-retiro-transferencia-pin').fadeOut(250);
+	var cfg = getPinModalConfig((localStorage.getItem('paymentType') || 'TRANSFERENCIA'));
+	try { $(cfg.email).text(''); } catch (e0) {}
+	try { $(cfg.error).html(""); } catch (e1) {}
+	try { $(cfg.modal).fadeOut(250); } catch (e2) {}
+}
+
+function regresarRetiroEfectivoPin(){
+	resetPinModalUI(getPinModalConfig('EFECTIVO'));
+	// Volver al modal anterior (Efectivo)
+	if (typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
+		simpleModal.onToggleModalMsg('#modal-retiro-efectivo-pdv');
+		return;
+	}
+	try {
+		$('#modal-confirmar-retiro-efectivo-pin').fadeOut(250);
+		$('#modal-retiro-efectivo-pdv').fadeIn(350);
+	} catch (e) {
+		// noop
+	}
 }
 
 function reenviarRetiroTransferenciaPinCorreo(){   
- 	
-	$('#ecoPinMensajeError').html("");
-    $("#code-01").val("");
-    $("#code-02").val("");
-    $("#code-03").val("");
-    $("#code-04").val("");
-    $("#code-05").val("");
+	var paymentType = (localStorage.getItem("paymentType") || "TRANSFERENCIA").toString().toUpperCase();
+	var cfg = getPinModalConfig(paymentType);
+	resetPinModalUI(cfg);
     var vheaders={"prizetoken":$('#prizetoken').val()};
 	$.ajax({
         type: "POST",
@@ -6108,15 +7275,14 @@ function reenviarRetiroTransferenciaPinCorreo(){
     .done(function(data) {
     	
     	if ( data.status === 'OK') {
-    		$('#modal-confirmar-retiro-transferencia-pin').fadeIn(350);
-    		$('#ecoPinTitulo').html(data.titulo);
-    		$('#ecoPinMensaje').html(data.mensaje);
-    		$('#ecoPinMensajeError').html("");    	
-			$('#form_activate').removeClass('error-activate');
+			openPinModal(cfg);
+			setPinModalHeader(cfg, paymentType, data);
+			$(cfg.error).html("");
+			$(cfg.form).removeClass('error-activate');
 			
 			if(data.contCorreo==2){
-				if($('#btnReenvioCodeSMS').is(':visible')) {
-					$('#btnReenvioCodeEmail').css("display", "none");
+				if($(cfg.btnSms).is(':visible')) {
+					$(cfg.btnEmail).css("display", "none");
 				}
 			}
         } else {
@@ -6129,8 +7295,8 @@ function reenviarRetiroTransferenciaPinCorreo(){
       	  
 	      	  $("#mensajeErrorSolicitud").html(data.mensaje);
       	  
-	      	  if($('#btnReenvioCodeSMS').is(':visible')) {
-	      		  $('#btnReenvioCodeEmail').css("display", "none");
+	      	  if($(cfg.btnSms).is(':visible')) {
+	      		  $(cfg.btnEmail).css("display", "none");
 	      	  } else {
 	      		  simpleModal.onToggleModalMsg("#modal-error");
 	      	  }
@@ -6153,14 +7319,59 @@ function reenviarRetiroTransferenciaPinCorreo(){
 	
 }
 
+function reenviarRetiroEfectivoPinCorreo(){
+	var cfg = getPinModalConfig('EFECTIVO');
+	resetPinModalUI(cfg);
+	var vheaders={"prizetoken":$('#prizetoken').val()};
+	$.ajax({
+		type: "POST",
+		url: "createRequestTransferenciaPin.html",
+		dataType: "json",
+		async: false,
+		headers: vheaders,
+		data: "type=REENVIAR&pinUuid="+localStorage.getItem("pinUuid")+"&paymentType="+localStorage.getItem("paymentType")+"&amount="+localStorage.getItem("amount"),
+	})
+	.done(function(data) {
+		if ( data.status === 'OK') {
+			openPinModal(cfg);
+			setPinModalHeader(cfg, localStorage.getItem('paymentType'), data);
+			$(cfg.error).html("");
+			$(cfg.form).removeClass('error-activate');
+
+			if(data.contCorreo==2){
+				if($(cfg.btnSms).is(':visible')) {
+					$(cfg.btnEmail).css("display", "none");
+				}
+			}
+		} else {
+			if(data.status === 'ERROR'){
+				if(data.titulo!=undefined && data.titulo!=''){
+					$("#title-modal-error").html(data.titulo);
+				}else{
+					$("#title-modal-error").html("No pudimos procesar tu solicitud");
+				}
+				$("#mensajeErrorSolicitud").html(data.mensaje);
+				if($(cfg.btnSms).is(':visible')) {
+					$(cfg.btnEmail).css("display", "none");
+				} else {
+					simpleModal.onToggleModalMsg("#modal-error");
+				}
+			}
+		}
+	})
+	.fail(function(jqXHR) {
+		if(jqXHR.status==403){
+			window.location.href = 'inicio.html';
+		}else{
+			showMessageError("Tuviste una interrupción al solicitar tu retiro", "Realiza esta solicitud en unos minutos.");
+		}
+	});
+}
+
 function reenviarRetiroTransferenciaPinSms(){   
- 	
-	$('#ecoPinMensajeError').html("");
-    $("#code-01").val("");
-    $("#code-02").val("");
-    $("#code-03").val("");
-    $("#code-04").val("");
-    $("#code-05").val("");
+	var paymentType = (localStorage.getItem("paymentType") || "TRANSFERENCIA").toString().toUpperCase();
+	var cfg = getPinModalConfig(paymentType);
+	resetPinModalUI(cfg);
     var vheaders={"prizetoken":$('#prizetoken').val()};
 	$.ajax({
         type: "POST",
@@ -6172,15 +7383,14 @@ function reenviarRetiroTransferenciaPinSms(){
     })    
     .done(function(data) {
     	
-    	if (data.status === 'ERROR_RECREATEPIN') {
-    		$('#modal-confirmar-retiro-transferencia-pin').fadeIn(350);
-    		$('#ecoPinTitulo').html(data.titulo);
-    		$('#ecoPinMensaje').html(data.mensaje);
-    		$('#ecoPinMensajeError').html("");    	
-			$('#form_activate').removeClass('error-activate');
+	    if (data.status === 'ERROR_RECREATEPIN' || data.status === 'OK') {
+			openPinModal(cfg);
+			setPinModalHeader(cfg, paymentType, data);
+	    		$(cfg.error).html("");    	
+			$(cfg.form).removeClass('error-activate');
 			if(data.contSms==2) {
-				if($('#btnReenvioCodeEmail').is(':visible')) {
-					$('#btnReenvioCodeSMS').css("display", "none");
+				if($(cfg.btnEmail).is(':visible')) {
+					$(cfg.btnSms).css("display", "none");
 				}
 			}
         } else {
@@ -6193,8 +7403,8 @@ function reenviarRetiroTransferenciaPinSms(){
 	      	  
 	      	  $("#mensajeErrorSolicitud").html(data.mensaje);
 	      	  
-		      	if($('#btnReenvioCodeEmail').is(':visible')) {
-	          		$('#btnReenvioCodeSMS').css("display", "none");
+		      	if($(cfg.btnEmail).is(':visible')) {
+		          		$(cfg.btnSms).css("display", "none");
 		      	  } else {
 		      		simpleModal.onToggleModalMsg("#modal-error");
 		      	}
@@ -6216,139 +7426,195 @@ function reenviarRetiroTransferenciaPinSms(){
 	});
 	
 }
+
+function reenviarRetiroEfectivoPinSms(){
+	var cfg = getPinModalConfig('EFECTIVO');
+	resetPinModalUI(cfg);
+	var vheaders={"prizetoken":$('#prizetoken').val()};
+	$.ajax({
+		type: "POST",
+		url: "createRequestTransferenciaPin.html",
+		dataType: "json",
+		async: false,
+		headers: vheaders,
+		data: "type=REENVIARSMS&pinUuid="+localStorage.getItem("pinUuid")+"&paymentType="+localStorage.getItem("paymentType")+"&amount="+localStorage.getItem("amount"),
+	})
+	.done(function(data) {
+		if (data.status === 'ERROR_RECREATEPIN' || data.status === 'OK') {
+			openPinModal(cfg);
+			setPinModalHeader(cfg, localStorage.getItem('paymentType'), data);
+			$(cfg.error).html("");
+			$(cfg.form).removeClass('error-activate');
+			if(data.contSms==2) {
+				if($(cfg.btnEmail).is(':visible')) {
+					$(cfg.btnSms).css("display", "none");
+				}
+			}
+		} else {
+			if(data.status === 'ERROR'){
+				if(data.titulo!=undefined && data.titulo!=''){
+					$("#title-modal-error").html(data.titulo);
+				}else{
+					$("#title-modal-error").html("No pudimos procesar tu solicitud");
+				}
+				$("#mensajeErrorSolicitud").html(data.mensaje);
+				if($(cfg.btnEmail).is(':visible')) {
+					$(cfg.btnSms).css("display", "none");
+				} else {
+					simpleModal.onToggleModalMsg("#modal-error");
+				}
+			}
+		}
+	})
+	.fail(function(jqXHR) {
+		if(jqXHR.status==403){
+			window.location.href = 'inicio.html';
+		}else{
+			showMessageError("Tuviste una interrupción al solicitar tu retiro", "Realiza esta solicitud en unos minutos.");
+		}
+	});
+}
  
  
 var renderActivateFormPin = function () {
+	function bindPinForm(cfg) {
+		var $form = $(cfg.form);
+		if (!$form || !$form.length) return;
+		var $inputs = $form.find('.form__code input');
+		var $button = $(cfg.button);
+		if (!$inputs || !$inputs.length) return;
 
-	  var   $form = $('#form_activate'),
-	        $inputs = $(".form__code input"),
-	        $button = $('#btactivatepin'),
-	        onChangeCodePin,
-	        onSubmitActivatePin;
+		var onChangeCodePin = function (e) {
+			var $input = $(this);
+			var tcode = $input.val();
+			var tindex = parseInt($input.attr('tabindex'), 10);
 
-	  onChangeCodePin = function (e) {
-	      var $input = $(this),
-	      tcode = $input.val(),
-	      tindex = parseInt($input.attr('tabindex'), 10);
+			if (e.type === 'keydown') {
+				if (e.keyCode === 46 || e.keyCode === 8) {
+					if (tcode === '') {
+						$inputs.filter('[tabindex="' + (tindex - 1) + '"]').focus();
+					}
+				}
+			} else {
+				if (tcode !== '') {
+					$inputs.filter('[tabindex="' + (tindex + 1) + '"]').focus();
+				}
+			}
 
-	    if (e.type === 'keydown') {
-	      // keydown
-	      if (e.keyCode === 46 || e.keyCode === 8) {
-	        if (tcode === '') {
-	          $inputs.filter('[tabindex="' + (tindex - 1) + '"]').focus();
-	        }
-	      }
-	    } else {
-	      // keyup
-	      if (tcode !== '') {
-	        $inputs.filter('[tabindex="' + (tindex + 1) + '"]').focus();
-	      }
-	    }
+			if (e.type !== 'keydown') {
+				validateCodePin();
+			}
+		};
 
-	    validateCodePin();
-	  };
+		var validateCodePin = function () {
+			var isComplete = true;
+			$inputs.each(function () {
+				if ($(this).val() === '') isComplete = false;
+			});
+			if ($button && $button.length) $button.attr('disabled', !isComplete);
+			if (!isComplete) {
+				$form.removeClass('error-activate');
+				return;
+			}
+			if ($form.data('submitting') === true) return;
+			setTimeout(function () {
+				if ($form.data('submitting') === true) return;
+				$form.trigger('submit');
+			}, 0);
+		};
 
-	  validateCodePin = function () {
-	    $button.attr('disabled', false);
-	    $inputs.each(function () {
-	      if ($(this).val() === '') {
-	        $button.attr('disabled', true);
-	        $form.removeClass('error-activate');
-	      }
-	    });
-	  };
-	  
-	  onSubmitActivatePin = function (e) {
-		    
-		    console.log("onSubmitActivatePin");
-		    e.preventDefault();
-		    $button.attr('disabled', true);
-		    var cod01 = $("#code-01").val();
-		    var cod02 = $("#code-02").val();
-		    var cod03 = $("#code-03").val();
-		    var cod04 = $("#code-04").val();
-		    var cod05 = $("#code-05").val();
-		    var code = cod01 + cod02 + cod03 + cod04 + cod05;
-		    var vheaders={"prizetoken":$('#prizetoken').val()};
+		var onSubmitActivatePin = function (e) {
+			e.preventDefault();
+			if ($form.data('submitting') === true) return;
+			$form.data('submitting', true);
+			if ($button && $button.length) $button.attr('disabled', true);
+
+			var code = '';
+			$inputs.each(function () {
+				code += String($(this).val() || '');
+			});
+
+			var vheaders={"prizetoken":$('#prizetoken').val()};
 			$.ajax({
-		        type: "POST",
-		        url: "validateRequestTransferenciaPin.html",
-		        dataType: "json",
-		        async: false,
-		        headers: vheaders,
-		        data: "pin="+code+"&pinUuid="+localStorage.getItem("pinUuid")+"&paymentType="+localStorage.getItem("paymentType")+"&amount="+localStorage.getItem("amount"),
-		    })    
-		    .done(function(data) {
-		    	if ( data.status === 'OK' ) {
-		    		localStorage.setItem("statusPin", data.status);
-		    		if (data.type === 'VISA') {
-			      	    createRequest(e,"createRequestVisa.html","amountVisa="+$('#amountVisa').val()+"&imgDNI="+imgBase64P1+"&kycResult="+kycResult+"&statusPin="+data.status);
-		    		} else {
-			    		if (data.type === 'AGORA') {
-			    	 		  createRequest(e,"createRequestAgora.html","amountAgora="+$('#amountAgora').val()+"&imgDNIAgora="+imgBase64P1Agora+"&kycResult="+kycResult+"&statusPin="+data.status);
-			    		} else {
-				    		if (data.type === 'EFECTIVO') {
-				      		  createRequest(e,"createRequest.html","amountEfectivo="+$('#amountEfectivo').val()+"&imgDNI="+imgBase64P1Cash+"&kycResult="+kycResult+"&statusPin="+data.status);
-				    		} else {
-					    		if (data.type === 'TRANSFERENCIA') {
-					    			continuarRetiroTransferencia()
-						    	} else {
-
-							          	  $("#title-modal-error").html("No pudimos procesar tu solicitud");
-								          $("#mensajeErrorSolicitud").html("Tuviste una interrupción al solicitar tu retiro");
-								          simpleModal.onToggleModalMsg("#modal-error");
-								          
-							          
-						    	}
-				    		}
-			    		}
-		    		}
-		    		
-		        } else {
-		      
-		        	if ( data.status === 'CODEERROR' ) {
-
-						$("#ecoPinMensajeError").html(data.mensajeerror);
-						$('#form_activate').addClass('error-activate');
-		        		    	    
-		            } else {
-		          
-		          	  if(data.titulo!=undefined && data.titulo!=''){
-		          		$("#title-modal-error").html(data.titulo);
-		          	  }else{
-		          		$("#title-modal-error").html("No pudimos procesar tu solicitud");
-		          	  }
-		          	  
-		          	  $("#mensajeErrorSolicitud").html(data.mensaje);
-		          	  simpleModal.onToggleModalMsg("#modal-error");
-		          	  
-		            }
-		      	  
-		        }
+				type: "POST",
+				url: "validateRequestTransferenciaPin.html",
+				dataType: "json",
+				async: false,
+				headers: vheaders,
+				data: "pin="+code+"&pinUuid="+localStorage.getItem("pinUuid")+"&paymentType="+localStorage.getItem("paymentType")+"&amount="+localStorage.getItem("amount"),
 			})
-			.fail(function(jqXHR, textStatus, errorThrown) {
-
-				console.log("jqXHR="+jqXHR);
-				console.log("textStatus="+textStatus);
-				console.log("errorThrown="+errorThrown);
+			.done(function(data) {
+				if ( data.status === 'OK' ) {
+					closeModal();
+					localStorage.setItem("statusPin", data.status);
+					if (data.type === 'VISA') {
+						createRequest(e,"createRequestVisa.html","amountVisa="+$('#amountVisa').val()+"&imgDNI="+imgBase64P1+"&kycResult="+kycResult+"&statusPin="+data.status);
+					} else if (data.type === 'AGORA') {
+						createRequest(e,"createRequestAgora.html","amountAgora="+$('#amountAgora').val()+"&imgDNIAgora="+imgBase64P1Agora+"&kycResult="+kycResult+"&statusPin="+data.status);
+					} else if (data.type === 'EFECTIVO') {
+						createRequest(e,"createRequest.html","amountEfectivo="+$('#amountEfectivo').val()+"&imgDNI="+imgBase64P1Cash+"&kycResult="+kycResult+"&statusPin="+data.status);
+					} else if (data.type === 'TRANSFERENCIA') {
+						continuarRetiroTransferencia();
+					} else {
+						$("#title-modal-error").html("No pudimos procesar tu solicitud");
+						$("#mensajeErrorSolicitud").html("Tuviste una interrupción al solicitar tu retiro");
+						simpleModal.onToggleModalMsg("#modal-error");
+					}
+				} else if ( data.status === 'CODEERROR' ) {
+					$(cfg.error).html(data.mensajeerror);
+					$form.addClass('error-activate');
+					$inputs.val('');
+					setTimeout(function(){ try { $inputs.first().focus(); } catch(e){} }, 0);
+				} else {
+					if(data.titulo!=undefined && data.titulo!=''){
+						$("#title-modal-error").html(data.titulo);
+					}else{
+						$("#title-modal-error").html("No pudimos procesar tu solicitud");
+					}
+					$("#mensajeErrorSolicitud").html(data.mensaje);
+					simpleModal.onToggleModalMsg("#modal-error");
+				}
+			})
+			.fail(function(jqXHR) {
 				if(jqXHR.status==403){
 					window.location.href = 'inicio.html';
 				}else{
 					showMessageError("Tuviste una interrupción al solicitar tu retiro", "Realiza esta solicitud en unos minutos.");
 				}
+			})
+			.always(function(){
+				try { $form.data('submitting', false); } catch (e2) { }
 			});
-			
-		}
-	  
-	  $inputs.numeric({allowThouSep: false, allowDecSep: false, allowMinus: false});
-	  $inputs.on('keyup keydown', onChangeCodePin);
-	  $form.on("submit",onSubmitActivatePin);
+		};
+
+		$inputs.numeric({allowThouSep: false, allowDecSep: false, allowMinus: false});
+		$inputs.on('keyup keydown', onChangeCodePin);
+		$form.on('submit', onSubmitActivatePin);
+	}
+
+	bindPinForm(getPinModalConfig('TRANSFERENCIA'));
+	bindPinForm(getPinModalConfig('VISA'));
+	bindPinForm(getPinModalConfig('EFECTIVO'));
 
 }
 
-function closeModal() {
-    var modal = document.getElementById('modal-confirmar-retiro-transferencia-pin');
-    modal.style.display = 'none';
+function closeModal(state) {
+	// Cierra overlays (compatibilidad con el cierre anterior)
+	try {
+		$('.overlay.opened').removeClass('opened');
+		$('body').removeClass('modal');
+	} catch (e) {
+		// noop
+	}
+	// Cierra los modales OTP (PIN)
+	try {
+		['modal-confirmar-retiro-transferencia-pin','modal-confirmar-retiro-tarjeta-pin','modal-confirmar-retiro-efectivo-pin'].forEach(function(id){
+			var modal = document.getElementById(id);
+			if (modal) modal.style.display = 'none';
+		});
+	} catch (e2) {
+		// noop
+	}
 }
 
 function closePopupMessage(){

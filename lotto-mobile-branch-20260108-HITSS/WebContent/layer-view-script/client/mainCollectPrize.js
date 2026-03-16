@@ -5229,8 +5229,12 @@ function irTransferencia(){
 	$("#amountTransferencia").val($("#amountEfectivo").val());
 	$("#amountTransferencia").keyup();
 	cleanPaymentPrizeCash();
-	$("#accordion_transferencia").addClass('opened');
-	$("#accordion_transferencia").find('.accordion__body').css('display','block');
+	if ($('#modal-retiro-transferencia').length && typeof simpleModal !== 'undefined' && typeof simpleModal.onToggleModalMsg === 'function') {
+		simpleModal.onToggleModalMsg('#modal-retiro-transferencia');
+	} else {
+		$("#accordion_transferencia").addClass('opened');
+		$("#accordion_transferencia").find('.accordion__body').css('display','block');
+	}
 	setTimeout(function() { $("#amountTransferencia").focus(); }, 0);
 	$('#modal-confirmar-retiro-efectivo').fadeOut(250);
 }

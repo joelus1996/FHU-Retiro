@@ -170,7 +170,7 @@ public class MailLib extends ConnectionFactory {
 		msg.setRecipients(Message.RecipientType.TO,ccaddress);
 		msg.setSubject(mailSubject);
 		msg.setContent(mailBody, contentType);
-		Transport.send(msg);
+		//Transport.send(msg);
 	}
 	
 	protected static String getApplicationString(String nl) {

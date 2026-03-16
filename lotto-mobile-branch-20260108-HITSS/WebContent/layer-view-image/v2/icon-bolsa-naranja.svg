@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <!-- Money bag outline (orange) -->
+  <g stroke="#FF6A00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- top knot (trapezoid) -->
+    <path d="M24 10h16l-4.5 10h-7z"/>
+
+    <!-- bag body -->
+    <path d="M12 28c6.5-5.5 13.8-8 20-8s13.5 2.5 20 8c4.6 3.9 7 9.4 7 15.2C59 54.8 47.4 61 32 61S5 54.8 5 43.2c0-5.8 2.4-11.3 7-15.2z"/>
+  </g>
+
+  <!-- center dot -->
+  <circle cx="32" cy="41" r="4.8" fill="#FF6A00"/>
+</svg>

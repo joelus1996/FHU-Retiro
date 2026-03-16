@@ -55,7 +55,7 @@ import pe.com.intralot.loto.www.sale.client.lib.ClientUtils;
  * NOMBRE: SecurityLoginBoImpl.java
  * <br></p>
  * <p>
- * FUNCION: Implementación del objeto de lógica de negocio del inicio de sesión
+ * FUNCION: Implementaciï¿½n del objeto de lï¿½gica de negocio del inicio de sesiï¿½n
  * <br></p>
  * <p>
  * NOTAS: Ninguna.
@@ -64,7 +64,7 @@ import pe.com.intralot.loto.www.sale.client.lib.ClientUtils;
  * VERSIONES
  * <pre>
  * VER   MODIFICADO       FECHA       PEDIDO         REVISADO
- * 002   Cristian Cortez  25/06/2018  Métodos para la activación y rechazo del bono de TA por recargas Interbank
+ * 002   Cristian Cortez  25/06/2018  Mï¿½todos para la activaciï¿½n y rechazo del bono de TA por recargas Interbank
  * 001   Joel Ramirez     06/10/2010  First comment
  * </pre>
  * <br></p>
@@ -181,7 +181,7 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
         StringBuffer mailBodyNewCode = new StringBuffer();
         StringBuffer mailBodyPass = new StringBuffer();
         String mailSender = email;
-        String mailSubject = "Cambia tu contraseña";
+        String mailSubject = "Cambia tu contraseï¿½a";
         String mailBody = "";
         String result = "";
         String codedecoded = "";
@@ -342,7 +342,7 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
         		"        <tr>" + 
         		"			<td width='50px' style='background-color:#dedede;'>&nbsp; " + 
         		"			</td>" + 
-        		"            <td width='500px' style='background-color:#ffff;font-family: Arial, Helvetica, sans-serif; font-size: 22px; color:#5a5a5a;'><strong><span>¡Hola "+ClientUtils.formatHtml(name)+"!</span></strong>" + 
+        		"            <td width='500px' style='background-color:#ffff;font-family: Arial, Helvetica, sans-serif; font-size: 22px; color:#5a5a5a;'><strong><span>ï¿½Hola "+ClientUtils.formatHtml(name)+"!</span></strong>" + 
         		"			</td>" + 
         		"            <td width='50px' style='background-color:#dedede;'>&nbsp; " + 
         		"			</td>" + 
@@ -358,7 +358,7 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
         		"         <tr>" + 
         		"			<td width='50px' style='background-color:#dedede;'>&nbsp;   " + 
         		"			</td>" + 
-        		"            <td width='500px' style='background-color:#ffff;font-size:14px;color:#5a5a5a;font-family: Arial, Helvetica, sans-serif;'><span>Haz click para cambiar tu contraseña en la Tinka.</span>" + 
+        		"            <td width='500px' style='background-color:#ffff;font-size:14px;color:#5a5a5a;font-family: Arial, Helvetica, sans-serif;'><span>Haz click para cambiar tu contraseï¿½a en la Tinka.</span>" + 
         		"			</td>" + 
         		"            <td width='50px' style='background-color:#dedede;'>&nbsp; " + 
         		"			</td>" + 
@@ -460,7 +460,7 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
         		"		<td rowspan=\"9\" bgcolor=\"#dedede\"  width=\"65\" height=\"359\" alt=\"\"></td>" + 
         		"	</tr>" + 
         		"	<tr>" + 
-        		"		<td bgcolor=\"#ffffff\" width=\"470\" height=\"44\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:22px;\"><strong>¡Hola "+ClientUtils.formatHtml(name)+"!</strong></td>" + 
+        		"		<td bgcolor=\"#ffffff\" width=\"470\" height=\"44\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:22px;\"><strong>ï¿½Hola "+ClientUtils.formatHtml(name)+"!</strong></td>" + 
         		"	</tr>" + 
         		"	<tr>" + 
         		"		<td bgcolor=\"#ffffff\" width=\"470\" height=\"33\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:14px;\">Haz click aqu&iacute; para cambiar tu contrase&ntilde;a en La Tinka.</td>" + 
@@ -482,7 +482,7 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
         		"		<td bgcolor=\"#ffffff\" width=\"470\" height=\"49\" alt=\"\"></td>" + 
         		"	</tr>" + 
         		"	<tr>" + 
-        		"		<td bgcolor=\"#dedede\" width=\"470\" height=\"76\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:12px;\">Este es un correo generado autom&aacute;ticamente. El enlace cambiar contraseña <strong>caducar&aacute; a las 24hrs</strong> de la fecha en que lo recibiste. Si quieres actualizar tus datos o necesitas informaci&oacute;n adicional, cont&aacute;ctate con nosotros al 5135502.</td>" + 
+        		"		<td bgcolor=\"#dedede\" width=\"470\" height=\"76\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:12px;\">Este es un correo generado autom&aacute;ticamente. El enlace cambiar contraseï¿½a <strong>caducar&aacute; a las 24hrs</strong> de la fecha en que lo recibiste. Si quieres actualizar tus datos o necesitas informaci&oacute;n adicional, cont&aacute;ctate con nosotros al 5135502.</td>" + 
         		"	</tr>" + 
         		"	<tr>" + 
         		"		<td colspan=\"3\" bgcolor=\"#dedede\">" + 
@@ -496,11 +496,11 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
         		"</html>");
         switch (option) {
             case 1:
-                mailSubject += " " + "Confirmación de correo electrónico";
+                mailSubject += " " + "Confirmaciï¿½n de correo electrï¿½nico";
                 mailBody = mailBodyConfirm.toString();
                 break;
             case 2:
-                mailSubject += " " + "Solicitud de código de seguridad";
+                mailSubject += " " + "Solicitud de cï¿½digo de seguridad";
                 mailBody = mailBodyNewCode.toString();
                 break;
             case 3:
@@ -609,7 +609,7 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
 	        			"        <tr>" + 
 	        			"			<td width='50px' style='background-color:#dedede;'>&nbsp;   " + 
 	        			"			</td>" + 
-	        			"            <td width='500px' style='background-color:#ffff;font-family: Arial, Helvetica, sans-serif; font-size: 22px; color:#5a5a5a;'><strong><span>¡Hola "+client.getName()+"!</span></strong>   " + 
+	        			"            <td width='500px' style='background-color:#ffff;font-family: Arial, Helvetica, sans-serif; font-size: 22px; color:#5a5a5a;'><strong><span>ï¿½Hola "+client.getName()+"!</span></strong>   " + 
 	        			"			</td>" + 
 	        			"            <td width='50px' style='background-color:#dedede;'>&nbsp;   " + 
 	        			"			</td>" + 
@@ -740,7 +740,7 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
 	        			"		<td rowspan=\"6\" bgcolor=\"#dedede\"  width=\"65\" height=\"283\" alt=\"\"></td>" + 
 	        			"	</tr>" + 
 	        			"	<tr>" + 
-	        			"		<td bgcolor=\"#ffffff\" width=\"470\" height=\"44\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:22px;\"><strong>¡Hola "+client.getName()+"!</strong></td>" + 
+	        			"		<td bgcolor=\"#ffffff\" width=\"470\" height=\"44\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:22px;\"><strong>ï¿½Hola "+client.getName()+"!</strong></td>" + 
 	        			"	</tr>" + 
 	        			"	<tr>" + 
 	        			"		<td bgcolor=\"#ffffff\" width=\"470\" height=\"33\" alt=\"\" style=\"color:#5a5a5a; text-align:center; font-family: Open Sans, Arial, Helvetica, sans-serif; font-size:14px;\">Tu nombre de usuario es</td>" + 
@@ -1251,17 +1251,26 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
 	 				br = new BufferedReader(new InputStreamReader((con.getInputStream()),Constantes.CHARSET_UTF8));
 	 			}else {
 	 				LoggerApi.Log.info("API TOKENGENERATION IFEXAPI-RECHARGE HTTP CODE: "+responseCode + " json: "+json);
-	 				br = new BufferedReader(new InputStreamReader((con.getErrorStream()),Constantes.CHARSET_UTF8));
+	 				if (con.getErrorStream() != null) {
+	 					br = new BufferedReader(new InputStreamReader((con.getErrorStream()),Constantes.CHARSET_UTF8));
+	 				} else if (con.getInputStream() != null) {
+	 					br = new BufferedReader(new InputStreamReader((con.getInputStream()),Constantes.CHARSET_UTF8));
+	 				}
 	 			}
 	 			StringBuilder sb = new StringBuilder();
-	 			char[] buffer = new char[1000];
-	 	        int leido;
-	 	        while ((leido = br.read(buffer)) > 0) {
-	 	        	sb.append(new String(buffer, 0, leido));
-	 	        }
-	 			br.close();
+	 			if (br != null) {
+	 				char[] buffer = new char[1000];
+	 	        	int leido;
+	 	        	while ((leido = br.read(buffer)) > 0) {
+	 	        		sb.append(new String(buffer, 0, leido));
+	 	        	}
+	 				br.close();
+	 			}
 	 			con.disconnect();
 	 			jsonResponseIflexApiRecharge = sb.toString();
+	 			if (!looksLikeJsonObject(jsonResponseIflexApiRecharge)) {
+	 				jsonResponseIflexApiRecharge = buildIflexApiRechargeErrorJson(service, responseCode, jsonResponseIflexApiRecharge);
+	 			}
 	 			if(responseCode >= HttpServletResponse.SC_BAD_REQUEST) {
 	 				LoggerApi.Log.info("API TOKENGENERATION IFEXAPI-RECHARGE"+ service+"Response: "+jsonResponseIflexApiRecharge + " json: "+json);	
 	 			}
@@ -1272,5 +1281,26 @@ public class SecurityLoginBoImpl implements SecurityLoginBo {
 				LoggerApi.Log.info("end requestWSIflexApiRecharge: "+jsonResponseIflexApiRecharge);
 			}
 			return jsonResponseIflexApiRecharge;
+		}
+
+		private static boolean looksLikeJsonObject(String body) {
+			if (body == null) {
+				return false;
+			}
+			String trimmed = body.trim();
+			return trimmed.startsWith("{") && trimmed.endsWith("}");
+		}
+
+		private static String buildIflexApiRechargeErrorJson(String service, int httpCode, String rawBody) {
+			String safeService = (service == null) ? "" : service;
+			String safeRaw = (rawBody == null) ? "" : rawBody;
+			safeRaw = safeRaw.replace("\\", "\\\\");
+			safeRaw = safeRaw.replace("\"", "\\\"");
+			safeRaw = safeRaw.replace("\r", "\\r").replace("\n", "\\n").replace("\t", "\\t");
+			if (safeRaw.length() > 1000) {
+				safeRaw = safeRaw.substring(0, 1000);
+			}
+			String message = (httpCode == HttpServletResponse.SC_UNAUTHORIZED) ? "UNAUTHORIZED" : "NON_JSON_RESPONSE";
+			return "{\"status\":\"ERROR\",\"httpCode\":" + httpCode + ",\"service\":\"" + safeService + "\",\"message\":\"" + message + "\",\"raw\":\"" + safeRaw + "\"}";
 		}
 }

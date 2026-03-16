@@ -16,7 +16,7 @@
 	
 		<link rel="stylesheet" href="layer-view-style/v2/styles.css?v=<%=Constantes.styles_css%>" type="text/css" />
 	<link rel="stylesheet" href="layer-view-style/common/popModal.css?v=<%=Constantes.popModal_css%>" type="text/css"/>
-	<link media="screen" rel="stylesheet" type="text/css" href="layer-view-style/client/mainCollectPrize.css?v=28">	
+	<link media="screen" rel="stylesheet" type="text/css" href="layer-view-style/client/mainCollectPrize.css?v=30">	
 	<meta http-equiv="Permissions-Policy" content="geolocation=(https://signup.metamap.com) camera=(self 'https://signup.metamap.com') microphone=(https://signup.metamap.com)">
 </head>
 <body class="no-scroll">
@@ -98,60 +98,48 @@
     </div>
 
 	<div class="ioverlay modal-msg" id="modal-confirmar-retiro-transferencia-pin">
-      <div class="modal is-error" style="width: 97%;  max-width: 433px;margin: 0 auto; ">
-       <div class="modal__close" onclick="closeModal()"><span class="icon-cerrar"></span></div>
-        <div class="modal__boby" style="padding: 20px 10%;" >          
-          <div>
-          	<p style='text-align: center; margin-bottom: 0px;'> 
-	          	<span style='font-size: 16px; font-weight: 700;' id="ecoPinTitulo"></span> <br><br> 
-          	</p>
-          	<p style="line-height: 14px;"><span id="ecoPinMensaje"></span>
-          	</p>
-			<div class="ilot" id="ecoPinInput">
-				<div class="activate">
-				  <form class="form" id="form_activate" autocomplete="off" method="post">
-					<div class="form__code" id="idPinCode">
-						<div class="form__code-item">
-							<input type="text" name="code-01" id="code-01" tabindex="31"
-								maxlength="1">
-						</div>
-						<div class="form__code-item">
-							<input type="text" name="code-02" id="code-02" tabindex="32"
-								maxlength="1">
-						</div>
-						<div class="form__code-item">
-							<input type="text" name="code-03" id="code-03" tabindex="33"
-								maxlength="1">
-						</div>
-						<div class="form__code-item">
-							<input type="text" name="code-04" id="code-04" tabindex="34"
-								maxlength="1">
-						</div>
-						<div class="form__code-item">
-							<input type="text" name="code-05" id="code-05" tabindex="35"
-								maxlength="1">
-						</div>
-					</div>
-					
-					<div class="form__alert" id="ecoPinMensajeError"></div>
-					
-			        <button class="btn btn_green" id="btactivatepin" type="submit" style="background: #07663a; margin: 20px auto 0;" disabled>ENVIAR</button>          
-			                            
-				 </form>
-				 	
-				</div>
-			</div>
-          	
-          </div>
-          <p style="margin-top: 20px; margin-bottom: 0px; font-size: 11px; text-align: center;">�No recibiste tu c�digo?   
-          </p>
-           <p style="margin-top: 10px;margin-bottom: 0px;font-size: 11px;text-align: center;">
-    		<a id="btnReenvioCodeEmail" style="display: block; text-decoration: underline; color: #e30613;" href="javascript:reenviarRetiroTransferenciaPinCorreo();">Reenviar c�digo por Email</a>
-    		<a id="btnReenvioCodeSMS" style="display: block;text-decoration: underline;color: #e30613;margin-top: 8px;" href="javascript:reenviarRetiroTransferenciaPinSms();">Reenviar c�digo por SMS</a>
-		  </p>
-        </div>
-      </div>
-    </div>
+	  <div class="modal is-error modal-otp-v2">
+	    <div class="modal-otp-v2__topbar">
+	      <div class="modal-otp-v2__nav">
+	        <span class="modal-otp-v2__nav-back" aria-hidden="true"></span>
+	        <div class="modal-otp-v2__nav-title">Solicitar retiro</div>
+	        <button type="button" class="modal-otp-v2__nav-close" onclick="closeModal()" aria-label="Cerrar"></button>
+	      </div>
+	      <div class="modal-otp-v2__amount">
+	        <div class="modal-otp-v2__amount-label">Monto a retirar</div>
+	        <div class="modal-otp-v2__amount-icon" aria-hidden="true"></div>
+	        <div class="modal-otp-v2__amount-channel">Efectivo / Puntos de Venta</div>
+	      </div>
+	    </div>
+	    <div class="modal__boby modal-otp-v2__body">
+	      <div class="modal-otp-v2__hero">
+	        <img class="modal-otp-v2__hero-img" src="layer-view-image/v2/autorizacion.png" alt="" />
+	      </div>
+	      <h3 class="modal-otp-v2__title" id="ecoPinTitulo"></h3>
+	      <p class="modal-otp-v2__message"><span id="ecoPinMensaje"></span></p>
+	      <div class="ilot modal-otp-v2__otp" id="ecoPinInput">
+	        <div class="activate">
+	          <form class="form" id="form_activate" autocomplete="off" method="post">
+	            <div class="form__code" id="idPinCode">
+	              <div class="form__code-item"><input type="text" name="code-01" id="code-01" tabindex="31" maxlength="1"></div>
+	              <div class="form__code-item"><input type="text" name="code-02" id="code-02" tabindex="32" maxlength="1"></div>
+	              <div class="form__code-item"><input type="text" name="code-03" id="code-03" tabindex="33" maxlength="1"></div>
+	              <div class="form__code-item"><input type="text" name="code-04" id="code-04" tabindex="34" maxlength="1"></div>
+	              <div class="form__code-item"><input type="text" name="code-05" id="code-05" tabindex="35" maxlength="1"></div>
+	            </div>
+	            <div class="form__alert" id="ecoPinMensajeError"></div>
+	            <button class="btn btn_green modal-otp-v2__submit" id="btactivatepin" type="submit" disabled>ENVIAR</button>
+	          </form>
+	        </div>
+	      </div>
+	      <div class="modal-otp-v2__resend">
+	        <span class="modal-otp-v2__resend-text">&iquest;A&uacute;n no recibes el c&oacute;digo?</span>
+	        <a id="btnReenvioCodeEmail" class="modal-otp-v2__resend-link" href="javascript:reenviarRetiroTransferenciaPinCorreo();">Reenviar c&oacute;digo</a>
+	      </div>
+	      <a id="btnReenvioCodeSMS" class="modal-otp-v2__sms" href="javascript:reenviarRetiroTransferenciaPinSms();">Enviar por SMS</a>
+	    </div>
+	  </div>
+	</div>
     
 	<div class="ioverlay modal-msg" id="modal-confirmar-retiro-efectivo">
       <div class="modal is-error">
